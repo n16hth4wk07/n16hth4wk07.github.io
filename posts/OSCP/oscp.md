@@ -45,7 +45,7 @@ Optional - sT (performs full scan instead of syn-scan to prevent getting flagged
 From Apache Version to finding Ubuntu version -> ubuntu httpd versions
 
 ***
-## FTP: (port21)
+## FTP: (port 21)
 ***
 ```
 anonymous login check 
@@ -61,7 +61,7 @@ Bruteforce ftp
 ``` 
 
 ***
-## SSH: (port22)
+## SSH: (port 22)
 ***
 ```
 id_rsa.pub : Public key that can be used in authorized_keys for login
@@ -109,3 +109,19 @@ echo <FILENAME>.pub >> <PATH>/.ssh/authorized_keys
 # Connect
 ssh -i <FILENAME> <USER>@<IP>
 ```
+
+***
+## DNS: (port 53)
+***
+```
+If port 53 is open
+dnsenum <DOMAIN>
+dnsrecon -d <DOMAIN>
+Add host to /etc/hosts
+   -  dig axfr smasher.htb @10.10.10.135
+   -  https://ghostphisher.github.io/smasher2
+   -  Add the extracted domain to /etc/hosts and dig again
+   
+DNS brute force
+dnsrecon -D subdomains-1000.txt -d <DOMAIN> -n <IP_DNS>
+dnscan -d <domain> -r -w subdomains-1000.txt #Bruteforce subdomains in recursive way, <https://github.com/rbsec/dnscan>
