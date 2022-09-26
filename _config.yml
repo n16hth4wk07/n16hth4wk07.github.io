@@ -1,0 +1,11 @@
+theme: jekyll-theme-hacker
+title: root💀n16hth4wk-sec:~#
+description: Hack Enumerate Harder!. Eat. Sleep. Repeat.
+show_downloads: false
+show_repo: false
+
+gems:
+- jekyll-sitemap
+
+whitelist:
+- jekyll-sitemap
