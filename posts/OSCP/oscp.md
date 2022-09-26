@@ -3,7 +3,9 @@ layout: default
 title : My OSCP cheat sheet
 ---
 
+***
 ## Enumeration
+***
 
 ```
 nmap -sC -sV -o nmap -A -T5 <IP>
@@ -26,7 +28,9 @@ Port specific NSE script list :
    
 ```
 
+***
 ## Scanning all ports
+***
 
 ```
 masscan -p1-65535,U:1-65535 --rate=1000 10.10.10.x -e tun0 > ports
@@ -40,8 +44,9 @@ sC - default scripts, sV - scan for versions, oA- output all  formats
 Optional - sT (performs full scan instead of syn-scan to prevent getting flagged by firewalls)
 From Apache Version to finding Ubuntu version -> ubuntu httpd versions
 
+***
 ## FTP: (port21)
-
+***
 anonymous login check 
    -  ftp <ip address>
    -  username : anonymous
@@ -52,5 +57,4 @@ anonymous login check
 Bruteforce ftp
    
   ```hydra -V -f -L <USERS_LIST> -P <PASSWORDS_LIST> ftp://<IP> -u -vV```
-
   
