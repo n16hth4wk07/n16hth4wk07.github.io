@@ -47,6 +47,7 @@ From Apache Version to finding Ubuntu version -> ubuntu httpd versions
 ***
 ## FTP: (port21)
 ***
+```
 anonymous login check 
    -  ftp <ip address>
    -  username : anonymous
@@ -56,5 +57,21 @@ anonymous login check
   
 Bruteforce ftp
    
-  ```hydra -V -f -L <USERS_LIST> -P <PASSWORDS_LIST> ftp://<IP> -u -vV```
-  
+  hydra -V -f -L <USERS_LIST> -P /usr/share/wordlists/rockyou.txt  ftp://<IP> -u -vV
+``` 
+
+***
+## SSH: (port22)
+***
+```
+id_rsa.pub : Public key that can be used in authorized_keys for login
+id_rsa : Private key that is used for login. Might ask for password. can be cracked with ssh2john and john
+   -  id_rsa
+   -  ssh -i id_rsa user@10.10.10.x
+   -  For passwordless login, add id_rsa.pub to target's authorized_keys
+   -  ssh2john
+
+Bruteforce ssh
+
+   hydra -V -f -L <USERS_LIST> -P /usr/share/wordlists/rockyou.txt ssh://<IP> -u -vV
+```
