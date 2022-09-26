@@ -43,11 +43,11 @@ From Apache Version to finding Ubuntu version -> ubuntu httpd versions
 ## FTP: (port21)
 
 anonymous login check 
-   •  ftp <ip address>
-   •  username : anonymous
-   •  pwd : anonymous
-   •  file upload -> put shell.php
-   •  file download -> get file
+   -  ftp <ip address>
+   -  username : anonymous
+   -  pwd : anonymous
+   -  file upload -> put shell.php
+   -  file download -> get file
   
 Bruteforce ftp
    
