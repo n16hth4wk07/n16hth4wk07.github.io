@@ -154,9 +154,12 @@ Checking our ncat listener, Boom! we got a shell 😅
 
 ![image](https://user-images.githubusercontent.com/87468669/194127891-58614c0b-9f2b-4c9c-883a-99f5e08fa298.png)
 
-Now hunting for the flag, i did ```find / 2>/dev/null | grep -i "flag"```
+let's stabilize the shell and escalate priv to root. by just doing su root and password:toor gave us the root shell
 
 ![image](https://user-images.githubusercontent.com/87468669/194134825-2b1842db-c10c-41b2-a779-a2ebcb09da87.png)
+
+Now hunting for the flag, i did ```find / 2>/dev/null | grep -i "flag"```
+
 
 ![image](https://user-images.githubusercontent.com/87468669/194135145-6a7f239b-d41e-43b6-9782-be818e78c9f1.png)
 
