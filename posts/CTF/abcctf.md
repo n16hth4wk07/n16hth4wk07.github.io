@@ -163,12 +163,9 @@ Now hunting for the flag, i did ```find / 2>/dev/null | grep -i "flag"```
 
 ![image](https://user-images.githubusercontent.com/87468669/194135145-6a7f239b-d41e-43b6-9782-be818e78c9f1.png)
 
-
-![image](https://user-images.githubusercontent.com/87468669/194128264-0d992453-8661-4122-8e9c-810eaa49994f.png)
-
 final flag - abcctf{345Y_r007_W17H_D3F4U17_Cr3D5}
 
-sweet challeng from Muzec.
+sweet challenge from Muzec-san.
 
 ### Pain - 1500pts
 
@@ -193,6 +190,10 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 9.43 seconds
 ```
+
+Nice we now know port 2222 is an ssh port, so let's go back to the first IP which is a an http web server 
+
+![image](https://user-images.githubusercontent.com/87468669/194166210-d862130f-5678-4260-b308-ad6179b5f481.png)
 
 
 
