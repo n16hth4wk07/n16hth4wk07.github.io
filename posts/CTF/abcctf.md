@@ -195,8 +195,6 @@ Nice we now know port 2222 is an ssh port, so let's go back to the first IP whic
 
 ![image](https://user-images.githubusercontent.com/87468669/194166210-d862130f-5678-4260-b308-ad6179b5f481.png)
 
-
-
-
-
+so we have the web service open and all the quotes here are about pain💉💉💉. But regardless we've got magekyou sharingan 😂 😂. we either put this challenge under genjitsu or izami 😂. Enough with that let's move on. 
+Checking the source page, got nothing this is where our sharingan aka ffuf will work for us 
 
