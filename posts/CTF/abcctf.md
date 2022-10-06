@@ -347,3 +347,75 @@ Final Flag :- abcctf{HYDr4_r3V3r53_15_C001_r16H7}
 
 ![image](https://user-images.githubusercontent.com/87468669/194280310-0bbc3849-329d-443c-8965-bd59682dfffb.png)
 
+We got an IP and a port, let's use nmap to check and know what service is running on that port.
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Easy]
+└─$ nmap -sC -sV 185.203.119.220 -p8002                                         
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-06 05:24 CDT
+Nmap scan report for 185.203.119.220
+Host is up (0.21s latency).
+
+PORT     STATE SERVICE VERSION
+8002/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 29.79 seconds
+
+```
+
+Good from our scan we can see that an http apache service is running on that port. let's check it on our browser
+
+![image](https://user-images.githubusercontent.com/87468669/194290082-6c286b16-42e7-4b2d-84aa-79073b4a7ed2.png)
+
+nice. Let's check the page source 
+
+![image](https://user-images.githubusercontent.com/87468669/194290338-577e86e1-7031-4f5a-9bdd-176155dfb1b8.png)
+
+hmmmm Muzec-san has started again 😂... what does "easy like abcdef123456" mean 🤔🤔
+
+Let's burst open hidden directiories 
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Easy]
+└─$ ffuf -u "http://185.203.119.220:8002/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt -e .txt,.php,.bak,sh -fs 282
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://185.203.119.220:8002/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/common.txt
+ :: Extensions       : .txt .php .bak sh 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 282
+________________________________________________
+
+help.txt                [Status: 200, Size: 181, Words: 29, Lines: 5, Duration: 171ms]
+index.html              [Status: 200, Size: 10697, Words: 3502, Lines: 364, Duration: 190ms]
+:: Progress: [23565/23565] :: Job [1/1] :: 95 req/sec :: Duration: [0:02:21] :: Errors: 16 ::
+
+```
+
+good we got help.txt, let's browse that 
+
+![image](https://user-images.githubusercontent.com/87468669/194295365-020872b1-60a0-42d2-a57d-b4ef00159ecd.png)
+```
+Welcome L33T Hacker, we need your help in fixing a missing directory D1r3C70XXX eaten by R4T.
+The eaten part is XXX.
+we wish you the best of luck you l33t hacker.
+```
+Naani!!! R4T eat what ??? 😂  nooo nau 
