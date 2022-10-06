@@ -194,7 +194,7 @@ Nice we now know port 2222 is an ssh port, so let's go back to the first IP whic
 
 ![image](https://user-images.githubusercontent.com/87468669/194166210-d862130f-5678-4260-b308-ad6179b5f481.png)
 
-so we have the web service open and all the quotes here are about pain💉💉💉. But regardless we've got magekyou sharingan 😂 😂. we either put this challenge under genjitsu or izami 😂. Enough with that let's move on.
+so we have the web service open and all the quotes here are about pain💉💉💉. But regardless we've got magekyou sharingan 😂 😂. we either put this challenge under Genjutsu or Izanami 😂. Enough with that let's move on.
 
 ![image](https://user-images.githubusercontent.com/87468669/194230661-16ebbca9-c9d7-4cec-b830-7ec2573c3d00.png)
 
@@ -342,10 +342,7 @@ there we have our flag
 Final Flag :- abcctf{HYDr4_r3V3r53_15_C001_r16H7}
 
 
+#### Easy LFI - 1000pts
 
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/87468669/194280310-0bbc3849-329d-443c-8965-bd59682dfffb.png)
 
