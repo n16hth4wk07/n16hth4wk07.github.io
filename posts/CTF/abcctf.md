@@ -77,7 +77,7 @@ wordpress               [Status: 301, Size: 329, Words: 20, Lines: 10, Duration:
 :: Progress: [28278/28278] :: Job [1/1] :: 95 req/sec :: Duration: [0:02:46] :: Errors: 22 ::
 ```
 
-nice we got somethings interesting but trust me you'll only want to take a look at the webdav directory. cause our sharingan 👀 saw through it that the rest was a rabit hole 😂, like Itachi saying "sono sharingan omaewa doko made mieteiru" 👀
+nice we got somethings interesting but trust me you'll only want to take a look at the webdav directory. cause our sharingan 👀 saw through it that the rest was a rabbit hole 😂, like Itachi saying "sono sharingan 👀 omaewa doko made mieteiru" 
 
 ![4](https://user-images.githubusercontent.com/87468669/194121126-27a27eea-fa0f-4182-a088-adcd2572aaa4.png)
 
@@ -333,6 +333,7 @@ root@3470e9a4bace:/home/muzec#
 root@3470e9a4bace:/home/muzec# 
 
 ```
+The reason i used the full path of sudo was because Musec changed the alias so we would pass through pain in getting the flag the same way 😂. if you check the bashrc file you will see alias sudo=/bin/true, it's the same for cat too.
 Now we are root let's hunt for the flag.
 
 ![image](https://user-images.githubusercontent.com/87468669/194278486-52823a44-af76-4b68-b3bc-7fe5002dd8d9.png)
