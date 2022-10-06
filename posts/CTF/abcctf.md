@@ -276,7 +276,7 @@ We are in now let's escalate privs to root.
 ![image](https://user-images.githubusercontent.com/87468669/194264733-8afe4439-5369-49dd-a1af-06293edaa3d3.png)
 
 Broooo i got stucked here for hours, and i was running out of chakra 😂 😂... i stared at the "Maybe secret in LEET." for hours omo nothing, i tried su rudefish with password secret omo e no work, su muzec with password secret still the same, i tried secret in leet for (53cr37, 53CR37...) none worked. I was like omo this is truly pain. i used my last resort susano 😂. i looked at the pain.bak again and said why don't i try bruteforce muzec or rudefish password for ssh but in another format. 
-Let's try it in reverse format
+Let's try it in reverse format. sitelink: ```https://www.textreverse.com/```
 
 ![image](https://user-images.githubusercontent.com/87468669/194272097-e4e7d740-4151-4b4c-ab23-35763dcd69bd.png)
 
