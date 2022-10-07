@@ -536,3 +536,27 @@ There we got the flag
 Final Flag :- abcctf{0N3_11N3r_845H_70_63N3r473_D1r3C70rY_70_1F1}
 
 Nice challenge from Muzec-niisan 😉😉
+
+
+### ReverseAPK - 250
+
+![image](https://user-images.githubusercontent.com/87468669/194647190-1358b194-a714-418a-b97e-509224dda4dc.png)
+
+Download the ABCCTF.apk file 
+
+![image](https://user-images.githubusercontent.com/87468669/194648014-b3ab9997-8840-4f66-a17d-d1128f9b92e4.png)
+
+extract the file 
+
+![image](https://user-images.githubusercontent.com/87468669/194648847-aa532735-c2c9-4003-a09a-f0a73d56f55f.png)
+
+view the extracted files 
+
+![image](https://user-images.githubusercontent.com/87468669/194649034-dcbb3392-a9bf-40fd-b5ed-14d660ef481f.png)
+
+cat the AndroidManifest.xml file
+
+![image](https://user-images.githubusercontent.com/87468669/194649230-16698369-9102-4dad-b98a-28f972e8ca8a.png)
+
+
+![image](https://user-images.githubusercontent.com/87468669/194649364-28255250-c59d-4e5f-a56c-a4baa5fd9fb5.png)
