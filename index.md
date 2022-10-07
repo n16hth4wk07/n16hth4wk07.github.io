@@ -27,4 +27,9 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 ### **Proving Grounds Writeups:~#**
 * * *
 
+* * *
+### **CTF Write Ups:~#**
+* * *
 
+
+- **OCT 7, 2022:** [abcccyberhackathon CTF 2022]
