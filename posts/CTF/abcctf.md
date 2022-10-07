@@ -465,7 +465,7 @@ ________________________________________________
 :: Progress: [1728/1728] :: Job [1/1] :: 237 req/sec :: Duration: [0:00:11] :: Errors: 0 ::
 
 ```
-Cool we got the remaining part of th Directory, let's check it out on our browser
+Cool we got the remaining part of the Directory, let's check it out on our browser
 
 ![image](https://user-images.githubusercontent.com/87468669/194636120-b3c25bfe-f5fe-4d90-a7fe-a5424ab78547.png)
 
@@ -558,5 +558,10 @@ cat the AndroidManifest.xml file
 
 ![image](https://user-images.githubusercontent.com/87468669/194649230-16698369-9102-4dad-b98a-28f972e8ca8a.png)
 
+copy the characters in secret: "21 22 23 23 34 26 3B 32 73 16 73 32 75 73 1F 74 10 0B 3D" and then decode the ascii characters
 
 ![image](https://user-images.githubusercontent.com/87468669/194649364-28255250-c59d-4e5f-a56c-a4baa5fd9fb5.png)
+
+There we have our flag
+
+Final Flag :- abcctf{r3V3r53_4PK}
