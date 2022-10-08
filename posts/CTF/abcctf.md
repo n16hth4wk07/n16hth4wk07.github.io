@@ -477,8 +477,11 @@ clicked on the aboutus and got nothing... 🤔🤔🤔 but th path looks sus, so
 
 ![image](https://user-images.githubusercontent.com/87468669/194637325-9f5ea69a-5746-4eab-991f-9838db0c6d78.png)
 
-Hai hai wee got so many payload but we will only use th highlighted payload 
-```/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd```
+Hai hai wee got so many payload but we will only use the highlighted payload 
+
+```
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+```
 
 ![image](https://user-images.githubusercontent.com/87468669/194637603-d9537bef-34a3-4119-99f9-17e2c9aa6e44.png)
 
@@ -486,7 +489,11 @@ Sweeeeeeii... we got lfi, let's hunt for the flag
 
 ![image](https://user-images.githubusercontent.com/87468669/194637800-901e0659-6e5c-4a40-a400-34e16b9a0db8.png)
 
-payload used: ```/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/flag.txt```
+payload used: 
+```
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/flag.txt
+```
+
 checked /root directory for the flag but we got trolled by Muzec-san, but he directed us to the location where we can get the flag. ("Lost in one of the Apache config files sorry bro (:XD "). what next? let's create a wordlist containing apache config files
 
 ![image](https://user-images.githubusercontent.com/87468669/194638867-3fca339f-4fbe-4cc8-9919-eadc598156d6.png)
