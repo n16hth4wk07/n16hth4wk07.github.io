@@ -473,7 +473,7 @@ we got it nice let's play around
 
 ![image](https://user-images.githubusercontent.com/87468669/194636854-f28dae8c-c414-4e59-a400-7e8502fad925.png)
 
-clicked on the aboutus and got nothing... 🤔🤔🤔 but th path looks sus, so let's fuzz for lfi 
+clicked on the aboutus and got nothing... 🤔🤔🤔 but the path looks sus, so let's fuzz for lfi 
 
 ![image](https://user-images.githubusercontent.com/87468669/194637325-9f5ea69a-5746-4eab-991f-9838db0c6d78.png)
 
