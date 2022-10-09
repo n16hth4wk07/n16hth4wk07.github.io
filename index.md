@@ -29,7 +29,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 ### **TryHackMe Writeups:~#**
 * * *
 
-- [[Oct 09 2022]] [TryHackMe -- Relevant](https://n16hth4wk07.github.io/posts/THM/Relevant.html)
+- [[Oct 09 2022]] [TryHackMe -- Relevant](https://n16hth4wk07.github.io/posts/THM/Relevant.html) `Windows`
 
 * * *
 ### **Proving Grounds Writeups:~#**
