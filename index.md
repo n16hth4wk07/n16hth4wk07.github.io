@@ -23,6 +23,14 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 ### **Box Pwning Grounds:~#**
 * * *
 
+-
+
+* * *
+### **TryHackMe Writeups:~#**
+* * *
+
+- [[Oct 09 2022]] [TryHackMe -- Relevant](https://n16hth4wk07.github.io/posts/THM/Relevant.html)
+
 * * *
 ### **Proving Grounds Writeups:~#**
 * * *
@@ -31,5 +39,4 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 ### **CTF Write Ups:~#**
 * * *
 
-
-- **OCT 7, 2022:** [abcccyberhackathon CTF 2022](https://n16hth4wk07.github.io/posts/CTF/abcctf.html)
+- [[OCT 7, 2022:]] [abcccyberhackathon CTF 2022](https://n16hth4wk07.github.io/posts/CTF/abcctf.html)
