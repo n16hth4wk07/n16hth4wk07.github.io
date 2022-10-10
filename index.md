@@ -37,6 +37,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 * * *
 
 * * *
+### **CyberTalent_Machine Writeups:~#**
+* * *
+
+- [[Oct 10 2022]] [CyberTalent -- Injector](https://n16hth4wk07.github.io/posts/CyberTalent/Injector.html)
+
+* * *
 ### **CTF Write Ups:~#**
 * * *
 
