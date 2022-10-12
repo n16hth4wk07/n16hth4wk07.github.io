@@ -31,6 +31,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 
 - [[Oct 09 2022]] [TryHackMe -- Relevant](https://n16hth4wk07.github.io/posts/THM/Relevant.html) `Windows`
 - [[Oct 10 2022]] [TryHackMe -- Internal](https://n16hth4wk07.github.io/posts/THM/Internal.html) `Wordpress,Jenkins,Port Forwarding`
+- [[Oct 12 2022]] [TryHackMe -- PickleRick](https://n16hth4wk07.github.io/posts/THM/PickleRick.html)
 
 * * *
 ### **Proving Grounds Writeups:~#**
