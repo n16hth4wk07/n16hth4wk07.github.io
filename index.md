@@ -37,7 +37,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 ### **Proving Grounds Writeups:~#**
 * * *
 
-- [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html)
+- [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html) `Command Injection`
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
