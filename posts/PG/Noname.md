@@ -1,5 +1,7 @@
 First we start with an namp scan 
 
+`nmap -sC -sV -T4 -Pn <IP>`
+
 ```
 # Nmap 7.92 scan initiated Thu Oct 13 23:48:03 2022 as: nmap -sC -sV -T4 -oN quickmap.txt -Pn 192.168.95.15
 Nmap scan report for 192.168.95.15
