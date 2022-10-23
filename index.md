@@ -40,6 +40,12 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html) `Command Injection`
 
 * * *
+### **Hack The Box Writeups:~#**
+* * *
+
+- [[Oct 23 2022]] [HTB -- Photobomb](https://n16hth4wk07.github.io/posts/HTB/Photobomb.html)
+
+* * *
 ### **CyberTalent_Machine Writeups:~#**
 * * *
 
