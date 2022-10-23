@@ -161,7 +161,7 @@ find source_images -type f -name '*.jpg' -exec chown root:root {} \;
 
 tried to write the file, but it is not writable. looking at the sudo commands, i found out  what we are looking for has something to do with LD_PRELOAD 😉... so let's research about LD_PRELOAD. 
 
-Read about it here: https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/...
+[Read about it here:](https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/)
 
 generate a C code 
 
