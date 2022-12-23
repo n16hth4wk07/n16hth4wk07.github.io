@@ -39,7 +39,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 * * *
 
 - [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html) `Command Injection`
-- [[Dec 23 2022]] [Twiggy](https://n16hth4wk07.github.io/posts/OSCP/Twiggy.html) `salt-api`
+- [[Dec 23 2022]] [Twiggy](https://n16hth4wk07.github.io/posts/OSCP/Twiggy.html) `salt-rest-api ACE`
 
 * * *
 ### **Hack The Box Writeups:~#**
