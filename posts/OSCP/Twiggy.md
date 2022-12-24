@@ -49,7 +49,7 @@ cd CVE-2020-11651-poc
 pip3 install salt
 ```
 
-ncat listener ready, let's run the exploit
+ncat listener ready, let's run the exploit... listen on port 4505 to get shell 
 
 ![image](https://user-images.githubusercontent.com/87468669/209411544-f41540ea-1b99-4a54-84f6-4da84b703f28.png)
 
