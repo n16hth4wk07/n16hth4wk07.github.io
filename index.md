@@ -41,6 +41,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html) `Command Injection`
 - [[Dec 23 2022]] [Twiggy](https://n16hth4wk07.github.io/posts/OSCP/Twiggy.html) `salt-rest-api ACE`
 - [[Dec 23 2022]] [Helpdesk](https://n16hth4wk07.github.io/posts/OSCP/Helpdesk.html) `Manageengine SD plus w/o msf`
+- [[Dec 26 2022]] [Fail](https://n16hth4wk07.github.io/posts/PG/Fail.html) `rsync & fail2ban`
 
 * * *
 ### **Hack The Box Writeups:~#**
