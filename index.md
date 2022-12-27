@@ -42,7 +42,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 23 2022]] [Twiggy](https://n16hth4wk07.github.io/posts/OSCP/Twiggy.html) `salt-rest-api ACE`
 - [[Dec 23 2022]] [Helpdesk](https://n16hth4wk07.github.io/posts/OSCP/Helpdesk.html) `Manageengine SD plus w/o msf`
 - [[Dec 26 2022]] [Fail](https://n16hth4wk07.github.io/posts/PG/Fail.html) `rsync & fail2ban`
-- [[Dec 27 2022]] [Nibble](https://n16hth4wk07.github.io/posts/PG/Fail.html) `Postgresql RCE w/o msf`
+- [[Dec 27 2022]] [Nibble](https://n16hth4wk07.github.io/posts/PG/Nibble.html) `Postgresql RCE w/o msf`
 
 * * *
 ### **Hack The Box Writeups:~#**
