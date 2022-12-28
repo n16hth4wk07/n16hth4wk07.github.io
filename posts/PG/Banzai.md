@@ -101,3 +101,7 @@ ran the reverse shell payload.
 ![image](https://user-images.githubusercontent.com/87468669/209784972-9680b912-e5e3-4416-a57b-b95f95b10889.png)
 
 Boom I'm in got a reverse shell as user www-data.
+
+![image](https://user-images.githubusercontent.com/87468669/209786068-eff48675-a09e-4efa-9002-70728d64814f.png)
+
+stabilize the shell and esc privs...
