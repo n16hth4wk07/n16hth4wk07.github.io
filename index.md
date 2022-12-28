@@ -33,7 +33,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Oct 10 2022]] [TryHackMe -- Internal](https://n16hth4wk07.github.io/posts/THM/Internal.html) `Wordpress,Jenkins,Port Forwarding`
 - [[Oct 12 2022]] [TryHackMe -- PickleRick](https://n16hth4wk07.github.io/posts/THM/PickleRick.html)
 - [[Nov 13 2022]] [TryHackMe -- Cold VVars](https://n16hth4wk07.github.io/posts/THM/coldvvars.html) `tmux`
-- [[Dec 28 2022]] [TryHackMe -- Hackpark](https://n16hth4wk07.github.io/posts/THM/HackPark.html) 
+- [[Dec 28 2022]] [TryHackMe -- Hackpark](https://n16hth4wk07.github.io/posts/THM/HackPark.html) `Windows Blogengine.net`
+- [[Dec 28 2022]] [TryHackMe -- Tomghost](https://n16hth4wk07.github.io/posts/THM/Tomghost.html) `apache tomcat Ajp13 & PGP`
 
 * * *
 ### **Proving Grounds Writeups:~#**
