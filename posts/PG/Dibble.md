@@ -156,6 +156,28 @@ Send the payload in url encoding, and Boom got shell as user benjamin.
 
 Stabilize the shell and check for suid, `/usr/bin/cp` is an suid bin, so let's excalate privs with it.
 
+![image](https://user-images.githubusercontent.com/87468669/209970655-ea34f8df-4065-4ad4-9491-d637a3447a3a.png)
+ 
+first i cat the `/etc/passwd` file, copied the content to my attacker machine.
 
+![image](https://user-images.githubusercontent.com/87468669/209970811-85830d25-3b39-4ad6-851b-b20f890f9e0a.png)
 
+Now i will generate a passwd hash using openssl.
 
+```
+[benjamin@dibble ~]$ openssl passwd hacked
+7/TuPFu6J7YdE
+[benjamin@dibble ~]$
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209971059-ce42629a-02c2-46ac-b9a7-f66e6b5b9418.png)
+
+replace the :x: part with the openssl password hash, save the file and send it to the target.
+
+![image](https://user-images.githubusercontent.com/87468669/209971328-6648559f-8618-4548-8d80-0dcb12e31999.png)
+
+Now we've sent the file to the target, we will use cp to replace the the /etc/passwd file with this new passwd file.
+
+![image](https://user-images.githubusercontent.com/87468669/209971652-131dc35e-c665-47bb-b296-bb7394668ce4.png)
+
+After replacing the file, i just did su root with password hacked. And boom i got root.😎😎
