@@ -46,8 +46,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 26 2022]] [Fail](https://n16hth4wk07.github.io/posts/PG/Fail.html) `rsync & fail2ban`
 - [[Dec 27 2022]] [Nibble](https://n16hth4wk07.github.io/posts/PG/Nibbles.html) `Postgresql RCE w/o msf`
 - [[Dec 27 2022]] [Wombo](https://n16hth4wk07.github.io/posts/PG/Wombo.html) `Redis RCE w/o msf`
-- [[DEc 28 2022]] [Fail](https://n16hth4wk07.github.io/posts/PG/Fail.html) `rsync`
 - [[Dec 28 2022]] [Banzai](https://n16hth4wk07.github.io/posts/PG/Banzai.html) `mysql udf`
+- [[Dec 29 2022]] [Dibble](https://n16hth4wk07.github.io/posts/PG/Dibble.html) `node.js RCE`
 
 * * *
 ### **Hack The Box Writeups:~#**
