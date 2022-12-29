@@ -48,7 +48,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 27 2022]] [Wombo](https://n16hth4wk07.github.io/posts/PG/Wombo.html) `Redis RCE w/o msf`
 - [[Dec 28 2022]] [Banzai](https://n16hth4wk07.github.io/posts/PG/Banzai.html) `mysql udf`
 - [[Dec 29 2022]] [Dibble](https://n16hth4wk07.github.io/posts/PG/Dibble.html) `node.js RCE`
-- [[Dec 29 2022]] [Zino](https://n16hth4wk07.github.io/posts/PG/Zino.html) `Bookschduler fileupload`
+- [[Dec 29 2022]] [Zino](https://n16hth4wk07.github.io/posts/PG/Zino.html) `Bookscheduler fileupload`
 - [[Dec 29 2022]] [Clamav](https://n16hth4wk07.github.io/posts/PG/clamav.html) `sendmail-clamav smtp RCE`
 
 * * *
