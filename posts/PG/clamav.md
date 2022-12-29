@@ -49,4 +49,17 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sun Dec 25 12:09:59 2022 -- 1 IP address (1 host up) scanned in 82.92 seconds
 ```
 
-got some ports opened, checked port 80 first. 
+got some ports opened, checked port 80 first. Got nothing, so i enumerated port 25 smtp.
+
+![image](https://user-images.githubusercontent.com/87468669/209990025-7d856819-36d8-487d-a9cc-6483dd359952.png)
+
+Search for exploit using searchsploit and downloaded the exploit.
+
+![image](https://user-images.githubusercontent.com/87468669/209990141-ac97f464-61bc-48a4-86d0-3a5a5d575ae1.png)
+
+Ran the exploit against the target. The exploit attempt to bind a shell on port 31337 as root. Netc i nc directly to the IP on port 31337
+
+![image](https://user-images.githubusercontent.com/87468669/209990350-d76adeb0-4d20-4077-bd72-23b0f7df320a.png)
+
+Boom!!! got a root shell. And we are done🤠
+
