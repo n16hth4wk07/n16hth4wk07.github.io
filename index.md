@@ -4,7 +4,7 @@ title: Home
 ---
 
 * * *
-### Welcome To My Cyber Security Blog,  Hacker
+### Welcome To My Cyber Security Blog, H4X0r
 * * *
 
 Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacking Tricks, Writeups, Articles, Any Stuffs Related To Hacking That I Learn... Yoroshiku ne😉
@@ -50,6 +50,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 29 2022]] [Dibble](https://n16hth4wk07.github.io/posts/PG/Dibble.html) `node.js RCE`
 - [[Dec 29 2022]] [Zino](https://n16hth4wk07.github.io/posts/PG/Zino.html) `Bookscheduler fileupload`
 - [[Dec 29 2022]] [Clamav](https://n16hth4wk07.github.io/posts/PG/clamav.html) `sendmail-clamav smtp RCE`
+- [[Dec 30 2022]] [Hetemit](https://n16hth4wk07.github.io/posts/PG/Htemit.html) `werkzug misconfigured service file`
 
 * * *
 ### **Hack The Box Writeups:~#**
