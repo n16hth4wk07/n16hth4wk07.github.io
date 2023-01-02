@@ -52,6 +52,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 29 2022]] [Clamav](https://n16hth4wk07.github.io/posts/PG/clamav.html) `sendmail-clamav smtp RCE`
 - [[Dec 30 2022]] [Hetemit](https://n16hth4wk07.github.io/posts/PG/Htemit.html) `werkzug misconfigured service file`
 - [[Jan 01 2023]] [Peppo](https://n16hth4wk07.github.io/posts/PG/Peppo.html) `Ident,Docker`
+- [[Jan 02 2023]] [ZenPhoto](https://n16hth4wk07.github.io/posts/PG/Zenphoto.html) `php rce`
 
 * * *
 ### **Hack The Box Writeups:~#**
