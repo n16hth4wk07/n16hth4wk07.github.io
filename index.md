@@ -55,6 +55,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 02 2023]] [ZenPhoto](https://n16hth4wk07.github.io/posts/PG/Zenphoto.html) `php rce`
 - [[Jan 03 2023]] [Readys](https://n16hth4wk07.github.io/posts/PG/Readys.html) `Redis LFI2RCE & rar wildcard injection`
 - [[Jan 03 2023]] [Clyde](https://n16hth4wk07.github.io/posts/PG/Clyde.html) `Erlang cookie RCE`
+- [[Jan 04 2023]] [Sorcerer](https://n16hth4wk07.github.io/posts/PG/Sorcerer.html) `SCP` 
 
 * * *
 ### **Hack The Box Writeups:~#**
