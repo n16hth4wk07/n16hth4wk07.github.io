@@ -56,6 +56,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 03 2023]] [Readys](https://n16hth4wk07.github.io/posts/PG/Readys.html) `Redis LFI2RCE & rar wildcard injection`
 - [[Jan 03 2023]] [Clyde](https://n16hth4wk07.github.io/posts/PG/Clyde.html) `Erlang cookie RCE`
 - [[Jan 04 2023]] [Sorcerer](https://n16hth4wk07.github.io/posts/PG/Sorcerer.html) `SCP` 
+- [[Jan 05 2023]] [Nukem](https://n16hth4wk07.github.io/posts/PG/Nukem.html) `dosbox`
 
 * * *
 ### **Hack The Box Writeups:~#**
