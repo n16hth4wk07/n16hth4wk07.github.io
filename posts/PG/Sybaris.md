@@ -191,3 +191,10 @@ Now we got RCE, let's get reverse shell.
 
 Boom we got reverse shell😎, let's escalate privs esc. 
 
+![image](https://user-images.githubusercontent.com/87468669/211062904-aba054ac-2ede-4fff-9454-642b45281383.png)
+
+running linpeas, we can see that the target is vuln to kernel exploit cve-2021-4034.
+
+![image](https://user-images.githubusercontent.com/87468669/211063113-35b7ae83-fddc-4e34-bbcd-20b2e5432150.png)
+
+Sent the exploit to the target, compiled and ran the exploit and Bull's eye we got root shell.🤠
