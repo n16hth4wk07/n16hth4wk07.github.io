@@ -139,4 +139,30 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Now we know what services are running, let's start enumeartion with port 8080 (http).
 
+![image](https://user-images.githubusercontent.com/87468669/211082760-0a6e30b9-4ad0-422a-8a5d-fc65c9657484.png)
+
+Nice we can see what the web service is running.
+
+![image](https://user-images.githubusercontent.com/87468669/211083212-891dfb88-278c-449a-ab51-7f3a092f3699.png)
+
+clicked on the first article and checked the source page.
+
+![image](https://user-images.githubusercontent.com/87468669/211083425-31928a85-bc75-4cb8-bb00-a3d27d93bc17.png)
+
+We can see /api directory in the comment part of the page. let's check the api directory.
+
+![image](https://user-images.githubusercontent.com/87468669/211083677-a9b2d34c-57fa-47d5-aab3-9f9f73401244.png)
+
+checking the /api directory, got other directories in it. let's check the `/user/?`.
+
+![image](https://user-images.githubusercontent.com/87468669/211083894-c60632f0-29fa-4302-adf7-f7cfc7350be7.png)
+
+Got some creds, the description for user ademola is admin, let's try ssh using those creds.
+
+![image](https://user-images.githubusercontent.com/87468669/211084383-cabbef84-b9de-4e37-a4de-cfd9d486b4d7.png)
+
+Great we got ssh using those creds, let's escalate privs 
+
+
+
 
