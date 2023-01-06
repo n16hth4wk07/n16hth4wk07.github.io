@@ -58,6 +58,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 04 2023]] [Sorcerer](https://n16hth4wk07.github.io/posts/PG/Sorcerer.html) `SCP` 
 - [[Jan 05 2023]] [Nukem](https://n16hth4wk07.github.io/posts/PG/Nukem.html) `dosbox`
 - [[Jan 06 2023]] [Sybaris](https://n16hth4wk07.github.io/posts/PG/Sybaris.html) `Redis`
+- [[Jan 06 2023]] [Walla](https://n16hth4wk07.github.io/posts/PG/Walla.html) `python module hijacking`
 
 * * *
 ### **Hack The Box Writeups:~#**
