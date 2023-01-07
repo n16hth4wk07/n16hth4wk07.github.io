@@ -238,6 +238,49 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sat Jan  7 10:12:17 2023 -- 1 IP address (1 host up) scanned in 70.81 seconds
 ```
 
-Now w know what services are  running on those port, let start by enumeratin port 21 (ftp).
+Now w know what services are  running on those port, let start by enumerating port 21 (ftp).
 
+![image](https://user-images.githubusercontent.com/87468669/211146595-f83c797b-5dc6-4df5-ae61-03b6e844c3d3.png)
+
+Anonymous login was allowed, and i found a pcap file in the /pub dir. let's use wireshark to analyse the pcap file.
+
+![image](https://user-images.githubusercontent.com/87468669/211146721-b91628ed-2f26-4c98-85a7-61eb29671eb0.png)
+
+Downloaded and analyzed the pcap file, i got nothing usefull there... maybe it's a rabbit hole🐰. Let's move to the next port: 8080 (http)
+
+![image](https://user-images.githubusercontent.com/87468669/211146767-88589404-e64e-4fd6-a3e0-75a951a6ea6b.png)
+
+Hmmmm🤔 the web service is running NodeBB. i've exploited one of this vuln before, which is accout takeover, i.e priv escalation from a normal user to admin. First created an acctount 
+
+![image](https://user-images.githubusercontent.com/87468669/211147166-9d3a9a0b-a522-4cf4-8260-9d1bbe2d30aa.png)
+
+Register an acct complete the registration process.
+
+![image](https://user-images.githubusercontent.com/87468669/211147430-1bbc0278-5f6b-4ae3-b6ee-3300bfcb7ba1.png)
+
+navvigate to the change password path.
+
+![image](https://user-images.githubusercontent.com/87468669/211147832-c6dc560e-745f-4651-9768-954ffbf2af75.png)
+
+Change the password and intercept with burp.
+
+![image](https://user-images.githubusercontent.com/87468669/211147851-eb312130-8523-47f7-87f1-b43c58eac343.png)
+
+Changed the uid from 2 to 1, and forward the request. logot and login as admin with the changed password.
+
+![image](https://user-images.githubusercontent.com/87468669/211148476-86715fb1-cdf8-4f36-a4fc-5f814496bde2.png)
+
+And Bull's eye we logged in as admin, let's get shell.
+
+![image](https://user-images.githubusercontent.com/87468669/211148661-88383784-bfda-40dc-9ea9-e82b077ee201.png)
+
+checking search sploit for public exploit, i found one that does arbitary file write.
+
+![image](https://user-images.githubusercontent.com/87468669/211148917-1593aa96-cca5-4800-b99c-93edd2e6f415.png)
+
+So what this exploit does is that it replace the target root authorized key which will give use access to ssh as root using our local id_rsa key into the target. Modified the required places.
+
+![image](https://user-images.githubusercontent.com/87468669/211149237-ed5d4cfc-3fc0-4019-9e17-522f2556a528.png)
+
+Run the exploit and ssh using our id_rsa key as user root and we got root🤓🤓
 
