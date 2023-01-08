@@ -53,7 +53,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 30 2022]] [Hetemit](https://n16hth4wk07.github.io/posts/PG/Htemit.html) `werkzug misconfigured service file`
 - [[Jan 01 2023]] [Peppo](https://n16hth4wk07.github.io/posts/PG/Peppo.html) `Ident,Docker`
 - [[Jan 02 2023]] [ZenPhoto](https://n16hth4wk07.github.io/posts/PG/Zenphoto.html) `php rce`
-- [[Jan 03 2023]] [Readys](https://n16hth4wk07.github.io/posts/PG/Readys.html) `Redis LFI2RCE & rar wildcard injection`
+- [[Jan 03 2023]] [Readys](https://n16hth4wk07.github.io/posts/PG/Readys.html) `Redis LFI2RCE` `rar wildcard injection`
 - [[Jan 03 2023]] [Clyde](https://n16hth4wk07.github.io/posts/PG/Clyde.html) `Erlang cookie RCE`
 - [[Jan 04 2023]] [Sorcerer](https://n16hth4wk07.github.io/posts/PG/Sorcerer.html) `SCP` 
 - [[Jan 05 2023]] [Nukem](https://n16hth4wk07.github.io/posts/PG/Nukem.html) `dosbox`
@@ -61,6 +61,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 06 2023]] [Walla](https://n16hth4wk07.github.io/posts/PG/Walla.html) `python module hijacking`
 - [[Jan 07 2023]] [Hunit](https://n16hth4wk07.github.io/posts/PG/Hunit.html) `Git ssh_keys`
 - [[Jan 07 2023]] [Tico](https://n16hth4wk07.github.io/posts/PG/Tico.html) `NodeBB`
+- [[Jan 08 2023]] [Pelican](https://n16hth4wk07.github.io/posts/PG/Pelican.html) `gcore`
 
 * * *
 ### **Hack The Box Writeups:~#**
