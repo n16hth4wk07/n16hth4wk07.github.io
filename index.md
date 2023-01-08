@@ -62,6 +62,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 07 2023]] [Hunit](https://n16hth4wk07.github.io/posts/PG/Hunit.html) `Git ssh_keys`
 - [[Jan 07 2023]] [Tico](https://n16hth4wk07.github.io/posts/PG/Tico.html) `NodeBB`
 - [[Jan 08 2023]] [Pelican](https://n16hth4wk07.github.io/posts/PG/Pelican.html) `gcore`
+- [[Jan 08 2023]] [Snookums](https://n16hth4wk07.github.io/posts/PG/Snookums.html) `RFI`
 
 * * *
 ### **Hack The Box Writeups:~#**
