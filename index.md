@@ -64,6 +64,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 08 2023]] [Pelican](https://n16hth4wk07.github.io/posts/PG/Pelican.html) `gcore`
 - [[Jan 08 2023]] [Snookums](https://n16hth4wk07.github.io/posts/PG/Snookums.html) `RFI`
 - [[Jan 09 2023]] [Bratarina](https://n16hth4wk07.github.io/posts/PG/Bratarina.html) `Opensmtp RCE`
+- [[Jan 10 2023]] [Wheels](https://n16hth4wk07.github.io/posts/PG/Wheels.html) `XPATH injection` 
 
 * * *
 ### **Hack The Box Writeups:~#**
