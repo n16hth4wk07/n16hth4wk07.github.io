@@ -66,6 +66,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 09 2023]] [Bratarina](https://n16hth4wk07.github.io/posts/PG/Bratarina.html) `Opensmtp RCE`
 - [[Jan 10 2023]] [Wheels](https://n16hth4wk07.github.io/posts/PG/Wheels.html) `XPATH injection` 
 - [[Jan 10 2023]] [Flimsy](https://n16hth4wk07.github.io/posts/PG/Flimsy.html) `apisix rce` `apt-get cronjob exploitation`
+- [[Jan 12 2023]] [Exghost](https://n16hth4wk07.github.io/posts/PG/Exghost.html) `exiftool RCE`
 
 * * *
 ### **Hack The Box Writeups:~#**
