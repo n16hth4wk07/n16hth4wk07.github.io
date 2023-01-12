@@ -124,4 +124,15 @@ Boom!!! we got a reverse shell.
 
 ## Privilege Escalation 
 
+![image](https://user-images.githubusercontent.com/87468669/211989703-5a828a33-c988-4b02-8301-201d9eccbb36.png)
+
+running linpeas, i found out the sudo version is vuln to `CVE-2021-4034` which is `pwnkit` 
+
+![image](https://user-images.githubusercontent.com/87468669/211989063-3336703c-fc5c-42db-9e83-8b86604135bf.png)
+
+searched for an exploit and found a github exploit. [cve-2021-4034](https://github.com/joeammond/CVE-2021-4034). 
+
+![image](https://user-images.githubusercontent.com/87468669/211988813-ecb445c6-22bb-411b-873f-d20616ae1dbc.png)
+
+Downloaded and ran the exploit and it dropped up to a root shell.🤠
 
