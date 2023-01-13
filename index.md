@@ -67,6 +67,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Jan 10 2023]] [Wheels](https://n16hth4wk07.github.io/posts/PG/Wheels.html) `XPATH injection` 
 - [[Jan 10 2023]] [Flimsy](https://n16hth4wk07.github.io/posts/PG/Flimsy.html) `apisix rce` `apt-get cronjob exploitation`
 - [[Jan 12 2023]] [Exghost](https://n16hth4wk07.github.io/posts/PG/Exghost.html) `exiftool RCE`
+- [[Jan 13 2023]] [Squid](https://n16hth4wk07.github.io/posts/PG/Squid.html) `squid proxy` `phpmyadmin RCE`
 
 * * *
 ### **Hack The Box Writeups:~#**
