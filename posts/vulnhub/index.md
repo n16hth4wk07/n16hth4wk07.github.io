@@ -7,7 +7,7 @@ title: VulnHub - To provide materials that allows anyone to gain practical ‘ha
 href="./index.html">Main</a>&#xA0;&#xA0;&#xA0;<a 
 href="/posts/articles/index.html">Articles</a>&#xA0;&#xA0;&#xA0;<a
 href="/posts/vulnhub/index.html">VulnHub</a>&#xA0;&#xA0;&#xA0;<a 
-href="/posts/pwntilldawn/index.html">PwnTillDawn</a>&#xA0;&#xA0;&#xA0;<a 
+href="/posts/PTD/index.html">PwnTillDawn</a>&#xA0;&#xA0;&#xA0;<a 
 href="/posts/echoctf/index.html">echoCTF</a></h2>
 <hr>
 
