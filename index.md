@@ -3,21 +3,26 @@ layout: default
 title: Home
 ---
 
+<h2 class="mume-header" id="mainindexhtml-nbspnbsp-contactcontacthtml"><a href="./index.html">Main</a>&#xA0;&#xA0;&#xA0;<a href="/posts/articles/index.html">Articles</a>&#xA0;&#xA0;&#xA0;<a href="/posts/vulnhub/index.html">VulnHub</a>&#xA0;&#xA0;&#xA0;<a href="/posts/pwntilldawn/index.html">PwnTillDawn</a>&#xA0;&#xA0;&#xA0;<a href="/posts/echoctf/index.html">echoCTF</a></h2>
+
 * * *
 ### Welcome To My Cyber Security Blog, H4X0r
 * * *
 
 Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacking Tricks, Writeups, Articles, Any Stuffs Related To Hacking That I Learn... Yoroshiku ne😉
 
-* * *
-### WhoAmI:~#
-* * *
+<hr>
+<br>
+<img style="padding-right: 30px;" align="left"  width="500" height="300" src="https://user-images.githubusercontent.com/87468669/220012433-6594f48e-a75c-4af1-803b-835e062acac0.png">
+<br>
+<p><strong>Name :</strong> <a href="#">Adebayo Segun</a></p>
+<p><strong>Known as :</strong> <a href="#">NightHawk</a></p>
+<p><strong>What Do I Do :</strong> <a href="#">CTF / Red Teaming / Penetration testing</a></p>
+<p><strong>GitHub :</strong> <a href="https://github.com/n16hth4wk07">github.com/n16hth4wk07</a></p>
+<p><strong>Twitter :</strong> <a href="https://twitter.com/n16h7hawk">twitter.com/n16h7hawk</a></p>
+<br clear="left">
+<br clear="left">
 
-- **My Name:**    `Adebayo Segun`
-- **Known as:**   `nighthawk`
-- **What Do I Do:**  `CTF / Red Teaming / Ethical Hacking`
-- **Twitter:** `https://twitter.com/n16h7hawk`
-- **Github:** `https://github.com/n16hth4wk07`
 
 * * *
 ### **Box Pwning Grounds:~#**
@@ -37,8 +42,10 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Dec 28 2022]] [TryHackMe -- Tomghost](https://n16hth4wk07.github.io/posts/THM/Tomghost.html) `apache tomcat Ajp13 & PGP`
 
 * * *
-### **Proving Grounds Writeups:~#**
-* * *
+<h4 class="mume-header" id="pg">PG Play/PG Practice:</h4>
+Practice your pentesting skills in a standalone, private lab environment with the additions of PG Play and PG Practice to Offensive Security’s Proving Grounds. 
+<hr>
+<hr>
 
 - [[Oct 14 2022]] [NoName](https://n16hth4wk07.github.io/posts/PG/Noname.html) `Command Injection`
 - [[Dec 23 2022]] [Twiggy](https://n16hth4wk07.github.io/posts/OSCP/Twiggy.html) `salt-rest-api ACE`
