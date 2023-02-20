@@ -8,7 +8,7 @@ href="./index.html">Main</a>&#xA0;&#xA0;&#xA0;<a
 href="/posts/articles/index.html">Articles</a>&#xA0;&#xA0;&#xA0;<a
 href="/posts/vulnhub/index.html">VulnHub</a>&#xA0;&#xA0;&#xA0;<a 
 href="/posts/PTD/index.html">PwnTillDawn</a>&#xA0;&#xA0;&#xA0;<a 
-href="/posts/echoctf/index.html">echoCTF</a></h2>
+href="/posts/echoCTF/index.html">echoCTF</a></h2>
 <hr>
 
 ![image](https://user-images.githubusercontent.com/87468669/220007715-2390f304-fe7c-4bae-827f-9a7fe20a0f7d.png)
