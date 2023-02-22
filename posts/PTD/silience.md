@@ -94,8 +94,124 @@ also noticed a `SSHArchiveBackup.tar.gz` file in `/home/sally/backup/` dir. tryi
 
 ![image](https://user-images.githubusercontent.com/87468669/220762536-265546a8-574e-450c-b4c9-099b92f33717.png)
 
-testing the files one by one, the `trick.php` looked sus, looks like a potential lfi path. let's fuzz for parameter 
+testing the files one by one, the `trick.php` looked sus, looks like a potential lfi path. let's test for lfi.
 
+![image](https://user-images.githubusercontent.com/87468669/220765931-90e1c817-9205-4b04-9c13-0dcb6e61b475.png)
+
+by just testing for common lfi parameter `?page=/etc/passwd` we hit the bull's eye. remember in the demo file browser page we got a backup.tar.gz file, let's try download it through the lfi vuln.
+
+![image](https://user-images.githubusercontent.com/87468669/220766928-36263cfc-7e54-48ff-9e86-6b51c1d04fa8.png)
+
+downloaded and extracted the content of the backup file. we got a directory `private`. let's check what's under the dir.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/pwntilldawn/Silence/private]
+└─$ ls -al                                                                         
+total 408                                                                          
+drwxr-xr-x 2 n16hth4wk n16hth4wk 4096 Jun 11  2020 .       
+drwxr-xr-x 3 n16hth4wk n16hth4wk 4096 Feb 22 22:47 ..      
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa1 
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa10
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa100
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa11
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa12
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa13
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa14
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa15
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa16
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa17
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa18
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa19
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa2 
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa20
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa21
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa22
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa23
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa24
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa25
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa26
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa27
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa28
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa29
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa3 
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa30
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa31
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa32
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa33
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa34
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa35
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa36
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa37
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa38            
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa39
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa4                         
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa40                        
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa41
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa42
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa43
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa44
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa45 
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa46
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa47
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa48
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa49
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa5 
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa50
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa51
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa52
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa53
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa54
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa55
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa56
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa57
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa58
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa59
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa6 
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa60
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa61
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa62
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa63
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa64
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa65
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa66
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa67
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa68
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa69
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa7 
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa70
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa71
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa72            
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa73
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa74
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa75
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa76
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa77
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa78
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa79
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa8 
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa80
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa81
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa82
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa83
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa84
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa85
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa86
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa87
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa88
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa89
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa9 
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa90
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa91
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa92
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa93
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa94
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa95
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa96
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa97
+-rw------- 1 n16hth4wk n16hth4wk 2590 Jun 11  2020 id_rsa98
+-rw------- 1 n16hth4wk n16hth4wk 2602 Jun 11  2020 id_rsa99
+```
+wow! 😧 these are lots of id_rsa key files, we either run it manually or script our way out. let's write a script that automate this for us.
 
 
 
