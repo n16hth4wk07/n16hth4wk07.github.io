@@ -40,6 +40,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 - [[Nov 13 2022]] [TryHackMe -- Cold VVars](https://n16hth4wk07.github.io/posts/THM/coldvvars.html) `tmux`
 - [[Dec 28 2022]] [TryHackMe -- Hackpark](https://n16hth4wk07.github.io/posts/THM/HackPark.html) `Windows Blogengine.net`
 - [[Dec 28 2022]] [TryHackMe -- Tomghost](https://n16hth4wk07.github.io/posts/THM/Tomghost.html) `apache tomcat Ajp13 & PGP`
+- [[Feb 23 2023]] [TyyHackMe -- Madness](https://n16hth4wk07.github.io/posts/THM/madness.html) `steganography,` `screen2root`
 
 * * *
 <h4 class="mume-header" id="pg">PG Play/PG Practice:</h4>
