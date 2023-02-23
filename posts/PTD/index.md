@@ -19,8 +19,8 @@ _PwnTillDawn is a concept developed by wizlynx group to bring fun to cyber secur
 <hr>
 <hr>
 
-- [[Feb 20 2023]] [Snare](https://n16hth4wk07.github.io/posts/PTD/snare.html) `RFI,` `writable /etc/shadow file`
-- [[Feb 20 2023]] [Brandy](https://n16hth4wk07.github.io/posts/PTD/brandy.html) `Dorlibarr file upload bypass`
-- [[Feb 22 2023]] [Silence](https://n16hth4wk07.github.io/posts/PTD/silience.html) `LFI`
+- [[Feb 20 2023]] [PTD -- Snare](https://n16hth4wk07.github.io/posts/PTD/snare.html) `RFI,` `writable /etc/shadow file`
+- [[Feb 20 2023]] [PTD -- Brandy](https://n16hth4wk07.github.io/posts/PTD/brandy.html) `Dorlibarr file upload bypass`
+- [[Feb 22 2023]] [PTD -- Silence](https://n16hth4wk07.github.io/posts/PTD/silience.html) `LFI`
 
 
