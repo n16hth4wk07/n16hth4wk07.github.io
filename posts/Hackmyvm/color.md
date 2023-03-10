@@ -274,34 +274,8 @@ Nmap done: 1 IP address (1 host up) scanned in 2.28 seconds
 cool we can see that `ssh` port is being filtered. let's try port knock.
 
 ```
-┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Color]                                                                                                            
-└─$ for x in 1127 1081 1039; do nmap -Pn --host-timeout 201 --max-retries 0 -p $x  192.168.0.101; done                                                                
-Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-09 14:32 WAT                                                                                                       
-Warning: 192.168.0.102 giving up on port because retransmission cap hit (0).                                                                                          
-Nmap scan report for 192.168.0.101                                                 
-Host is up.                                                                        
-                                                                                   
-PORT     STATE    SERVICE                                                          
-1127/tcp filtered supfiledbg                                                       
-                                                                                   
-Nmap done: 1 IP address (1 host up) scanned in 1.13 seconds                        
-Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-09 14:32 WAT                    
-Warning: 192.168.0.102 giving up on port because retransmission cap hit (0).       
-Nmap scan report for 192.168.0.102                                                 
-Host is up.                                                                        
-                                                                                   
-PORT     STATE    SERVICE                                                          
-1081/tcp filtered pvuniwien                                                        
-                                                                                   
-Nmap done: 1 IP address (1 host up) scanned in 1.16 seconds                        
-Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-09 14:32 WAT                    
-Nmap scan report for 192.168.0.102                                                 
-Host is up (0.72s latency).                                                        
-                                                                                   
-PORT     STATE    SERVICE                                                          
-1039/tcp filtered sbl                                                              
-                                                                                   
-Nmap done: 1 IP address (1 host up) scanned in 0.84 seconds
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Hackmyvm/Color]
+└─$ knock 192.168.0.101 1127 1039 1081
 ```
 now we knocked it let retry nmap scan to see if ssh is opened.
 
