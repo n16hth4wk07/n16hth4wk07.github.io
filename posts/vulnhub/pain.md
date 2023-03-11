@@ -103,3 +103,26 @@ navigating to the dir, we got directed to a login page. let's play around.
 
 remember we have mangekyou sharingan ❟❛❟ was able to guess the cred. trying creds `admin:pain` we got in. now let's play around more
 
+![image](https://user-images.githubusercontent.com/87468669/224462405-86169775-d067-461b-9897-08621becf571.png)
+
+navigated to `New_mission.php`, viewing the page source we got to see some comments.
+
+```
+<!-- Todo: 
+
+- Gedo_Statue.php 
+- Add a progress bar to show the upload progress
+- Implement client-side validation to check file type and size before uploading
+- Add a preview of the selected image before uploading
+- Include a confirmation message after successful upload
+- Add a button to clear the form after submission
+- Implement server-side validation to prevent malicious uploads
+- Automatically resize the uploaded image to a maximum size
+- Add a report back function to notify Pain the Akatsuki leader of new uploads -->
+```
+🤔hmmmmm... let's check out the `Gedo_Statue.php` dir first. 
+
+![image](https://user-images.githubusercontent.com/87468669/224462633-fd182772-5aed-4b74-accd-c0bb4d1e6323.png)
+
+cool we have an upload form page. let's try upload a php web shell.
+
