@@ -224,6 +224,61 @@ and boom it's a rot 14 encryption and we got the flag.
 final flag - picoCTF{r0tat1on_d3crypt3d_4c71f5b0}
 
 
+### PowerAnalysis: Part 2 - 500pts
+
+![image](https://user-images.githubusercontent.com/87468669/229136102-05df21c0-ae56-42dc-a3c4-1e19a614abdb.png)
+
+in this challenge, we are given a zip file. let's download this file and extract its contents.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[/tmp/PA2]                                           
+└─$ wget https://artifacts.picoctf.net/c/318/traces.zip
+--2023-03-31 14:47:31--  https://artifacts.picoctf.net/c/318/traces.zip
+Resolving artifacts.picoctf.net (artifacts.picoctf.net)... 18.160.41.121, 18.160.41.113, 18.160.41.85, ...                                                           
+Connecting to artifacts.picoctf.net (artifacts.picoctf.net)|18.160.41.121|:443... connected.
+HTTP request sent, awaiting response... 200 OK                     
+Length: 421137 (411K) [application/octet-stream]
+Saving to: ‘traces.zip’                  
+                                         
+traces.zip                                100%[===================================================================================>] 411.27K   161KB/s    in 2.6s    
+                                         
+2023-03-31 14:47:35 (161 KB/s) - ‘traces.zip’ saved [421137/421137]
+                                         
+                                         
+┌──(n16hth4wk👽n16hth4wk-sec)-[/tmp/PA2]
+└─$ unzip traces.zip                 
+Archive:  traces.zip                 
+   creating: traces/                 
+  inflating: traces/trace00.txt      
+  inflating: traces/trace01.txt      
+  inflating: traces/trace02.txt      
+  inflating: traces/trace03.txt      
+  inflating: traces/trace04.txt      
+  inflating: traces/trace05.txt    
+[***]
+
+┌──(n16hth4wk👽n16hth4wk-sec)-[/tmp/PA2]
+└─$ cd traces 
+                                                                                                                                                                      
+┌──(n16hth4wk👽n16hth4wk-sec)-[/tmp/PA2/traces]
+└─$ ls    
+trace00.txt  trace09.txt  trace18.txt  trace27.txt  trace36.txt  trace45.txt  trace54.txt  trace63.txt  trace72.txt  trace81.txt  trace90.txt  trace99.txt
+trace01.txt  trace10.txt  trace19.txt  trace28.txt  trace37.txt  trace46.txt  trace55.txt  trace64.txt  trace73.txt  trace82.txt  trace91.txt
+trace02.txt  trace11.txt  trace20.txt  trace29.txt  trace38.txt  trace47.txt  trace56.txt  trace65.txt  trace74.txt  trace83.txt  trace92.txt
+trace03.txt  trace12.txt  trace21.txt  trace30.txt  trace39.txt  trace48.txt  trace57.txt  trace66.txt  trace75.txt  trace84.txt  trace93.txt
+trace04.txt  trace13.txt  trace22.txt  trace31.txt  trace40.txt  trace49.txt  trace58.txt  trace67.txt  trace76.txt  trace85.txt  trace94.txt
+trace05.txt  trace14.txt  trace23.txt  trace32.txt  trace41.txt  trace50.txt  trace59.txt  trace68.txt  trace77.txt  trace86.txt  trace95.txt
+trace06.txt  trace15.txt  trace24.txt  trace33.txt  trace42.txt  trace51.txt  trace60.txt  trace69.txt  trace78.txt  trace87.txt  trace96.txt
+trace07.txt  trace16.txt  trace25.txt  trace34.txt  trace43.txt  trace52.txt  trace61.txt  trace70.txt  trace79.txt  trace88.txt  trace97.txt
+trace08.txt  trace17.txt  trace26.txt  trace35.txt  trace44.txt  trace53.txt  trace62.txt  trace71.txt  trace80.txt  trace89.txt  trace98.txt
+```
+cool we extracted the contents of the zip file and we can see that there are some ".txt" file innit. 
+
+![image](https://user-images.githubusercontent.com/87468669/229138645-f036f136-09f7-4635-99e1-67e017b775c6.png)
+
+checking the content of the txt file, we can see there are two text phases. `plaintext` which contain an hex value and `power trace` which contain random numbers 🤷‍♂️ who knows what they are... doing some research 
+
+
 ## Binary Exploitation challenges done by nighthawk
 
 ### Hijacking - 200 pts 
