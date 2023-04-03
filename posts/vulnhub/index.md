@@ -20,5 +20,6 @@ _To provide materials that allows anyone to gain practical 'hands-on' experience
 <hr>
 
 - [[Feb 20 2023]] [symfonos4](https://n16hth4wk07.github.io/posts/vulnhub/symfono4.html) `LFI,` `python jsonpick deserialization` RCE
+- [[Apr 03 2023]] [Painvm](https://n16hth4wk07.github.io/posts/vulnhub/pain.html) `chained vuln LFI & file upload,` `sudoedit`
 
 
