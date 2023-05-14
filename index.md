@@ -78,6 +78,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[Jan 12 2023]] [Exghost](https://n16hth4wk07.github.io/posts/PG/Exghost.html) `exiftool RCE`
 - [[Jan 13 2023]] [Squid](https://n16hth4wk07.github.io/posts/PG/Squid.html) `squid proxy` `phpmyadmin RCE`
 - [[Mar 10 2023]] [SoSimple](https://n16hth4wk07.github.io/posts/PG/sosimple.html) `Social Warfare wp-plugin RCE` 
+- [[May 14 2023]] [My-Cmsms](https://n16hth4wk07.github.io/posts/PG/my-cmsms.html) `Cms made simple file upload to RCE` 
 
 * * *
 ### **Hack The Box Writeups:~#**
