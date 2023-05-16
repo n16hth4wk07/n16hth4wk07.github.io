@@ -85,6 +85,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 * * *
 
 - [[Oct 23 2022]] [HTB -- Photobomb](https://n16hth4wk07.github.io/posts/HTB/Photobomb.html)
+- [[May 16 2023]] [HTB -- Devel](https://n16hth4wk07.github.io/posts/HTB/devel.html)
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
