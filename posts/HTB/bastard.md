@@ -47,34 +47,20 @@ Boom got a reverse shell.
 
 ## Privilege Escalation
 
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5ada2b3c-de37-4e6b-a7e7-5becbce65431)
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1e825f38-9614-46ff-98ab-a09507f8889a)
 
-checking systeminfo, we can see it is running OS version `6.1.7600 N/A Build 760` let's exploit this 
+first check `systeminfo`, copy the output of systeminfo into a file and save it
 
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ba1b9405-0d7f-4ddb-9243-9bd01f576446)
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/12746730-473e-4044-beff-10f1c95f13ff)
 
-found an exploit on searchsploit, downloaded the exploit. let's compile the exploit.
+ran windows-exploit-suggester found [here](https://github.com/AonCyberLabs/Windows-Exploit-Suggester). we can see so many kernel exploit we can use. let's use `MS10-059`. which you can find [windows-exploit](https://github.com/ASR511-OO7/windows-kernel-exploits/tree/master/MS10-059).
 
-```
-sudo apt-get install mingw-w64
-```
-first we need to install mingw-w64
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b45d36f7-d1fc-4e37-af71-dba22159e491)
 
-```
-┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Bastard]
-└─$ i686-w64-mingw32-gcc 40564.c -o privesc.exe -lws2_32
-                                                                                                                                                                       
-┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Bastard]
-└─$ ls -al privesc.exe 
--rwxr-xr-x 1 n16hth4wk n16hth4wk 240005 May 16 23:56 privesc.exe
-```
-then compile the script. let’s send it to the target.
+Download the exe file, and send to the target.
 
-```
-┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/devel]
-└─$ sudo python -m http.server 80 
-Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
-```
-first start a python http server
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9a9dbb4a-3331-4b43-ae0a-51a6cdc9ae10)
+
+ran the exploit and boom got a reverse shell as `nt authority\system`
 
 
