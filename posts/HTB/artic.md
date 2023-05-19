@@ -89,6 +89,22 @@ check back ncat listener and Boom we got reverse shell as `arctic\tolis`
 
 ## Privilege Escalation
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3bfceef4-c244-49e3-b303-b6fad22d91a8)
+
+first check `systeminfo`, copy the output of systeminfo into a file and save it.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7d2bd673-4150-4c8e-84c1-989dbfd4aca3)
+
+ran windows-exploit-suggester found [here](https://github.com/AonCyberLabs/Windows-Exploit-Suggester). we can see so many kernel exploit we can use. let's use `MS10-059`. which you can find [windows-exploit](https://github.com/ASR511-OO7/windows-kernel-exploits/tree/master/MS10-059).
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b45d36f7-d1fc-4e37-af71-dba22159e491)
+
+Download the exe file, and send to the target.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/53215f8a-46f2-4f0b-bdd5-8129b853ca4e)
+
+ran the exploit and boom got a reverse shell as `nt authority\system`
+
 
 
 
