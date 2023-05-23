@@ -1,0 +1,29 @@
+First enumeration with nmap 
+
+```
+# Nmap 7.93 scan initiated Sat Jan 28 16:14:19 2023 as: nmap -sC -sV -oN normal.tcp -p 80,22,53 -Pn 10.10.10.13
+Nmap scan report for 10.10.10.13
+Host is up (0.27s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 18b973826f26c7788f1b3988d802cee8 (RSA)
+|   256 1ae606a6050bbb4192b028bf7fe5963b (ECDSA)
+|_  256 1a0ee7ba00cc020104cda3a93f5e2220 (ED25519)
+53/tcp open  domain  ISC BIND 9.10.3-P4 (Ubuntu Linux)
+| dns-nsid: 
+|_  bind.version: 9.10.3-P4-Ubuntu
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 28 16:14:37 2023 -- 1 IP address (1 host up) scanned in 18.29 seconds
+```
+
+
+
+Noticed a web server running on port 80, opening it on a browser, we got directed to an apache default webpage after checking around, got nothing. add `cronos.htb` to `/etc/hosts`.
+
