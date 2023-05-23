@@ -27,3 +27,4 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Noticed a web server running on port 80, opening it on a browser, we got directed to an apache default webpage after checking around, got nothing. add `cronos.htb` to `/etc/hosts`.
 
+
