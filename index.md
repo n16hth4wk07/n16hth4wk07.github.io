@@ -9,7 +9,7 @@ title: Home
 ### Welcome To My Cyber Security Blog, H4X0r
 * * *
 
-Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacking Tricks, Writeups, Articles, Any Stuffs Related To Hacking That I Learn... Yoroshiku ne😉
+Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacking Tricks, Writeups, Articles, Stuffs Related To Hacking That I Learn... Yoroshiku ne😉
 
 <hr>
 <br>
