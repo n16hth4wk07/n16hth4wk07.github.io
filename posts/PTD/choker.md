@@ -34,6 +34,14 @@ noticed a web server running on port 80, opening it on a browser, got redirected
 
 ### Enumerating smtp port (25)
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c1f39976-ea8c-4c35-b85d-772e5e5fe245)
+
+found an smtp user_enum script on github [USR-25](https://github.com/SxNade/USR-25). let's run this script.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f80d6c0e-3b7b-40c4-ae21-2f8e9544ed46)
+
+cool we got the users on smtp, let's enumerate further.
+
 
 
 
