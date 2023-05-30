@@ -40,7 +40,58 @@ found an smtp user_enum script on github [USR-25](https://github.com/SxNade/USR-
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f80d6c0e-3b7b-40c4-ae21-2f8e9544ed46)
 
-cool we got the users on smtp, let's enumerate further.
+cool we got the users on smtp, let's enumerate further. 
+
+
+### Enumerating pop3 port (110)
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/pwntilldawn/choker]
+└─$ telnet chocker.localhost 110
+Trying 10.150.150.56...
+Connected to chocker.localhost.
+Escape character is '^]'.
++OK Dovecot (Ubuntu) ready.
+USER operator
++OK
+PASS operator
++OK Logged in.
+LIST
++OK 1 messages:
+1 689
+.
+RETR 1
++OK 689 octets
+Return-Path: <sysadmin@chocker.com>
+X-Original-To: operator@localhost
+Delivered-To: operator@chocker.com
+Received: from chocker.com (unknown [192.168.14.1])
+        by chocker.localhost (Postfix) with ESMTP id A514BE0E1C
+        for <operator@localhost>; Thu,  4 Jun 2020 15:23:04 +0000 (UTC)
+Subject: Password Reset
+
+Hello Operator!
+
+As you requested, I've reset your password to access the server.
+I'm glad you still remembered your mail-password and were able to contact me, but don't forget it again!
+Also remember to delete this mail and change your password again as soon as possible!
+
+Here is your new password: "D0ntForgetP4sswordAgain!"
+
+Best regards, 
+your Sysadmin David.
+
+.
+```
+remember we got some usernames through the smtp_userenum script, so trying the usernames gotten as user and pass, got to se `operator:operator` worked. and we got a password which is a potential ssh password `D0ntForgetP4sswordAgain!`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d1f1d400-8e2e-4b74-ab6a-f3e329bb8747)
+
+login ssh using  `operator:D0ntForgetP4sswordAgain!` it's worked. we are in let's escalte privs.
+
+
+## Privilege Escalation
+
 
 
 
