@@ -91,6 +91,8 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[May 18 2023]] [HTB -- Popcorn](https://n16hth4wk07.github.io/posts/HTB/popcorn.html)
 - [[May 19 2023]] [HTB -- Bastard](https://n16hth4wk07.github.io/posts/HTB/bastard.html)
 - [[May 19 2023]] [HTB -- Artic](https://n16hth4wk07.github.io/posts/HTB/artic.html)
+- [[Jun 01 2023]] [HTB -- Blocky](https://n16hth4wk07.github.io/posts/HTB/blocky.html)
+- [[Jun 02 2023]] [HTB -- Mirai](https://n16hth4wk07.github.io/posts/HTB/mirai.html) `IOT`
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
