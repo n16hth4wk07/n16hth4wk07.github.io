@@ -100,5 +100,9 @@ checking privs, we can see we have `SeChangeNotifyPrivilege` enabled. let's abus
 running `chimichurri.exe IP PORT` got a reverse shell as `nt authority\system`.
 
 
+### Using Juicy Potato
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/298b5adf-3fa4-45f7-8e99-ab5e1056afd3)
+
+download [JuicyP](https://github.com/ohpe/juicy-potato/releases), [CLSID](https://ohpe.it/juicy-potato/CLSID/)
 
