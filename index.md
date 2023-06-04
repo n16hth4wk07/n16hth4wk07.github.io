@@ -93,7 +93,8 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[May 19 2023]] [HTB -- Artic](https://n16hth4wk07.github.io/posts/HTB/artic.html)
 - [[Jun 01 2023]] [HTB -- Blocky](https://n16hth4wk07.github.io/posts/HTB/blocky.html)
 - [[Jun 02 2023]] [HTB -- Mirai](https://n16hth4wk07.github.io/posts/HTB/mirai.html) `IOT`
-- [[Jun 03 2023]] [HTB -- Bounty](https://n16hth4wk07.github.io/posts/HTB/bounty.html) `file upload` 
+- [[Jun 03 2023]] [HTB -- Bounty](https://n16hth4wk07.github.io/posts/HTB/bounty.html) `file upload`
+- [[Jun 04 2023]] [HTB -- Sense](https://n16hth4wk07.github.io/posts/HTB/sense.html) `pfsense command injection`
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
