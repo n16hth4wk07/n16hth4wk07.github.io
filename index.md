@@ -95,6 +95,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[Jun 02 2023]] [HTB -- Mirai](https://n16hth4wk07.github.io/posts/HTB/mirai.html) `IOT`
 - [[Jun 03 2023]] [HTB -- Bounty](https://n16hth4wk07.github.io/posts/HTB/bounty.html) `file upload`
 - [[Jun 04 2023]] [HTB -- Sense](https://n16hth4wk07.github.io/posts/HTB/sense.html) `pfsense command injection`
+- [[Jun 04 2023]] [HTB -- Valentine](https://n16hth4wk07.github.io/posts/HTB/valentine.html) `heartbleed` 
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
