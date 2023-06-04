@@ -45,34 +45,57 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 2023/06/03 17:58:14 Starting gobuster in directory enumeration mode                
 ===============================================================
-/changelog.txt        (Status: 200) [Size: 271]                
-/classes              (Status: 301) [Size: 0] [--> https://10.10.10.60/classes/]
-/css                  (Status: 301) [Size: 0] [--> https://10.10.10.60/css/]       
-/edit.php             (Status: 200) [Size: 6689]                                   
-/exec.php             (Status: 200) [Size: 6689]                 
-/favicon.ico          (Status: 200) [Size: 1406]                                   
-/graph.php            (Status: 200) [Size: 6690]
+/index.php            (Status: 200) [Size: 6690]
 /help.php             (Status: 200) [Size: 6689]
-/includes             (Status: 301) [Size: 0] [--> https://10.10.10.60/includes/]  
-/index.php            (Status: 200) [Size: 6690]               
-/index.html           (Status: 200) [Size: 329]                    
-/index.php            (Status: 200) [Size: 6690]               
-/installer            (Status: 301) [Size: 0] [--> https://10.10.10.60/installer/] 
-/javascript           (Status: 301) [Size: 0] [--> https://10.10.10.60/javascript/]
-/license.php          (Status: 200) [Size: 6692]     
-/pkg.php              (Status: 200) [Size: 6688]                                                                                                                       
-/stats.php            (Status: 200) [Size: 6690]                                   
-/status.php           (Status: 200) [Size: 6691]     
-/system.php           (Status: 200) [Size: 6691]                                                                                                                       
 /themes               (Status: 301) [Size: 0] [--> https://10.10.10.60/themes/]
-/tree                 (Status: 301) [Size: 0] [--> https://10.10.10.60/tree/]      
+/stats.php            (Status: 200) [Size: 6690]
+/css                  (Status: 301) [Size: 0] [--> https://10.10.10.60/css/]
+/edit.php             (Status: 200) [Size: 6689]
+/includes             (Status: 301) [Size: 0] [--> https://10.10.10.60/includes/]
+/license.php          (Status: 200) [Size: 6692]
+/system.php           (Status: 200) [Size: 6691]
+/status.php           (Status: 200) [Size: 6691]
+/javascript           (Status: 301) [Size: 0] [--> https://10.10.10.60/javascript/]
+/changelog.txt        (Status: 200) [Size: 271]
+/classes              (Status: 301) [Size: 0] [--> https://10.10.10.60/classes/]
+/exec.php             (Status: 200) [Size: 6689]
 /widgets              (Status: 301) [Size: 0] [--> https://10.10.10.60/widgets/]
-/wizard.php           (Status: 200) [Size: 6691]               
-/xmlrpc.php           (Status: 200) [Size: 384]  
-                                         
-===============================================================  
-2023/06/03 18:05:44 Finished    
+/graph.php            (Status: 200) [Size: 6690]
+/tree                 (Status: 301) [Size: 0] [--> https://10.10.10.60/tree/]
+/wizard.php           (Status: 200) [Size: 6691]
+/shortcuts            (Status: 301) [Size: 0] [--> https://10.10.10.60/shortcuts/]
+/pkg.php              (Status: 200) [Size: 6688]
+/installer            (Status: 301) [Size: 0] [--> https://10.10.10.60/installer/]
+/wizards              (Status: 301) [Size: 0] [--> https://10.10.10.60/wizards/]
+/xmlrpc.php           (Status: 200) [Size: 384]
+/reboot.php           (Status: 200) [Size: 6691]
+/interfaces.php       (Status: 200) [Size: 6695]
+/csrf                 (Status: 301) [Size: 0] [--> https://10.10.10.60/csrf/]
+/system-users.txt     (Status: 200) [Size: 106]
+/filebrowser          (Status: 301) [Size: 0] [--> https://10.10.10.60/filebrowser/]
+/%7Echeckout%7E       (Status: 403) [Size: 345]tus: 200) [Size: 384]  
+
+===============================================================
+2023/06/04 01:50:11 Finished
 ===============================================================
 ```
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e16158c9-bd0e-46bd-ba18-ac7d779ed76f)
+
+navigating to `/changlog.txt` dir, we can see they patched 2/3 vuln of this firewall.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8773335c-d279-4973-b2c7-71572aa79509)
+
+checking the `/system-users.txt`, we can see a username . let's try login using this username and default password `pfsense`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/30109f59-d55e-4b12-b341-7b72b6e8a9af)
+
+logged in with cred `rohit:pfsense`. let's play around and see what we can get.
+
+
+
+
+
+
 
 
