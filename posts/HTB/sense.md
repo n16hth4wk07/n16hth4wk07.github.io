@@ -92,10 +92,15 @@ checking the `/system-users.txt`, we can see a username . let's try login using 
 
 logged in with cred `rohit:pfsense`. let's play around and see what we can get.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9d50bbf9-5440-4236-b267-991ab15f2974)
 
+making research online for exploiting this service, found an exploit on exploitdb, [exploit](https://www.exploit-db.com/exploits/43560). Download the exploit.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/71e9b9ad-89bf-4653-8963-74680a5707b7)
 
+ran the exploit and boom got a reverse shell as root.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3afe63ca-3d0c-4915-9dc5-ca6f514d2667)
 
-
+And we are through 😮‍💨 intresting box innit.
 
