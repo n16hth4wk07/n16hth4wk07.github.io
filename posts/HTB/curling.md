@@ -149,4 +149,105 @@ www-data@curling:/home/floris$
 ```
 in floris home dir, saw a password_backup file. trying to read the content got to see it an hexdump of a bzip2 file. let's repair it,
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]   
+└─$ cat password_backup | xxd -r > passwd.bz2                 
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]                            
+└─$ file passwd.bz2                                                                
+passwd.bz2: bzip2 compressed data, block size = 900k                               
+                                                                                                                                                                       
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]                            
+└─$ bunzip2 -k passwd.bz2                                                          
+                                                                                                                                                                       
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]
+└─$ ls -al                                                                         
+total 32                                                                                                                                                               
+drwxr-xr-x  2 n16hth4wk n16hth4wk 4096 Jun  5 14:22 .
+drwxr-xr-x 40 n16hth4wk n16hth4wk 4096 Jun  5 11:02 .. 
+-rw-r--r--  1 n16hth4wk n16hth4wk 1389 Jun  5 11:30 curling.txt                    
+-rw-r--r--  1 n16hth4wk n16hth4wk  646 Jun  5 11:13 fulltcp.txt
+-rw-r--r--  1 n16hth4wk n16hth4wk  872 Jun  5 11:14 normal.txt
+-rw-r--r--  1 n16hth4wk n16hth4wk  173 Jun  5 14:22 passwd                      
+-rw-r--r--  1 n16hth4wk n16hth4wk  244 Jun  5 14:22 passwd.bz2                                                                                                         
+-rw-r--r--  1 n16hth4wk n16hth4wk 1076 Jun  5 13:12 password_backup   
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]
+└─$ file passwd                                                                    
+passwd: gzip compressed data, was "password", last modified: Tue May 22 19:16:20 2018, from Unix, original size modulo 2^32 141
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]         
+└─$ mv passwd.gz passwd.gzip                                                        
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]     
+└─$ binwalk -e passwd.gzip
+                                                                                                                                                                       
+DECIMAL       HEXADECIMAL     DESCRIPTION                                                                                                                              
+--------------------------------------------------------------------------------
+0             0x0             gzip compressed data, has original file name: "password", from Unix, last modified: 2018-05-22 19:16:20                                  
+24            0x18            bzip2 compressed data, block size = 900k             
+                                                                                   
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling]                            
+└─$ cd _passwd.gzip.extracted                                                                                                                                          
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]     
+└─$ ls -al                                                                                                                                                             
+total 28                                                                           
+drwxr-xr-x 2 n16hth4wk n16hth4wk  4096 Jun  5 14:23 .                              
+drwxr-xr-x 3 n16hth4wk n16hth4wk  4096 Jun  5 14:23 ..                                                                                                                 
+-rw------- 1 n16hth4wk n16hth4wk 10240 Jun  5 14:23 18
+-rw-r--r-- 1 n16hth4wk n16hth4wk   141 Jun  5 14:23 password
+-rw-r--r-- 1 n16hth4wk n16hth4wk   173 Jun  5 14:23 password.gz                    
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]
+└─$ file passwd                                                                    
+passwd: cannot open `passwd' (No such file or directory)                                                                                                               
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]     
+└─$ file password                                                                  
+password: bzip2 compressed data, block size = 900k                                 
+                                                                                                                                                                       
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]     
+└─$ file password.gz                                                               
+password.gz: gzip compressed data, was "password", last modified: Tue May 22 19:16:20 2018, from Unix, original size modulo 2^32 141                                   
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]
+└─$ file 18                                                                                                                                                            
+18: POSIX tar archive (GNU)                                                        
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]     
+└─$ mv 18 18.tar  
+
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]     
+└─$ tar -xf 18.tar                                                                 
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]                                                        
+└─$ ls -al                                                                         
+total 32                                                                           
+drwxr-xr-x 2 n16hth4wk n16hth4wk  4096 Jun  5 14:24 .                              
+drwxr-xr-x 3 n16hth4wk n16hth4wk  4096 Jun  5 14:23 ..                             
+-rw------- 1 n16hth4wk n16hth4wk 10240 Jun  5 14:23 18.tar                             
+-rw-r--r-- 1 n16hth4wk n16hth4wk   141 Jun  5 14:23 password                       
+-rw-r--r-- 1 n16hth4wk n16hth4wk   173 Jun  5 14:23 password.gz                    
+-rw-r--r-- 1 n16hth4wk n16hth4wk    19 May 22  2018 password.txt                                                                                                       
+                                                                                   
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Curling/_passwd.gzip.extracted]
+└─$ cat password.txt                                                                                                                                                   
+5d<wdCbdZu)|hChXll
+```
+after repairing the file, we got to extract the password `5d<wdCbdZu)|hChXll`. let's su user `floris` with this password.
+
+```
+www-data@curling:/home/floris$ su floris
+Password: 
+floris@curling:~$ sudo -l
+[sudo] password for floris: 
+Sorry, user floris may not run sudo on curling.
+floris@curling:~$
+```
+cool we are in as user `floris`... checking for sudo permission, we don't have permission to sudo. let's escalate further.
+
+
+
 
