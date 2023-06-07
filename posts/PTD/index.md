@@ -23,5 +23,6 @@ _PwnTillDawn is a concept developed by wizlynx group to bring fun to cyber secur
 - [[Feb 20 2023]] [PTD -- Brandy](https://n16hth4wk07.github.io/posts/PTD/brandy.html) `Dorlibarr file upload bypass`
 - [[Feb 22 2023]] [PTD -- Silence](https://n16hth4wk07.github.io/posts/PTD/silience.html) `LFI`
 - [[May 30 2023]] [PTD -- Choker](https://n16hth4wk07.github.io/posts/PTD/choker.html) `smtp-pop3,` `python lib hijacking`
+- [[Jun 07 2023]] [PTD -- Shelter](https://n16hth4wk07.github.io/posts/PTD/shelter.html) `UPD - TFTP` 
 
 
