@@ -161,4 +161,12 @@ Bankai!!! got a reverse shell as `nt authority\system`.
 and we are through 😉 fun box innit
 
 
+## Getting another box (fritz-sever) creds 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7b28fa0d-59d7-4a09-8c20-78da3ea0469d)
+
+in the txt file in `DrSchultz` desktop, we can see it is connected to `10.150.150.232`, let's dump lsasam hash.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/013d114d-cdc7-4aa3-a752-578c42002c15)
+
+spawn a metepreter shell and dump the creds for user `DrSchultz`. we can see the password `AlexandreDumasIsBlack1`.
