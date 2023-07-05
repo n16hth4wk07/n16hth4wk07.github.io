@@ -51,5 +51,63 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Mon Jun 12 16:33:16 2023 -- 1 IP address (1 host up) scanned in 25.45 seconds
 ```
 
-## Enumerating port 21 (ftp)
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9b21b245-5f95-495d-a6ee-4aca2dcfa55c)
+
+a web server running on port 80, opening it on a browser, we got directed to a web page running `PRTG Network Monitor (Netmon)`. also we can see a login page, tried default creds, no success. let's enumerate further.
+
+
+### Enumerating FTP (port 21)
+
+```
+ftp> ls -al
+229 Entering Extended Passive Mode (|||49882|)
+125 Data connection already open; Transfer starting.
+11-20-16  10:46PM       <DIR>          $RECYCLE.BIN
+02-03-19  12:18AM                 1024 .rnd
+11-20-16  09:59PM               389408 bootmgr
+07-16-16  09:10AM                    1 BOOTNXT
+02-03-19  08:05AM       <DIR>          Documents and Settings
+02-25-19  10:15PM       <DIR>          inetpub
+07-04-23  06:13PM            738197504 pagefile.sys
+07-16-16  09:18AM       <DIR>          PerfLogs
+02-25-19  10:56PM       <DIR>          Program Files
+02-03-19  12:28AM       <DIR>          Program Files (x86)
+12-15-21  10:40AM       <DIR>          ProgramData
+02-03-19  08:05AM       <DIR>          Recovery
+02-03-19  08:04AM       <DIR>          System Volume Information
+02-03-19  08:08AM       <DIR>          Users
+02-25-19  11:49PM       <DIR>          Windows
+226 Transfer complete.
+ftp>
+```
+anonymous login was enabled, and we got some dirs. checking online for the config file of `PRTG netmon`, it is stored in `C:\ProgramData\Paessler\PRTG Network Monitor` dir. 
+
+![image]https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/84609e52-cc6f-41c6-b9f4-125279e26472)
+
+on navigating to the dir, got to see some config files. downloaded the 2 files, the `.old & .bak`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f696156a-6246-46f0-9457-57cfc460768c)
+
+checking the first file, there was nothing useful in it. checking the 2nd `.old` file, got to see a cred `prtgadmin:PrTg@dmin2018` cool let's login using this creds
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/fae12c2d-50ec-4608-b4aa-540e7760df24)
+
+login failed. 🤔 looking at the password, we can see it ended in a year `2018`, why don't we try using another year `2019-2023`. 
+
+```
+PrTg@dmin2019
+PrTg@dmin2020
+PrTg@dmin2021
+PrTg@dmin2022
+PrTg@dmin2023
+```
+made a passwordlist and try bruteforce.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a912591f-77d3-414d-b24a-b406c2cb74b4)
+
+cool we logged in using password `PrTg@dmin2019`. let's play around to pop a reverse shell. let's check online for exploits
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d3fea5d2-22a6-478e-9b4d-88624d3dcb33)
+
+found an authenticated RCE exploit on  github. let's clone and run the exploit.
 
