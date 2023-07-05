@@ -111,3 +111,11 @@ cool we logged in using password `PrTg@dmin2019`. let's play around to pop a rev
 
 found an authenticated RCE exploit on  github. let's clone and run the exploit.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8f9b19d1-3247-47a9-8e08-35ce9033ea87)
+
+ran the exploit and boom, got a reverse shell as `nt authority\system`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c1f3071c-46a0-4ee2-83fb-fac41488446a)
+
+and we are through 😉 fun innit?
+
