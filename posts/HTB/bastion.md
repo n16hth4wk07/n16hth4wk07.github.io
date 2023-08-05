@@ -1,4 +1,4 @@
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/71b37b2e-e90f-4252-8fef-451b2a940875)![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2f91bf10-8203-4873-89d6-b90cb3f64953)
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/71b37b2e-e90f-4252-8fef-451b2a940875)
 
 first enumeration with nmap 
 
