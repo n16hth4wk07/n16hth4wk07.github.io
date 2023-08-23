@@ -80,6 +80,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[Mar 10 2023]] [SoSimple](https://n16hth4wk07.github.io/posts/PG/sosimple.html) `Social Warfare wp-plugin RCE` 
 - [[May 14 2023]] [My-Cmsms](https://n16hth4wk07.github.io/posts/PG/my-cmsms.html) `Cms made simple file upload to RCE` 
 - [[May 25 2023]] [Sunsetmidnight](https://n16hth4wk07.github.io/posts/PG/sunsetmidnight.html) `wordpress`
+- [[Aug 23 2023]] [Amaterasu](https://n16hth4wk07.github.io/posts/PG/amaterasu.html) `path traversal` `tar wildcard injection`
 
 * * *
 ### **Hack The Box Writeups:~#**
@@ -99,7 +100,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[Jun 04 2023]] [HTB -- Sunday](https://n16hth4wk07.github.io/posts/HTB/sunday.html) `finger`
 - [[Jun 06 2023]] [HTB -- Irked](https://n16hth4wk07.github.io/posts/HTB/irked.html) `IRC Backdoor`
 - [[Jun 09 2023]] [HTB -- Jerry](https://n16hth4wk07.github.io/posts/HTB/jerry.html) `Tomcat RCE`
-- [[Jun 11 2023]] [HTB -- Friendzone](https://n16hth4wk07.github.io/posts/HTB/friendzone.html) `LFI2RCE phpfilter` 
+- [[Jun 11 2023]] [HTB -- Friendzone](https://n16hth4wk07.github.io/posts/HTB/friendzone.html) `LFI2RCE phpfilter`
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
