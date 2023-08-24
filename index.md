@@ -81,6 +81,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[May 14 2023]] [My-Cmsms](https://n16hth4wk07.github.io/posts/PG/my-cmsms.html) `Cms made simple file upload to RCE` 
 - [[May 25 2023]] [Sunsetmidnight](https://n16hth4wk07.github.io/posts/PG/sunsetmidnight.html) `wordpress`
 - [[Aug 23 2023]] [Amaterasu](https://n16hth4wk07.github.io/posts/PG/amaterasu.html) `path traversal` `tar wildcard injection`
+- [[Aug 24 2023]] [MoneyBox](https://n16hth4wk07.github.io/posts/PG/moneybox.html) `weak password`
 
 * * *
 ### **Hack The Box Writeups:~#**
