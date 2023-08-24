@@ -26,5 +26,6 @@ _PwnTillDawn is a concept developed by wizlynx group to bring fun to cyber secur
 - [[Jun 07 2023]] [PTD -- Shelter](https://n16hth4wk07.github.io/posts/PTD/shelter.html) `UPD - TFTP`
 - [[Jun 12 2023]] [PTD -- KingSchultz](https://n16hth4wk07.github.io/posts/PTD/kingschultz.html) `Apache Tomcat (host-manager)`
 - [[Jun 17 2023]] [PTD -- MonsieurCandie-Server](https://n16hth4wk07.github.io/posts/PTD/monsieurcandieserver.html) `XXE`
+- [[Aug 23 2023]] [PTD -- DoomOps](https://n16hth4wk07.github.io/posts/PTD/doomops.html) `Active Directory`
 
 
