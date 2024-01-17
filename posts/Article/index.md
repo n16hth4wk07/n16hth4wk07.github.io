@@ -17,4 +17,4 @@ _CVE, Cheat Sheets created and compile by me or from a source and editted with a
 <hr>
 <hr>
 
-- [[Jan 17 2024]] [Glassfish](https://n16hth4wk07.github.io/blob/main/posts/Article/glassfish.html) `RCE` - `Glassfish Authenticated RCE` 
+- [[Jan 17 2024]] [Glassfish](https://n16hth4wk07.github.io/posts/Article/glassfish.html) `RCE` - `Glassfish Authenticated RCE` 
