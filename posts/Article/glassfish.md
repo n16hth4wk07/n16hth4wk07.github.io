@@ -1,6 +1,6 @@
 ---
 layout: default
-title : nighthawk - Glassfish - Exploiting Glassfish Manually
+title : nighthawk - Glassfish - Authenticated RCE Manual exploit
 ---
 
 ### Description
@@ -10,3 +10,4 @@ This module logs in to an GlassFish Server 3.1 (Open Source or Commercial) insta
 CVE-2011-0807
 
 ### Steps to exploit
+
