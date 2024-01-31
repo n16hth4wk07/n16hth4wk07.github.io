@@ -1,3 +1,5 @@
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4aa8cab7-5c58-4168-bec1-e4a9aafa7090)
+
 First enumeration with nmap 
 
 ```shell
@@ -159,3 +161,5 @@ use the abuse function and restart the service, boom we got shell as NT Authorit
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c92f7c27-77cf-4ce9-9956-091f06025cf1)
 
 And we are through... easy huh 😉
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/33404ba2-6981-4ed4-84b9-44760c4f25f5)
