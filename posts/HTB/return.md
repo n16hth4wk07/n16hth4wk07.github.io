@@ -158,4 +158,4 @@ use the abuse function and restart the service, boom we got shell as NT Authorit
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c92f7c27-77cf-4ce9-9956-091f06025cf1)
 
-And we are through
+And we are through... easy huh 😉
