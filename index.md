@@ -103,6 +103,7 @@ Practice your pentesting skills in a standalone, private lab environment with th
 - [[Jun 06 2023]] [HTB -- Irked](https://n16hth4wk07.github.io/posts/HTB/irked.html) `IRC Backdoor`
 - [[Jun 09 2023]] [HTB -- Jerry](https://n16hth4wk07.github.io/posts/HTB/jerry.html) `Tomcat RCE`
 - [[Jun 11 2023]] [HTB -- Friendzone](https://n16hth4wk07.github.io/posts/HTB/friendzone.html) `LFI2RCE phpfilter`
+- [[Jan 30 2024]] [HTB -- Return](https://n16hth4wk07.github.io/posts/HTB/return.html) `Active Directory`
 
 * * *
 ### **CyberTalent_Machine Writeups:~#**
