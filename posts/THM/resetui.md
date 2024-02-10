@@ -90,3 +90,35 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 now we know what services are running on these ports
 
+## Enumerating smb
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/reset]
+└─$ smbclient -L HayStack.thm.corp -N 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        Data            Disk      
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share 
+        SYSVOL          Disk      Logon server share 
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to HayStack.thm.corp failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+```
+checking for null share session, we can see a Data share. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/00c95ff9-7b5e-4e3c-99f9-6b0941815616)
+
+checking the share, we can see some files, we downloaded the files. 
+
+```shell
+└─$ cat cjexnwvf.e0i.txt
+Subject: Welcome to Reset -Dear <USER>,Welcome aboard! We are thrilled to have you join our team. As discussed during the hiring process, we are sending you the necessary login information to access your company account. Please keep this information confidential and do not share it with anyone.The initial passowrd is: ResetMe123!We are confident that you will contribute significantly to our continued success. We look forward to working with you and wish you the very best in your new role.Best regards,The Reset Team 
+```
+checking the content of the txt file, we got a password `ResetMe123!`. 
+
+
+
