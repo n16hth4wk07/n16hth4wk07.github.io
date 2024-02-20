@@ -167,3 +167,18 @@ Content-Type: application/octet-stream
 ```
 made modification to the exploit and uploaded the web shell. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cc546a76-3557-4348-85e7-ed7e53e69ef3)
+
+navigated to the path where the shell `http://192.168.165.13/management/uploads/exam_question/`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c81178cf-a37d-4e7e-b1bb-8636a52b4491)
+
+trigger the webshell
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/325f5735-bac8-44ac-9fb3-947f324236db)
+
+spawn a reverse shell.
+
+
+## Privilege Escalation 
+
