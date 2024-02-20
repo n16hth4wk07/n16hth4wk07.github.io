@@ -60,4 +60,55 @@ vendor                  [Status: 301, Size: 317, Words: 20, Lines: 10, Duration:
 ```
 fuzzing for hidden dirs, we got the above 
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Educated]                                                                                                    
+└─$ ffuf -ic -u "http://192.168.239.13/management/FUZZ" -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -fc 404,500,400 -e .txt,.php,.asp,.as
+px,.old,.pdf -fs 0                                                             
+                                                                              
+        /'___\  /'___\           /'___\         
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\                                                                                                                    
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/                                                                                                                    
+         \ \_\   \ \_\  \ \____/  \ \_\                                                                                                                     
+          \/_/    \/_/   \/___/    \/_/                                                                                                                     
+                                                                                                                                                            
+       v1.5.0-dev                                                                                                                                           
+________________________________________________                                                                                                            
+                                                                                                                                                            
+ :: Method           : GET                                                                                                                                  
+ :: URL              : http://192.168.239.13/management/FUZZ                                                                                                
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt                                                                    
+ :: Extensions       : .txt .php .asp .aspx .old .pdf                                                                                                       
+ :: Follow redirects : false                                                                                                                                
+ :: Calibration      : false                                                                                                                                
+ :: Timeout          : 10                                                                                                                                   
+ :: Threads          : 40                                                                                                                                   
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500                                                                                 
+ :: Filter           : Response status: 404,500,400                                                                                                         
+ :: Filter           : Response size: 0                                                                                                                     
+________________________________________________                                                                                                            
+                                                                                                                                                            
+.php                    [Status: 403, Size: 279, Words: 20, Lines: 10, Duration: 127ms]    
+                        [Status: 200, Size: 6374, Words: 828, Lines: 125, Duration: 146ms]
+index.php               [Status: 200, Size: 6374, Words: 828, Lines: 125, Duration: 2144ms]
+login                   [Status: 200, Size: 6374, Words: 828, Lines: 125, Duration: 135ms]
+uploads                 [Status: 301, Size: 329, Words: 20, Lines: 10, Duration: 124ms]
+assets                  [Status: 301, Size: 328, Words: 20, Lines: 10, Duration: 126ms]   
+system                  [Status: 403, Size: 279, Words: 20, Lines: 10, Duration: 125ms]
+Login                   [Status: 200, Size: 6374, Words: 828, Lines: 125, Duration: 138ms]
+README                  [Status: 200, Size: 66, Words: 8, Lines: 1, Duration: 121ms]
+README.txt              [Status: 200, Size: 66, Words: 8, Lines: 1, Duration: 120ms]
+js                      [Status: 301, Size: 324, Words: 20, Lines: 10, Duration: 128ms]
+dist                    [Status: 301, Size: 326, Words: 20, Lines: 10, Duration: 127ms]
+application             [Status: 403, Size: 279, Words: 20, Lines: 10, Duration: 125ms]
+installation            [Status: 301, Size: 334, Words: 20, Lines: 10, Duration: 120ms]
+```
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/06237ce1-19da-465d-8b66-9f43b3895685)
+
+checking the login dir, we got to see the service name `Gosfem Community Edition`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ecb7fef4-925e-4baa-9f8f-86b8d907cbd3)
+
+after wsome research, found an exploit on exploitdb, [exploit](https://www.exploit-db.com/exploits/50587)
 
