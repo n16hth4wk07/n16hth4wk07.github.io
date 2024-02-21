@@ -226,7 +226,21 @@ extract the content of the zip file.
    </search>
 </ldap-conf>
 ```
-found a file `.old-conf.xml` which contain potential ldap credential. 
+found a file `.old-conf.xml` which contain a credential. 
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager]
+└─$ sudo nxc winrm manager.htb -u raven -p 'R4v3nBe5tD3veloP3r!123'     
+SMB         10.129.22.154   445    DC01             [*] Windows 10.0 Build 17763 (name:DC01) (domain:manager.htb)
+WINRM       10.129.22.154   5985   DC01             [+] manager.htb\raven:R4v3nBe5tD3veloP3r!123 (Pwn3d!)
+```
+using nxc to check if we can login winrm, it was success, now let's login winrm using the creds 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/14d15a6e-cc79-430e-bc96-2b3e4acfc25a)
+
+login winrm using the creds.
+
+
+## Privilege Escalation 
 
 
