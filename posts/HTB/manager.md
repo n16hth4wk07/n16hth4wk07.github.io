@@ -166,5 +166,11 @@ using netexec to check for access on mssql server, we can see we have access to 
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/149d185f-b6c7-4978-ab5c-f2509fb613e1)
 
+```shell
+impacket-mssqlclient manager.htb/operator:operator@10.129.22.154 -windows-auth
+```
+
 using impacket script `impacket-mssqlclient` to login as user operator to the mssql server. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c19f3e82-63c6-4cbe-baf2-e68eae6d3ca1)
 
