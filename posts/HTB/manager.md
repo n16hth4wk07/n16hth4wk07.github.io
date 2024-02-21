@@ -116,13 +116,13 @@ sudo nxc smb 10.129.22.154 -u anonymous -p '' --rid-brute
 using nexec to bruteforce rid of users, we got some users in the domain. 
 
 ```
-Zhong 
-Cheng 
-Ryan 
-Raven 
-JinWoo 
-ChinHae 
-Operator
+zhong 
+cheng 
+ryan 
+raven 
+jinWoo 
+chinHae 
+operator 
 ```
 we made a userlist with the usernames. 
 
