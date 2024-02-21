@@ -180,7 +180,7 @@ exec master.dbo.xp_dirtree 'C:\inetpub\', 1, 1;
 exec master.dbo.xp_dirtree 'C:\inetpub\wwwroot', 1, 1;
 ```
 
-enumerating the xp_cmdshell, we don't have enough privilege to use the xp_cmdshell command. so we use `xp_dirtree` to list directories, found a web backup  `website-backup-27-07-23-old.zip` file in the root path of the web app. 
+enumerating the xp_cmdshell, we don't have enough privilege to use the xp_cmdshell command. so we use `xp_dirtree` to list directories, found a web backup  `website-backup-27-07-23-old.zip` file in the root path of the web app. read about exploiting mssql [exploit](https://book.hacktricks.xyz/network-services-pentesting/pentesting-mssql-microsoft-sql-server)
 
 ```shell
 ┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/HTB/Manager]
