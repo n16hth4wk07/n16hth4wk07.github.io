@@ -153,3 +153,6 @@ enumerating smb using the creds we got, we can see we have read access to shares
 
 checking the `NETLOGON` share was empty, we got a dir in the `SYSVOL` share. proceded to download everything in it. 
 
+
+## Enumerating mssql 
+
