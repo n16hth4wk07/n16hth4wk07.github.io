@@ -4,23 +4,22 @@
 `nmap -p- --min-rate 1000 -oN full.nmap -v -Pn <IP>`
 
 ```shell
-# Nmap 7.94SVN scan initiated Wed Feb 21 12:26:46 2024 as: nmap -p- --min-rate 1000 -oN full.nmap -v -Pn 10.129.22.154
-Increasing send delay for 10.129.22.154 from 0 to 5 due to 11 out of 31 dropped probes since last increase.
-Increasing send delay for 10.129.22.154 from 5 to 10 due to 11 out of 13 dropped probes since last increase.
-Increasing send delay for 10.129.22.154 from 10 to 20 due to 11 out of 15 dropped probes since last increase.
-Increasing send delay for 10.129.22.154 from 20 to 40 due to 11 out of 11 dropped probes since last increase.
-Nmap scan report for 10.129.22.154
+# Nmap 7.94SVN scan initiated Thu Feb 22 17:04:11 2024 as: nmap -p- --min-rate 1000 -oN full.nmap -v -Pn 10.129.43.129
+Nmap scan report for 10.129.43.129
 Host is up (0.15s latency).
-Not shown: 65518 filtered tcp ports (no-response)
+Not shown: 65513 filtered tcp ports (no-response)
 PORT      STATE SERVICE
 53/tcp    open  domain
 80/tcp    open  http
 88/tcp    open  kerberos-sec
 135/tcp   open  msrpc
 139/tcp   open  netbios-ssn
+389/tcp   open  ldap
 445/tcp   open  microsoft-ds
 464/tcp   open  kpasswd5
 593/tcp   open  http-rpc-epmap
+636/tcp   open  ldapssl
+1433/tcp  open  ms-sql-s
 3268/tcp  open  globalcatLDAP
 3269/tcp  open  globalcatLDAPssl
 5985/tcp  open  wsman
@@ -29,62 +28,103 @@ PORT      STATE SERVICE
 49693/tcp open  unknown
 49694/tcp open  unknown
 49695/tcp open  unknown
-49705/tcp open  unknown
+49730/tcp open  unknown
+50211/tcp open  unknown
+61672/tcp open  unknown
 
 Read data files from: /usr/bin/../share/nmap
-# Nmap done at Wed Feb 21 12:30:14 2024 -- 1 IP address (1 host up) scanned in 208.18 seconds
+# Nmap done at Thu Feb 22 17:07:29 2024 -- 1 IP address (1 host up) scanned in 197.15 seconds
 ```
 now we know what ports are open, let's run default nmap scripts to know what services are running on these ports.
 
 ## nmap service scan 
 
 ```shell
-# Nmap 7.94SVN scan initiated Wed Feb 21 12:43:23 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 53,80,88,135,139,445,464,593,3268,3269,5985,9389 -Pn 10.129.22.154
-Nmap scan report for manager.htb (10.129.22.154)
-Host is up (0.16s latency).
+# Nmap 7.94SVN scan initiated Thu Feb 22 17:13:02 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 53,80,88,135,139,389,445,464,593,636,1433,3268,3269,5985,9389,49667,49693,50211,61672 -Pn 10.129.43.129
+Nmap scan report for 10.129.43.129
+Host is up (0.27s latency).
 
-PORT     STATE SERVICE       VERSION
-53/tcp   open  domain        Simple DNS Plus
-80/tcp   open  http          Microsoft IIS httpd 10.0
-|_http-title: Manager
-|_http-server-header: Microsoft-IIS/10.0
+PORT      STATE    SERVICE       VERSION
+53/tcp    open     domain        Simple DNS Plus
+80/tcp    open     http          Microsoft IIS httpd 10.0
 | http-methods: 
 |_  Potentially risky methods: TRACE
-88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2024-02-21 18:46:59Z)
-135/tcp  open  msrpc         Microsoft Windows RPC
-139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
-445/tcp  open  microsoft-ds?
-464/tcp  open  kpasswd5?
-593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
-3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
-|_ssl-date: 2024-02-21T18:48:22+00:00; +7h03m30s from scanner time.
+|_http-title: Manager
+|_http-server-header: Microsoft-IIS/10.0
+88/tcp    open     kerberos-sec  Microsoft Windows Kerberos (server time: 2024-02-22 23:16:42Z)
+135/tcp   open     msrpc         Microsoft Windows RPC
+139/tcp   open     netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp   open     ldap          Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
+|_ssl-date: 2024-02-22T23:18:13+00:00; +7h03m30s from scanner time.
 | ssl-cert: Subject: commonName=dc01.manager.htb
 | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::<unsupported>, DNS:dc01.manager.htb
 | Not valid before: 2023-07-30T13:51:28
 |_Not valid after:  2024-07-29T13:51:28
-3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
+445/tcp   open     microsoft-ds?
+464/tcp   open     kpasswd5?
+593/tcp   open     ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp   open     ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
 | ssl-cert: Subject: commonName=dc01.manager.htb
 | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::<unsupported>, DNS:dc01.manager.htb
 | Not valid before: 2023-07-30T13:51:28
 |_Not valid after:  2024-07-29T13:51:28
-|_ssl-date: 2024-02-21T18:48:23+00:00; +7h03m30s from scanner time.
-5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_ssl-date: 2024-02-22T23:18:13+00:00; +7h03m31s from scanner time.
+1433/tcp  open     ms-sql-s      Microsoft SQL Server 2019 15.00.2000.00; RTM
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2024-02-22T22:01:43
+|_Not valid after:  2054-02-22T22:01:43
+| ms-sql-info: 
+|   10.129.43.129:1433: 
+|     Version: 
+|       name: Microsoft SQL Server 2019 RTM
+|       number: 15.00.2000.00
+|       Product: Microsoft SQL Server 2019
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+|_ssl-date: 2024-02-22T23:18:13+00:00; +7h03m31s from scanner time.
+| ms-sql-ntlm-info: 
+|   10.129.43.129:1433: 
+|     Target_Name: MANAGER
+|     NetBIOS_Domain_Name: MANAGER
+|     NetBIOS_Computer_Name: DC01
+|     DNS_Domain_Name: manager.htb
+|     DNS_Computer_Name: dc01.manager.htb
+|     DNS_Tree_Name: manager.htb
+|_    Product_Version: 10.0.17763
+3268/tcp  open     ldap          Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
+| ssl-cert: Subject: commonName=dc01.manager.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::<unsupported>, DNS:dc01.manager.htb
+| Not valid before: 2023-07-30T13:51:28
+|_Not valid after:  2024-07-29T13:51:28
+|_ssl-date: 2024-02-22T23:18:13+00:00; +7h03m30s from scanner time.
+3269/tcp  open     ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: manager.htb0., Site: Default-First-Site-Name)
+| ssl-cert: Subject: commonName=dc01.manager.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::<unsupported>, DNS:dc01.manager.htb
+| Not valid before: 2023-07-30T13:51:28
+|_Not valid after:  2024-07-29T13:51:28
+|_ssl-date: 2024-02-22T23:18:13+00:00; +7h03m31s from scanner time.
+5985/tcp  open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
 |_http-server-header: Microsoft-HTTPAPI/2.0
 |_http-title: Not Found
-9389/tcp open  mc-nmf        .NET Message Framing
+9389/tcp  open     mc-nmf        .NET Message Framing
+49667/tcp open     msrpc         Microsoft Windows RPC
+49693/tcp open     ncacn_http    Microsoft Windows RPC over HTTP 1.0
+50211/tcp filtered unknown
+61672/tcp open     msrpc         Microsoft Windows RPC
 Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 | smb2-time: 
-|   date: 2024-02-21T18:47:44
+|   date: 2024-02-22T23:17:36
 |_  start_date: N/A
 | smb2-security-mode: 
 |   3:1:1: 
 |_    Message signing enabled and required
-|_clock-skew: mean: 7h03m29s, deviation: 0s, median: 7h03m29s
+|_clock-skew: mean: 7h03m30s, deviation: 0s, median: 7h03m30s
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Wed Feb 21 12:44:53 2024 -- 1 IP address (1 host up) scanned in 90.40 seconds
+# Nmap done at Thu Feb 22 17:14:44 2024 -- 1 IP address (1 host up) scanned in 102.72 seconds
 ```
 now we know what services are open on the target 
 
@@ -242,6 +282,5 @@ login winrm using the creds.
 
 
 ## Privilege Escalation 
-
 
 
