@@ -66,5 +66,11 @@ dashboard               [Status: 301, Size: 351, Words: 22, Lines: 10, Duration:
 %20                     [Status: 403, Size: 1046, Words: 102, Lines: 43, Duration: 141ms]
 [WARN] Caught keyboard interrupt (Ctrl-C)
 ```
+fuzzing for hidden directories 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0eeb1588-8a45-4b48-8775-ce1c2c68723f)
+
+checking the `/site` dir, we got a slort homepage, looking at the web page parameter `http://192.168.194.53:8080/site/index.php?page=main.php` which looks like a potential (Remote file Inclusion) RFI or (Local file inclusion) LFI endpoints. 
+
 
 
