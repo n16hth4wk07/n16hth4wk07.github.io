@@ -286,3 +286,11 @@ first generate an msfvenom payload to spawn a reverse shell.
 
 replace the binary with our reverse shell payload. and let's wait if we can spawn a reverse shell.
 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c0fb4caa-85b8-4927-b14f-52fbf3087036)
+
+wait for 5mins and boom we got a reverse shell 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a0d18ca0-ae17-44ca-943d-cb78c21bcea7)
+
+And we are through. 🙂 easy huh
