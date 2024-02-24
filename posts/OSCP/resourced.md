@@ -252,4 +252,6 @@ resourced\l.livingstone
 we login winrm using the username and the hash. 
 
 
+## Privilege Escalation 
+
 
