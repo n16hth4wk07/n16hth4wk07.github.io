@@ -211,3 +211,10 @@ R.Robinson:1110:aad3b435b51404eeaad3b435b51404ee:fea5a148c14cf51590456b2102b29fa
 D.Durant:1111:aad3b435b51404eeaad3b435b51404ee:08aca8ed17a9eec9fac4acdcb4652c35:::
 G.Goldberg:1112:aad3b435b51404eeaad3b435b51404ee:62e16d17c3015c47b4d513e65ca757a2:::
 ```
+usernames and hashes
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c867ca80-bdac-442f-971e-28c4038e8962)
+
+cracked 1 of the password hash, `ItachiUchiha888`. 
+
+
