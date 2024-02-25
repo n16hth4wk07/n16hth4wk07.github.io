@@ -254,4 +254,19 @@ we login winrm using the username and the hash.
 
 ## Privilege Escalation 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1886b3eb-e7ef-4c94-9122-b5f789e4b731)
+
+```powershell
+Import-Module .\Sharphound.ps1
+Invoke-BloodHound -CollectionMethod All -OutputDirectory C:\Users\L.Livingstone\Documents\ -OutputPrefix "sharpaudit"
+```
+use sharphound to collect the domain data. so we will analyze with bloodhound.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/16405635-7570-4b7c-9055-e8b40899083b)
+
+using bloodhound to enumerate the data coollected, we can see that the user has a `Genericall` on `resourced.resourced.local`. 
+
+
+
+
 
