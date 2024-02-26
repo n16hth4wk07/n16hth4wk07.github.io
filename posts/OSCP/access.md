@@ -72,3 +72,10 @@ after some research, found out we could overwrite the `.htaccess` and make a php
 echo "AddType application/x-httpd-php .php16" > .htaccess
 ```
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/bcfe0764-5268-457b-831f-0fbbd8dc3e04)
+
+upload a file with `<?php phpinfo(); ?>` as `.php16`. 
+
+
+
+
