@@ -41,3 +41,16 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Mon Feb 26 10:53:17 2024 -- 1 IP address (1 host up) scanned in 65.29 seconds
 ```
 
+
+## Enumerating port 80 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/82904320-6246-447e-8f83-13db9f8822ca)
+
+there's a web server running on port port `80`. checking the ip on a browser, we got a webpage 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/483f2902-3973-49ff-9eb4-2b745167abfd)
+
+fuzzing the web application, we got diff dirs.
+
+
+
