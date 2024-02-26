@@ -52,5 +52,23 @@ there's a web server running on port port `80`. checking the ip on a browser, we
 
 fuzzing the web application, we got diff dirs.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/37803a93-f0eb-4210-b80f-f485d848e830)
 
+There's an upload function in the `buy-ticket` let's try upload a malicious file. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/bd416e86-70c2-43b2-b7f5-f301e9d235a6)
+
+trying to upload a php shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/400c15ea-ba97-4613-babb-8fda69f695fc)
+
+we got error file type not supported. let's try bypassing it
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/beaa8b57-e876-4687-9443-3a7a5016296b)
+
+after some research, found out we could overwrite the `.htaccess` and make a php shell uploadable. 
+
+```
+echo "AddType application/x-httpd-php .php16" > .htaccess
+```
 
