@@ -35,5 +35,16 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
+## Enumerating port 8082
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4ed75590-f6a9-4d82-a440-4d918e1e426a)
+
+from the nmap scan we notice a `H2 databases` service is running on port `8082`. opening it on a browser we got a login page. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7e2fb844-45d6-4956-9e29-2a83fa846081)
+
+clicking the connect button and was able to login
+
+
 
 
