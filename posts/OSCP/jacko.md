@@ -45,6 +45,15 @@ from the nmap scan we notice a `H2 databases` service is running on port `8082`.
 
 clicking the connect button and was able to login
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/099986c2-6a59-47bc-83da-da0a5dc8d405)
 
+checking online found an exploit on [exploit-db](https://www.exploit-db.com/exploits/49384). 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9aaf39f5-dd19-442e-a3c6-c2adbedec9b8)
+
+follow the exploitation steps. and we can trigger RCE. 
+
+```
+
+```
 
