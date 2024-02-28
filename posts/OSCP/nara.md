@@ -151,7 +151,20 @@ Remember, staying informed and acting promptly ensures that projects progress se
 
 Thank you for your attention to this matter, and if you have any concerns or suggestions to improve our document management process, please share them with your department head or the HR team.
 ```
-checking the content of important.txt 
+checking the content of important.txt, it shows that users visits the shares regularly, and also we have a write access in he SMB share. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5a0e62ef-d8ef-423b-ac8b-e4f58995a883)
+
+after some research found out to phish for ntlm-hash using this tool [ntlm_theft](https://github.com/Greenwolf/ntlm_theft). generate the payloads. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b0c400a-4ffe-4bf4-a978-a00ad79bf525)
+
+upload the lnk payload into each shares. after spawning `impacket-smbserver` 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8d8984dc-f326-4649-bb32-4faf9b2dc383)
+
+check back the smb server, we captured hashes. 
+
 
 
 
