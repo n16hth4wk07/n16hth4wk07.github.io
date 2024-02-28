@@ -112,6 +112,12 @@ spawned a cmd shell...
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f94c0389-3347-45be-8f74-4291b70c3093)
 
-cmd shell didn't work, so upload a `net.exe`. 
+cmd shell didn't work, so upload a `net.exe`. that didn't work either. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/eb836595-3b9c-499d-8f6d-75ff9b0cfeb3)
 
+Uploaded `nc64.exe` binary and we using godpotato.exe to spawn a reverse shell wih the `nc64.exe`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/705caaf4-7f13-45d7-a5bd-27987c5375c4)
+
+And we are through with it 🙂
