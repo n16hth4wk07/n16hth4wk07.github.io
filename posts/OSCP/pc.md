@@ -124,9 +124,13 @@ checking the contents of the file, we can see it is running something like `asgi
 
 after some research, i found an exploit for `rpcpy`. on [github](https://github.com/ehtec/rpcpy-exploit/blob/main/rpcpy-exploit.py)
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/51b30a42-731a-4ca8-997a-bb1f0ce6dd6a)
 
+modified the exploit and ran it to spawn a reverse shell. and we got a reverse shell as `root`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f3c412e1-4569-4afa-b497-a1f74ec6fc78)
 
+and we are through. 🙂
 
 
 
