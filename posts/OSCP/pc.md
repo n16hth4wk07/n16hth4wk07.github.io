@@ -61,6 +61,26 @@ first we cat our `id_rsa.pub` file in our attacker system.
 
 put the attacker `id_rsa.pub` key into the `authorised_keys` in the `.ssh` dir of the target. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e73f4dca-0ac3-497b-9265-a26c7cdfd76b)
+
+login ssh as `user`. 
+
+
+## Privilege Escalation
+
+```shell
+user@pc:~$ ls -al /opt/
+total 16
+drwxr-xr-x  3 root root 4096 Aug 25  2023 .
+drwxr-xr-x 19 root root 4096 Jun 15  2022 ..
+drwx--x--x  4 root root 4096 Jun 28  2023 containerd
+-rw-r--r--  1 root root  625 Aug 25  2023 rpc.py
+user@pc:~$ 
+```
+in the `/opt/` dir we found a file `rpc.py`. 
+
+
+
 
 
 
