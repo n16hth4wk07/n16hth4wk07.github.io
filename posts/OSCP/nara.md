@@ -61,33 +61,33 @@ Service detection performed. Please report any incorrect results at https://nmap
 ## Enumerating smb 
 
 ```shell
-┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/nana]                                                                                                                                           
-└─$ crackmapexec smb 192.168.227.30 -u anonymous -p '' --rid-brute                                                                                                                             
-SMB         192.168.227.30  445    NARA             [*] Windows 10.0 Build 20348 x64 (name:NARA) (domain:nara-security.com) (signing:True) (SMBv1:False)                                       
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/nana]                                                                                                                      
+└─$ crackmapexec smb 192.168.227.30 -u anonymous -p '' --rid-brute                                                                                                        
+SMB         192.168.227.30  445    NARA             [*] Windows 10.0 Build 20348 x64 (name:NARA) (domain:nara-security.com) (signing:True) (SMBv1:False)                  
 SMB         192.168.227.30  445    NARA             [+] nara-security.com\anonymous:         
-SMB         192.168.227.30  445    NARA             [-] Unexpected error with Neo4J                                                                                                            
-SMB         192.168.227.30  445    NARA             [-] Account not found on the domain                                                                                                        
+SMB         192.168.227.30  445    NARA             [-] Unexpected error with Neo4J                                                                                       
+SMB         192.168.227.30  445    NARA             [-] Account not found on the domain                                                                                   
 SMB         192.168.227.30  445    NARA             498: NARASEC\Enterprise Read-only Domain Controllers (SidTypeGroup)
-SMB         192.168.227.30  445    NARA             500: NARASEC\Administrator (SidTypeUser)                                                                                                   
+SMB         192.168.227.30  445    NARA             500: NARASEC\Administrator (SidTypeUser)                                                                              
 SMB         192.168.227.30  445    NARA             501: NARASEC\Guest (SidTypeUser)           
 SMB         192.168.227.30  445    NARA             502: NARASEC\krbtgt (SidTypeUser)     
-SMB         192.168.227.30  445    NARA             512: NARASEC\Domain Admins (SidTypeGroup)                                                                                                  
-SMB         192.168.227.30  445    NARA             513: NARASEC\Domain Users (SidTypeGroup)                                                                                                   
-SMB         192.168.227.30  445    NARA             514: NARASEC\Domain Guests (SidTypeGroup)                                                                                                  
+SMB         192.168.227.30  445    NARA             512: NARASEC\Domain Admins (SidTypeGroup)                                                                             
+SMB         192.168.227.30  445    NARA             513: NARASEC\Domain Users (SidTypeGroup)                                                                              
+SMB         192.168.227.30  445    NARA             514: NARASEC\Domain Guests (SidTypeGroup)                                                                             
 SMB         192.168.227.30  445    NARA             515: NARASEC\Domain Computers (SidTypeGroup)                      
-SMB         192.168.227.30  445    NARA             516: NARASEC\Domain Controllers (SidTypeGroup)                                                                                             
+SMB         192.168.227.30  445    NARA             516: NARASEC\Domain Controllers (SidTypeGroup)
 SMB         192.168.227.30  445    NARA             517: NARASEC\Cert Publishers (SidTypeAlias)
 SMB         192.168.227.30  445    NARA             518: NARASEC\Schema Admins (SidTypeGroup)  
-SMB         192.168.227.30  445    NARA             519: NARASEC\Enterprise Admins (SidTypeGroup)                                                                                              
-SMB         192.168.227.30  445    NARA             520: NARASEC\Group Policy Creator Owners (SidTypeGroup)                                                                                    
-SMB         192.168.227.30  445    NARA             521: NARASEC\Read-only Domain Controllers (SidTypeGroup)                                                                                   
-SMB         192.168.227.30  445    NARA             522: NARASEC\Cloneable Domain Controllers (SidTypeGroup)                                                                                   
+SMB         192.168.227.30  445    NARA             519: NARASEC\Enterprise Admins (SidTypeGroup)                                                                         
+SMB         192.168.227.30  445    NARA             520: NARASEC\Group Policy Creator Owners (SidTypeGroup)                                                               
+SMB         192.168.227.30  445    NARA             521: NARASEC\Read-only Domain Controllers (SidTypeGroup)                                                              
+SMB         192.168.227.30  445    NARA             522: NARASEC\Cloneable Domain Controllers (SidTypeGroup)                                                              
 SMB         192.168.227.30  445    NARA             525: NARASEC\Protected Users (SidTypeGroup)
 SMB         192.168.227.30  445    NARA             526: NARASEC\Key Admins (SidTypeGroup)     
-SMB         192.168.227.30  445    NARA             527: NARASEC\Enterprise Key Admins (SidTypeGroup)                                                                                          
-SMB         192.168.227.30  445    NARA             553: NARASEC\RAS and IAS Servers (SidTypeAlias)                                                                                            
-SMB         192.168.227.30  445    NARA             571: NARASEC\Allowed RODC Password Replication Group (SidTypeAlias)                                                                        
-SMB         192.168.227.30  445    NARA             572: NARASEC\Denied RODC Password Replication Group (SidTypeAlias)                                                                         
+SMB         192.168.227.30  445    NARA             527: NARASEC\Enterprise Key Admins (SidTypeGroup)                                                                     
+SMB         192.168.227.30  445    NARA             553: NARASEC\RAS and IAS Servers (SidTypeAlias)                                                                       
+SMB         192.168.227.30  445    NARA             571: NARASEC\Allowed RODC Password Replication Group (SidTypeAlias)                                                   
+SMB         192.168.227.30  445    NARA             572: NARASEC\Denied RODC Password Replication Group (SidTypeAlias)                                                    
 SMB         192.168.227.30  445    NARA             1000: NARASEC\NARA$ (SidTypeUser)      
 SMB         192.168.227.30  445    NARA             1101: NARASEC\DnsAdmins (SidTypeAlias)    
 SMB         192.168.227.30  445    NARA             1102: NARASEC\DnsUpdateProxy (SidTypeGroup)
@@ -122,3 +122,9 @@ Tracy.White
 Remote Access 
 Enrollment 
 ```
+made a user list. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/32900770-6efb-4a9e-8278-e076592c8874)
+
+checking for anonymous;y available shares, we got nara share , and download the content in it. 
+
