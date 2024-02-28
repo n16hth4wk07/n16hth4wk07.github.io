@@ -118,10 +118,11 @@ if __name__ == "__main__":
     uvicorn.run(app, interface="asgi3", port=65432)
 user@pc:/opt$ 
 ```
-checking the contents of the file, we can see it is running something like `asgi3`. 
+checking the contents of the file, we can see it is running something like `asgi3` & `rpcpy`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1a09c013-88b6-4eec-9346-ce21cb78c4dd)
 
-
+after some research, i found an exploit for `rpcpy`. on [github](https://github.com/ehtec/rpcpy-exploit/blob/main/rpcpy-exploit.py)
 
 
 
