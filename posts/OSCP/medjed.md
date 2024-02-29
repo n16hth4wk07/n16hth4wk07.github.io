@@ -187,7 +187,7 @@ remember the webapp also talked about `webdav`, so we use the username and passw
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/adb52333-85b5-4b1a-aec7-ae0e130fec39)
 
-navigate to the dir path `C/xampp/htdoc`, and uploaded a php `shell.pp
+navigate to the dir path `C/xampp/htdoc`, and uploaded a php `shell.php` cmd web shell.
 
 
 
