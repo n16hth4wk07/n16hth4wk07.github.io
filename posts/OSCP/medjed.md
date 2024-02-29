@@ -181,9 +181,13 @@ setup an administrator account.
 
 hit the next button to continue. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3677ee47-17c2-4e52-8b5d-2f1666d14f2c)
 
+remember the webapp also talked about `webdav`, so we use the username and password configured during the admin panel. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/adb52333-85b5-4b1a-aec7-ae0e130fec39)
 
+navigate to the dir path `C/xampp/htdoc`, and uploaded a php `shell.pp
 
 
 
