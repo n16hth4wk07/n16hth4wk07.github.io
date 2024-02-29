@@ -167,3 +167,16 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 ```
 
+## Enumerating port 8000
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6cf18313-a51c-4e79-80b2-f734910612c5)
+
+we notice the web server on port `8000` is running barracuda drive, and we are assked to setup and administrator account. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/daabb8a6-8ce3-47a9-a871-877605a3a9ac)
+
+setup an administrator account. 
+
+
+
+
