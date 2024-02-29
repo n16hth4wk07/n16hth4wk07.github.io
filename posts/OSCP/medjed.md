@@ -230,4 +230,6 @@ tried to stop and start the service, we don't have permission for that, checking
 
 restarted the machine and Boom we got reverse shell as `nt authority/system`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b1ddfc47-7e55-4f01-bb07-5f4e6d099fd3)
 
+and we are through 🙂
