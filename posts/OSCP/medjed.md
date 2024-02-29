@@ -177,6 +177,13 @@ we notice the web server on port `8000` is running barracuda drive, and we are a
 
 setup an administrator account. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b37aef3-baa7-4f43-ae1b-51c0285a3b8b)
+
+hit the next button to continue. 
+
+
+
+
 
 
 
