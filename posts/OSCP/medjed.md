@@ -189,5 +189,45 @@ remember the webapp also talked about `webdav`, so we use the username and passw
 
 navigate to the dir path `C/xampp/htdoc`, and uploaded a php `shell.php` cmd web shell.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ecad56f3-4027-453f-88b7-0ee8754d120c)
+
+checking each web server that is running on the target, checking port `45443` we got our shell and we have RCE. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/85483277-09af-4056-b8f8-42bd0a3d302e)
+
+we got a reverse shell 
+
+
+
+## Privilege Escalation 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/db277185-2dc3-41fd-b12a-066d8ec5fc92)
+
+found a password `CatastropheToes543`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c318c84e-41d2-4348-9aca-3044f46f222a)
+
+found an interesting binary. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ef7f911b-136a-48d2-92d2-81cf952a8bb6)
+
+query the binary info and we can modify the binary. 
+
+```shell
+C:\Users\Jerren>copy C:\Users\Jerren\shell.exe C:\bd\bd.exe                                    
+copy C:\Users\Jerren\shell.exe C:\bd\bd.exe                                                    
+        1 file(s) copied.                                                                      
+                                                                                                                                                                                               
+C:\Users\Jerren>
+```
+replace the binary file with a reverse shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d4c416bb-c49c-48f4-873a-2430aee44e6d)
+
+tried to stop and start the service, we don't have permission for that, checking user privs, we can shutdown the machine. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/80585ae9-4977-49e6-ab32-17757b797452)
+
+restarted the machine and Boom we got reverse shell as `nt authority/system`. 
 
 
