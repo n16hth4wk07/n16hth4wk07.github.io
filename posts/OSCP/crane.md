@@ -81,3 +81,21 @@ ran the exploit and got a reverse shell.
 
 ## Privilege Escalation 
 
+```shell
+www-data@crane:/var/www/html$ sudo -l 
+Matching Defaults entries for www-data on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User www-data may run the following commands on localhost:
+    (ALL) NOPASSWD: /usr/sbin/service
+www-data@crane:/var/www/html$ 
+```
+checking for sudo permissions, we can see we can run `/usr/sbin/service` as root without password. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d90b4b5f-0b67-4434-bdb2-e19d89874076)
+
+abusing the permission, we got root shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/72e74303-7fe3-4530-a934-aa5cd541714e)
+
+and we are through 🙂
