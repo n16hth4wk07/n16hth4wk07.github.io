@@ -31,6 +31,40 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ca04a717-bf45-4c93-8020-108b0460bc10)
 
+there's a web application runing on port `80` opening it on a browser, we got  web page running a craft web app
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8a394fc5-4092-4828-8bf2-194615df1965)
+
+there's a file upload function enabled. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/920f8ee7-9761-463c-b42b-27575c580652)
+
+file only supports `.odt` file allowed. tried to bypass file upload failed. came to my mind to create an ntlm hash stealer file. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5c483fc4-2741-4891-bd5d-3f1e42c13796)
+
+after some research, found an [hash_stealer](https://github.com/rmdavy/badodf/). 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/81d06091-109d-4048-a7da-bcefa50efb02)
+
+created the malicious odt file
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4dff2410-523c-49f0-82d5-48de19a3eb6a)
+
+set a listener on smb server.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3b9805b7-e721-49d7-9fdb-4242c2851cd5)
+
+uploaded the malicious odt file. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/eb56f637-f63b-4fb0-978b-b456a060fb43)
+
+after some seconds, we got some `ntlm` hashes. 
+
+```
+thecybergeek::CRAFT2:aaaaaaaaaaaaaaaa:39487ca7e12027bddbc22aa2e35610b0:010100000000000080ab1259206cda01a239cb14e2ee4d1600000000010010005800710050004700620063005600500003001000580071005000470062006300560050000200100052004100670054007a00580069006c000400100052004100670054007a00580069006c000700080080ab1259206cda01060004000200000008003000300000000000000000000000003000009dad080303ea6ce68aafba3b7d64375d24e9232bf6346082091abd647f55ec070a001000000000000000000000000000000000000900260063006900660073002f003100390032002e003100360038002e00340035002e003100390034000000000000000000
+```
+let's try to crack the ooa
 
 
 
