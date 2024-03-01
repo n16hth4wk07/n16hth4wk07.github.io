@@ -27,6 +27,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Fri Mar  1 15:23:20 2024 -- 1 IP address (1 host up) scanned in 99.51 seconds
 ```
 
+## Enumerating Port 80
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ca04a717-bf45-4c93-8020-108b0460bc10)
 
 
 
