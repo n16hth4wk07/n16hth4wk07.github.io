@@ -18,3 +18,7 @@ trying default creds `admin:admin` and we are able to login to the administrator
 
 checking for `suitecrm` exploit, we got an exploit on searchsploit. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a8722ae5-0423-4662-a5b6-38a8bb78ebc6)
+
+the searchsploit exploit did not work, found another exploit on github. [exploit](https://github.com/manuelz120/CVE-2022-23940). 
+
