@@ -129,5 +129,11 @@ after many trial and error, since we have cred we got earlier, let's use runas t
 
 run the command, let's spawn shell
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/813d64d7-8a42-42cd-bc0e-e9b082c9e2e5)
+
+follow the process and we spawn shell as `thecybergreek`. 
+
+
+
 
 
