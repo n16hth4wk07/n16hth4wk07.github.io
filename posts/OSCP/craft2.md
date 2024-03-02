@@ -121,4 +121,13 @@ we spawn a reverse shell.
 
 ## Privilege escalation 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/53a5b4d8-d990-444c-a094-5d29480dd5a4)
+
+after many trial and error, since we have cred we got earlier, let's use runas to see what we can do. [runas](https://github.com/antonioCoco/RunasCs/blob/master/Invoke-RunasCs.ps1).
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e4981595-22d2-4a23-9b88-fba655437285)
+
+run the command, let's spawn shell
+
+
 
