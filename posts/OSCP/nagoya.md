@@ -52,7 +52,19 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
+## Enumerating Port 80 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/01676795-6eb7-4b03-8aab-6db07d4e6829)
+
+there's a web application running on port `80`. we got a webpage. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/15d10c13-4488-47d9-9fd6-a1e80ce493fd)
+
+fuzzing for hidden dirs, we got some dirs. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/19b0d693-0dd9-4ebf-a20b-2b4a095d4947)
+
+navigating to the `/Teams` dir, we got some usernames. 
 
 
 
