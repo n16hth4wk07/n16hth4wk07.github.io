@@ -1,4 +1,4 @@
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/76252512-b08e-4719-9c8b-b048ab9b4d27)## First enumeration with nmap 
+## First enumeration with nmap 
 
 ```shell
 # Nmap 7.94SVN scan initiated Fri Mar  8 01:20:45 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 21,80,135,139,443,445,3306,7680 -Pn 192.168.197.55
