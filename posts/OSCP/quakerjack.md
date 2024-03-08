@@ -82,7 +82,7 @@ a web server running on port `8081`, opening it on a browser, we got redirected 
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cf554c2d-771c-42ce-bb0e-e297665eeafc)
 
-did some research and found out exploits for the `rconfig` service. 
+did some research and found out exploits for the `rconfig` service. [exploit](https://github.com/v1k1ngfr/exploits-rconfig/)
 
 ```shell
 ┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/QuakerJack]
@@ -113,4 +113,9 @@ cracked the password hash `abgrtyu`.
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6e8dc008-869e-4d1d-9281-fa857cdbad51)
 
 logged in as `admin` success using the password cracked.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1c8a9719-c1b9-458d-9183-6f4df3af3ead)
+
+further research, found a file upload POC to RCE.. [POC](https://gist.github.com/farid007/9f6ad063645d5b1550298c8b9ae953ff)
+
 
