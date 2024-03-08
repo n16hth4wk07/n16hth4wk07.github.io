@@ -91,5 +91,24 @@ given the name of the share is `shenzi` so i just include it in the webpage and 
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/10b9b0ea-18cf-41fd-807c-8d8f9cc996b0)
 
+let's login using the creds we got earlier. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2bf8da13-75ef-4c76-918b-6d07f20b1605)
+
+logged in as admin success. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/31d566bc-86b2-495c-b7b5-f361b8f36fd5)
+
+navigate to `theme editor`, use twenty seventeen theme. edit the 404.php and put a web shell. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/01bb8b00-3038-479c-b291-ebc05a52c295)
+
+navigate to the web shell and we got RCE. let's spawn a reverse shell
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0e36ceeb-96af-45b0-a4f8-4171c985f393)
+
+spawn a reverse shell
 
 
+
+## Privilege Escalation 
