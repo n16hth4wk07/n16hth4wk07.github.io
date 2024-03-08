@@ -49,3 +49,39 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Fri Mar  8 01:21:20 2024 -- 1 IP address (1 host up) scanned in 35.28 seconds
 ```
 
+
+## Enumerating port 80 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2fe92045-0210-4caa-8eaf-4d4b7e8bf050)
+
+the web server running on port `80` & `443` runs xampp and fuzzing for hidden dirs gave out nothing useful.
+
+
+## Enumerating SMB 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0180ced5-c745-439d-a14d-9a0d9e246ba0)
+
+checking for smb shares, we got 2 shares on the smb server. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Shenzi]
+└─$ smbclient //192.168.185.55/Shenzi/ -N
+Try "help" to get a list of possible commands.
+smb: \> dir
+  .                                   D        0  Thu May 28 16:45:09 2020
+  ..                                  D        0  Thu May 28 16:45:09 2020
+  passwords.txt                       A      894  Thu May 28 16:45:09 2020
+  readme_en.txt                       A     7367  Thu May 28 16:45:09 2020
+  sess_klk75u2q4rpgfjs3785h6hpipp      A     3879  Thu May 28 16:45:09 2020
+  why.tmp                             A      213  Thu May 28 16:45:09 2020
+  xampp-control.ini                   A      178  Thu May 28 16:45:09 2020
+
+                12941823 blocks of size 4096. 6496339 blocks available
+smb: \> 
+```
+found some interesting files in the `/shenzi` share 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4c5451d1-5ff5-428b-9d70-6666d7a101da)
+
+downloaded the files, and checking the `passwords.txt` file, we got a wordpress cred `admin:FeltHeadwallWight357`. 
+
