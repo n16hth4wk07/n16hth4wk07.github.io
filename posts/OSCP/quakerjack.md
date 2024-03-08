@@ -110,4 +110,7 @@ ran the sqli exploit, we are able to extract the admin password md5 hash
 
 cracked the password hash `abgrtyu`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6e8dc008-869e-4d1d-9281-fa857cdbad51)
+
+logged in as `admin` success using the password cracked.
 
