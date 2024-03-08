@@ -110,6 +110,16 @@ navigate to the web shell and we got RCE. let's spawn a reverse shell
 spawn a reverse shell
 
 
+
 ## Privilege Escalation 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4f7d4400-06b7-4a5d-a40c-79d8fd5c0091)
+
+running winpeas.exe, we can see `AlwaysInstallElevated` is enabled. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d76540df-46bb-427b-8101-ec8a4320577d)
+
+tried it manually to confirm. we can see it is available.
+
 
 
