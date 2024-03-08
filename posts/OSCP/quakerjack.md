@@ -118,4 +118,28 @@ logged in as `admin` success using the password cracked.
 
 further research, found a file upload POC to RCE.. [POC](https://gist.github.com/farid007/9f6ad063645d5b1550298c8b9ae953ff)
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cbf6f1e7-cdb5-488d-9c4a-687c2ed18591)
+
+navigate to the vendors.php dir and upload a shell.php, intercept request with burp.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2da23a25-75c0-4ec7-ab1d-976806b99c29)
+
+click save and conver the contenttype for `x-php` to `images/gif`
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/00cb5bc1-4a39-48ff-99f1-f5a7497c9da4)
+
+Navigate to the shell path and we can trigger RCE. Let's get a reverse shell 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/08630b1c-4454-420d-a057-bb939aebfbbb)
+
+we got a reverse shell.
+
+
+
+## Privilege Escalation 
+
+
+
+
+
 
