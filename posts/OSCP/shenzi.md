@@ -110,5 +110,6 @@ navigate to the web shell and we got RCE. let's spawn a reverse shell
 spawn a reverse shell
 
 
-
 ## Privilege Escalation 
+
+
