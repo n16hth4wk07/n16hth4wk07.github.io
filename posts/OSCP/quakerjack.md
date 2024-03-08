@@ -135,11 +135,37 @@ Navigate to the shell path and we can trigger RCE. Let's get a reverse shell
 we got a reverse shell.
 
 
-
 ## Privilege Escalation 
 
+```shell
+bash-4.2$ find / -perm -u=s -type f 2>/dev/null
+/usr/bin/find
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/sudo
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/crontab
+/usr/bin/pkexec
+/usr/bin/passwd
+/usr/bin/fusermount
+/usr/sbin/unix_chkpwd
+/usr/sbin/pam_timestamp_check
+/usr/sbin/usernetctl
+/usr/lib/polkit-1/polkit-agent-helper-1
+/usr/libexec/dbus-1/dbus-daemon-launch-helper
+bash-4.2$ 
+```
+checking for suid, we can see an suid `/usr/bin/find`. let's abuse to get root shell.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e5038d22-f609-4061-97c9-863a6f513e89)
 
+abusing it we got a root shell. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/49ea520d-2dde-41ea-9de9-8a17d2ab1792)
 
-
+And we are through... 🙂
