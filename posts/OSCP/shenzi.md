@@ -1,4 +1,4 @@
-## First enumeration with nmap 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/76252512-b08e-4719-9c8b-b048ab9b4d27)## First enumeration with nmap 
 
 ```shell
 # Nmap 7.94SVN scan initiated Fri Mar  8 01:20:45 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 21,80,135,139,443,445,3306,7680 -Pn 192.168.197.55
@@ -84,4 +84,12 @@ found some interesting files in the `/shenzi` share
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4c5451d1-5ff5-428b-9d70-6666d7a101da)
 
 downloaded the files, and checking the `passwords.txt` file, we got a wordpress cred `admin:FeltHeadwallWight357`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8af1a08a-14bc-4ae2-aa82-9f8bf08aad7a)
+
+given the name of the share is `shenzi` so i just include it in the webpage and boom we got a wordpress. remember we got wordpress credential. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/10b9b0ea-18cf-41fd-807c-8d8f9cc996b0)
+
+
 
