@@ -124,7 +124,7 @@ navigate to the vendors.php dir and upload a shell.php, intercept request with b
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2da23a25-75c0-4ec7-ab1d-976806b99c29)
 
-click save and conver the contenttype for `x-php` to `images/gif`
+click save and conver the contenttype for `x-php` to `images/gif` to bypass file upload restriction.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/00cb5bc1-4a39-48ff-99f1-f5a7497c9da4)
 
