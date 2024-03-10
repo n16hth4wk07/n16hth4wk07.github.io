@@ -51,7 +51,7 @@ tried sql injection payload `admin' or 1=1#` to bypass auth, we got an mssql err
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/062735a0-7677-4ae5-a478-69c12b9d3e14)
 
-confirm it is a blind sql. 
+confirm it is a blind sql. tried to exploit to get RCE, found out the user can exec the `xp_cmdshell`. 
 
 
 
