@@ -169,3 +169,4 @@ abusing it we got a root shell.
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/49ea520d-2dde-41ea-9de9-8a17d2ab1792)
 
 And we are through... 🙂
+
