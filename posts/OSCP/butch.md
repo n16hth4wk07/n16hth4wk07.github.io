@@ -53,7 +53,3 @@ tried sql injection payload `admin' or 1=1#` to bypass auth, we got an mssql err
 
 confirm it is a blind sql. tried to exploit to get RCE, found out the user can exec the `xp_cmdshell`. 
 
-
-
-
-
