@@ -88,5 +88,15 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
+## Enumerating web server
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c650535e-d534-4d76-beb8-0611873cb09d)
+
+there's a web server running on port `80`, opening it on a browser, we got a webpage.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8fecdc57-1212-4fa9-b8fe-e4800aeb244b)
+
+viewing the page source, we got a comment potential password. `OfflineTV2020`. 
+
 
 
