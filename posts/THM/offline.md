@@ -140,4 +140,6 @@ SMB         10.10.29.82     445    OFFLINE          1113: KingOfTheDomain\SVC_RO
 ```
 using cme to do `rid-brute` we got lists of users in the domain 
 
+```
 
+```
