@@ -99,4 +99,45 @@ there's a web server running on port `80`, opening it on a browser, we got a web
 viewing the page source, we got a comment potential password. `OfflineTV2020`. 
 
 
+## Enumerating SMB 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Offline]
+└─$ sudo nxc smb 10.10.29.82 -u anonymous -p '' --rid-brute
+SMB         10.10.29.82     445    OFFLINE          [*] Windows Server 2012 R2 Standard 9600 x64 (name:OFFLINE) (domain:kingofthe.domain) (signing:True) (SMBv1:True)
+SMB         10.10.29.82     445    OFFLINE          [+] kingofthe.domain\anonymous: 
+SMB         10.10.29.82     445    OFFLINE          498: KingOfTheDomain\Enterprise Read-only Domain Controllers (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          500: KingOfTheDomain\Administrator (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          501: KingOfTheDomain\Guest (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          502: KingOfTheDomain\krbtgt (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          512: KingOfTheDomain\Domain Admins (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          513: KingOfTheDomain\Domain Users (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          514: KingOfTheDomain\Domain Guests (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          515: KingOfTheDomain\Domain Computers (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          516: KingOfTheDomain\Domain Controllers (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          517: KingOfTheDomain\Cert Publishers (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          518: KingOfTheDomain\Schema Admins (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          519: KingOfTheDomain\Enterprise Admins (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          520: KingOfTheDomain\Group Policy Creator Owners (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          521: KingOfTheDomain\Read-only Domain Controllers (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          522: KingOfTheDomain\Cloneable Domain Controllers (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          525: KingOfTheDomain\Protected Users (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          553: KingOfTheDomain\RAS and IAS Servers (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          571: KingOfTheDomain\Allowed RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          572: KingOfTheDomain\Denied RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          1000: KingOfTheDomain\WinRMRemoteWMIUsers__ (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          1001: KingOfTheDomain\OFFLINE$ (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1102: KingOfTheDomain\DnsAdmins (SidTypeAlias)
+SMB         10.10.29.82     445    OFFLINE          1103: KingOfTheDomain\DnsUpdateProxy (SidTypeGroup)
+SMB         10.10.29.82     445    OFFLINE          1106: KingOfTheDomain\mykull (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1107: KingOfTheDomain\poki (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1108: KingOfTheDomain\lily (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1109: KingOfTheDomain\toast (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1110: KingOfTheDomain\scarra (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1111: KingOfTheDomain\yvonne (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1112: KingOfTheDomain\fed (SidTypeUser)
+SMB         10.10.29.82     445    OFFLINE          1113: KingOfTheDomain\SVC_ROBOTARMY (SidTypeUser)
+```
+using cme to do `rid-brute` we got lists of users in the domain 
+
 
