@@ -25,4 +25,20 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Fri Mar 22 00:21:26 2024 -- 1 IP address (1 host up) scanned in 39.73 seconds
 ```
 
+## Enumerating web server 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/456ef617-a6fc-4a75-8b47-7090d8bd3f6c)
+
+a web server is running on port `80`, opening it on a browser, we got an `under construction` response on the webpage. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/cc3edf23-206f-4d19-8e35-072d2e569b27)
+
+fuzzing for hidden dir, we can see dir `/test`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/96143528-cae5-42c2-b13e-04d0c0618288)
+
+navigating to the dir, we ca see it is running an image service `Zenphoto`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a15ce474-9911-4129-8d25-1c5e063878cf)
+
+checking the source code of the web page, we can see the version of the service. `1.4.1.4`.
