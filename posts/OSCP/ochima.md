@@ -77,3 +77,22 @@ there's a web server running on port `80`, opening it on a browser w got a defau
 fuzzing the wweb url, got nothing hidden. 
 
 
+## Enumerating port 8338 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/73ded4e9-de1b-43b4-bec0-e5e2db6369bc)
+
+we can see it is running `mailtrail 0.52`. let's look for exploit. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/99045b74-3133-42fc-8880-339940e9fc6f)
+
+found and exploit on github. [exploit](https://github.com/spookier/Maltrail-v0.53-Exploit). 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9cb0ef34-2b62-4505-be6e-86ebcd7f34ae)
+
+run the exploit and we got a reverse shell. 
+
+
+
+## Privilege Escalation
+
+
