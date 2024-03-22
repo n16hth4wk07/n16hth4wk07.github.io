@@ -42,3 +42,4 @@ navigating to the dir, we ca see it is running an image service `Zenphoto`.
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a15ce474-9911-4129-8d25-1c5e063878cf)
 
 checking the source code of the web page, we can see the version of the service. `1.4.1.4`.
+
