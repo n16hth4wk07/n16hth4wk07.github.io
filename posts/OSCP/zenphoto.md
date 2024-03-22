@@ -43,3 +43,23 @@ navigating to the dir, we ca see it is running an image service `Zenphoto`.
 
 checking the source code of the web page, we can see the version of the service. `1.4.1.4`.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/48ec989e-c9b9-42cf-9806-9169372c214d)
+
+found an exploit on searcsploit. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/21ed8358-0032-4f1d-b226-ba8fdc4d1d09)
+
+run the exploit and we got RCE. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f35251ea-1dc8-49e9-8088-f97f5747796b)
+
+popped a reverse shell.
+
+
+
+## Privilege Escalation 
+
+
+
+
+
