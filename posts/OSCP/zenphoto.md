@@ -59,7 +59,11 @@ popped a reverse shell.
 
 ## Privilege Escalation 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1825c8ee-cf96-4e54-8a31-0fcd753ed698)
 
+after sometime of trial and error, used pwnkit and it worked. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/96c30ae7-5335-48ce-8b2b-3ee03f39d7ab)
 
+And we are through. 
 
