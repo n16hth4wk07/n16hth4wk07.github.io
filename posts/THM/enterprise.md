@@ -222,5 +222,7 @@ we login RDP using the creds,
 
 ## Privilege Escalation
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f2edf7cc-690f-47b3-8b36-74b6ffb809f6)
 
+running winpeas.exe, we can see an unquoted service path. 
 
