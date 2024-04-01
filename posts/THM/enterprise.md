@@ -60,3 +60,59 @@ Host script results:
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Mon Apr  1 16:03:10 2024 -- 1 IP address (1 host up) scanned in 26.51 seconds
 ```
+add `lab.enterprise.thm` to `/etc/host` file.
+
+## Enumerating port 80
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/500b3abf-da19-4dc7-9926-7322dfc08aff)
+
+checking the ip on a browser, we got a warning page, keep off. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c7672d03-679c-4fb1-9374-f8752df35998)
+
+tried fuzzing for hidden directories, got nothing. 
+
+
+
+## Enumerating SMB 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Enterprise]
+└─$ smbclient -L //10.10.81.144/ -U anonymous -N
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        Docs            Disk      
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share 
+        SYSVOL          Disk      Logon server share 
+        Users           Disk      Users Share. Do Not Touch!
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to 10.10.81.144 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+                                                                                                                                                            
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Enterprise]
+└─$ smbclient //10.10.81.144/Docs -U anonymous -N  
+Try "help" to get a list of possible commands.
+smb: \> dir 
+  .                                   D        0  Mon Mar 15 03:47:35 2021
+  ..                                  D        0  Mon Mar 15 03:47:35 2021
+  RSA-Secured-Credentials.xlsx        A    15360  Mon Mar 15 03:46:54 2021
+  RSA-Secured-Document-PII.docx       A    18432  Mon Mar 15 03:45:24 2021
+
+                15587583 blocks of size 4096. 9916826 blocks available
+smb: \> recurse off
+smb: \> prompt off
+smb: \> mget * 
+getting file \RSA-Secured-Credentials.xlsx of size 15360 as RSA-Secured-Credentials.xlsx (29.0 KiloBytes/sec) (average 29.0 KiloBytes/sec)
+getting file \RSA-Secured-Document-PII.docx of size 18432 as RSA-Secured-Document-PII.docx (33.8 KiloBytes/sec) (average 31.4 KiloBytes/sec)
+smb: \> 
+```
+checking the smbshare for anonymous session, we could login anonymous and download some file in the `Docs` share. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3a326bb2-e245-4be2-9653-bb4dab59a914)
+
+Tried to open these docs, we can see they are passworded. 
+
