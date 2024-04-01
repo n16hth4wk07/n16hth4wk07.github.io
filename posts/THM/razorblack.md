@@ -103,3 +103,34 @@ employee_status.xlsx  sbradley.txt
 ```
 first we check for nfs share available and next we mount the share. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3910a286-2cc6-4c2a-a651-4245ae591003)
+
+checking the content of the xslx doc, we can see lists of users. 
+
+```
+daven port
+imogen royce
+tamara vidal
+arthur edwards
+carl ingram
+nolan cassidy
+reza zaydan
+ljudmila vetrova
+rico delgado
+tyson williams
+steven bradley
+chamber lin
+```
+daven port
+imogen royce
+tamara vidal
+arthur edwards
+carl ingram
+nolan cassidy
+reza zaydan
+ljudmila vetrova
+rico delgado
+tyson williams
+steven bradley
+chamber lin
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d82073ad-4c86-4100-9b60-9dddeb83417e)
