@@ -226,3 +226,18 @@ we login RDP using the creds,
 
 running winpeas.exe, we can see an unquoted service path. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/96d63dcb-38a2-4ff6-b1b9-17f51596c04a)
+
+checking info about the service, we can see it is running as `localsystem`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e75dcaf4-9e00-4627-bf4a-dc8e2c3807f7)
+
+Abusing unquoted service path, we create a reverse shell payload in the path of the binary. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e11f6044-31a7-499c-a999-ccc97e5334e5)
+
+restarted the service and we got a reverse shell as `nt authority`
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/4675c53c-cd4f-46b6-a2b3-ed3dc2486add)
+
+and we are through 🕶️
