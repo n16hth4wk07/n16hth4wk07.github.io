@@ -204,4 +204,4 @@ tried winrm and we can login winrm using the cred.
 logged in using winrm. 
 
 
-
+## Privilege Escalation
