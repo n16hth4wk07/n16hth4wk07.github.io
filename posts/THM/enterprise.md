@@ -116,3 +116,68 @@ checking the smbshare for anonymous session, we could login anonymous and downlo
 
 Tried to open these docs, we can see they are passworded. 
 
+```shell
+SMB         10.10.81.144    445    LAB-DC           [*] Windows 10.0 Build 17763 x64 (name:LAB-DC) (domain:LAB.ENTERPRISE.THM) (signing:True) (SMBv1:False)
+SMB         10.10.81.144    445    LAB-DC           [+] LAB.ENTERPRISE.THM\anonymous: 
+SMB         10.10.81.144    445    LAB-DC           500: LAB-ENTERPRISE\Administrator (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           501: LAB-ENTERPRISE\Guest (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           502: LAB-ENTERPRISE\krbtgt (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           512: LAB-ENTERPRISE\Domain Admins (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           513: LAB-ENTERPRISE\Domain Users (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           514: LAB-ENTERPRISE\Domain Guests (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           515: LAB-ENTERPRISE\Domain Computers (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           516: LAB-ENTERPRISE\Domain Controllers (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           517: LAB-ENTERPRISE\Cert Publishers (SidTypeAlias)
+SMB         10.10.81.144    445    LAB-DC           520: LAB-ENTERPRISE\Group Policy Creator Owners (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           521: LAB-ENTERPRISE\Read-only Domain Controllers (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           522: LAB-ENTERPRISE\Cloneable Domain Controllers (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           525: LAB-ENTERPRISE\Protected Users (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           526: LAB-ENTERPRISE\Key Admins (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           553: LAB-ENTERPRISE\RAS and IAS Servers (SidTypeAlias)
+SMB         10.10.81.144    445    LAB-DC           571: LAB-ENTERPRISE\Allowed RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.81.144    445    LAB-DC           572: LAB-ENTERPRISE\Denied RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.81.144    445    LAB-DC           1000: LAB-ENTERPRISE\atlbitbucket (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1001: LAB-ENTERPRISE\LAB-DC$ (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1102: LAB-ENTERPRISE\DnsAdmins (SidTypeAlias)
+SMB         10.10.81.144    445    LAB-DC           1103: LAB-ENTERPRISE\DnsUpdateProxy (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           1104: LAB-ENTERPRISE\ENTERPRISE$ (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1106: LAB-ENTERPRISE\bitbucket (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1107: LAB-ENTERPRISE\nik (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1108: LAB-ENTERPRISE\replication (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1109: LAB-ENTERPRISE\spooks (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1110: LAB-ENTERPRISE\korone (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1111: LAB-ENTERPRISE\banana (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1112: LAB-ENTERPRISE\Cake (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1113: LAB-ENTERPRISE\Password-Policy-Exemption (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           1114: LAB-ENTERPRISE\Contractor (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           1115: LAB-ENTERPRISE\sensitive-account (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           1116: LAB-ENTERPRISE\contractor-temp (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1117: LAB-ENTERPRISE\varg (SidTypeUser)
+SMB         10.10.81.144    445    LAB-DC           1118: LAB-ENTERPRISE\adobe-subscription (SidTypeGroup)
+SMB         10.10.81.144    445    LAB-DC           1119: LAB-ENTERPRISE\joiner (SidTypeUser)
+```
+using nxc, we are able to enumerate lists of users present in the domain.
+
+```
+atlbitbucket
+bitbucket
+nik
+replication
+spooks
+korone
+banana
+Cake
+Password-Policy-Exemption
+Contractor
+sensitive-account
+contractor-temp
+varg
+adobe-subscription
+joiner
+```
+we got lists of users, also we can see a `bitbucket` name, which means they might be something hidden in cloud. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/b65936a5-219a-4b8a-ae30-b1537d090239)
+
+checking around github, and we got a git enterprise we name `Nik` checking each commit and we got a potential passwd. `nik:ToastyBoi!`
+
