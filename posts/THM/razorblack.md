@@ -157,4 +157,11 @@ $krb5asrep$23$twilliams@RAZ0RBLACK.THM:b402a32bf45cbfb1e3f4aa8883a38c1e$20991bb3
 [-] User sbradley doesn't have UF_DONT_REQUIRE_PREAUTH set
 [-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
 ```
+we got user `twilliams` hash. let's crack it
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/95846b57-f1ce-4db0-9af7-537c7d137b69)
+
+cracked the hash. `twilliams:roastpotatoes`. 
+
+
 
