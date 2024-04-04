@@ -38,6 +38,12 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
+## Enumerating web server 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/17d833ce-34ba-4df4-848f-768f890184e1)
+
+checking the ip on a browser, we got a vhost. add `overload.ptd` to `/etc/hosts`. 
+
 
 
 
