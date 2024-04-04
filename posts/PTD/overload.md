@@ -44,6 +44,41 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 checking the ip on a browser, we got a vhost. add `overload.ptd` to `/etc/hosts`. 
 
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/PTD/overload]
+└─$ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.overload.ptd" -u http://10.150.150.17/ -fc 403,401 -fs 13 
+                                                                              
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\       
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/       
+         \ \_\   \ \_\  \ \____/  \ \_\        
+          \/_/    \/_/   \/___/    \/_/        
+                                                                              
+       v1.5.0-dev
+________________________________________________
+                                                                              
+ :: Method           : GET                                                                                                                                  
+ :: URL              : http://10.150.150.17/  
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
+ :: Header           : Host: FUZZ.overload.ptd
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10                                                     
+ :: Threads          : 40                                                     
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response status: 403,401 
+ :: Filter           : Response size: 13
+________________________________________________                                                                                                            
+                                                                                                                                                            
+shop                    [Status: 200, Size: 24769, Words: 4444, Lines: 364, Duration: 493ms] 
+cms                     [Status: 200, Size: 14143, Words: 5680, Lines: 329, Duration: 8045ms]
+wordpress               [Status: 200, Size: 25966, Words: 1204, Lines: 346, Duration: 4134ms]
+drupal                  [Status: 200, Size: 8822, Words: 1512, Lines: 232, Duration: 2655ms]
+database                [Status: 200, Size: 14762, Words: 2348, Lines: 221, Duration: 2054ms]
+
+```
+fuzzing for sub domains. 
 
 
 
