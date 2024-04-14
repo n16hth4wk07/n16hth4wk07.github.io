@@ -152,3 +152,14 @@ checking sudo permissions, we can see we can run `calc` as user rohit without pa
 
 Abusing the binary `calc` gave us shell as user `rohit`.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c19d7cce-62df-4af1-8871-a83f44ad6481)
+
+After many research, trying to exploit it, decided to try out `PwnKit` [PwnKit](https://github.com/ly4k/PwnKit).
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5ed7c996-da74-47aa-a830-44baedda24c0)
+
+Followed the instruction from github and Boom!!! we rooted it!!!. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1621110a-1070-4660-ac48-fd698de62165)
+
+And we are through!!! 🙂
