@@ -36,4 +36,24 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
-## 
+## Enumerating SMB 
+
+```shell
+┌──(n16hth4wk👽n16hth4wk-sec)-[~/Documents/Vulnyx/Sun]
+└─$ smbclient -L 172.16.246.131 -N 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        print$          Disk      Printer Drivers
+        IPC$            IPC       IPC Service (Samba 4.17.12-Debian)
+        nobody          Disk      File Upload Path
+Reconnecting with SMB1 for workgroup listing.
+smbXcli_negprot_smb1_done: No compatible protocol selected by server.
+Protocol negotiation to server 172.16.246.131 (for a protocol between NT1 and NT1) failed: NT_STATUS_INVALID_NETWORK_RESPONSE
+Unable to connect with SMB1 -- no workgroup available
+```
+checking for anonymous shares available for us, we can see that the share `nobody` is available and it says a file upload path. 
+
+
+
+
