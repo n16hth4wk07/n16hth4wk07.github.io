@@ -1,4 +1,4 @@
-![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/af1c2f59-6ee3-47de-a3f8-a033491c9127)## First Enumeration with nmap 
+## First Enumeration with nmap 
 
 ```shell
 # Nmap 7.94SVN scan initiated Sun Apr 21 02:39:03 2024 as: nmap -sC -sV -T4 -oN service.nmap -p 22,80 -Pn 172.16.246.132
@@ -23,4 +23,13 @@ Service detection performed. Please report any incorrect results at https://nmap
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/933d9107-a6d5-45a3-9b3e-7900b1affaf0)
 
 navigating the Ip on a browser, we got a page with a ping request output. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7fbd1456-b381-4da7-95e5-472d3f2af699)
+
+fuzzing for hidden dirs, we got `my_weblog`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/2b1bfcd4-17ec-4096-b57a-52237d413069)
+
+fuzzing further, we got some hidden dirs. 
+
 
