@@ -52,7 +52,29 @@ smbXcli_negprot_smb1_done: No compatible protocol selected by server.
 Protocol negotiation to server 172.16.246.131 (for a protocol between NT1 and NT1) failed: NT_STATUS_INVALID_NETWORK_RESPONSE
 Unable to connect with SMB1 -- no workgroup available
 ```
-checking for anonymous shares available for us, we can see that the share `nobody` is available and it says a file upload path. 
+checking for anonymous shares available for us, we can see that the share `nobody`.  
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1ec4ebf9-36d2-47a6-be72-1786f14f49a4)
+
+found a username `punt4n0` 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6121381a-0bb4-48aa-9376-48a65067e319)
+
+try to bruteforce the password for the user, 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/eea2fea3-fcb6-4e47-b03d-8a39c07cb20c)
+
+found the password `sunday`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/743bf7ac-f167-4d6e-b8c7-89748926f5a8)
+
+using the creds gotten to check if we have share access to the shares in smb. we got read,write access to one of the shares
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/c0b95659-f72e-47b7-87fc-56cb072be2f1)
+
+login to download some file and uploaded a file into the share. 
+
+
 
 
 
