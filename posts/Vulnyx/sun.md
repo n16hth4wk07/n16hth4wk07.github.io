@@ -151,3 +151,6 @@ modified the `service.ps1` script, and wait for 1 min
 
 got a reverse shell as `root`.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/5b6531cd-9004-4139-a324-c8c2f4ebb23d)
+
+And we are through!!! 
