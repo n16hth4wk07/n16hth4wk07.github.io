@@ -32,4 +32,6 @@ fuzzing for hidden dirs, we got `my_weblog`.
 
 fuzzing further, we got some hidden dirs. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1c62b2dd-640f-441a-a55e-fef99f2fdd94)
 
+go to the admin page, 
