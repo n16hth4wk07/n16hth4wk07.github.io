@@ -62,3 +62,30 @@ using wpscan to enumerate usernames and plugins present, we got user `wade`.
 
 bruteforce password with the wordlist we made earlier from cewl. we got the password. `wade:parzival`.
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6e78d833-3376-4291-98b2-b47d1a4d904b)
+
+login wp-admin. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/6499e052-dff0-4d16-b797-c1711f752a2b)
+
+login success to wp-admin. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/91313f81-f99d-4f93-9042-3e082132345e)
+
+Upload a malicious php payload to the web app. in the theme selection option. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ba8f6eac-b331-4e44-8960-fd061e7c229c)
+
+navigate to the webshell, and trigger RCE. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1492de65-4a4e-4c95-99db-e921b0a8567a)
+
+Pop a revershell. 
+
+
+## Privilege Escalation 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/8903e1d8-2bae-4904-8e92-9a1b3eae1447)
+
+SEIMPERSONATE is enabled. 
+
