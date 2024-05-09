@@ -42,6 +42,10 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Opening the ip on a browser, we got a windows default webpage
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/17bc7612-1aab-45bd-ae22-9c9b28f4274f)
+
+bruteforcing web dirs, we got some dirs, and it also looks like a wordpress servce is running. 
+
 
 
 
