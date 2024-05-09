@@ -89,3 +89,16 @@ Pop a revershell.
 
 SEIMPERSONATE is enabled. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/baae001b-4e4c-412c-8704-b295de572dee)
+
+printspoofer and godpotato did not work. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0e903599-52ca-40ba-8102-3b8ed5a1277a)
+
+trying cme to see if we can login RDP, we can see we can go in rdp. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/78e02863-8f33-4a1a-bd16-49b2cb5520e8)
+
+login rdp to the target. 
+
+
