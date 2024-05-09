@@ -46,7 +46,19 @@ Opening the ip on a browser, we got a windows default webpage
 
 bruteforcing web dirs, we got some dirs, and it also looks like a wordpress servce is running. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/3a70e114-1030-4dc6-a6ca-c9034ad957a8)
 
+navigating to the webpage, we can see a game server, looks like a web3 gaming site. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/1ac439cd-3275-4438-8b4a-52d9a2553a21)
 
+There's lots of information on the webpage, used cewl to make a wordlist from the webpage and we will try to bruteoforce later. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/57cac1be-9a11-4e5f-9739-d256bb87c7f8)
+
+using wpscan to enumerate usernames and plugins present, we got user `wade`.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/bd963e93-b222-43bf-81e4-a0e3463c3ee2)
+
+bruteforce password with the wordlist we made earlier from cewl. we got the password. `wade:parzival`.
 
