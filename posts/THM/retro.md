@@ -123,4 +123,21 @@ found an exploit on github.
 
 ![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0d530565-10fa-41ad-8712-b0363ef672fd)
 
+download the exploit to our machine. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/d68eea23-6a75-4b55-8fcd-4dd080fc268a)
+
+send the file to our target. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/9ac57e5e-e841-4cc8-95f5-1a3096cf9f67)
+
+extract thee content of the file. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/092335d0-0909-4b68-b324-cd7072aebdfa)
+
+run the exploit and boom we got Admin. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/23c0352c-c9f0-4fc6-97c7-52ba2a01264b)
+
+and we are through. 
 
