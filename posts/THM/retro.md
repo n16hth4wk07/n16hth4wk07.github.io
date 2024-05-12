@@ -101,4 +101,26 @@ trying cme to see if we can login RDP, we can see we can go in rdp.
 
 login rdp to the target. 
 
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/ea9166b9-b4db-40ff-a1e1-44f366e9ba81)
+
+found a binary exe file in the recycle bin, restore it.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/aed59045-e5d2-4ad2-8664-6d23c69f56ae)
+
+restore the file. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0ee1100b-f4ca-42d4-a7fc-949a4beb1137)
+
+try to run the application, it asked for admin password. we don't have it so let's move on.
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/7800eaa9-3a1b-416c-b927-5c8e3451c605)
+
+checking systeminfo, we can see the build number of this machine. `10.0.14393 N/A Build 14393`. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/546ad56d-25f5-445f-9e3c-cd8ffb714cb8)
+
+found an exploit on github. 
+
+![image](https://github.com/n16hth4wk07/n16hth4wk07.github.io/assets/87468669/0d530565-10fa-41ad-8712-b0363ef672fd)
+
 
