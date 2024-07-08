@@ -14,3 +14,5 @@ PORT      STATE  SERVICE
 Read data files from: /usr/bin/../share/nmap
 # Nmap done at Mon Jul  8 17:20:13 2024 -- 1 IP address (1 host up) scanned in 126.80 seconds
 ```
+now we know what ports are open, let's run nmap default script scans
+
