@@ -51,7 +51,24 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
-## Enumerating port 1337 
+## Enumerating web server 
+
+> Port 1337
+
+![image](https://github.com/user-attachments/assets/94fab591-e554-4b3c-8b56-44fc07ed1d40)
+
+checking the web server on port 1337 on a browser, we got a default web page, checking the source code there was nothing interesting. 
+
+> Fuzzing for hidden directories
+
+![image](https://github.com/user-attachments/assets/4e58ef91-639c-4ae3-a73c-444886f4b5d1)
+
+we got 2 directories, 
+
+![image](https://github.com/user-attachments/assets/6d2467a2-dc2b-4257-b70c-188e5034ceb3)
+
+
+
 
 
 
