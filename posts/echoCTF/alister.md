@@ -67,6 +67,18 @@ we got 2 directories,
 
 ![image](https://github.com/user-attachments/assets/6d2467a2-dc2b-4257-b70c-188e5034ceb3)
 
+checking both dirs return error 403 forbidden
+
+
+> Port 5244
+
+![image](https://github.com/user-attachments/assets/2813e07d-f7b7-4fbb-86fe-2a092a738ca6)
+
+another web server on port `5244`, opening it on browser we can see it is running an alist service. 
+
+![image](https://github.com/user-attachments/assets/a6f35070-fa95-4f20-8bcd-c1a536d6fe8e)
+
+found first flag in public dir
 
 
 
