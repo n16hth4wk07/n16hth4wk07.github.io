@@ -10,3 +10,6 @@ Text4Shell is a critical vulnerability that affects a wide range of systems. The
 ### CVE
 **CVE-2022-42889**
 
+
+### Steps to exploit 
+
