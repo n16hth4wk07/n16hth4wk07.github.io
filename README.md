@@ -11,5 +11,4 @@
 
 - 💞️ I’m looking to collaborate on Projects
 
-- 📫 How to reach me on Discord @n16hth4wk#8241 Twitter @n16hthawk
-
+- 📫 How to reach me on Discord @n16hth4wk Twitter @n16h7hawk
