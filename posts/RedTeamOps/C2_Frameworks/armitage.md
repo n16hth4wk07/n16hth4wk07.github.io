@@ -42,3 +42,14 @@ click yes to setup everything
 
 >Using an eternalblue exploit for the target
 
+![image](https://github.com/user-attachments/assets/9de5602a-b0bc-447f-8364-d337d0fd0486)
+
+drag and drop exploit on target. it will run exploit automatically for you 
+
+
+>Successfully exploit MS17-010
+
+![image](https://github.com/user-attachments/assets/8cff83e1-749a-45a7-8523-1b227ff6e5f0)
+
+
+### And that's how to install and use armitage 😉 use it for educational purpose.
