@@ -30,3 +30,15 @@ sudo armitage
 click yes to setup everything
 
 
+>Armitage up and running
+
+![image](https://github.com/user-attachments/assets/06a7173c-a315-4f44-a320-96b9d59b9b20)
+
+
+>Doing a quick scan using nmap
+
+![image](https://github.com/user-attachments/assets/d33f29f5-4b91-4fe1-99b3-860dbe70e55e)
+
+
+>Using an eternalblue exploit for the target
+
