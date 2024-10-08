@@ -20,6 +20,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 <p><strong>What Do I Do :</strong> <a href="#">CTF / Red Teaming / Penetration testing</a></p>
 <p><strong>GitHub :</strong> <a href="https://github.com/n16hth4wk07">github.com/n16hth4wk07</a></p>
 <p><strong>Twitter :</strong> <a href="https://twitter.com/n16h7hawk">twitter.com/n16h7hawk</a></p>
+<p><strong>Certifications :</strong> <a href="#">OSCP </a></p>
 <br clear="left">
 <br clear="left">
 
