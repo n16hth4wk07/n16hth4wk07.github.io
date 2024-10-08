@@ -7,3 +7,7 @@ title : nighthawk - My OSCP Journey 1st & 2nd Attempt
 
 _**My Experience with OSCP**_
 
+
+- WhoAmI?:- 
+
+Konnichiwa, I'm Segun mostly known as `nighthawk`. I love hacking 
