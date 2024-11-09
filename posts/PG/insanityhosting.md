@@ -92,6 +92,12 @@ we noticed a web server running on port 80, opening it on a browser, we got a pa
 
 ![image](https://github.com/user-attachments/assets/46623299-d128-43d0-98fa-0bfcf665153f)
 
+```
+http://192.168.165.124/news/
+http://192.168.165.124/monitoring/login.php
+http://192.168.165.124/webmail/src/login.php
+```
+
 let's check out the dirs. 
 
 ![image](https://github.com/user-attachments/assets/445fe212-9673-427c-97fa-53c1fed68a95)
