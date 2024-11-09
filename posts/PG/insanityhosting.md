@@ -94,6 +94,9 @@ we noticed a web server running on port 80, opening it on a browser, we got a pa
 
 let's check out the dirs. 
 
+![image](https://github.com/user-attachments/assets/445fe212-9673-427c-97fa-53c1fed68a95)
+
+we got a user named `otis`, let's check around for more info.
 
 
 
