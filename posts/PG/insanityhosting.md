@@ -104,10 +104,13 @@ let's check out the dirs.
 
 we got a user named `otis`, let's check around for more info.
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/89ca467a-f898-42d4-9104-1cacd1b63b51)
 
 let's try bruteforce password 
 
 
+![Uploading image.png…]()
+
+login using username and password `otis:123456`.
 
 
