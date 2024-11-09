@@ -104,7 +104,9 @@ let's check out the dirs.
 
 we got a user named `otis`, let's check around for more info.
 
+![Uploading image.png…]()
 
+let's try bruteforce password 
 
 
 
