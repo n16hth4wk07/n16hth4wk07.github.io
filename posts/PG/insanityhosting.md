@@ -87,3 +87,16 @@ first enumeratng port 21, check if we could get any files or loot through ftp, w
 
 we noticed a web server running on port 80, opening it on a browser, we got a page talking about hosting servers. and also we can see a vhost name `insanityhosting.vm`. let's add it to our `/etc/passwd` file 
 
+
+>fuzzing for hidden directories
+
+![image](https://github.com/user-attachments/assets/46623299-d128-43d0-98fa-0bfcf665153f)
+
+let's check out the dirs. 
+
+
+
+
+
+
+
