@@ -186,6 +186,20 @@ nxc smb 10.150.150.0/22
 
 
 
-## Checking for targets vuln to eternalblue 
+## Checking for common network smb vulns 
 
+> Checking for targets vuln to eternalblue using net exec 
+
+```bash
+nxc smb 10.150.150.0/22 -M ms17-010 2>/dev/null
+```
+
+![image](https://github.com/user-attachments/assets/82fa052d-2f3d-4e30-a82e-2fc103d2af6e)
+
+we can see the targets below are vulnerable to eternalblue 
+
+```
+10.150.150.11
+10.150.150.242
+```
 
