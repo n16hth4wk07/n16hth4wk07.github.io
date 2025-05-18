@@ -175,4 +175,14 @@ fping -a -g 10.150.150.0/22 2>/dev/null > ips.txt
 
 
 
+> Discovering windows devices using net exec
+
+
+```bash
+nxc smb 10.150.150.0/22
+```
+
+![image](https://github.com/user-attachments/assets/96009369-fe6e-4ddb-9bb7-7b567acbef4e)
+
+
 
