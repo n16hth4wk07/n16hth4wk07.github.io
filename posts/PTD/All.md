@@ -387,3 +387,11 @@ found an exploit on github
 
 
 
+
+## 10.150.150.12 
+
+>first enum with nmap
+
+```bash
+
+```
