@@ -364,5 +364,12 @@ use feroxbuster to discover the path where the shell is uploaded to.
 we got RCE and executed whoami as user `nt authority\system`
 
 
+![image](https://github.com/user-attachments/assets/3c149b10-d7d2-4a3c-8384-6398d564c85c)
+
+let's pop reverse shell 
+
+
+
+
 
 
