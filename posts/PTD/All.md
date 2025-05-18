@@ -393,5 +393,37 @@ found an exploit on github
 >first enum with nmap
 
 ```bash
+# Nmap 7.94SVN scan initiated Sun May 18 21:34:18 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p21,22 -Pn -oN 12_service.txt 10.150.150.12
+Nmap scan report for 10.150.150.12
+Host is up (0.17s latency).
 
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 2.0.8 or later
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 10.66.67.58
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 1f:bc:e3:e3:5b:eb:ff:b2:30:a7:4c:33:11:bf:67:a3 (RSA)
+|   256 c8:e4:18:29:59:d0:4e:ea:dc:05:50:bc:d5:6f:e5:00 (ECDSA)
+|_  256 58:d5:70:6d:0d:80:71:0a:ba:8e:1c:7a:c7:37:2f:e2 (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun May 18 21:34:36 2025 -- 1 IP address (1 host up) scanned in 17.86 seconds
 ```
+
+> enum port 21 (ftp)
+
+
