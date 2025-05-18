@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/249c6f61-b546-4373-b86e-49ac71dfa42a)
 
->first discover targets in the platform ranging from .10 - .254
+> first discover targets in the platform ranging from .10 - .254. I have script to look for targets in a subnet or multiple subnet
 
 ```python
 import subprocess
@@ -112,5 +112,9 @@ if __name__ == "__main__":
    main()
 
 ```
+
+
+
+
 
 
