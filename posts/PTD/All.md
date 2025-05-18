@@ -207,7 +207,7 @@ we can see the targets below are vulnerable to eternalblue
 
 # Exploiting targets 
 
-## 10.150.150.11
+## 10.150.150.11 (pwndrive)
 
 > first enum with nmap, first we do full port scan
 
@@ -335,9 +335,20 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 
+> enumerating port 80 
+
+![image](https://github.com/user-attachments/assets/a925a723-a008-497c-a305-cf54e6c1b1ea)
+
+we can see the web service is up and running 
+
+![image](https://github.com/user-attachments/assets/744df946-c914-4b33-ba60-78f3f4dbe8ed)
+
+clicked the signin button to login, trying default creds. 
 
 
+![image](https://github.com/user-attachments/assets/76f5e383-4760-4a21-b5d9-88d590774272)
 
+we loging using `admin:admin` credential. we can see a cmd.php file. 
 
 
 
