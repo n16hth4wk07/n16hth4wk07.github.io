@@ -350,10 +350,18 @@ clicked the signin button to login, trying default creds.
 
 we loging using `admin:admin` credential. we can see a cmd.php file. 
 
+![image](https://github.com/user-attachments/assets/c144bd7e-2538-4623-b6d7-90095d2f5d7f)
+
+we create a new dir and upload file webshell.php
+
+![image](https://github.com/user-attachments/assets/b4ceb5c9-4cc4-46eb-80a1-63203a002670)
+
+use feroxbuster to discover the path where the shell is uploaded to. 
 
 
+![image](https://github.com/user-attachments/assets/beb52d8a-adbc-420a-aa54-0f732d138afd)
 
-
+we got RCE and executed whoami as user `nt authority\system`
 
 
 
