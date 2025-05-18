@@ -203,3 +203,147 @@ we can see the targets below are vulnerable to eternalblue
 10.150.150.242
 ```
 
+
+
+# Exploiting targets 
+
+## 10.150.150.11
+
+> first enum with nmap, first we do full port scan
+
+```bash
+# Nmap 7.94SVN scan initiated Sun May 18 20:47:07 2025 as: /usr/lib/nmap/nmap --privileged -p- --min-rate 1000 -v -Pn -oN 11.txt 10.150.150.11
+Nmap scan report for 10.150.150.11
+Host is up (0.35s latency).
+Not shown: 65518 closed tcp ports (reset)
+PORT      STATE SERVICE
+21/tcp    open  ftp
+80/tcp    open  http
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+443/tcp   open  https
+445/tcp   open  microsoft-ds
+1433/tcp  open  ms-sql-s
+3306/tcp  open  mysql
+3389/tcp  open  ms-wbt-server
+47001/tcp open  winrm
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49157/tcp open  unknown
+49192/tcp open  unknown
+
+Read data files from: /usr/share/nmap
+# Nmap done at Sun May 18 20:48:33 2025 -- 1 IP address (1 host up) scanned in 85.77 seconds
+```
+
+
+> running nmap default script scans
+
+```bash
+# Nmap 7.94SVN scan initiated Sun May 18 20:50:55 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p21,80,135,139,443,445,1433,3306,3389 -Pn -oN 11_service.txt 10.150.150.11
+Nmap scan report for 10.150.150.11
+Host is up (0.20s latency).
+
+PORT     STATE SERVICE      VERSION
+21/tcp   open  ftp          Xlight ftpd 3.9
+80/tcp   open  http         Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1g PHP/7.4.9)
+|_http-title: PwnDrive - Your Personal Online Storage
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.4.9
+135/tcp  open  msrpc        Microsoft Windows RPC
+139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+443/tcp  open  ssl/http     Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1g PHP/7.4.9)
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+| tls-alpn: 
+|_  http/1.1
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.4.9
+|_ssl-date: TLS randomness does not represent time
+|_http-title: PwnDrive - Your Personal Online Storage
+| ssl-cert: Subject: commonName=localhost
+| Not valid before: 2009-11-10T23:48:47
+|_Not valid after:  2019-11-08T23:48:47
+445/tcp  open  microsoft-ds Windows Server 2008 R2 Enterprise 7601 Service Pack 1 microsoft-ds
+1433/tcp open  ms-sql-s     Microsoft SQL Server 2012 11.00.2100.00; RTM
+| ms-sql-ntlm-info: 
+|   10.150.150.11:1433: 
+|     Target_Name: PWNDRIVE
+|     NetBIOS_Domain_Name: PWNDRIVE
+|     NetBIOS_Computer_Name: PWNDRIVE
+|     DNS_Domain_Name: PwnDrive
+|     DNS_Computer_Name: PwnDrive
+|_    Product_Version: 6.1.7601
+|_ssl-date: 2025-05-18T19:12:47+00:00; -38m33s from scanner time.
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2024-03-21T12:57:09
+|_Not valid after:  2054-03-21T12:57:09
+| ms-sql-info: 
+|   10.150.150.11:1433: 
+|     Version: 
+|       name: Microsoft SQL Server 2012 RTM
+|       number: 11.00.2100.00
+|       Product: Microsoft SQL Server 2012
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+3306/tcp open  mysql        MySQL 5.5.5-10.4.14-MariaDB
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.4.14-MariaDB
+|   Thread ID: 587
+|   Capabilities flags: 63486
+|   Some Capabilities: Speaks41ProtocolNew, Support41Auth, Speaks41ProtocolOld, IgnoreSigpipes, SupportsTransactions, IgnoreSpaceBeforeParenthesis, InteractiveClient, FoundRows, LongColumnFlag, ODBCClient, SupportsLoadDataLocal, SupportsCompression, DontAllowDatabaseTableColumn, ConnectWithDatabase, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: pw&TS%]%=F&,IhRB4z-m
+|_  Auth Plugin Name: mysql_native_password
+3389/tcp open  tcpwrapped
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 45m27s, deviation: 3h07m50s, median: -38m33s
+| smb2-time: 
+|   date: 2025-05-18T19:12:36
+|_  start_date: 2024-03-21T12:57:13
+|_nbstat: NetBIOS name: PWNDRIVE, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:89:87:cb (VMware)
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows Server 2008 R2 Enterprise 7601 Service Pack 1 (Windows Server 2008 R2 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+|   Computer name: PwnDrive
+|   NetBIOS computer name: PWNDRIVE\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2025-05-18T12:12:37-07:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun May 18 20:51:23 2025 -- 1 IP address (1 host up) scanned in 27.70 seconds
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
