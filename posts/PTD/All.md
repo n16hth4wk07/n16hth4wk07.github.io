@@ -186,3 +186,6 @@ nxc smb 10.150.150.0/22
 
 
 
+## Checking for targets vuln to eternalblue 
+
+
