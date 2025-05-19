@@ -384,6 +384,13 @@ we got a reverse shell as `nt auth/system`.
 
 found an exploit on github 
 
+> running the exploit
+
+![image](https://github.com/user-attachments/assets/f6baf65f-6149-4f8e-b93e-7d88b302d1bf)
+
+we got shell as user `nt auth/system`
+
+
 
 
 
