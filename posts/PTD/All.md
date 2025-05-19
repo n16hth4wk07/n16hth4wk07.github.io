@@ -492,6 +492,41 @@ we can see the vhost `overload.ptd`.
 
 add `overload.ptd` to `/etc/hosts` file. 
 
+> fuzzing for vhosts using ffuf
+
+```bash
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD]
+└─$ ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/namelist.txt -H "Host: FUZZ.overload.ptd" -u http://10.150.150.17 -fs 13
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.150.150.17
+ :: Wordlist         : FUZZ: /usr/share/wordlists/seclists/Discovery/DNS/namelist.txt
+ :: Header           : Host: FUZZ.overload.ptd
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+ :: Filter           : Response size: 13
+________________________________________________
+
+administrator           [Status: 200, Size: 22826, Words: 1075, Lines: 304, Duration: 856ms]
+database                [Status: 200, Size: 14762, Words: 2348, Lines: 221, Duration: 8889ms]
+e-commerce              [Status: 200, Size: 28256, Words: 6741, Lines: 480, Duration: 695ms]
+drupal                  [Status: 200, Size: 8822, Words: 1512, Lines: 232, Duration: 304ms]
+
+```
+
 
 
 
