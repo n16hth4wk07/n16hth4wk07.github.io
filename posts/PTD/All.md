@@ -649,6 +649,3 @@ cool we pwned it 😃
 ![image](https://github.com/user-attachments/assets/4fb96362-2c30-4779-a02b-7521f3cdb76b)
 
 Easy peasy 😸
-
-![image](https://github.com/user-attachments/assets/cb736774-f012-4142-bf6c-40178f7c68eb)
-
