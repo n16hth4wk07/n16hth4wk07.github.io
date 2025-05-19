@@ -390,8 +390,9 @@ found an exploit on github
 
 we got shell as user `nt auth/system`
 
+![image](https://github.com/user-attachments/assets/5c20cb00-ad0d-4655-b507-114a863a17f5)
 
-
+easy peasy 🙂
 
 
 
