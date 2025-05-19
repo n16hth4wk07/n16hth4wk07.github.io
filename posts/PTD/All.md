@@ -524,8 +524,15 @@ administrator           [Status: 200, Size: 22826, Words: 1075, Lines: 304, Dura
 database                [Status: 200, Size: 14762, Words: 2348, Lines: 221, Duration: 8889ms]
 e-commerce              [Status: 200, Size: 28256, Words: 6741, Lines: 480, Duration: 695ms]
 drupal                  [Status: 200, Size: 8822, Words: 1512, Lines: 232, Duration: 304ms]
-
+shop                    [Status: 200, Size: 24769, Words: 4444, Lines: 364, Duration: 8605ms]
+wordpress               [Status: 200, Size: 25966, Words: 1204, Lines: 346, Duration: 7512ms]
+:: Progress: [151265/151265] :: Job [1/1] :: 203 req/sec :: Duration: [0:12:55] :: Errors: 1 ::
 ```
+
+
+![image](https://github.com/user-attachments/assets/688ef9f3-2730-4a68-ba4a-3ef8e79acb07)
+
+Add every vhost discovered to `/etc/hosts` file. 
 
 
 
