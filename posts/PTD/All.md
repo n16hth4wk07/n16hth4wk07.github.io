@@ -396,7 +396,7 @@ easy peasy 🙂
 
 
 
-## 10.150.150.12 
+# 10.150.150.12 
 
 >first enum with nmap
 
@@ -439,7 +439,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 
 
-## 10.150.150.242 (MrBlue)
+# 10.150.150.242 (MrBlue)
 
 > first enum with nmap
 
