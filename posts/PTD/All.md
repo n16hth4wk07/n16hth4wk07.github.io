@@ -1,4 +1,4 @@
-## This note contains pwning from beginning to the end of every targets. 
+![image](https://github.com/user-attachments/assets/cb736774-f012-4142-bf6c-40178f7c68eb)## This note contains pwning from beginning to the end of every targets. 
 
 ![image](https://github.com/user-attachments/assets/249c6f61-b546-4373-b86e-49ac71dfa42a)
 
@@ -435,3 +435,118 @@ Service detection performed. Please report any incorrect results at https://nmap
 > enum port 21 (ftp)
 
 
+
+
+
+
+## 10.150.150.242 (MrBlue)
+
+> first enum with nmap
+
+```bash
+# Nmap 7.94SVN scan initiated Mon May 19 11:08:49 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p53,80,135,139,445,1433,3389,8089 -Pn -oN 242_service.txt 10.150.150.242
+Nmap scan report for 10.150.150.242
+Host is up (0.31s latency).
+
+PORT     STATE SERVICE      VERSION
+53/tcp   open  domain       Microsoft DNS 6.1.7601 (1DB1446A) (Windows Server 2008 R2 SP1)
+| dns-nsid: 
+|_  bind.version: Microsoft DNS 6.1.7601 (1DB1446A)
+80/tcp   open  http         Microsoft IIS httpd 7.5
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Microsoft-IIS/7.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+135/tcp  open  msrpc        Microsoft Windows RPC
+139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds Windows Server 2008 R2 Enterprise 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+1433/tcp open  ms-sql-s     Microsoft SQL Server 2012 11.00.2100.00; RTM
+|_ssl-date: 2025-05-19T09:31:07+00:00; -38m34s from scanner time.
+| ms-sql-info: 
+|   10.150.150.242:1433: 
+|     Version: 
+|       name: Microsoft SQL Server 2012 RTM
+|       number: 11.00.2100.00
+|       Product: Microsoft SQL Server 2012
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2020-03-25T14:11:19
+|_Not valid after:  2050-03-25T14:11:19
+| ms-sql-ntlm-info: 
+|   10.150.150.242:1433: 
+|     Target_Name: MRBLUE
+|     NetBIOS_Domain_Name: MRBLUE
+|     NetBIOS_Computer_Name: MRBLUE
+|     DNS_Domain_Name: MrBlue
+|     DNS_Computer_Name: MrBlue
+|_    Product_Version: 6.1.7601
+3389/tcp open  tcpwrapped
+|_ssl-date: 2025-05-19T09:31:07+00:00; -38m34s from scanner time.
+| ssl-cert: Subject: commonName=MrBlue
+| Not valid before: 2025-05-18T07:59:21
+|_Not valid after:  2025-11-17T07:59:21
+| rdp-ntlm-info: 
+|   Target_Name: MRBLUE
+|   NetBIOS_Domain_Name: MRBLUE
+|   NetBIOS_Computer_Name: MRBLUE
+|   DNS_Domain_Name: MrBlue
+|   DNS_Computer_Name: MrBlue
+|   Product_Version: 6.1.7601
+|_  System_Time: 2025-05-19T09:30:54+00:00
+8089/tcp open  ssl/http     Splunkd httpd
+| ssl-cert: Subject: commonName=SplunkServerDefaultCert/organizationName=SplunkUser
+| Not valid before: 2019-10-25T09:53:52
+|_Not valid after:  2022-10-24T09:53:52
+|_http-title: splunkd
+|_http-server-header: Splunkd
+| http-robots.txt: 1 disallowed entry 
+|_/
+Service Info: Host: MRBLUE; OS: Windows; CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1, cpe:/o:microsoft:windows
+
+Host script results:
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows Server 2008 R2 Enterprise 7601 Service Pack 1 (Windows Server 2008 R2 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+|   Computer name: MrBlue
+|   NetBIOS computer name: MRBLUE\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2025-05-19T09:30:52+00:00
+| smb2-time: 
+|   date: 2025-05-19T09:30:52
+|_  start_date: 2020-03-25T14:11:23
+|_clock-skew: mean: -38m34s, deviation: 0s, median: -38m34s
+|_nbstat: NetBIOS name: MRBLUE, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:ab:46:29 (VMware)
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon May 19 11:09:42 2025 -- 1 IP address (1 host up) scanned in 52.90 seconds
+
+```
+
+remember we found an eternal blue vuln on this target
+
+![image](https://github.com/user-attachments/assets/85cedd19-ddb5-43f5-9b07-797580e4cfe7)
+
+> Exploiting using msfconsole
+
+![image](https://github.com/user-attachments/assets/b6ab0a8c-5cf0-4ef5-9af1-ac9912600d6c)
+
+exploit to get shell
+
+![image](https://github.com/user-attachments/assets/2c5ea0fb-8dd7-4788-a907-73a9a30d2069)
+
+cool we pwned it 😃
+
+
+![image](https://github.com/user-attachments/assets/4fb96362-2c30-4779-a02b-7521f3cdb76b)
+
+Easy peasy 😸
