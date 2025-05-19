@@ -438,6 +438,70 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 
 
+# 10.150.150.17 (Overload)
+
+> first enum with nmap
+
+```bash
+# Nmap 7.94SVN scan initiated Mon May 19 15:21:43 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p21,22,25,53,80,389,33060 -Pn -oN 17_service.txt 10.150.150.17
+Nmap scan report for 10.150.150.17
+Host is up (0.18s latency).
+
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+22/tcp    open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 f9:30:f8:ef:be:da:2d:42:0d:34:ee:21:4b:2f:4a:8e (RSA)
+|   256 fd:f4:aa:82:76:9a:5d:6a:c2:9b:ad:e7:04:db:82:0e (ECDSA)
+|_  256 4b:b4:6f:90:1a:f2:76:38:3c:de:04:50:83:e7:55:f0 (ED25519)
+25/tcp    open  smtp    Postfix smtpd
+| ssl-cert: Subject: commonName=overload
+| Subject Alternative Name: DNS:overload
+| Not valid before: 2020-08-01T15:05:31
+|_Not valid after:  2030-07-30T15:05:31
+|_smtp-commands: overload.fritz.box, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+|_ssl-date: TLS randomness does not represent time
+53/tcp    open  domain  ISC BIND 9.16.1 (Ubuntu Linux)
+| dns-nsid: 
+|_  bind.version: 9.16.1-Ubuntu
+80/tcp    open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+389/tcp   open  ldap    OpenLDAP 2.2.X - 2.3.X
+33060/tcp open  mysqlx?
+| fingerprint-strings: 
+|   LDAPSearchReq, NotesRPC, X11Probe: 
+|     Invalid message"
+|_    HY000
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+Service Info: Host:  overload.fritz.box; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon May 19 15:23:29 2025 -- 1 IP address (1 host up) scanned in 105.81 seconds
+
+```
+
+> enum port 80
+
+![image](https://github.com/user-attachments/assets/7addf71e-2add-497b-abba-4d845a1c96f6)
+
+we can see the vhost `overload.ptd`.
+
+
+![image](https://github.com/user-attachments/assets/26c1e387-de4a-49dc-9c69-69979c9a1a2f)
+
+add `overload.ptd` to `/etc/hosts` file. 
+
+
+
+
+
+
+
+
+
+
+
 
 # 10.150.150.242 (MrBlue)
 
