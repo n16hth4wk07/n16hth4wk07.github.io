@@ -535,7 +535,7 @@ wordpress               [Status: 200, Size: 25966, Words: 1204, Lines: 346, Dura
 Add every vhost discovered to `/etc/hosts` file. 
 
 
->
+> **T0-DO**
 
 
 
@@ -581,6 +581,27 @@ we can see a potential endpoint for LFI or RFI
 ![image](https://github.com/user-attachments/assets/6ea27a67-275a-4371-85ac-627055064533)
 
 no luck in fuzzing for lfi, let's try rfi 
+
+![image](https://github.com/user-attachments/assets/9ea8f324-cc6e-4599-8df8-0d982bbaf420)
+
+Trying rfi
+
+![image](https://github.com/user-attachments/assets/3ddbcd6f-ce51-4333-991e-7397ad07a207)
+
+we got a request on our http server. it appends `.php` to the end of every file requested. let's create a php shell 
+
+> make request to the shell
+
+![image](https://github.com/user-attachments/assets/4562d427-0da3-4efb-b1e2-29ca87d5919c)
+
+> check back our terminal, we can see we got a shell
+
+![image](https://github.com/user-attachments/assets/32a08382-ebc1-4ac8-b584-d8bb2dfe6acb)
+
+
+
+> Privilege Escalation 
+
 
 
 
