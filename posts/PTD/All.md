@@ -539,6 +539,12 @@ Add every vhost discovered to `/etc/hosts` file.
 
 
 
+
+
+
+
+
+
 # 10.150.150.242 (MrBlue)
 
 > first enum with nmap
