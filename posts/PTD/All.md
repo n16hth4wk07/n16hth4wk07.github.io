@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3fd8edfa-da0f-4be8-96ef-8be9d1abfe45)## This note contains pwning from beginning to the end of every targets. 
+## This note contains pwning from beginning to the end of every targets. 
 
 ![image](https://github.com/user-attachments/assets/249c6f61-b546-4373-b86e-49ac71dfa42a)
 
@@ -599,7 +599,6 @@ we got a request on our http server. it appends `.php` to the end of every file 
 ![image](https://github.com/user-attachments/assets/32a08382-ebc1-4ac8-b584-d8bb2dfe6acb)
 
 
-
 ### Privilege Escalation 
 
 > checking for writeable `/etc` files
@@ -635,8 +634,9 @@ replace the hash with the new hash generated.
 
 su user root using the password created, and we got root.
 
+![image](https://github.com/user-attachments/assets/6d4eb048-eb2b-441e-9786-a9fd8c8e69da)
 
-
+We pwned it 😸 easy peasy!
 
 
 # 10.150.150.242 (MrBlue)
