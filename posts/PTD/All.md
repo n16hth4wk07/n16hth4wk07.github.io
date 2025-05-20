@@ -676,8 +676,17 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 we can see it is running a wordpress 
 
+![image](https://github.com/user-attachments/assets/3aad5faf-f63d-4ec7-8755-611ca6b2f46a)
 
+checking the author post,he's talking ablout depixlating tool and the password has been blurred. let's unblurr it
 
+![image](https://github.com/user-attachments/assets/0f852b5b-89f2-4d29-b3a7-def861ce82ea)
+
+found a tool on github. 
+
+![image](https://github.com/user-attachments/assets/5820ae98-4e8e-41e8-9bd5-954a5d84642f)
+
+image to get plain text 
 
 
 
