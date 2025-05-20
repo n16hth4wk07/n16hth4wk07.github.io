@@ -535,12 +535,52 @@ wordpress               [Status: 200, Size: 25966, Words: 1204, Lines: 346, Dura
 Add every vhost discovered to `/etc/hosts` file. 
 
 
+>
 
 
 
 
+# 10.150.150.18
+
+> first enum with nmap
+
+```bash
+# Nmap 7.94SVN scan initiated Tue May 20 22:06:36 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p22,80 -Pn -oN 18_service.txt 10.150.150.18
+Nmap scan report for 10.150.150.18
+Host is up (0.18s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 2f:0e:73:d4:ae:73:14:7e:c5:1c:15:84:ef:45:a4:d1 (RSA)
+|   256 39:0b:0b:c9:86:c9:8e:b5:2b:0c:39:c7:63:ec:e2:10 (ECDSA)
+|_  256 f6:bf:c5:03:5b:df:e5:e1:f4:da:ac:1e:b2:07:88:2f (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+| http-title: Welcome to my homepage!
+|_Requested resource was /index.php?page=home
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue May 20 22:06:50 2025 -- 1 IP address (1 host up) scanned in 13.31 seconds
+```
 
 
+> checking out the web application
+
+![image](https://github.com/user-attachments/assets/f0718b54-d912-494c-8ce9-6678603718a5)
+
+> checking out the endpoint
+
+![image](https://github.com/user-attachments/assets/d8bfaa80-e46d-4cc3-9bbb-895825056569)
+
+we can see a potential endpoint for LFI or RFI 
+
+> fuzzing for lfi using payloads
+
+![image](https://github.com/user-attachments/assets/6ea27a67-275a-4371-85ac-627055064533)
+
+no luck in fuzzing for lfi, let's try rfi 
 
 
 
