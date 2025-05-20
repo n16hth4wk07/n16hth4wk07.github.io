@@ -540,7 +540,7 @@ Add every vhost discovered to `/etc/hosts` file.
 
 
 
-# 10.150.150.18
+# 10.150.150.18 (Snare)
 
 > first enum with nmap
 
@@ -637,6 +637,75 @@ su user root using the password created, and we got root.
 ![image](https://github.com/user-attachments/assets/6d4eb048-eb2b-441e-9786-a9fd8c8e69da)
 
 We pwned it 😸 easy peasy!
+
+
+
+
+
+
+# 10.150.150.21 (Japan Town)
+
+> First enum with nmap
+
+```bash
+# Nmap 7.94SVN scan initiated Tue May 20 23:12:36 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p22,80 -Pn -oN 21_service.txt 10.150.150.21
+Nmap scan report for 10.150.150.21
+Host is up (0.23s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 8e:76:47:5b:e4:5e:ac:c4:f3:37:7f:ab:03:8d:15:20 (RSA)
+|   256 f9:d4:01:a0:71:ee:66:ae:d6:dc:c4:39:2d:ab:04:c4 (ECDSA)
+|_  256 f4:4c:5d:62:f1:d1:04:f6:7f:ea:bb:ee:82:d9:9b:6f (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Japantown &#8211; &#8211; experience &amp; live Asia
+|_http-generator: WordPress 5.3.6
+| http-robots.txt: 1 disallowed entry 
+|_*/2020/12/you-know-what-this-is-for.png
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue May 20 23:12:50 2025 -- 1 IP address (1 host up) scanned in 13.79 seconds
+```
+
+> enum web service
+
+![image](https://github.com/user-attachments/assets/9174d25e-77c4-4e09-95f1-785f215026a9)
+
+we can see it is running a wordpress 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 10.150.150.242 (MrBlue)
