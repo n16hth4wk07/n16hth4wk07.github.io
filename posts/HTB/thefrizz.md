@@ -57,4 +57,7 @@ navigating to the staff login page, we can see it is running `gibbon v25.0.0`.
 
 lil bit of research shows the gibbon version is vuln to lfi (local file inclusion) vulnerability.
 
+![image](https://github.com/user-attachments/assets/ce8bae4a-fdf1-4730-b6e4-252fcaeb9f66)
+
+we can see the endpoint for lfi is `http://frizzdc.frizz.htb/Gibbon-LMS/index.php?q=lfi`. 
 
