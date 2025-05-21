@@ -59,5 +59,5 @@ lil bit of research shows the gibbon version is vuln to lfi (local file inclusio
 
 ![image](https://github.com/user-attachments/assets/ce8bae4a-fdf1-4730-b6e4-252fcaeb9f66)
 
-we can see the endpoint for lfi is `http://frizzdc.frizz.htb/Gibbon-LMS/index.php?q=lfi`. 
+we can see the endpoint for lfi is `http://frizzdc.frizz.htb/Gibbon-LMS/index.php?q=lfi`. we using gibbon.sql, and we can see the info about the sql db. 
 
