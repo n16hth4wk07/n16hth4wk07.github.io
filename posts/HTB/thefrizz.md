@@ -71,6 +71,10 @@ let's clone and run the exploit
 
 ran the exploit and we got RCE. 
 
+![image](https://github.com/user-attachments/assets/c8cedad4-8983-4833-8f10-176023db8f1a)
+
+we check the dirs for files, we can see internal files. let's play around, pop shell 
+
 
 
 
