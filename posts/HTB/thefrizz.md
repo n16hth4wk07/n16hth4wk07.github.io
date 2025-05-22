@@ -115,6 +115,9 @@ check what hash it is, we can see it is `sha-256` with the salt
 
 cracked the hash to `Jenni_Luvs_Magic23`. 
 
+![image](https://github.com/user-attachments/assets/c4f86167-5050-4db7-b028-032ffa76526e)
+
+login the webpage using the cracked creds `f.frizzle:Jenni_Luvs_Magic23`.
 
 
 
