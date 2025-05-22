@@ -61,3 +61,16 @@ lil bit of research shows the gibbon version is vuln to lfi (local file inclusio
 
 we can see the endpoint for lfi is `http://frizzdc.frizz.htb/Gibbon-LMS/index.php?q=lfi`. we using gibbon.sql, and we can see the info about the sql db. 
 
+> found an exploit on github to trigger RCE
+
+![image](https://github.com/user-attachments/assets/d345733f-b6a9-4b0e-9f75-7e4c7e1e8869)
+
+let's clone and run the exploit 
+
+![image](https://github.com/user-attachments/assets/3fe86a84-377e-449c-aa09-e59c35eba698)
+
+ran the exploit and we got RCE. 
+
+
+
+
