@@ -86,6 +86,13 @@ $databasePassword = 'MisterGibbs!Parrot!?1';
 $databaseName = 'gibbon';
 ```
 
+![image](https://github.com/user-attachments/assets/930dcbd5-c2b3-4907-9156-81c8a9a92ec9)
+
+Pop a revershell.
+
+
+
+## Privilege Escalation
 
 
 
