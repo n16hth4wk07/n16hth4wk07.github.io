@@ -95,6 +95,27 @@ Pop a revershell.
 ## Privilege Escalation
 
 
+> enumerating mysql
+
+![image](https://github.com/user-attachments/assets/b187bb46-aa6f-4718-9d4f-57db53cfe8d6)
+
+using the creds we got from `config.php`. we got user `frizzle` password and salt. 
+
+![image](https://github.com/user-attachments/assets/33121bbe-d430-400f-a025-d1624423d780)
+
+check what hash it is, we can see it is `sha-256` with the salt 
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/HTB/thefrizz]
+└─$ cat hash.txt 
+067f746faca44f170c6cd9d7c4bdac6bc342c608687733f80ff784242b0b0c03:/aACFhikmNopqrRTVz2489
+```
+
+![image](https://github.com/user-attachments/assets/769f980a-a009-498f-a3e1-ec948ef8bde2)
+
+cracked the hash to `Jenni_Luvs_Magic23`. 
+
+
 
 
 
