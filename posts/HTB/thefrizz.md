@@ -75,6 +75,14 @@ ran the exploit and we got RCE.
 
 we check the dirs for files, we can see internal files. let's play around, pop shell 
 
+![image](https://github.com/user-attachments/assets/438814dc-9384-4b49-b78c-0cb30399c771)
 
+checking the conifg.php file, we got creds. 
 
+```sql
+$databaseServer = 'localhost';
+$databaseUsername = 'MrGibbonsDB';
+$databasePassword = 'MisterGibbs!Parrot!?1';
+$databaseName = 'gibbon';
+```
 
