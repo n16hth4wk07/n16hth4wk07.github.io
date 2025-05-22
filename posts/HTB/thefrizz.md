@@ -119,6 +119,9 @@ cracked the hash to `Jenni_Luvs_Magic23`.
 
 login the webpage using the cracked creds `f.frizzle:Jenni_Luvs_Magic23`.
 
+![image](https://github.com/user-attachments/assets/bd751792-f154-455e-9d54-d74b9de29896)
+
+Since we have cred's we enumerated with bloodhound, we can see user can psremote into the dc machine. 
 
 
 
