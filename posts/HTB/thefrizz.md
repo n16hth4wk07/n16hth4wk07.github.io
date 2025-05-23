@@ -153,7 +153,16 @@ first edit your `/etc/krb5.conf` file. if you don't have install using
 sudo apt install krb5-user
 ```
 
-> After setting up your kr
+> After setting up your krb5.conf file
+
+```shell
+kinit f.frizzle@FRIZZ.HTB
+
+ssh f.frizzle@10.129.197.79
+```
+we got shell as user `f.frizzle`.
+
+
 
 
 
