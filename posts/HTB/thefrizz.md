@@ -126,8 +126,34 @@ f.frizzle@10.129.206.246: Permission denied (gssapi-with-mic,keyboard-interactiv
 ```
 ssh was enabled, trying to login ssh failed. getting some error 
 
+![image](https://github.com/user-attachments/assets/5237dfae-262d-499c-8681-0229204271e7)
 
+Mehnnnnn after hours of research, almost 24hours of stakoverflow, unixoverflow. gpt 😂, we got shell as user `f.frizzle`
 
+> steps to getting shell as user `f.frizzle`.
+
+```
+[libdefaults]
+    default_realm = FRIZZ.HTB
+
+[realms]
+    FRIZZ.HTB = {
+        kdc = 10.129.197.79
+        admin_server = 10.129.197.79
+    }
+
+[domain_realm]
+    .frizz.htb = FRIZZ.HTB
+    frizz.htb = FRIZZ.HTB
+```
+
+first edit your `/etc/krb5.conf` file. if you don't have install using 
+
+```
+sudo apt install krb5-user
+```
+
+> After setting up your kr
 
 
 
