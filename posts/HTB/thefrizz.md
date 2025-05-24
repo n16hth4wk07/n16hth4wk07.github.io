@@ -187,6 +187,18 @@ Copy-Item -Path 'C:\$Recycle.Bin\S-1-5-21-2386970044-1145388522-2932701813-1103\
 
 download the file using scp 
 
+![image](https://github.com/user-attachments/assets/f4be17af-2923-4a07-9030-108dcd8cfb81)
+
+Extracting the content of the files. can checking the conf path, found a cred, looks like base64 enc 
+
+![image](https://github.com/user-attachments/assets/a1eee2cb-eb84-4f35-a732-eef39b289c2e)
+
+decode the enc to get pass `!suBcig@MehTed!R`.
+
+
+
+
+
 
 
 
