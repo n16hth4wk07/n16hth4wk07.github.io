@@ -195,6 +195,11 @@ Extracting the content of the files. can checking the conf path, found a cred, l
 
 decode the enc to get pass `!suBcig@MehTed!R`.
 
+![image](https://github.com/user-attachments/assets/22ac59cd-9bc5-439f-95e7-ec9980f99e94)
+
+trying the knit with different users, it failed and got accepted for user `m.schoolbus`. let's ssh 
+
+
 
 
 
