@@ -183,6 +183,9 @@ Get-ChildItem -Path "C:\`$Recycle.Bin\S-1-5-21-2386970044-1145388522-2932701813-
 Copy-Item -Path 'C:\$Recycle.Bin\S-1-5-21-2386970044-1145388522-2932701813-1103\$RE2XMEG.7z' -Destination "C:\Users\f.frizzle\Desktop\recover.7z"
 ```
 
+![image](https://github.com/user-attachments/assets/64cb5457-36a1-4657-b950-3c6f60a7afd5)
+
+download the file using scp 
 
 
 
