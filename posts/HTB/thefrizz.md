@@ -162,6 +162,9 @@ ssh f.frizzle@10.129.197.79
 ```
 we got shell as user `f.frizzle`.
 
+![image](https://github.com/user-attachments/assets/cfc339e4-7f0a-4ab5-ae54-b4d8ba1a7a75)
+
+running winpeas.exe, we got to see there's a UAC. let's try bypass it. 
 
 
 
