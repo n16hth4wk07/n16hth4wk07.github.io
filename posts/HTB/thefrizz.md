@@ -199,8 +199,9 @@ decode the enc to get pass `!suBcig@MehTed!R`.
 
 trying the knit with list of users in the machine, it failed and got accepted for user `m.schoolbus`. let's login ssh
 
+![image](https://github.com/user-attachments/assets/f9d48816-e051-4977-abe7-bc78ff075b9a)
 
-
+ssh as user `M.schoolbus`
 
 
 
