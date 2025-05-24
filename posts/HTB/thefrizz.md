@@ -166,9 +166,22 @@ we got shell as user `f.frizzle`.
 
 running winpeas.exe, we got to see there's a UAC. let's try bypass it. 
 
-![image](https://github.com/user-attachments/assets/c01b3cff-81b2-4013-86e2-0c031191ad3d)
+![image](https://github.com/user-attachments/assets/19d64fea-f4b0-4956-8c26-67249692f0d9)
 
-After hours of trials and errors, looking for deleted files, we can got `wapt-backup-sunday.7z`.
+After hours of trials and errors, looking for deleted files, we can got `RE2XMEG.7z` file. copied it to user `f.frizzle` directory. 
+
+> command ran
+
+```powershell
+#checking the r.bin dir for user f.frizzle sid
+Get-ChildItem -Path "C:\`$Recycle.Bin" -Force
+
+#checking user sid dir
+Get-ChildItem -Path "C:\`$Recycle.Bin\S-1-5-21-2386970044-1145388522-2932701813-1103" -Force
+
+#copy the file to user desktop directory
+Copy-Item -Path 'C:\$Recycle.Bin\S-1-5-21-2386970044-1145388522-2932701813-1103\$RE2XMEG.7z' -Destination "C:\Users\f.frizzle\Desktop\recover.7z"
+```
 
 
 
