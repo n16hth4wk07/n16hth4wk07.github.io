@@ -166,6 +166,9 @@ we got shell as user `f.frizzle`.
 
 running winpeas.exe, we got to see there's a UAC. let's try bypass it. 
 
+![image](https://github.com/user-attachments/assets/c01b3cff-81b2-4013-86e2-0c031191ad3d)
+
+After hours of trials and errors, looking for deleted files, we can got `wapt-backup-sunday.7z`.
 
 
 
