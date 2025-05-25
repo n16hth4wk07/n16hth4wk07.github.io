@@ -680,6 +680,14 @@ we can see it is running a wordpress
 
 checking the author post,he's talking ablout depixlating tool and the password has been blurred. let's unblurr it
 
+![image](https://github.com/user-attachments/assets/186d0eb5-4610-474a-a477-8beec32611fb)
+
+checking robots.txt, we got a path to an image file. 
+
+![image](https://github.com/user-attachments/assets/232ca6d8-0a0c-4b93-a306-5dee83033bbe)
+
+checking the path robots.txt showed us, Let's download.
+
 ![image](https://github.com/user-attachments/assets/0f852b5b-89f2-4d29-b3a7-def861ce82ea)
 
 found a tool on github. 
