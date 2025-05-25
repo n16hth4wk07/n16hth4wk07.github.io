@@ -702,11 +702,25 @@ download the file, decode it from base64, send the output to another file, we go
 
 ![image](https://github.com/user-attachments/assets/27614704-800d-4f38-a62c-e1d2e48cfebf)
 
-depixlating is very hard, i'd just give the password `kiminchina`. 
+depixlating is very hard, i'd just give the password `kiminchina4`. 
 
+![image](https://github.com/user-attachments/assets/b56b6922-14e6-42db-9296-a30ecf299715)
 
+login to `wp-admin` page 
 
+![image](https://github.com/user-attachments/assets/419ae42b-8c36-4ab0-ac36-923d6c74715c)
 
+login success. 
+
+![image](https://github.com/user-attachments/assets/db05c20f-bb8f-4ecd-920d-9911d7cbb0b8)
+
+edit the `404.php` of the theme `twentynineteen`. 
+
+![image](https://github.com/user-attachments/assets/8921b16e-68bd-4bc4-a844-7866ce3dafab)
+
+navigate to the path `10.150.150.21/wp-content/themes/twentynineteen/404.php?cmd=whoami` to trigger webshell.
+
+> Rev Shell
 
 
 
