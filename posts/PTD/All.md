@@ -774,8 +774,31 @@ drwxr-xr-x 3 n16hth4wk n16hth4wk 4096 Feb 26  2020 usr
 ```
 extract the deb file to a director which `work` was created for. then create another directory `DEBIAN` 
 
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/PTD/Exploit/mal_deb/work]
+└─$ cd DEBIAN            
 
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/Exploit/mal_deb/work/DEBIAN]
+└─$ nano control                                            
 
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/Exploit/mal_deb/work/DEBIAN]
+└─$ cat control                                           
+Package: ssh
+Version: 8.2p1
+Section: Secure Shell
+Priority: optional
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Description: ssh - secure shell client and server (metapackage)
+ This metapackage is a convenient way to install both the OpenSSH client
+ and the OpenSSH server. It provides nothing in and of itself, so you
+ may remove it if nothing depends on it.
+```
+In the DEBIAN directory, create a file named control that contains the above. We also need to create a post-installation script that will execute our binary. In our DEBIAN directory, we’ll create a file named postinst that contains the following:
+
+```shell
+
+```
 
 
 
