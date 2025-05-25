@@ -722,6 +722,9 @@ navigate to the path `10.150.150.21/wp-content/themes/twentynineteen/404.php?cmd
 
 > Rev Shell
 
+![image](https://github.com/user-attachments/assets/84209f9d-ea0d-448f-b216-736ca8d155e8)
+
+### Privilege Escalation
 
 
 
