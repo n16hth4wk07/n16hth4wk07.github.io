@@ -700,6 +700,9 @@ image to get plain text.
 
 download the file, decode it from base64, send the output to another file, we got a png file. let's use it in depixlating the image.
 
+![image](https://github.com/user-attachments/assets/27614704-800d-4f38-a62c-e1d2e48cfebf)
+
+depixlating is very hard, i'd just give the password `kiminchina`. 
 
 
 
