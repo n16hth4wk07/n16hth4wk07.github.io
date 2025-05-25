@@ -865,6 +865,44 @@ we fully root
 We pwned it. 😺 fun!!! 
 
 
+# 10.150.150.27
+
+>first enum with nmap
+
+```shell
+# Nmap 7.94SVN scan initiated Sun May 25 20:53:52 2025 as: /usr/lib/nmap/nmap --privileged -sCV -T4 -p22,80 -Pn -oN 27_service.txt 10.150.150.27
+Nmap scan report for 10.150.150.27
+Host is up (0.14s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 45:66:62:34:f1:21:bf:8b:43:18:fb:24:a7:f3:29:76 (RSA)
+|   256 1c:2a:2e:e4:e8:ea:cc:ec:a5:c4:44:d0:18:75:24:34 (ECDSA)
+|_  256 24:1a:99:37:27:53:a4:ce:0e:30:d4:14:d0:68:df:2b (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun May 25 20:54:04 2025 -- 1 IP address (1 host up) scanned in 11.91 seconds
+```
+
+> enumerating web port 80
+
+![image](https://github.com/user-attachments/assets/6079fecf-400e-46a0-a712-0808ddd8c288)
+
+Default webpage, let's fuzz for hidden dir. 
+
+![image](https://github.com/user-attachments/assets/8c9ca1ba-7d86-4a95-bbf5-aa6594ca3454)
+
+fuzzing for hidden dirs. 
+
+![image](https://github.com/user-attachments/assets/5988e6ec-a227-4441-85e1-215459be2b00)
+
+we can see a vhost. `crm.pwntilldawn.com`, let's add it to `/etc/hosts`.
+
 
 
 
