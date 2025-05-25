@@ -856,6 +856,15 @@ now let's wait.
 
 we got a reverse shell as root. 
 
+![image](https://github.com/user-attachments/assets/4892f6dc-00e9-4f34-9d8c-c64cd0dfb238)
+
+we fully root 
+
+![image](https://github.com/user-attachments/assets/075cf914-ebd4-4857-ab3a-ca12a067cb8e)
+
+We pwned it. 😺 fun!!! 
+
+
 
 
 
