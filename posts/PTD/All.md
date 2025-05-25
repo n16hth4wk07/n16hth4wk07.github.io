@@ -844,7 +844,17 @@ edit the `/etc/hosts` file to put you ip addr and de.archive.ubuntu.com as hostn
 
 create a directory path to server as the same path to download the file.
 
+![image](https://github.com/user-attachments/assets/03784937-1c4f-4170-acc7-580b6963d59d)
 
+it is trying to download the file, we haven't add it to the dir yet. 
+
+![image](https://github.com/user-attachments/assets/c0b57d95-bee8-4f44-be7a-f951e6bd00da)
+
+now let's wait. 
+
+![image](https://github.com/user-attachments/assets/1dd398ae-b07e-432c-bc34-223e5ad12bfc)
+
+we got a reverse shell as root. 
 
 
 
