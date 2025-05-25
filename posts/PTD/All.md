@@ -694,7 +694,12 @@ found a tool on github.
 
 ![image](https://github.com/user-attachments/assets/5820ae98-4e8e-41e8-9bd5-954a5d84642f)
 
-image to get plain text 
+image to get plain text. 
+
+![image](https://github.com/user-attachments/assets/6fc87043-af99-4723-87db-1d702db3f199)
+
+download the file, decode it from base64, send the output to another file, we got a png file. let's use it in depixlating the image.
+
 
 
 
