@@ -726,6 +726,10 @@ navigate to the path `10.150.150.21/wp-content/themes/twentynineteen/404.php?cmd
 
 ### Privilege Escalation
 
+![image](https://github.com/user-attachments/assets/0bc78033-8ea1-4006-8e7a-24efb9ba23fe)
+
+running `pspy` we can see a cron job running as root to download and install the deb file. 
+
 
 
 
