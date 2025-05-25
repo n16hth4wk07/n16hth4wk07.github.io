@@ -827,8 +827,22 @@ drwxr-xr-x 4 n16hth4wk n16hth4wk 4096 May 25 13:14 ..
 ```
 Now we’ll create our malicious payload. We’ll be creating a reverse shell to connect back to us named `ssh_8.2p1-4_all`.
 
+![image](https://github.com/user-attachments/assets/bc7e7d18-ad4e-416e-844b-f7b1e72339fc)
+
+now we compiled our malicious deb. rename the file. 
 
 
+![image](https://github.com/user-attachments/assets/d45786e0-493e-4fd4-a1b9-527594902bde)
+
+on target machine, we can see the `/etc/hosts` file is writable. 
+
+![image](https://github.com/user-attachments/assets/e6470b17-4dd0-4b57-9d70-0e194b85aaa5)
+
+edit the `/etc/hosts` file to put you ip addr and de.archive.ubuntu.com as hostname.
+
+![image](https://github.com/user-attachments/assets/86d12e13-15da-4110-996e-b7de7728ce75)
+
+create a directory path to server as the same path to download the file.
 
 
 
