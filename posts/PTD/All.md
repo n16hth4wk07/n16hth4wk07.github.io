@@ -432,7 +432,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sun May 18 21:34:36 2025 -- 1 IP address (1 host up) scanned in 17.86 seconds
 ```
 
-> enum port 21 (ftp)
+> enum port 21 (ftp) T0-DO
 
 
 
