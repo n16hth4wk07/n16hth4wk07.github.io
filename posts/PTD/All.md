@@ -438,7 +438,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 
 
-# 10.150.150.17 (Overload)
+# 10.150.150.17 (Overload) t0-d0
 
 > first enum with nmap
 
