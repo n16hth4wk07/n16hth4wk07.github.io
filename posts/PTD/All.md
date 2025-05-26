@@ -901,7 +901,7 @@ fuzzing for hidden dirs.
 
 ![image](https://github.com/user-attachments/assets/5988e6ec-a227-4441-85e1-215459be2b00)
 
-we can see a vhost. `crm.pwntilldawn.com`, let's add it to `/etc/hosts`.
+we can see a vhost. `crm.pwntilldawn.com`, let's add it to `/etc/hosts`. To-do
 
 
 
