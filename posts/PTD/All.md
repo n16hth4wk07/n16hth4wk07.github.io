@@ -378,7 +378,7 @@ we got a reverse shell as `nt auth/system`.
 
 
 
-> exploiting the eternal blue vuln (MS17-010) - T0DO
+> exploiting the eternal blue vuln (MS17-010) 
 
 ![image](https://github.com/user-attachments/assets/eefd389b-659f-4fd3-bf1e-3716d5e96c77)
 
