@@ -173,7 +173,7 @@ fping -a -g 10.150.150.0/22 2>/dev/null > ips.txt
 10.150.150.232
 10.150.150.242
 ```
-<BR>
+<br><br><br><br>
 
 
 > Discovering windows devices using net exec
@@ -394,7 +394,7 @@ we got shell as user `nt auth/system`
 ![image](https://github.com/user-attachments/assets/5c20cb00-ad0d-4655-b507-114a863a17f5)
 
 easy peasy 🙂
-<BR>
+<br><br><br><br>
 
 
 # 10.150.150.12 
@@ -434,7 +434,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 ```
 
 > enum port 21 (ftp) T0-DO
-<BR>
+<br><br><br><br>
 
 
 
@@ -537,7 +537,7 @@ Add every vhost discovered to `/etc/hosts` file.
 
 
 > **T0-DO**
-<BR>
+<br><br><br><br>
 
 
 
@@ -638,7 +638,7 @@ su user root using the password created, and we got root.
 ![image](https://github.com/user-attachments/assets/6d4eb048-eb2b-441e-9786-a9fd8c8e69da)
 
 We pwned it 😸 easy peasy!
-<BR>
+<br><br><br><br>
 
 
 
@@ -864,7 +864,7 @@ we fully root
 ![image](https://github.com/user-attachments/assets/075cf914-ebd4-4857-ab3a-ca12a067cb8e)
 
 We pwned it. 😺 fun!!! 
-<BR>
+<br><br><br><br>
 
 # 10.150.150.27
 
