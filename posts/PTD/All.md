@@ -112,7 +112,7 @@ if __name__ == "__main__":
    main()
 
 ```
-<BR>
+<br>
 
 > Running the script to discover targets
 
