@@ -5,10 +5,10 @@
 
 - 👋 Hi, I’m @n16hth4wk
 
-- 👀 I’m interested in Cyber Security
+- 👀 I’m interested in Offensive Security
 
-- 🌱 I’m currently learning Ethical Hacking
+- 🌱 I’m currently Exploring Offensive Security ~Breaking into stuffs~
 
 - 💞️ I’m looking to collaborate on Projects
 
-- 📫 How to reach me on Discord @n16hth4wk Twitter @n16h7hawk
+- 📫 How to reach me on Discord @n16hth4wk#8241 Twitter @n16hthawk
