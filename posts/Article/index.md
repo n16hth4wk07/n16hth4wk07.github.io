@@ -18,3 +18,4 @@ _CVE, Cheat Sheets created and compile by me or from a source and editted with a
 <hr>
 
 - [[Jan 17 2024]] [Glassfish](https://n16hth4wk07.github.io/posts/Article/glassfish.html) `RCE` - `Glassfish Authenticated RCE` 
+- [[Aug 09 2026]] [PrintNightmare](https://n16hth4wk07.github.io/posts/Article/printnightmare.html) `PE` - `Privilege Escalation with Printnightmare`
