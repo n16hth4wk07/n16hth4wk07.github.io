@@ -19,3 +19,4 @@ _CVE, Cheat Sheets created and compile by me or from a source and editted with a
 
 - [[Jan 17 2024]] [Glassfish](https://n16hth4wk07.github.io/posts/Article/glassfish.html) `RCE` - `Glassfish Authenticated RCE` 
 - [[Aug 09 2026]] [PrintNightmare](https://n16hth4wk07.github.io/posts/Article/printnightmare.html) `(CVE-2021-1675 / CVE-2021-34527)` - `Privilege Escalation`
+- [[Aug 13 2026]] [Windows SMB NTLM Reflection](https://n16hth4wk07.github.io/posts/Article/CVE-2025-33073.html) `CVE-2025-33073`
