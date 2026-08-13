@@ -16,8 +16,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm nighthawk, I Post Different Hacki
 <img style="padding-right: 30px;" align="left"  width="500" height="300" src="https://user-images.githubusercontent.com/87468669/220012433-6594f48e-a75c-4af1-803b-835e062acac0.png">
 <br>
 <p><strong>Name :</strong> <a href="#">Adebayo Segun</a></p>
-<p><strong>Known as :</strong> <a href="#">NightHawk</a></p>
-<p><strong>What Do I Do :</strong> <a href="#">CTF / Red Teaming / Penetration testing</a></p>
+<p><strong>Known as :</strong> <a href="#">nighthawk</a></p>
+<p><strong>What Do I Do :</strong> <a href="#">Offensive Security / Red Team Operation</a></p>
 <p><strong>GitHub :</strong> <a href="https://github.com/n16hth4wk07">github.com/n16hth4wk07</a></p>
 <p><strong>Twitter :</strong> <a href="https://twitter.com/n16h7hawk">twitter.com/n16h7hawk</a></p>
 <p><strong>Certifications :</strong> <a href="#">OSCP / LPT / CPENT </a></p>
