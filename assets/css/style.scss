@@ -1,0 +1,473 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* =========================================================
+   N16HTH4WK-SEC
+   RED TEAM TERMINAL THEME
+   ========================================================= */
+
+:root {
+  --bg: #050505;
+  --bg-alt: #090909;
+  --panel: #0b0b0b;
+  --red: #ff003c;
+  --red-dark: #8b0022;
+  --green: #00ff66;
+  --green-dark: #00a844;
+  --text: #d0d0d0;
+  --muted: #777;
+  --border: #252525;
+  --white: #f2f2f2;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 0, 60, 0.07),
+      transparent 40%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "Cascadia Code",
+    "Source Code Pro",
+    monospace;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* CRT scanline effect */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  z-index: 9999;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--red);
+  color: #000;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: var(--red);
+
+  text-decoration: none;
+
+  transition:
+    color 0.15s ease,
+    text-shadow 0.15s ease;
+}
+
+a:hover {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 5px var(--red),
+    0 0 15px rgba(255, 0, 60, 0.6);
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--red);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  letter-spacing: -0.5px;
+
+  text-shadow:
+    0 0 6px rgba(255, 0, 60, 0.35);
+}
+
+h2::before {
+  content: "root@n16hth4wk-sec:~# ";
+  color: var(--green);
+}
+
+h3::before {
+  content: "./ ";
+  color: var(--green);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  border-bottom: 1px solid var(--red-dark);
+
+  padding-bottom: 25px;
+
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: var(--red);
+
+  text-shadow:
+    0 0 5px var(--red),
+    0 0 15px rgba(255, 0, 60, 0.4);
+}
+
+/* =========================================================
+   TERMINAL NAVIGATION
+   ========================================================= */
+
+.terminal-nav {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 0 0 35px 0;
+
+  padding: 12px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+  border-left: 3px solid var(--red);
+
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-nav a {
+  padding: 5px 10px;
+
+  color: var(--green);
+
+  border: 1px solid #1d1d1d;
+
+  background: #070707;
+}
+
+.terminal-nav a:hover {
+  color: #fff;
+
+  background: var(--red);
+
+  border-color: var(--red);
+
+  text-shadow: none;
+}
+
+/* =========================================================
+   TERMINAL BANNER
+   ========================================================= */
+
+.terminal-banner {
+  margin: 30px 0;
+}
+
+.terminal-banner pre {
+  color: var(--green);
+
+  border-left: 3px solid var(--red);
+
+  box-shadow:
+    0 0 25px rgba(255, 0, 60, 0.08);
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+
+  margin: 25px 0;
+}
+
+.profile-terminal {
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+  border-left: 3px solid var(--red);
+
+  padding: 5px 15px;
+
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.profile-terminal pre {
+  border: none;
+
+  background: transparent !important;
+
+  box-shadow: none;
+
+  margin: 0;
+
+  color: var(--green);
+}
+
+/* =========================================================
+   CODE BLOCKS
+   ========================================================= */
+
+pre {
+  background: #020202 !important;
+
+  border: 1px solid #1e1e1e;
+
+  border-left: 3px solid var(--red);
+
+  color: var(--green);
+
+  padding: 18px;
+
+  overflow-x: auto;
+
+  box-shadow:
+    inset 0 0 30px rgba(0, 255, 102, 0.02),
+    0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+code {
+  color: var(--green);
+
+  background: #0a0a0a;
+
+  border: 1px solid #191919;
+
+  padding: 2px 5px;
+}
+
+pre code {
+  background: transparent;
+
+  border: none;
+
+  padding: 0;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: var(--panel);
+
+  margin: 25px 0;
+}
+
+th {
+  background: #120006;
+
+  color: var(--red);
+
+  text-align: left;
+
+  border-bottom: 2px solid var(--red);
+}
+
+td,
+th {
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+}
+
+tr:hover {
+  background: rgba(255, 0, 60, 0.035);
+}
+
+td code {
+  color: var(--green);
+}
+
+/* =========================================================
+   BLOCKQUOTES
+   ========================================================= */
+
+blockquote {
+  margin: 25px 0;
+
+  padding: 12px 20px;
+
+  background: rgba(255, 0, 60, 0.035);
+
+  border-left: 3px solid var(--red);
+
+  color: #aaa;
+}
+
+/* =========================================================
+   HORIZONTAL RULES
+   ========================================================= */
+
+hr {
+  border: 0;
+
+  height: 1px;
+
+  margin: 35px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--red-dark),
+      transparent
+    );
+}
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+li::marker {
+  color: var(--red);
+}
+
+ul li,
+ol li {
+  margin-bottom: 5px;
+}
+
+/* =========================================================
+   TERMINAL FOOTER
+   ========================================================= */
+
+.footer-terminal {
+  margin-top: 50px;
+}
+
+.footer-terminal pre {
+  border-left: 3px solid var(--green);
+
+  color: var(--green);
+}
+
+/* =========================================================
+   GLITCH EFFECT
+   ========================================================= */
+
+header h1 {
+  animation: terminal-glitch 5s infinite;
+}
+
+@keyframes terminal-glitch {
+
+  0%,
+  90%,
+  100% {
+    transform: translateX(0);
+  }
+
+  92% {
+    transform: translateX(1px);
+  }
+
+  94% {
+    transform: translateX(-1px);
+  }
+
+  96% {
+    transform: translateX(2px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal-nav {
+    gap: 5px;
+  }
+
+  .terminal-nav a {
+    font-size: 12px;
+    padding: 4px 7px;
+  }
+
+  pre {
+    font-size: 12px;
+
+    overflow-x: auto;
+  }
+
+  table {
+    display: block;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+}
