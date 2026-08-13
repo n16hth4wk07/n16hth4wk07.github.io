@@ -14,7 +14,7 @@ title: Home
 
 <div class="terminal-banner">
 
-```text
+```
 ┌──────────────────────────────────────────────────────────────┐
 │                                                              │
 │   root@n16hth4wk-sec:~# whoami                               │
@@ -46,7 +46,7 @@ I'm **nighthawk**, an offensive security practitioner documenting penetration te
 
 <div class="profile-terminal">
 
-```text
+```
 ┌─[ identity ]
 │
 ├── Name          : Adebayo Segun
@@ -66,7 +66,7 @@ I'm **nighthawk**, an offensive security practitioner documenting penetration te
 
 <div class="profile-terminal">
 
-```text
+```
 ┌─[ arsenal ]
 │
 ├── Web Security
@@ -92,7 +92,7 @@ I'm **nighthawk**, an offensive security practitioner documenting penetration te
 
 ## `root@n16hth4wk-sec:~# ls -la ./writeups`
 
-```text
+```
 drwxr-xr-x  HackMyVM/
 drwxr-xr-x  HackTheBox/
 drwxr-xr-x  TryHackMe/
@@ -199,7 +199,7 @@ drwxr-xr-x  Articles/
 
 ## `root@n16hth4wk-sec:~# uptime`
 
-```text
+```
 Knowledge: continuously expanding
 Coffee: required
 Sleep: optional
@@ -214,7 +214,7 @@ OPSEC: mandatory
 
 <div class="footer-terminal">
 
-```text
+```
 root@n16hth4wk-sec:~# echo "Hack. Enumerate. Harder."
 
 Hack. Enumerate. Harder. 💀
