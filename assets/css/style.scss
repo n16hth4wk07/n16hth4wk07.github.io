@@ -1,0 +1,205 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* ================================
+   RED TEAM TERMINAL
+   ================================ */
+
+:root {
+  --bg: #050505;
+  --bg-secondary: #0a0a0a;
+  --text: #d6d6d6;
+  --muted: #777;
+  --red: #ff003c;
+  --dark-red: #8b001f;
+  --green: #00ff66;
+  --border: #222;
+}
+
+/* Global */
+
+body {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 0, 60, 0.08),
+      transparent 35%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "Cascadia Code",
+    monospace;
+
+  line-height: 1.7;
+}
+
+/* CRT scanline effect */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  z-index: 9999;
+}
+
+/* Header */
+
+header {
+  border-bottom: 1px solid var(--dark-red);
+  padding-bottom: 25px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--red);
+
+  text-shadow:
+    0 0 5px rgba(255, 0, 60, 0.5),
+    0 0 15px rgba(255, 0, 60, 0.25);
+}
+
+/* Terminal prompt */
+
+h1::before {
+  content: "root@n16hth4wk-sec:~# ";
+  color: var(--green);
+}
+
+/* Links */
+
+a {
+  color: var(--red);
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: #fff;
+
+  text-shadow:
+    0 0 5px var(--red),
+    0 0 15px var(--red);
+}
+
+/* Code */
+
+code,
+pre {
+  background: #030303 !important;
+
+  border: 1px solid #222;
+
+  color: var(--green);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 255, 102, 0.03),
+    0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+pre {
+  padding: 20px;
+
+  border-left: 3px solid var(--red);
+
+  overflow-x: auto;
+}
+
+/* Blockquotes */
+
+blockquote {
+  border-left: 3px solid var(--red);
+
+  color: #aaa;
+
+  background: rgba(255, 0, 60, 0.03);
+
+  padding: 10px 20px;
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: #100006;
+  color: var(--red);
+}
+
+td,
+th {
+  border: 1px solid var(--border);
+  padding: 10px;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--red);
+  color: #000;
+}
+
+/* Terminal cursor */
+
+h1::after {
+  content: " █";
+  color: var(--red);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Glitch effect */
+
+h1 {
+  animation: glitch 4s infinite;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: none;
+  }
+
+  92% {
+    transform: translateX(1px);
+  }
+
+  94% {
+    transform: translateX(-1px);
+  }
+
+  96% {
+    transform: translateX(2px);
+  }
+}
