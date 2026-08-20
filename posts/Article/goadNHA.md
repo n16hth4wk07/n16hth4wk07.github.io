@@ -188,6 +188,9 @@ host smbserver
 
 authenticated successfully with our smb server. 
 
+<img width="1618" height="311" alt="image" src="https://github.com/user-attachments/assets/9a479960-6078-41b7-9258-6eebfd727ec0" />
+
+we have privilege `SeImpersonate` enabled. there's heavy AV guard present. 
 
 
 
