@@ -161,13 +161,32 @@ Our listener didn't catch shell. maybe there's a defense.
 
 <img width="3456" height="516" alt="image" src="https://github.com/user-attachments/assets/fadab247-5e6b-4cec-a755-4b69840bcaf0" />
 
-Boom we got reverse shell as `nt authority\network service`
-
+Boom we got reverse shell as `nt authority\network service` but into 192.168.56.22 (SQL)
+<br></br>
 
 #### Privilege Escalation 
 
+<img width="924" height="961" alt="image" src="https://github.com/user-attachments/assets/fe780ebe-811c-4ed5-9d47-34b7b63c9093" />
 
+we found mssql admin password. 
+<br></br>
 
+- try out the cred
+
+<img width="1443" height="136" alt="image" src="https://github.com/user-attachments/assets/19d13e94-3a2b-4cd6-964f-29ca0ea74e90" />
+
+we have admin access on mssql 
+<br></br>
+
+- Connect the target machine to our smb server
+
+<img width="779" height="128" alt="image" src="https://github.com/user-attachments/assets/ea1b645d-c414-4f3e-9bfa-ce04316554e8" />
+
+host smbserver
+
+<img width="1521" height="198" alt="image" src="https://github.com/user-attachments/assets/0b397106-0944-4c33-86b2-b89ffaf5e317" />
+
+authenticated successfully with our smb server. 
 
 
 
