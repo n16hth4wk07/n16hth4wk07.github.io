@@ -1,4 +1,5 @@
 ---
+layout: default
 title : nighthawk - GOAD - NHA Ninja Hacking Academy (NHA)
 ---
 
