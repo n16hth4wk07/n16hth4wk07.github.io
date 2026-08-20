@@ -20,7 +20,7 @@ This lab is written as a training challenge where GOAD was written as a lab with
 192.168.56.22
 192.168.56.23
 ```
-<br>
+<br></br>
 
 #### 192.168.56.21 (Entry Point)
 
@@ -77,12 +77,12 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Thu Aug 20 06:47:14 2026 -- 1 IP address (1 host up) scanned in 48.13 seconds
 ```
 we have http open on port 80, let's check out what's going on 
-<br>
+<br></br>
 
 <img width="1411" height="924" alt="image" src="https://github.com/user-attachments/assets/a13dd6d3-f2c4-49f5-9f5a-a840fede8463" />
 
 cool we got a Ninja Hacking Academy home page. 
-<br> 
+<br></br>
 
 <img width="1385" height="763" alt="image" src="https://github.com/user-attachments/assets/509cc5be-16a7-4f86-8787-a63959d7c5f7" />
 checking around the web application, found list of students.
@@ -90,7 +90,7 @@ checking around the web application, found list of students.
 <img width="1808" height="517" alt="image" src="https://github.com/user-attachments/assets/ce631179-c074-4f46-8385-407b92ab12d6" />
 
 searching by firstname, `s`. we got a juicy url which is a potential ground to test for sql injection
-<br>
+<br></br>
 
 - Testing for sql injection
 
@@ -102,7 +102,7 @@ searching by firstname, `s`. we got a juicy url which is a potential ground to t
 <img width="1087" height="620" alt="image" src="https://github.com/user-attachments/assets/d3960ea7-922d-4091-b8c6-147b0f336596" />
 
 using an offsec tool `ghauri`  we can see the database available. which proves there's sql injection vulnerability present.
-<br> 
+<br></br>
 
 
 - Manually testing for SQL injecction
