@@ -101,9 +101,15 @@ searching by firstname, `s`. we got a juicy url which is a potential ground to t
 
 <img width="1087" height="620" alt="image" src="https://github.com/user-attachments/assets/d3960ea7-922d-4091-b8c6-147b0f336596" />
 
-using an offsec tool `ghauri`  we can see the database available. 
+using an offsec tool `ghauri`  we can see the database available. which proves there's sql injection vulnerability present.
+<br> 
 
 
+- Manually testing for SQL injecction
+
+<img width="1924" height="1033" alt="image" src="https://github.com/user-attachments/assets/72e6d391-6a07-4ccc-8fe8-75e46b82d3d9" />
+
+using payload `WAITFOR DELAY '00:00:10'--+-` on url `http://192.168.56.21/Students?SearchString=s&orderBy=Firstname%20WAITFOR%20DELAY%20%2700:00:10%27--+-` we delayed the web app for 10 secs. let's do 15 secs. 
 
 
 
