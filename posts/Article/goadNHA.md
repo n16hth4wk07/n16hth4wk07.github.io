@@ -192,6 +192,27 @@ authenticated successfully with our smb server.
 
 we have privilege `SeImpersonate` enabled. there's heavy AV guard present. 
 
+- Flag
+
+<img width="654" height="437" alt="image" src="https://github.com/user-attachments/assets/939db9a9-88ff-4b72-a80e-3363791c1bd9" />
+
+we got our flag on .22. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
